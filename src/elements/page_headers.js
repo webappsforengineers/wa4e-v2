@@ -17,18 +17,12 @@ class headerTemplate extends LitElement{
     return html`
       <header>
         <nav class='header'>
-          <img src='/public/img/home.png' alt='Home'
-               onclick=${this.goHome}
-               onkeydown=${this.goHome} />
+          <a href=${this.homePage}><img src='/public/img/home.png' alt='Home'></a>
           <p class='title-font'>${this.getAttribute('page-title')}</p>
           <p class='header-font'>Web Apps for Engineers</p>
         </nav>
       </header>
     `;
-  }
-
-  goHome() {
-    window.location.replace(this.homePage)
   }
 }
 

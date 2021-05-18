@@ -1,6 +1,7 @@
 import { LitElement, html} from 'lit-element';
 import { we4eStyles } from '../styles/we4e-styles.js';
 
+
 class menuTile extends LitElement {
   static get styles() {
     return [
@@ -8,26 +9,38 @@ class menuTile extends LitElement {
     ]
   }
 
+  static get properties() {
+    return {
+      appConf: {type: Object},
+      appPage: {type: String},
+      appImg: {type: String},
+      appName: {type: String},
+      appDescription: {type: String}
+    };
+  }
+
   constructor() {
     super();
-    this.appName = this.getAttribute('app-name')
-    this.appPage = `/public/app_modules/${this.appName}.html`
+    this.appConf = [{}];
+    this.appPage = `/public/app_modules/${this.appConf.appName}/index.html`;
+    this.appImg = `/public/img/${this.appConf.appName}.png`;
+    this.appName = `${this.appConf.appName}`;
+    this.appTitle = `${this.appConf.appTitle}`;
+    this.appDescription = `${this.appConf.appDescription}`;
   }
 
   render() {
     return html`
-      <div class='container'>
-        <div class='main-menu-card-container' onclick=this.goToApp()>
+        <a href=${this.appPage}>
+        <div class='main-menu-card'>
           <div>
-            <img class="centred main-menu-figure" src="img/ncv.png" alt="ncv icon" />
+            <img class="centred main-menu-figure" src=${this.appImg} alt="${this.appName} icon" />
           </div>
+          <div class="main-menu-card-title">${this.appTitle}</div>
+          <div class="main-menu-card-description">${this.appDescription}</div>
         </div>
-      </div>
+        </a>
     `;
-  }
-
-  goToApp() {
-    window.location.replace(this.appPage)
   }
 
 }
