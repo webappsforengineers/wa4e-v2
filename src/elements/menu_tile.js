@@ -9,27 +9,24 @@ class menuTile extends LitElement {
     ]
   }
 
+
   static get properties() {
     return {
-      appConf: {type: Object},
-      appPage: {type: String},
-      appImg: {type: String},
-      appName: {type: String},
-      appDescription: {type: String}
+      appConf: {type: Object, attribute:false}
     };
   }
 
   constructor() {
     super();
-    this.appConf = [{}];
+    this.appConf = {};
+  }
+
+  render() {
     this.appPage = `/public/app_modules/${this.appConf.appName}/index.html`;
     this.appImg = `/public/img/${this.appConf.appName}.png`;
     this.appName = `${this.appConf.appName}`;
     this.appTitle = `${this.appConf.appTitle}`;
     this.appDescription = `${this.appConf.appDescription}`;
-  }
-
-  render() {
     return html`
         <a href=${this.appPage}>
         <div class='main-menu-card'>
