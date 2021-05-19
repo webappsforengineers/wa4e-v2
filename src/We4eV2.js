@@ -1,8 +1,7 @@
 import { LitElement, html} from 'lit-element';
 import { we4eStyles} from './styles/we4e-styles.js';
-import './elements/page_headers.js';
-import './elements/page_footers.js';
-import './elements/menu_tile.js';
+import './elements/myElements.js';
+// get the configuration files for each app
 import {
   caissonConf,
   consolidatedncvConf,
