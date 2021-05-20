@@ -42,7 +42,7 @@ export class App extends LitElement {
           html`<p>Component ${component.type} Not Recognised</p>`
           }`
       )}`;
-  };
+  }
 
   render() {
     return html`
