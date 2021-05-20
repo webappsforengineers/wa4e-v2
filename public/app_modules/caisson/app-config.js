@@ -6,7 +6,7 @@ export const appConf = {
   "appGrid": {"x": 4, "y": 6},
   "appWebComponents": [
     {
-      "type": "input",
+      "type": "input-tile",
       "gridPosition": {
         "xStart": 1,
         "yStart": 1,
