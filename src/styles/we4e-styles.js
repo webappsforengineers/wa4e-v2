@@ -143,3 +143,20 @@ export const we4eStyles = css`
     font-size: 14px;
   }
 `;
+
+export const we4eGrids = css`
+  .grid-container {
+    display: grid;
+    grid-column: var(--x);
+    grid-row: var(--y);
+    background-color: rgb(100, 100, 100);
+    padding: 10px;
+  }
+  .grid-item {
+    background-color: white;
+    grid-column-start: var(--xstart);
+    grid-row-start: var(--ystart);
+    grid-column-end: var(--xend);
+    grid-row-end: var(--yend);
+  }
+`;

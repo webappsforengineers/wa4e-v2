@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit-element';
-import {we4eStyles} from '../styles/we4e-styles.js';
+import {we4eStyles} from '../../styles/we4e-styles.js';
 
 class footerTemplate extends LitElement {
   static get styles() {
