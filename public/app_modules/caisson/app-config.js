@@ -15,7 +15,7 @@ export const appConf = {
       },
       "title": "Input",
       "fields": {
-        "CaissonProperties": {
+        "Caisson Properties": {
           "L": [24, "m"],
           "D<sub>o</sub>": [6, "m"],
           "t": [0.1, "m"],
@@ -32,11 +32,6 @@ export const appConf = {
           "&alpha<sub>t</sub>": [0.8, null],
           "&gamma'": [6,"kN/m<sup>3</sup>"]
         }
-      },
-      "buttons": {
-        "SUBMIT": ["sub", "green"],
-        "RESET": ["reset", null],
-        "HELP": ["help", null]
       }
     },
     {

@@ -7,6 +7,7 @@ export class App extends LitElement {
   static get properties() {
     return {
       title: { type: String },
+      devMessage: {type: String}
     };
   }
 
@@ -21,12 +22,13 @@ export class App extends LitElement {
     super();
     this.title = appConf.appPageTitle;
     this.grid = appConf.appGrid;
+    this.devMessage = "none";
     this.appTiles =
       html`${appConf.appWebComponents.map((component) =>
         html`
           ${
           component.type==="input-tile"?
-            html`<input-tile .appConf="${component}"></input-tile>`:
+            html`<input-tile .appConf="${component}" @updated='${(e) => { this.devMessage = e.detail.message }}'></input-tile>`:
           component.type==="derived-input-tile"?
             html`<derived-input-tile .appConf="${component}"></derived-input-tile>`:
           component.type==="output-tile"?
@@ -50,6 +52,7 @@ export class App extends LitElement {
       <div class='grid_container' style='--x:${this.grid.x};--y:${this.grid.y};'>
       ${this.appTiles}
       </div>
+      <p>${this.devMessage}</p>
       <footer-element></footer-element>
     `;
   }
