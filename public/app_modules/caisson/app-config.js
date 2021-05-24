@@ -32,7 +32,8 @@ export const appConf = {
           "&alpha<sub>t</sub>": [0.8, null],
           "&gamma'": [6,"kN/m<sup>3</sup>"]
         }
-      }
+      },
+      "helpText": "Helpful text!"
     },
     {
       "type": "Image",

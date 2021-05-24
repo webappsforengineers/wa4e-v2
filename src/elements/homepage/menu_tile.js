@@ -31,7 +31,7 @@ class menuTile extends LitElement {
     this.appImg = `/public/img/${this.appConf.appName}.png`;
     return html`
         <a href=${this.appPage}>
-        <div class='main-menu-card'>
+        <div class='card'>
           <div>
             <img class="centred main-menu-figure" src=${this.appImg} alt="${this.appConf.appName} icon" />
           </div>
