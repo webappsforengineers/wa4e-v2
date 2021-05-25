@@ -1,11 +1,13 @@
 // import { playwrightLauncher } from '@web/test-runner-playwright';
+import { rollupAdapter } from '@web/dev-server-rollup';
+import commonjs from '@rollup/plugin-commonjs';
 
 export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   files: 'test/**/*.test.js',
   nodeResolve: true,
 
   /** Compile JS for older browsers. Requires @web/dev-server-esbuild plugin */
-  // esbuildTarget: 'auto',
+  esbuildTarget: 'auto',
 
   /** Confgure bare import resolve plugin */
   // nodeResolve: {

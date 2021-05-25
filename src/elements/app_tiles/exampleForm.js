@@ -1,5 +1,5 @@
-import { LitElement, html} from 'lit-element';
-import { we4eGrids, we4eStyles } from '../../styles/we4e-styles.js';
+import { LitElement, html } from 'lit';
+import { we4eGrids, we4eStyles } from '../../styles/we4eStyles.js';
 
 class exampleTile extends LitElement {
   // Get the styles
@@ -29,7 +29,7 @@ class exampleTile extends LitElement {
     return html`
       <!-- This 'div' defines the tile as a grid item and the style options
       defines the corners of the tile on the grid. -->
-      <div class='grid-item'
+      <div class='grid-item app-card'
            style='--xstart:${this.appConf.gridPosition.xStart};
                   --ystart:${this.appConf.gridPosition.yStart};
                   --xend:${this.appConf.gridPosition.xEnd};

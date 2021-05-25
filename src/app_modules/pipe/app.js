@@ -1,5 +1,5 @@
-import { LitElement, html} from 'lit-element';
-import { we4eStyles} from '../../styles/we4e-styles.js';
+import { LitElement, html } from 'lit';
+import { we4eStyles} from '../../styles/we4eStyles.js';
 import { pipeConf as appConf} from '../moduleConf.js';
 import '../../elements/myElements.js';
 

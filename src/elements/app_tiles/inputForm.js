@@ -1,5 +1,5 @@
-import { LitElement, html} from 'lit-element';
-import { we4eGrids, we4eStyles } from '../../styles/we4e-styles.js';
+import { LitElement, html } from 'lit';
+import { we4eGrids, we4eStyles } from '../../styles/we4eStyles.js';
 
 class inputTile extends LitElement {
   // Get the styles
@@ -30,11 +30,13 @@ class inputTile extends LitElement {
       html`${Object.keys(this.appConf.fields).map((keyOuter) =>
         html`<h3>${keyOuter}</h3>
           ${Object.keys(this.appConf.fields[`${keyOuter}`]).map((key) =>
-            html`<p><label for=${key}>${html`${key}`}</label><input id=${key} .value=${this.appConf.fields[`${keyOuter}`][`${key}`][0]} /><label for=${key}>${html`${this.appConf.fields[keyOuter][key][1]}`}</label></p>`
+            html`<div><label for=${key}>${html([key])}</label><input id=${key} .value=${this.appConf.fields[`${keyOuter}`][`${key}`][0]} /><label for=${key}>${html([this.appConf.fields[keyOuter][key][1]])}</label></div>`
           )}
         `
       )}`;
     return html`
+      <!-- This 'div' defines the tile as a grid item and the style options
+      defines the corners of the tile on the grid. -->
       <div class='grid-item app-card'
            style='--xstart:${this.appConf.gridPosition.xStart};
                   --ystart:${this.appConf.gridPosition.yStart};
@@ -52,7 +54,6 @@ class inputTile extends LitElement {
 
     `;
   }
-
 
   appUpdate() {
     const myEvent = new CustomEvent('updated', {

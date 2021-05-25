@@ -36,16 +36,22 @@ export const appConf = {
       "helpText": "Helpful text!"
     },
     {
-      "type": "Image",
-      "size": {
-        "x": 2,
-        "y": 2
+      "type": "derived-input-tile",
+      "gridPosition": {
+        "xStart": 2,
+        "yStart": 1,
+        "xEnd": 3,
+        "yEnd": 3
       },
-      "position": {
-        "x": 0,
-        "y": 4
-      },
-      "imgPath": "./caisson.png"
+      "title": "Derived Input",
+      "fields": {
+        "L/D<sub>o</sub>": [null, "-"],
+        "D<sub>i</sub>": [null, "m"],
+        "A<sub>tip</sub>": [null, "m<sup>2</sup>"],
+        "A<sub>plug</sub>": [null, "m<sup>2</sup>"],
+        "W'<sub>plug</sub>": [null, "kN"],
+        "W'<sub>caisson</sub>": [null, "kN"]
+      }
     }
   ]
 };

@@ -1,5 +1,6 @@
 import './homepage/menu_tile.js';
-import './general/page_footers.js';
-import './general/page_headers.js';
-import './app_tiles/input_form.js';
+import './general/pageFooters.js';
+import './general/pageHeaders.js';
+import './app_tiles/inputForm.js';
+import './app_tiles/derivedInputForm.js';
 

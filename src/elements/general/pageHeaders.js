@@ -1,5 +1,5 @@
-import { html, LitElement } from 'lit-element';
-import {we4eStyles} from '../../styles/we4e-styles.js';
+import { html, LitElement } from 'lit';
+import {we4eStyles} from '../../styles/we4eStyles.js';
 
 class headerTemplate extends LitElement{
   static get styles() {
