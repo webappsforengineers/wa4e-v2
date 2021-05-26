@@ -1,14 +1,16 @@
 import { LitElement, html } from 'lit';
 import { we4eStyles, we4eGrids} from '../../styles/we4eStyles.js';
 import {caissonConf as appConf} from '../moduleConf.js';
-// import {calculateCaisson as appCalc} from './caissonScript.js'
+import {calculateCaisson as appCalc} from '../../../../wa4e-v2-maths/output/wa4e-math.js';
 import '../../elements/myElements.js';
 
 export class App extends LitElement {
   static get properties() {
     return {
+      appWebComponents: { type: Object},
       title: { type: String },
-      devMessage: {type: String}
+      devMessage: {type: String},
+      output: {type: Object}
     };
   }
 
@@ -23,12 +25,15 @@ export class App extends LitElement {
     super();
     this.title = appConf.appPageTitle;
     this.grid = appConf.appGrid;
+    this.appHTML = html``;
     this.devMessage = "";
+    this.appWebComponents = appConf.appWebComponents;
+    this.output = {};
   }
 
   render() {
     this.appTiles =
-      html`${appConf.appWebComponents.map((component) =>
+      html`${this.appWebComponents.map((component) =>
         html`
         ${component.type==="input-tile"?
             html`<input-tile .appConf="${component}" @updated='${(e) => { this.devMessage = e.detail.message; this.updateComponents() }}'></input-tile>`:
@@ -48,7 +53,7 @@ export class App extends LitElement {
         }`
       )}`;
 
-    return html`
+    this.appHTML = html`
       <header-element page-title=${this.title}></header-element>
       <div class='grid_container' style='--x:${this.grid.x};--y:${this.grid.y};'>
       ${this.appTiles}
@@ -56,10 +61,16 @@ export class App extends LitElement {
       <p>${this.devMessage}</p>
       <footer-element></footer-element>
     `;
+
+    return this.appHTML;
   }
 
   updateComponents() {
-    Object.assign(appConf.appWebComponents, appCalc(this.appConf.appWebComponents.find(element => element.type === 'input-tile')))
+    this.output = appCalc(this.appWebComponents.find(element => element.type === 'input-tile'), 0, 0);
+    for (const [key, value] of Object.entries(this.output.derivedInputs)) {
+      this.appWebComponents.find(element => element.type === 'derived-input-tile').fields[key][0] = value;
+    }
+    this.devMessage = "Output Generated";
   }
 
 }

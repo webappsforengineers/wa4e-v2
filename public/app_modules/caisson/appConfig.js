@@ -20,10 +20,10 @@ export const appConf = {
           "D<sub>o</sub>": [6, "m"],
           "t": [0.1, "m"],
           "W'": [1500, "kn"],
-          "N<sub>c,tips</sub>": [null, null],
-          "N<sub>c,plug</sub>": [null, null],
-          "a<sub>o</sub>": [null, null],
-          "a<sub>i</sub>": [null, null]
+          "N<sub>c,tips</sub>": [7.5, null],
+          "N<sub>c,plug</sub>": [9, null],
+          "a<sub>o</sub>": [0.4, null],
+          "a<sub>i</sub>": [0.4, null]
         },
         "Soil Properties": {
           "S<sub>um</sub>": [5, "kPa"],
