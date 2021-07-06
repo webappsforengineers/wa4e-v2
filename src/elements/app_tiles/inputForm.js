@@ -23,8 +23,6 @@ class inputTile extends LitElement {
   }
 
   render() {
-    console.log('input-render');
-    console.log(this.appConf);
     this.input_fields = html`${Object.keys(this.appConf.fields).map(
       keyOuter =>
         html`<h3>${keyOuter}</h3>
@@ -70,7 +68,6 @@ class inputTile extends LitElement {
   }
 
   appUpdate() {
-    console.log('event fired');
     const myEvent = new CustomEvent('updated', {
       bubbles: true,
       composed: true,

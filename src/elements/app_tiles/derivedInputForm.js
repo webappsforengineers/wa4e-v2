@@ -31,7 +31,6 @@ class derivedInputTile extends LitElement {
   render() {
     this.formFields = this.appConf.fields;
     this.derivedInputFields = this.makeFields();
-    console.log('derived-render');
     return html`
       <!-- This 'div' defines the tile as a grid item and the style options
       defines the corners of the tile on the grid. -->

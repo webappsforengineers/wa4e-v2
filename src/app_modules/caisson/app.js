@@ -33,9 +33,6 @@ export class App extends LitElement {
   }
 
   render() {
-    console.log('main render');
-    console.log(this.appWebComponents);
-    console.log(this.appTiles);
     return html`
       <header-element page-title=${this.title}></header-element>
       ${this.appTiles}
@@ -54,7 +51,6 @@ export class App extends LitElement {
         element => element.type === 'derived-input-tile'
       ).fields[key][0] = value;
     }
-    console.log('maths is done');
   }
 
   /* eslint-disable no-nested-ternary */
