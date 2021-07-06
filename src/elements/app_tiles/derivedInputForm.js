@@ -20,11 +20,11 @@ class derivedInputTile extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener('updated', () => this.requestUpdate());
+    window.addEventListener('update-children', () => this.requestUpdate());
   }
 
   disconnectedCallback() {
-    window.removeEventListener('updated', () => this.requestUpdate());
+    window.removeEventListener('update-children', () => this.requestUpdate());
     super.disconnectedCallback();
   }
 

@@ -22,6 +22,16 @@ class inputTile extends LitElement {
     this.appConf = {};
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener('update-children', () => this.requestUpdate());
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener('update-children', () => this.requestUpdate());
+    super.disconnectedCallback();
+  }
+
   render() {
     this.input_fields = html`${Object.keys(this.appConf.fields).map(
       keyOuter =>
@@ -31,10 +41,11 @@ class inputTile extends LitElement {
               html` <div>
                 <label for=${key}>${html([key])}</label>
                 <input
-                  type="text"
                   id=${key}
-                  .value=${this.appConf.fields[keyOuter][key][0].value ??
-                  `${this.appConf.fields[keyOuter][key][0]}`}
+                  .value=${this.appConf.fields[keyOuter][key][0]}
+                  @change=${e => {
+                    this.appConf.fields[keyOuter][key][0] = e.target.value;
+                  }}
                 />
                 <label for=${key}
                   >${html([this.appConf.fields[keyOuter][key][1]])}</label
@@ -77,7 +88,6 @@ class inputTile extends LitElement {
 
   tileReload() {
     const myEvent = new CustomEvent('reset', {
-      detail: { message: 'app-reset' },
       bubbles: true,
       composed: true,
     });

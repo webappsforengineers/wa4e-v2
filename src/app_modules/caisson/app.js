@@ -51,6 +51,20 @@ export class App extends LitElement {
         element => element.type === 'derived-input-tile'
       ).fields[key][0] = value;
     }
+    this.childUpdate();
+  }
+
+  resetComponents() {
+    this.appWebComponents = appConf.appWebComponents;
+    this.childUpdate();
+  }
+
+  childUpdate() {
+    const myEvent = new CustomEvent('update-children', {
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(myEvent);
   }
 
   /* eslint-disable no-nested-ternary */
@@ -67,6 +81,9 @@ export class App extends LitElement {
                 .appConf=${this.appWebComponents[index]}
                 @updated="${() => {
                   this.updateComponents();
+                }}"
+                @reset="${() => {
+                  this.resetComponents();
                 }}"
               ></input-tile>`
             : component.type === 'derived-input-tile'
