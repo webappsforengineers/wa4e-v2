@@ -63,5 +63,31 @@ export const appConf = {
       },
       img_pth: 'caisson-figure.png',
     },
+    {
+      type: 'output-tile',
+      gridPosition: {
+        xStart: 2,
+        yStart: 3,
+        xEnd: 3,
+        yEnd: 5,
+      },
+      title: 'Output',
+      fields: {
+        Installation: {
+          Q: [null, 'kN'],
+          'Max Required Suction': [null, 'kN'],
+          'Max Permissible Suction': [null, 'kN'],
+          'Min FoS Plug Stability': [null, '-'],
+        },
+        Capacity: {
+          'V<sub>ult,1</sub>': [null, 'kN'],
+          'V<sub>T,1</sub>': [null, 'kN'],
+          'V<sub>ult,2</sub>': [null, 'kN'],
+          'V<sub>T,2</sub>': [null, 'kN'],
+          'V<sub>ult,3</sub>': [null, 'kN'],
+          'V<sub>T,3</sub>': [null, 'kN'],
+        },
+      },
+    },
   ],
 };

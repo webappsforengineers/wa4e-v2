@@ -17,11 +17,6 @@ class inputTile extends LitElement {
     };
   }
 
-  constructor() {
-    super();
-    this.appConf = {};
-  }
-
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener('update-children', () => this.requestUpdate());
@@ -33,26 +28,8 @@ class inputTile extends LitElement {
   }
 
   render() {
-    this.input_fields = html`${Object.keys(this.appConf.fields).map(
-      keyOuter =>
-        html`<h3>${keyOuter}</h3>
-          ${Object.keys(this.appConf.fields[`${keyOuter}`]).map(
-            key =>
-              html` <div>
-                <label for=${key}>${html([key])}</label>
-                <input
-                  id=${key}
-                  .value=${this.appConf.fields[keyOuter][key][0]}
-                  @change=${e => {
-                    this.appConf.fields[keyOuter][key][0] = e.target.value;
-                  }}
-                />
-                <label for=${key}
-                  >${html([this.appConf.fields[keyOuter][key][1]])}</label
-                >
-              </div>`
-          )}`
-    )}`;
+    this.formFields = this.appConf.fields;
+    this.input_fields = this.makeNestedCallbackFields();
     return html`
       <!-- This 'div' defines the tile as a grid item and the style options
       defines the corners of the tile on the grid. -->
@@ -76,6 +53,29 @@ class inputTile extends LitElement {
         <button class="btn btn-1" @click=${() => this.showHelp()}>HELP</button>
       </div>
     `;
+  }
+
+  makeNestedCallbackFields() {
+    return html`${Object.keys(this.formFields).map(
+      keyOuter =>
+        html`<h3>${keyOuter}</h3>
+          ${Object.keys(this.appConf.fields[`${keyOuter}`]).map(
+            key =>
+              html` <div>
+                <label for="${key}">${html([key])}</label>
+                <input
+                  id="${key}"
+                  .value="${this.appConf.fields[keyOuter][key][0]}"
+                  @change=${e => {
+                    this.appConf.fields[keyOuter][key][0] = e.target.value;
+                  }}
+                />
+                <label for="${key}"
+                  >${html([this.appConf.fields[keyOuter][key][1]])}</label
+                >
+              </div>`
+          )}`
+    )}`;
   }
 
   appUpdate() {

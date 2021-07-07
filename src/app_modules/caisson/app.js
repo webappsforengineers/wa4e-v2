@@ -46,11 +46,20 @@ export class App extends LitElement {
       0,
       0
     );
+    // ToDo: these loops take an object from the math output and map it to a tiles fields, these could be functions.
     for (const [key, value] of Object.entries(this.output.derivedInputs)) {
       this.appWebComponents.find(
         element => element.type === 'derived-input-tile'
       ).fields[key][0] = value;
     }
+    for (const [keyOuter, valueOuter] of Object.entries(this.output.outputs)) {
+      for (const [keyInner, valueInner] of Object.entries(valueOuter)) {
+        this.appWebComponents.find(
+          element => element.type === 'output-tile'
+        ).fields[keyOuter][keyInner][0] = valueInner;
+      }
+    }
+    // Launch new event to update child components
     this.childUpdate();
   }
 
@@ -88,7 +97,6 @@ export class App extends LitElement {
               ></input-tile>`
             : component.type === 'derived-input-tile'
             ? html`<derived-input-tile
-                id="derived-input-tile"
                 .appConf=${this.appWebComponents[index]}
               ></derived-input-tile>`
             : component.type === 'output-tile'
