@@ -1,3 +1,8 @@
+import {
+  makeDataCaisson,
+  makeDataTwoCaisson,
+} from '../../../../wa4e-v2-maths/output/wa4e-math.js';
+
 export const appConf = {
   appName: 'caisson',
   appTitle: 'Suction Caisson',
@@ -86,6 +91,48 @@ export const appConf = {
           'V<sub>T,2</sub>': [null, 'kN'],
           'V<sub>ult,3</sub>': [null, 'kN'],
           'V<sub>T,3</sub>': [null, 'kN'],
+        },
+      },
+    },
+    {
+      type: 'graph-tile',
+      graphData: {
+        z: null,
+        suz: null,
+        q_total: null,
+        req_suction: null,
+        fos: null,
+      },
+      plots: {
+        plotSuKpc: {
+          gridPosition: {
+            xStart: 3,
+            yStart: 1,
+            xEnd: 5,
+            yEnd: 3,
+          },
+          dataFun: makeDataCaisson,
+          args: ['suz', 'z'],
+        },
+        plotPenRes: {
+          gridPosition: {
+            xStart: 3,
+            yStart: 3,
+            xEnd: 5,
+            yEnd: 5,
+          },
+          dataFun: makeDataTwoCaisson,
+          args: ['req_suction', 'q_total', 'z'],
+        },
+        plotFosStability: {
+          gridPosition: {
+            xStart: 3,
+            yStart: 5,
+            xEnd: 5,
+            yEnd: 7,
+          },
+          dataFun: makeDataCaisson,
+          args: ['fos', 'z'],
         },
       },
     },
