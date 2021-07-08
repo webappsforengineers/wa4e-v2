@@ -1,6 +1,9 @@
 import {
   makeDataCaisson,
   makeDataTwoCaisson,
+  SuKpcLayout,
+  PenResLayout,
+  FosStabilityLayout,
 } from '../../../../wa4e-v2-maths/output/wa4e-math.js';
 
 export const appConf = {
@@ -96,7 +99,7 @@ export const appConf = {
     },
     {
       type: 'graph-tile',
-      graphData: {
+      fields: {
         z: null,
         suz: null,
         q_total: null,
@@ -111,7 +114,10 @@ export const appConf = {
             xEnd: 5,
             yEnd: 3,
           },
-          dataFun: makeDataCaisson,
+          dataFun() {
+            makeDataCaisson();
+          },
+          layout: SuKpcLayout,
           args: ['suz', 'z'],
         },
         plotPenRes: {
@@ -121,7 +127,10 @@ export const appConf = {
             xEnd: 5,
             yEnd: 5,
           },
-          dataFun: makeDataTwoCaisson,
+          dataFun() {
+            makeDataTwoCaisson();
+          },
+          layout: PenResLayout,
           args: ['req_suction', 'q_total', 'z'],
         },
         plotFosStability: {
@@ -131,7 +140,10 @@ export const appConf = {
             xEnd: 5,
             yEnd: 7,
           },
-          dataFun: makeDataCaisson,
+          dataFun() {
+            makeDataCaisson();
+          },
+          layout: FosStabilityLayout,
           args: ['fos', 'z'],
         },
       },

@@ -47,6 +47,7 @@ export class App extends LitElement {
       0
     );
     // ToDo: these loops take an object from the math output and map it to a tiles fields, these could be functions.
+    /* eslint-disable no-restricted-syntax */
     for (const [key, value] of Object.entries(this.output.derivedInputs)) {
       this.appWebComponents.find(
         element => element.type === 'derived-input-tile'
@@ -59,6 +60,12 @@ export class App extends LitElement {
         ).fields[keyOuter][keyInner][0] = valueInner;
       }
     }
+    for (const [key, value] of Object.entries(this.output.graphData)) {
+      this.appWebComponents.find(
+        element => element.type === 'graph-tile'
+      ).fields[key] = value;
+    }
+    /* eslint-enable no-restricted-syntax */
     // Launch new event to update child components
     this.childUpdate();
   }

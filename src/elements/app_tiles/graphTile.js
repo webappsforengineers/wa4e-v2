@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
 import { we4eGrids, we4eStyles } from '../../styles/we4eStyles.js';
+import { Plotly } from '../../../../wa4e-v2-maths/output/wa4e-math.js';
 
 class graphTile extends LitElement {
   // Get the styles
@@ -17,43 +18,64 @@ class graphTile extends LitElement {
     };
   }
 
-  render() {
-    this.graphTiles = html`${Object.entries(this.appConf.plots).map(value =>
-      this.makeGraphs(value)
-    )}`;
-    return html`
-      <script src="https://cdn.plot.ly/plotly-2.2.1.min.js"></script>
-      <!-- This 'div' defines the tile as a grid item and the style options
-      defines the corners of the tile on the grid. -->
-      ${this.graphTiles}
-    `;
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener('update-children', () => this.requestUpdate());
   }
 
-  makeGraphs(value) {
-    console.log(value);
-    console.log(
-      Object.entries(value[1].args).map(
-        varName => this.appConf.graphData[varName[1]]
+  disconnectedCallback() {
+    window.removeEventListener('update-children', () => this.requestUpdate());
+    super.disconnectedCallback();
+  }
+
+  render() {
+    this.renderGraph();
+    this.graphHtml = html` ${Object.entries(this.appConf.plots).map(
+      mapValue =>
+        html` <div
+          class="grid-item app-card"
+          style="--xstart:${mapValue[1].gridPosition.xStart};
+                 --ystart:${mapValue[1].gridPosition.yStart};
+                 --xend:${mapValue[1].gridPosition.xEnd};
+                 --yend:${mapValue[1].gridPosition.yEnd};"
+        >
+          <div
+            id=${mapValue[0]}
+            class="centred"
+            style="width: 450px; height: 450px;"
+          ></div>
+        </div>`
+    )}`;
+    return this.graphHtml;
+  }
+  /*
+  firstUpdated() {
+    Object.entries(this.appConf.plots).map(mapValue =>
+      Plotly.newPlot(
+        this.renderRoot.querySelector(`#${mapValue[0]}`),
+        mapValue[1].dataFun(
+          Object.entries(mapValue[1].args).map(
+            (varName) => this.appConf.fields[varName[1]]
+          )),
+        mapValue[1].layout[0]
       )
     );
-    return html`
-      <div
-        class="grid-item app-card"
-        style="--xstart:${value[1].gridPosition.xStart};
-                 --ystart:${value[1].gridPosition.yStart};
-                 --xend:${value[1].gridPosition.xEnd};
-                 --yend:${value[1].gridPosition.yEnd};"
-      >
-        <div
-          id="${value[0]}"
-          class="centred"
-          style="width: 450px; height: 450px;"
-        ></div>
-        <script>
-          Plotly.newPlot("${value[0]}", value.dataFun(Object.entries(value[1].args).map((varName) => this.appConf.graphData[varName[1]]))
-        </script>
-      </div>
-    `;
+  }
+  */
+
+  async renderGraph() {
+    await this.updateComplete;
+    Object.entries(this.appConf.plots).map(mapValue =>
+      Plotly.newPlot(
+        this.renderRoot.querySelector(`#${mapValue[0]}`),
+        mapValue[1].dataFun(
+          Object.entries(mapValue[1].args).map(
+            varName => this.appConf.fields[varName[1]]
+          )
+        ),
+        mapValue[1].layout
+      )
+    );
   }
 }
 
