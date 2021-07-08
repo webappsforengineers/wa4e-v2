@@ -1,5 +1,4 @@
 import { LitElement, html } from 'lit';
-// import Plotly from 'plotly.js-dist'
 import { we4eGrids, we4eStyles } from '../../styles/we4eStyles.js';
 
 class graphTile extends LitElement {
@@ -19,35 +18,42 @@ class graphTile extends LitElement {
   }
 
   render() {
-    this.graphTiles = this.makeGraphs();
+    this.graphTiles = html`${Object.entries(this.appConf.plots).map(value =>
+      this.makeGraphs(value)
+    )}`;
     return html`
+      <script src="https://cdn.plot.ly/plotly-2.2.1.min.js"></script>
       <!-- This 'div' defines the tile as a grid item and the style options
       defines the corners of the tile on the grid. -->
       ${this.graphTiles}
     `;
   }
 
-  makeGraphs() {
-    let htmlTemp = html``;
-    // eslint-disable-next-line no-restricted-syntax
-    for (const [key, value] of Object.entries(this.appConf.plots)) {
-      htmlTemp += html` <div
+  makeGraphs(value) {
+    console.log(value);
+    console.log(
+      Object.entries(value[1].args).map(
+        varName => this.appConf.graphData[varName[1]]
+      )
+    );
+    return html`
+      <div
         class="grid-item app-card"
-        style="--xstart:${value.gridPosition.xStart};
-               --ystart:${value.gridPosition.yStart};
-               --xend:${value.gridPosition.xEnd};
-               --yend:${value.gridPosition.yEnd};"
+        style="--xstart:${value[1].gridPosition.xStart};
+                 --ystart:${value[1].gridPosition.yStart};
+                 --xend:${value[1].gridPosition.xEnd};
+                 --yend:${value[1].gridPosition.yEnd};"
       >
         <div
-          id=${key}
+          id="${value[0]}"
           class="centred"
           style="width: 450px; height: 450px;"
         ></div>
-      </div>`;
-
-      // Plotly.newPlot(document.getElementById(key), value.dataFun(this.appConf.graphData[value.args]))
-    }
-    return htmlTemp;
+        <script>
+          Plotly.newPlot("${value[0]}", value.dataFun(Object.entries(value[1].args).map((varName) => this.appConf.graphData[varName[1]]))
+        </script>
+      </div>
+    `;
   }
 }
 
