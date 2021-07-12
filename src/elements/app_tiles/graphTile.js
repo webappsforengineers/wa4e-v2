@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { we4eGrids, we4eStyles } from '../../styles/we4eStyles.js';
+import { we4eGrids, we4eStyles, dimensions } from '../../styles/we4eStyles.js';
 import { Plotly } from '../../../../wa4e-v2-maths/output/wa4e-math.js';
 
 class graphTile extends LitElement {
@@ -30,38 +30,30 @@ class graphTile extends LitElement {
 
   render() {
     this.renderGraph();
-    this.graphHtml = html` ${Object.entries(this.appConf.plots).map(
+    this.graphHtml = html`
+      <div class="sub-grid-container">
+      ${Object.entries(this.appConf.plots).map(
       mapValue =>
         html` <div
-          class="grid-item app-card"
-          style="--xstart:${mapValue[1].gridPosition.xStart};
-                 --ystart:${mapValue[1].gridPosition.yStart};
-                 --xend:${mapValue[1].gridPosition.xEnd};
-                 --yend:${mapValue[1].gridPosition.yEnd};"
+          class="grid-item"
+          style="--xstart: ${mapValue[1].subGridPosition.xStart};
+                 --ystart: ${mapValue[1].subGridPosition.yStart};
+                 --xend: ${mapValue[1].subGridPosition.xEnd};
+                 --yend: ${mapValue[1].subGridPosition.yEnd};"
         >
-          <div
-            id=${mapValue[0]}
-            class="centred"
-            style="width: 450px; height: 450px;"
-          ></div>
-        </div>`
-    )}`;
+          <div class='app-card'>
+            <div
+              id=${mapValue[0]}
+              class="centred"
+              style="width: 450px; height: 450px;"
+            >
+            </div>
+          </div>
+        </div>
+        `
+    )}</div>`;
     return this.graphHtml;
   }
-  /*
-  firstUpdated() {
-    Object.entries(this.appConf.plots).map(mapValue =>
-      Plotly.newPlot(
-        this.renderRoot.querySelector(`#${mapValue[0]}`),
-        mapValue[1].dataFun(
-          Object.entries(mapValue[1].args).map(
-            (varName) => this.appConf.fields[varName[1]]
-          )),
-        mapValue[1].layout[0]
-      )
-    );
-  }
-  */
 
   async renderGraph() {
     await this.updateComplete;

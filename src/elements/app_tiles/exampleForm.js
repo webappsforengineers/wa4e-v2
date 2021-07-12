@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { we4eGrids, we4eStyles } from '../../styles/we4eStyles.js';
+import { we4eGrids, we4eStyles, dimensions } from '../../styles/we4eStyles.js';
 
 class exampleTile extends LitElement {
   // Get the styles

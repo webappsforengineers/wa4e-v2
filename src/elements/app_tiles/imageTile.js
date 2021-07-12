@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { we4eGrids, we4eStyles } from '../../styles/we4eStyles.js';
+import { we4eGrids, we4eStyles, dimensions } from '../../styles/we4eStyles.js';
 
 class imageTile extends LitElement {
   // Get the styles
@@ -19,20 +19,7 @@ class imageTile extends LitElement {
 
   render() {
     return html`
-      <!-- This 'div' defines the tile as a grid item and the style options
-      defines the corners of the tile on the grid. -->
-      <div
-        class="grid-item app-card"
-        style="--xstart:${this.appConf.gridPosition.xStart};
-                  --ystart:${this.appConf.gridPosition.yStart};
-                  --xend:${this.appConf.gridPosition.xEnd};
-                  --yend:${this.appConf.gridPosition.yEnd};"
-      >
-        <!-- Here are the forms attributes -->
-        <div>
-          <img src=${this.appConf.img_pth} alt="caisson diagrams" />
-        </div>
-      </div>
+      <img class="caisson-figure" src=${this.appConf.img_pth} alt="caisson diagrams" />
     `;
   }
 }

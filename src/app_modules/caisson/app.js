@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { we4eGrids, we4eStyles } from '../../styles/we4eStyles.js';
+import { we4eGrids, we4eStyles, dimensions } from '../../styles/we4eStyles.js';
 import { caissonConf as appConf } from '../moduleConf.js';
 import { calculateCaisson as appCalc } from '../../../../wa4e-v2-maths/output/wa4e-math.js';
 import '../../elements/myElements.js';
@@ -7,14 +7,10 @@ import '../../elements/myElements.js';
 export class App extends LitElement {
   static get properties() {
     return {
-      appWebComponents: {
-        type: Object,
-      },
+      appWebComponents: { type: Object },
       title: { type: String },
       output: { type: Object },
-      appTiles: {
-        type: html,
-      },
+      appTiles: { type: html },
     };
   }
 
@@ -35,7 +31,9 @@ export class App extends LitElement {
   render() {
     return html`
       <header-element page-title=${this.title}></header-element>
+      <div id="tiles" class="grid-container" style='--xtot: ${this.grid.x}' >
       ${this.appTiles}
+      </div>
       <footer-element></footer-element>
     `;
   }
@@ -85,50 +83,83 @@ export class App extends LitElement {
 
   /* eslint-disable no-nested-ternary */
   makeAppTiles() {
-    return html`${this.appWebComponents.map(
-      (component, index) =>
-        html` <div
-          id="tiles"
-          class="grid_container"
-          style="--x:${this.grid.x};--y:${this.grid.y};"
-        >
-          ${component.type === 'input-tile'
-            ? html`<input-tile
-                .appConf=${this.appWebComponents[index]}
-                @updated="${() => {
-                  this.updateComponents();
-                }}"
-                @reset="${() => {
-                  this.resetComponents();
-                }}"
-              ></input-tile>`
-            : component.type === 'derived-input-tile'
-            ? html`<derived-input-tile
-                .appConf=${this.appWebComponents[index]}
-              ></derived-input-tile>`
-            : component.type === 'output-tile'
-            ? html`<output-tile
-                .appConf=${this.appWebComponents[index]}
-              ></output-tile>`
-            : component.type === 'image-tile'
-            ? html`<image-tile
-                .appConf=${this.appWebComponents[index]}
-              ></image-tile>`
-            : component.type === 'graph-tile'
-            ? html`<graph-tile
-                .appConf=${this.appWebComponents[index]}
-              ></graph-tile>`
-            : component.type === 'coeff-tile'
-            ? html`<graph-tile
-                .appConf=${this.appWebComponents[index]}
-              ></graph-tile>`
-            : component.type === 'optimisation-tile'
-            ? html`<graph-tile
-                .appConf=${this.appWebComponents[index]}
-              ></graph-tile>`
-            : html`<p>Component ${component.type} Not Recognised</p>`}
-        </div>`
-    )}`;
+    return html`
+      ${this.appWebComponents.map(
+        (component, index) =>
+          html`
+            ${component.type === 'input-tile'
+              ? html`<input-tile
+                  class="grid-item app-card"
+                  style="--xstart: ${component.gridPosition.xStart};
+                         --ystart: ${component.gridPosition.yStart};
+                         --xend: ${component.gridPosition.xEnd};
+                         --yend: ${component.gridPosition.yEnd};"
+                  .appConf=${this.appWebComponents[index]}
+                  @updated="${() => {
+                    this.updateComponents();
+                  }}"
+                  @reset="${() => {
+                    this.resetComponents();
+                  }}"
+                ></input-tile>`
+              : component.type === 'derived-input-tile'
+              ? html`<derived-input-tile
+                  class="grid-item app-card"
+                  style="--xstart: ${component.gridPosition.xStart};
+                         --ystart: ${component.gridPosition.yStart};
+                         --xend: ${component.gridPosition.xEnd};
+                         --yend: ${component.gridPosition.yEnd};"
+                  .appConf=${this.appWebComponents[index]}
+                ></derived-input-tile>`
+              : component.type === 'output-tile'
+              ? html`<output-tile
+                  class="grid-item app-card"
+                  style="--xstart: ${component.gridPosition.xStart};
+                         --ystart: ${component.gridPosition.yStart};
+                         --xend: ${component.gridPosition.xEnd};
+                         --yend: ${component.gridPosition.yEnd};"
+                  .appConf=${this.appWebComponents[index]}
+                ></output-tile>`
+              : component.type === 'image-tile'
+              ? html`<image-tile
+                  class="grid-item app-card"
+                  style="--xstart: ${component.gridPosition.xStart};
+                         --ystart: ${component.gridPosition.yStart};
+                         --xend: ${component.gridPosition.xEnd};
+                         --yend: ${component.gridPosition.yEnd};"
+                  .appConf=${this.appWebComponents[index]}
+                ></image-tile>`
+              : component.type === 'graph-tile'
+              ? html`<graph-tile
+                  class="nested-grid-item"
+                  style="--xstart: ${component.gridPosition.xStart};
+                         --ystart: ${component.gridPosition.yStart};
+                         --xend: ${component.gridPosition.xEnd};
+                         --yend: ${component.gridPosition.yEnd};"
+                  .appConf=${this.appWebComponents[index]}
+                ></graph-tile>`
+              : component.type === 'coeff-tile'
+              ? html`<coeff-tile
+                  class="grid-item app-card"
+                  style="--xstart: ${component.gridPosition.xStart};
+                         --ystart: ${component.gridPosition.yStart};
+                         --xend: ${component.gridPosition.xEnd};
+                         --yend: ${component.gridPosition.yEnd};"
+                  .appConf=${this.appWebComponents[index]}
+                ></coeff-tile>`
+              : component.type === 'optimisation-tile'
+              ? html`<optimisation-tile
+                  class="grid-item app-card"
+                  style="--xstart: ${component.gridPosition.xStart};
+                         --ystart: ${component.gridPosition.yStart};
+                         --xend: ${component.gridPosition.xEnd};
+                         --yend: ${component.gridPosition.yEnd};"
+                  .appConf=${this.appWebComponents[index]}
+                ></optimisation-tile>`
+              : html`<p>Component ${component.type} Not Recognised</p>`}
+          `
+      )}
+    `;
   }
   /* eslint-enable no-nested-ternary */
 }

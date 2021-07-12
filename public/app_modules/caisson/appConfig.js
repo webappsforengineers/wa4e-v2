@@ -11,7 +11,7 @@ export const appConf = {
   appTitle: 'Suction Caisson',
   appPageTitle: 'Suction Caisson Installation and Uplift Capacity',
   appDescription: 'Installation and uplift capacity',
-  appGrid: { x: 4, y: 6 },
+  appGrid: { x: 5, y: 6 },
   appWebComponents: [
     {
       type: 'input-tile',
@@ -19,7 +19,7 @@ export const appConf = {
         xStart: 1,
         yStart: 1,
         xEnd: 2,
-        yEnd: 5,
+        yEnd: 4,
       },
       title: 'Input',
       fields: {
@@ -49,7 +49,7 @@ export const appConf = {
         xStart: 2,
         yStart: 1,
         xEnd: 3,
-        yEnd: 3,
+        yEnd: 2,
       },
       title: 'Derived Input',
       fields: {
@@ -65,9 +65,9 @@ export const appConf = {
       type: 'image-tile',
       gridPosition: {
         xStart: 1,
-        yStart: 5,
+        yStart: 4,
         xEnd: 3,
-        yEnd: 8,
+        yEnd: 6,
       },
       img_pth: 'caisson-figure.png',
     },
@@ -75,9 +75,9 @@ export const appConf = {
       type: 'output-tile',
       gridPosition: {
         xStart: 2,
-        yStart: 3,
+        yStart: 2,
         xEnd: 3,
-        yEnd: 5,
+        yEnd: 4,
       },
       title: 'Output',
       fields: {
@@ -99,6 +99,12 @@ export const appConf = {
     },
     {
       type: 'graph-tile',
+      gridPosition: {
+        xStart: 3,
+        yStart: 1,
+        xEnd: 5,
+        yEnd: 6,
+      },
       fields: {
         z: null,
         suz: null,
@@ -108,11 +114,11 @@ export const appConf = {
       },
       plots: {
         plotSuKpc: {
-          gridPosition: {
-            xStart: 3,
+          subGridPosition: {
+            xStart: 1,
             yStart: 1,
-            xEnd: 5,
-            yEnd: 3,
+            xEnd: 2,
+            yEnd: 2,
           },
           dataFun() {
             makeDataCaisson();
@@ -121,11 +127,11 @@ export const appConf = {
           args: ['suz', 'z'],
         },
         plotPenRes: {
-          gridPosition: {
-            xStart: 3,
-            yStart: 3,
-            xEnd: 5,
-            yEnd: 5,
+          subGridPosition: {
+            xStart: 1,
+            yStart: 2,
+            xEnd: 2,
+            yEnd: 3,
           },
           dataFun() {
             makeDataTwoCaisson();
@@ -134,11 +140,11 @@ export const appConf = {
           args: ['req_suction', 'q_total', 'z'],
         },
         plotFosStability: {
-          gridPosition: {
-            xStart: 3,
-            yStart: 5,
-            xEnd: 5,
-            yEnd: 7,
+          subGridPosition: {
+            xStart: 1,
+            yStart: 3,
+            xEnd: 2,
+            yEnd: 4,
           },
           dataFun() {
             makeDataCaisson();
