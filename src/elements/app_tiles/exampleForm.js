@@ -1,7 +1,8 @@
-import { LitElement, html } from 'lit';
-import { we4eGrids, we4eStyles, dimensions } from '../../styles/we4eStyles.js';
+import {  html } from 'lit';
+import {StyledElement} from '../../styles/wa4eStyleElement';
+import { we4eGrids, we4eStyles, dimensions } from '../../styles/wa4eStyleElement.js';
 
-class exampleTile extends LitElement {
+class exampleTile extends StyledElement {
   // Get the styles
   static get styles() {
     return [we4eStyles, we4eGrids];

@@ -1,11 +1,7 @@
-import { LitElement, html } from 'lit';
-import { we4eGrids, we4eStyles, dimensions } from '../../styles/we4eStyles.js';
+import {  html } from 'lit';
+import {StyledElement} from '../../styles/wa4eStyleElement';
 
-class imageTile extends LitElement {
-  // Get the styles
-  static get styles() {
-    return [we4eStyles, we4eGrids];
-  }
+class imageTile extends StyledElement {
 
   // define the JS object and/or html attributes to be passed to the app
   static get properties() {

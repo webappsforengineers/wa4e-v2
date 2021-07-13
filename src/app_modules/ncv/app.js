@@ -1,19 +1,13 @@
-import { LitElement, html } from 'lit';
-import { we4eStyles} from '../../styles/we4eStyles.js';
+import { html } from 'lit';
+import { StyledElement } from '../../styles/wa4eStyleElement';
 import { ncvConf as appConf} from '../moduleConf.js';
 import '../../elements/myElements.js';
 
-export class App extends LitElement {
+export class App extends StyledElement {
   static get properties() {
     return {
       title: { type: String },
     };
-  }
-
-  static get styles() {
-    return [
-      we4eStyles,
-    ]
   }
 
   constructor() {

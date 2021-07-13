@@ -1,10 +1,10 @@
-import { html, LitElement } from 'lit';
-import { we4eGrids, we4eStyles, dimensions } from '../../styles/we4eStyles.js';
+import { html, } from 'lit';
+import { StyledElement } from '../../styles/wa4eStyleElement';
 import { caissonConf as appConf } from '../moduleConf.js';
 import { calculateCaisson as appCalc } from '../../../../wa4e-v2-maths/output/wa4e-math.js';
 import '../../elements/myElements.js';
 
-export class App extends LitElement {
+export class App extends StyledElement {
   static get properties() {
     return {
       appWebComponents: { type: Object },
@@ -12,10 +12,6 @@ export class App extends LitElement {
       output: { type: Object },
       appTiles: { type: html },
     };
-  }
-
-  static get styles() {
-    return [we4eStyles, we4eGrids];
   }
 
   constructor() {

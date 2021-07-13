@@ -1,12 +1,7 @@
-import { html, LitElement } from 'lit';
-import {we4eStyles} from '../../styles/we4eStyles.js';
+import { html, } from 'lit';
+import {StyledElement } from '../../styles/wa4eStyleElement';
 
-class headerTemplate extends LitElement{
-  static get styles() {
-    return [
-      we4eStyles,
-    ]
-  }
+class headerTemplate extends StyledElement{
 
   constructor() {
     super();

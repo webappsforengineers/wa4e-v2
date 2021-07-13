@@ -1,14 +1,7 @@
-import { LitElement, html} from 'lit';
-import { we4eStyles } from '../../styles/we4eStyles.js';
+import {html} from 'lit';
+import { StyledElement} from '../../styles/wa4eStyleElement';
 
-
-class menuTile extends LitElement {
-  // Get the styles
-  static get styles() {
-    return [
-      we4eStyles,
-    ]
-  }
+class menuTile extends StyledElement {
 
   // define the JS object and/or html attributes to be passed to the app
   static get properties() {
@@ -31,7 +24,7 @@ class menuTile extends LitElement {
     this.appImg = `/public/img/${this.appConf.appName}.png`;
     return html`
         <a href=${this.appPage}>
-        <div class='card'>
+        <div class='container-fluid'>
           <div>
             <img class="centred main-menu-figure" src=${this.appImg} alt="${this.appConf.appName} icon" />
           </div>

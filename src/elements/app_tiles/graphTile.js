@@ -1,12 +1,8 @@
-import { LitElement, html } from 'lit';
-import { we4eGrids, we4eStyles, dimensions } from '../../styles/we4eStyles.js';
+import {  html } from 'lit';
+import {StyledElement} from '../../styles/wa4eStyleElement';
 import { Plotly } from '../../../../wa4e-v2-maths/output/wa4e-math.js';
 
-class graphTile extends LitElement {
-  // Get the styles
-  static get styles() {
-    return [we4eStyles, we4eGrids];
-  }
+class graphTile extends StyledElement {
 
   // define the JS object and/or html attributes to be passed to the app
   static get properties() {
