@@ -11,7 +11,7 @@ class headerTemplate extends StyledElement {
     return [
       super.render(),
       html`
-        <nav class="header row">
+        <nav class="navbar navbar-expand-lg">
           <div class="col-2">
             <a href="${this.homePage}"
               ><img

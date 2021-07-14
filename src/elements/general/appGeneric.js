@@ -20,8 +20,10 @@ export class AppGeneric extends StyledElement {
         <div class="row">
           <header-element page-title=${this.title}></header-element>
         </div>
-        <div class="container-fluid">${this.appTiles}</div>
-        <footer-element></footer-element>
+        <div class="container-fluid">
+          ${this.appTiles}
+          <footer-element></footer-element>
+        </div>
       `,
     ];
   }
@@ -71,45 +73,54 @@ export class AppGeneric extends StyledElement {
 
   /* eslint-disable no-nested-ternary */
   makeAppTiles() {
-    return html`<div class="row">
+    return html`<div class="row" data-masonry='{"percentPosition": true }'>
       ${this.appWebComponents.map(
         (component, index) =>
-          html`<div class="col-auto">
-            ${component.type === 'input-tile'
-              ? html`<input-tile
-                  .appConf=${this.appWebComponents[index]}
-                  @updated="${() => {
-                    this.updateComponents();
-                  }}"
-                  @reset="${() => {
-                    this.resetComponents();
-                  }}"
-                ></input-tile>`
-              : component.type === 'derived-input-tile'
-              ? html`<derived-input-tile
-                  .appConf=${this.appWebComponents[index]}
-                ></derived-input-tile>`
-              : component.type === 'output-tile'
-              ? html`<output-tile
-                  .appConf=${this.appWebComponents[index]}
-                ></output-tile>`
-              : component.type === 'image-tile'
-              ? html`<image-tile
-                  .appConf=${this.appWebComponents[index]}
-                ></image-tile>`
-              : component.type === 'graph-tile'
-              ? html`<graph-tile
-                  .appConf=${this.appWebComponents[index]}
-                ></graph-tile>`
-              : component.type === 'coeff-tile'
-              ? html`<coeff-tile
-                  .appConf=${this.appWebComponents[index]}
-                ></coeff-tile>`
-              : component.type === 'optimisation-tile'
-              ? html`<optimisation-tile
-                  .appConf=${this.appWebComponents[index]}
-                ></optimisation-tile>`
-              : html`<p>Component ${component.type} Not Recognised</p>`}
+          html`
+            ${
+              component.type === 'input-tile'
+                ? html`<input-tile
+                    class="col-3"
+                    .appConf=${this.appWebComponents[index]}
+                    @updated="${() => {
+                      this.updateComponents();
+                    }}"
+                    @reset="${() => {
+                      this.resetComponents();
+                    }}"
+                  ></input-tile>`
+                : component.type === 'derived-input-tile'
+                ? html`<derived-input-tile
+                    class="col-3"
+                    .appConf=${this.appWebComponents[index]}
+                  ></derived-input-tile>`
+                : component.type === 'output-tile'
+                ? html`<output-tile
+                    class="col-3"
+                    .appConf=${this.appWebComponents[index]}
+                  ></output-tile>`
+                : component.type === 'image-tile'
+                ? html`<image-tile
+                    class="col-6"
+                    .appConf=${this.appWebComponents[index]}
+                  ></image-tile>`
+                : component.type === 'graph-tile'
+                ? html`<graph-tile
+                    class="col-6"
+                    .appConf=${this.appWebComponents[index]}
+                  ></graph-tile>`
+                : component.type === 'coeff-tile'
+                ? html`<coeff-tile
+                    class="col-3"
+                    .appConf=${this.appWebComponents[index]}
+                  ></coeff-tile>`
+                : component.type === 'optimisation-tile'
+                ? html`<optimisation-tile
+                    class="col-6"
+                    .appConf=${this.appWebComponents[index]}
+                  ></optimisation-tile>`
+                : html`<p>Component ${component.type} Not Recognised</p>`
+            }
           </div>`
       )}
     </div>`;

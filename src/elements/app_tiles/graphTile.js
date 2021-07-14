@@ -25,28 +25,14 @@ class graphTile extends StyledElement {
 
   render() {
     this.renderGraph();
-    this.graphHtml = html` <div class="sub-grid-container">
-      ${Object.entries(this.appConf.plots).map(
-        mapValue =>
-          html`
-            <div
-              class="grid-item"
-              style="--xstart: ${mapValue[1].subGridPosition.xStart};
-                 --ystart: ${mapValue[1].subGridPosition.yStart};
-                 --xend: ${mapValue[1].subGridPosition.xEnd};
-                 --yend: ${mapValue[1].subGridPosition.yEnd};"
-            >
-              <div class="app-card">
-                <div
-                  id=${mapValue[0]}
-                  class="centred"
-                  style="width: 450px; height: 450px;"
-                ></div>
-              </div>
-            </div>
-          `
-      )}
-    </div>`;
+    this.graphHtml = html` ${Object.entries(this.appConf.plots).map(
+      mapValue =>
+        html`
+          <div class="col">
+            <div id=${mapValue[0]} class="responsive-plot"></div>
+          </div>
+        `
+    )}`;
     return [super.render(), this.graphHtml];
   }
 
