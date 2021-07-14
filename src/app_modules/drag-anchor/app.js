@@ -1,5 +1,5 @@
-import {  html } from 'lit';
-import {StyledElement} from '../../styles/wa4eStyleElement';
+import { html } from 'lit';
+import { StyledElement } from '../../styles/wa4eStyleElement';
 
 import { draganchorConf as appConf } from '../moduleConf.js';
 import '../../elements/myElements.js';
@@ -11,19 +11,20 @@ export class App extends StyledElement {
     };
   }
 
-
-
   constructor() {
     super();
-    this.title = appConf.appPageTitle
+    this.title = appConf.appPageTitle;
   }
 
   render() {
-    return html`
-      <header-element page-title=${this.title}></header-element>
-      <footer-element></footer-element>
-    `;
+    return [
+      super.render(),
+      html`
+        <header-element page-title=${this.title}></header-element>
+        <footer-element></footer-element>
+      `,
+    ];
   }
 }
 
-customElements.define(`${appConf.appName}-app`, App)
+customElements.define(`${appConf.appName}-app`, App);

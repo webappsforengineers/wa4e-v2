@@ -31,42 +31,47 @@ export class We4eV2 extends StyledElement {
     return [
       super.render(),
       html`
-      <div class='container'>
+        <div class="row">
           <header-element page-title=${this.title}></header-element>
-          <div class='col'>
-          <menu-tile .appConf=${caissonConf} ></menu-tile>
+        </div>
+        <div class="container-fluid">
+          <div class="row g-2">
+            <div class="col">
+              <menu-tile .appConf=${caissonConf}></menu-tile>
+            </div>
+            <div class="col">
+              <menu-tile .appConf=${consolidatedncvConf}></menu-tile>
+            </div>
+            <div class="col">
+              <menu-tile .appConf=${draganchorConf}></menu-tile>
+            </div>
+            <div class="col">
+              <menu-tile .appConf=${mccsuConf}></menu-tile>
+            </div>
+            <div class="col">
+              <menu-tile .appConf=${ncvConf}></menu-tile>
+            </div>
+            <div class="col">
+              <menu-tile .appConf=${pinpilesConf}></menu-tile>
+            </div>
+            <div class="col">
+              <menu-tile .appConf=${pipeConf}></menu-tile>
+            </div>
+            <div class="col">
+              <menu-tile .appConf=${vh2m2tConf}></menu-tile>
+            </div>
+            <div class="col">
+              <menu-tile .appConf=${vhmConf}></menu-tile>
+            </div>
+            <div class="col">
+              <menu-tile .appConf=${ztiConf}></menu-tile>
+            </div>
           </div>
-          <div class='col'>
-          <menu-tile .appConf=${consolidatedncvConf} ></menu-tile>
-          </div>
-          <div class='col'>
-          <menu-tile .appConf=${draganchorConf} ></menu-tile>
-          </div>
-          <div class='col'>
-          <menu-tile .appConf=${mccsuConf} ></menu-tile>
-          </div>
-          <div class='col'>
-          <menu-tile .appConf=${ncvConf} ></menu-tile>
-          </div>
-          <div class='col'>
-          <menu-tile .appConf=${pinpilesConf} ></menu-tile>
-          </div>
-          <div class='col'>
-          <menu-tile .appConf=${pipeConf} ></menu-tile>
-          </div>
-          <div class='col'>
-          <menu-tile .appConf=${vh2m2tConf} ></menu-tile>
-          </div>
-          <div class='col'>
-          <menu-tile .appConf=${vhmConf} ></menu-tile>
-          </div>
-          <div class='col'>
-          <menu-tile .appConf=${ztiConf} ></menu-tile>
+          <div class="row gy-1">
+            <footer-element></footer-element>
           </div>
         </div>
-      <footer-element></footer-element>
-      </div>
-    `,
+      `,
     ];
   }
 }

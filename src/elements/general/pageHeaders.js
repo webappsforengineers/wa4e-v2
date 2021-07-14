@@ -1,26 +1,37 @@
-import { html, } from 'lit';
-import {StyledElement } from '../../styles/wa4eStyleElement';
+import { html } from 'lit';
+import { StyledElement } from '../../styles/wa4eStyleElement';
 
-class headerTemplate extends StyledElement{
-
+class headerTemplate extends StyledElement {
   constructor() {
     super();
-    this.homePage = '/public/index.html'
+    this.homePage = '/public/index.html';
   }
 
   render() {
-    return html`
-      <header>
-        <nav class='header'>
-          <a href='${this.homePage}'><img src='/public/img/home.png' alt='Home'></a>
-          <p class='title-font'>${this.getAttribute('page-title')}</p>
-          <p class='header-font'>Web Apps for Engineers</p>
+    return [
+      super.render(),
+      html`
+        <nav class="header row">
+          <div class="col-2">
+            <a href="${this.homePage}"
+              ><img
+                class="img-thumbnail img-fluid mx-auto d-block"
+                src="/public/img/home.png"
+                alt="Home"
+            /></a>
+          </div>
+          <div class="col-6">
+            <p class="h3 text-center text-wrap">
+              ${this.getAttribute('page-title')}
+            </p>
+          </div>
+          <div class="col">
+            <p class="h3 text-center">Web Apps for Engineers</p>
+          </div>
         </nav>
-      </header>
-    `;
+      `,
+    ];
   }
 }
 
 customElements.define('header-element', headerTemplate);
-
-

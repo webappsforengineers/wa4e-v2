@@ -1,28 +1,18 @@
-import { LitElement, html} from 'lit';
-
-import { consolidatedncvConf as appConf} from '../moduleConf.js';
+import { consolidatedncvConf as appConf } from '../moduleConf.js';
+import { calculateCaisson as appCalc } from '../../../../wa4e-v2-maths/output/wa4e-math.js';
+import { AppGeneric } from '../../elements/general/appGeneric';
 import '../../elements/myElements.js';
 
-export class App extends StyledElement {
-  static get properties() {
-    return {
-      title: { type: String },
-    };
-  }
-
-
-
+export class App extends AppGeneric {
   constructor() {
     super();
-    this.title = appConf.appPageTitle
-  }
-
-  render() {
-    return html`
-      <header-element page-title=${this.title}></header-element>
-      <footer-element></footer-element>
-    `;
+    this.title = appConf.appPageTitle;
+    this.appWebComponents = appConf.appWebComponents;
+    this.resetApp = appConf.appWebComponents;
+    this.output = {};
+    this.appTiles = this.makeAppTiles();
+    this.appCalc = appCalc;
   }
 }
 
-customElements.define(`${appConf.appName}-app`, App)
+customElements.define(`${appConf.appName}-app`, App);

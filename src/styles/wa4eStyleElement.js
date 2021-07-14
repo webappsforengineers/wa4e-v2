@@ -14,7 +14,7 @@ export class StyledElement extends LitElement {
   render() {
     const globalStyle = html`<link
       rel="stylesheet"
-      href="../../node_modules/bootstrap/dist/css/bootstrap.css"
+      href="/node_modules/bootstrap/dist/css/bootstrap.css"
     />`;
     return [globalStyle, super.render()];
   }

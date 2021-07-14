@@ -1,9 +1,8 @@
-import {  html } from 'lit';
-import {StyledElement} from '../../styles/wa4eStyleElement';
+import { html } from 'lit';
+import { StyledElement } from '../../styles/wa4eStyleElement';
 import { Plotly } from '../../../../wa4e-v2-maths/output/wa4e-math.js';
 
 class graphTile extends StyledElement {
-
   // define the JS object and/or html attributes to be passed to the app
   static get properties() {
     return {
@@ -26,29 +25,29 @@ class graphTile extends StyledElement {
 
   render() {
     this.renderGraph();
-    this.graphHtml = html`
-      <div class="sub-grid-container">
+    this.graphHtml = html` <div class="sub-grid-container">
       ${Object.entries(this.appConf.plots).map(
-      mapValue =>
-        html` <div
-          class="grid-item"
-          style="--xstart: ${mapValue[1].subGridPosition.xStart};
+        mapValue =>
+          html`
+            <div
+              class="grid-item"
+              style="--xstart: ${mapValue[1].subGridPosition.xStart};
                  --ystart: ${mapValue[1].subGridPosition.yStart};
                  --xend: ${mapValue[1].subGridPosition.xEnd};
                  --yend: ${mapValue[1].subGridPosition.yEnd};"
-        >
-          <div class='app-card'>
-            <div
-              id=${mapValue[0]}
-              class="centred"
-              style="width: 450px; height: 450px;"
             >
+              <div class="app-card">
+                <div
+                  id=${mapValue[0]}
+                  class="centred"
+                  style="width: 450px; height: 450px;"
+                ></div>
+              </div>
             </div>
-          </div>
-        </div>
-        `
-    )}</div>`;
-    return this.graphHtml;
+          `
+      )}
+    </div>`;
+    return [super.render(), this.graphHtml];
   }
 
   async renderGraph() {

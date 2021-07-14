@@ -1,8 +1,7 @@
-import {  html } from 'lit';
-import {StyledElement} from '../../styles/wa4eStyleElement';
+import { html } from 'lit';
+import { StyledElement } from '../../styles/wa4eStyleElement';
 
 class outputTile extends StyledElement {
-
   // define the JS object and/or html attributes to be passed to the app
   static get properties() {
     return {
@@ -26,15 +25,18 @@ class outputTile extends StyledElement {
   render() {
     this.formFields = this.appConf.fields;
     this.outputFields = this.makeNestedFields();
-    return html`
-      <!-- This 'div' defines the tile as a grid item and the style options
+    return [
+      super.render(),
+      html`
+        <!-- This 'div' defines the tile as a grid item and the style options
       defines the corners of the tile on the grid. -->
-      <div>
-        <h2>${this.appConf.title}</h2>
-        <!-- Here are the forms attributes -->
-        <p>${this.outputFields}</p>
-      </div>
-    `;
+        <div>
+          <h2>${this.appConf.title}</h2>
+          <!-- Here are the forms attributes -->
+          <p>${this.outputFields}</p>
+        </div>
+      `,
+    ];
   }
 
   makeNestedFields() {
