@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import {StyledElement} from './styles/wa4eStyleElement';
+import { StyledElement } from './styles/wa4eStyleElement';
 import './elements/myElements.js';
 // get the configuration files for each app
 import {
@@ -12,7 +12,7 @@ import {
   pipeConf,
   vh2m2tConf,
   vhmConf,
-  ztiConf
+  ztiConf,
 } from './app_modules/moduleConf.js';
 
 export class We4eV2 extends StyledElement {
@@ -28,9 +28,12 @@ export class We4eV2 extends StyledElement {
   }
 
   render() {
-    return html`
-      <header-element page-title=${this.title}></header-element>
+    return [
+      super.render(),
+      html`
       <div class='container'>
+          <header-element page-title=${this.title}></header-element>
+          <div class='col'>
           <menu-tile .appConf=${caissonConf} ></menu-tile>
           </div>
           <div class='col'>
@@ -61,8 +64,9 @@ export class We4eV2 extends StyledElement {
           <menu-tile .appConf=${ztiConf} ></menu-tile>
           </div>
         </div>
-      </div>
       <footer-element></footer-element>
-    `;
+      </div>
+    `,
+    ];
   }
 }
