@@ -28,8 +28,8 @@ class graphTile extends StyledElement {
     this.graphHtml = html` ${Object.entries(this.appConf.plots).map(
       mapValue =>
         html`
-          <div class="col">
-            <div id=${mapValue[0]} class="responsive-plot"></div>
+          <div>
+            <div id=${mapValue[0]}></div>
           </div>
         `
     )}`;

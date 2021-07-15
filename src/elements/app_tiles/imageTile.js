@@ -15,13 +15,7 @@ class imageTile extends StyledElement {
   render() {
     return [
       super.render(),
-      html`
-        <img
-          class="caisson-figure"
-          src=${this.appConf.img_pth}
-          alt="caisson diagrams"
-        />
-      `,
+      html` <img src=${this.appConf.img_pth} alt="caisson diagrams" /> `,
     ];
   }
 }

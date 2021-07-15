@@ -1,4 +1,4 @@
-import { LitElement, css, html } from 'lit';
+import { LitElement, css } from 'lit';
 
 const myStyles = css``;
 
@@ -10,12 +10,8 @@ export class StyledElement extends LitElement {
     return [myStyles];
   }
 
-  // This is not recommended  by lit and should be replaced by a Lit-Bootstrap module if/when it ever exists
-  render() {
-    const globalStyle = html`<link
-      rel="stylesheet"
-      href="/node_modules/bootstrap/dist/css/bootstrap.css"
-    />`;
-    return [globalStyle, super.render()];
+  // This applies styles by removing the shadowroots allowing the script tags on index.html to work
+  createRenderRoot() {
+    return this;
   }
 }
