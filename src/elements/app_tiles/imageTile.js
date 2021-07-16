@@ -1,21 +1,19 @@
 import { html } from 'lit';
-import { StyledElement } from '../../styles/wa4eStyleElement';
+import { TileBase } from './tileBase';
 
-class imageTile extends StyledElement {
-  // define the JS object and/or html attributes to be passed to the app
-  static get properties() {
-    return {
-      // use .appConf in the HTML tag to send a configuration JS object to
-      // configure the tile the `.` tells the webcomponents not to serialise or
-      // stringify the object
-      appConf: { type: Object },
-    };
-  }
-
+class imageTile extends TileBase {
   render() {
     return [
       super.render(),
-      html` <img src=${this.appConf.img_pth} alt="caisson diagrams" /> `,
+      html`
+        <img
+          class="img-fluid"
+          width=${this.appConf.img_w}
+          height=${this.appConf.img_h}
+          src=${this.appConf.img_pth}
+          alt="caisson diagrams"
+        />
+      `,
     ];
   }
 }

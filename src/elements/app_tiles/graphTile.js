@@ -1,38 +1,22 @@
 import { html } from 'lit';
-import { StyledElement } from '../../styles/wa4eStyleElement';
 import { Plotly } from '../../../../wa4e-v2-maths/output/wa4e-math.js';
+import { TileBase } from './tileBase';
 
-class graphTile extends StyledElement {
-  // define the JS object and/or html attributes to be passed to the app
-  static get properties() {
-    return {
-      // use .appConf in the HTML tag to send a configuration JS object to
-      // configure the tile the `.` tells the webcomponents not to serialise or
-      // stringify the object
-      appConf: { type: Object },
-    };
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    window.addEventListener('update-children', () => this.requestUpdate());
-  }
-
-  disconnectedCallback() {
-    window.removeEventListener('update-children', () => this.requestUpdate());
-    super.disconnectedCallback();
-  }
-
+class graphTile extends TileBase {
   render() {
     this.renderGraph();
-    this.graphHtml = html` ${Object.entries(this.appConf.plots).map(
-      mapValue =>
-        html`
-          <div>
-            <div id=${mapValue[0]}></div>
-          </div>
-        `
-    )}`;
+    this.graphHtml = html` <div
+      class="row row-cols-sm-1 row-cols-lg-2 row-cols-xxl-3"
+    >
+      ${Object.entries(this.appConf.plots).map(
+        mapValue =>
+          html`
+            <div class="col">
+              <div id=${mapValue[0]}></div>
+            </div>
+          `
+      )}
+    </div>`;
     return [super.render(), this.graphHtml];
   }
 

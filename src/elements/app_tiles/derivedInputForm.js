@@ -1,27 +1,7 @@
 import { html } from 'lit';
-import { StyledElement } from '../../styles/wa4eStyleElement';
+import { TileBase } from './tileBase';
 
-class derivedInputTile extends StyledElement {
-  // define the JS object and/or html attributes to be passed to the app
-  static get properties() {
-    return {
-      // use .appConf in the HTML tag to send a configuration JS object to
-      // configure the tile the `.` tells the webcomponents not to serialise or
-      // stringify the object
-      appConf: { type: Object },
-    };
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    window.addEventListener('update-children', () => this.requestUpdate());
-  }
-
-  disconnectedCallback() {
-    window.removeEventListener('update-children', () => this.requestUpdate());
-    super.disconnectedCallback();
-  }
-
+class derivedInputTile extends TileBase {
   render() {
     this.formFields = this.appConf.fields;
     this.derivedInputFields = this.makeFields();
@@ -43,10 +23,20 @@ class derivedInputTile extends StyledElement {
     return html`<div>
       ${Object.keys(this.formFields).map(
         key =>
-          html` <div>
-            <label for=${key}>${html([key])}</label>
-            <input type="text" id=${key} .value=${this.formFields[key][0]} />
-            <label for=${key}>${html([this.formFields[key][1]])}</label>
+          html` <div class="input-group">
+            <label class="input-group-text col-3" for=${key}
+              >${html([key])}</label
+            >
+            <input
+              class="form-control col-6 bg-light"
+              type="text"
+              disabled
+              id=${key}
+              .value=${this.formFields[key][0]}
+            />
+            <label class="input-group-text col-3" for=${key}
+              >${html([this.formFields[key][1]])}</label
+            >
           </div>`
       )}
     </div>`;

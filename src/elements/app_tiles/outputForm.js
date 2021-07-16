@@ -1,27 +1,7 @@
 import { html } from 'lit';
-import { StyledElement } from '../../styles/wa4eStyleElement';
+import { TileBase } from './tileBase';
 
-class outputTile extends StyledElement {
-  // define the JS object and/or html attributes to be passed to the app
-  static get properties() {
-    return {
-      // use .appConf in the HTML tag to send a configuration JS object to
-      // configure the tile the `.` tells the webcomponents not to serialise or
-      // stringify the object
-      appConf: { type: Object },
-    };
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    window.addEventListener('update-children', () => this.requestUpdate());
-  }
-
-  disconnectedCallback() {
-    window.removeEventListener('update-children', () => this.requestUpdate());
-    super.disconnectedCallback();
-  }
-
+class outputTile extends TileBase {
   render() {
     this.formFields = this.appConf.fields;
     this.outputFields = this.makeNestedFields();
@@ -45,13 +25,17 @@ class outputTile extends StyledElement {
         html`<h3>${keyOuter}</h3>
           ${Object.keys(this.appConf.fields[`${keyOuter}`]).map(
             key =>
-              html` <div>
-                <label for="${key}">${html([key])}</label>
+              html` <div class="input-group">
+                <label class="input-group-text col-3" for="${key}"
+                  >${html([key])}</label
+                >
                 <input
+                  class="form-control col-6 bg-light"
+                  disabled
                   id="${key}"
                   .value="${this.appConf.fields[keyOuter][key][0]}"
                 />
-                <label for="${key}"
+                <label class="input-group-text col-3" for="${key}"
                   >${html([this.appConf.fields[keyOuter][key][1]])}</label
                 >
               </div>`

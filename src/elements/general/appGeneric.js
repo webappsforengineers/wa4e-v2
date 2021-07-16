@@ -1,5 +1,10 @@
 import { html } from 'lit';
 import { StyledElement } from '../../styles/wa4eStyleElement';
+import { Masonry } from '../../../../wa4e-v2-maths/output/wa4e-math';
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 export class AppGeneric extends StyledElement {
   static get properties() {
@@ -10,6 +15,7 @@ export class AppGeneric extends StyledElement {
       appTiles: { type: html },
       appCalc: { type: Function },
       resetApp: { type: Object },
+      masonryLayout: { type: Object },
     };
   }
 
@@ -20,12 +26,36 @@ export class AppGeneric extends StyledElement {
         <div class="row">
           <header-element page-title=${this.title}></header-element>
         </div>
-        ${this.appTiles}
+        <div class="container-fluid bg-light">
+          <div class="container bg-light">
+            <div
+              id="msnry-tiles"
+              class="msnry-tiles row"
+              data-masonry='{"percentPosition": true }'
+            >
+              ${this.appTiles}
+            </div>
+          </div>
+        </div>
         <div class="row">
           <footer-element></footer-element>
         </div>
       `,
     ];
+  }
+
+  async getMasonryLayout() {
+    this.masonryLayout = Masonry.data('.msnry-tiles');
+    while (typeof this.masonryLayout === 'undefined') {
+      this.masonryLayout = Masonry.data('.msnry-tiles');
+      // eslint-disable-next-line no-await-in-loop
+      await sleep(2);
+    }
+  }
+
+  async reloadMasonry() {
+    await this.getMasonryLayout();
+    this.masonryLayout.reloadItems();
   }
 
   updateComponents() {
@@ -58,9 +88,9 @@ export class AppGeneric extends StyledElement {
     this.childUpdate();
   }
 
+  // eslint-disable-next-line class-methods-use-this
   resetComponents() {
-    this.appWebComponents = this.resetApp;
-    this.childUpdate();
+    // TODO: Fix this
   }
 
   childUpdate() {
@@ -73,12 +103,15 @@ export class AppGeneric extends StyledElement {
 
   /* eslint-disable no-nested-ternary */
   makeAppTiles() {
-    return html` <div class="row" data-masonry='{"percentPosition": true }'>
+    return html`
       ${this.appWebComponents.map(
         (component, index) =>
           html`
             ${component.type === 'input-tile'
-              ? html`<div class="col-sm-6 col-lg-3 mb-4">
+              ? html`<div
+                  class="col-sm-6 col-lg-3 mb-4"
+                  style="left: 0; top 0;"
+                >
                   <input-tile
                     .appConf=${this.appWebComponents[index]}
                     @updated="${() => {
@@ -87,48 +120,69 @@ export class AppGeneric extends StyledElement {
                     @reset="${() => {
                       this.resetComponents();
                     }}"
+                    @loaded="${() => {
+                      this.reloadMasonry();
+                    }}"
                   ></input-tile>
                 </div>`
               : component.type === 'derived-input-tile'
               ? html`<div class="col-sm-6 col-lg-3 mb-4">
                   <derived-input-tile
                     .appConf=${this.appWebComponents[index]}
+                    @loaded="${() => {
+                      this.reloadMasonry();
+                    }}"
                   ></derived-input-tile>
                 </div>`
               : component.type === 'output-tile'
               ? html`<div class="col-sm-6 col-lg-3 mb-4">
                   <output-tile
                     .appConf=${this.appWebComponents[index]}
+                    @loaded="${() => {
+                      this.reloadMasonry();
+                    }}"
                   ></output-tile>
                 </div>`
-              : component.type === 'image-tile'
-              ? html`<div class="col-sm-12 col-lg-6 mb-4">
-                  <image-tile
-                    .appConf=${this.appWebComponents[index]}
-                  ></image-tile>
-                </div>`
               : component.type === 'graph-tile'
-              ? html`<div class="col-sm-12 col-lg-6 mb-4">
+              ? html`<div class="col-sm-12 col-lg-9 mb-4">
                   <graph-tile
                     .appConf=${this.appWebComponents[index]}
+                    @loaded="${() => {
+                      this.reloadMasonry();
+                    }}"
                   ></graph-tile>
                 </div>`
               : component.type === 'coeff-tile'
               ? html`<div class="col-sm-6 col-lg-3 mb-4">
                   <coeff-tile
                     .appConf=${this.appWebComponents[index]}
+                    @loaded="${() => {
+                      this.reloadMasonry();
+                    }}"
                   ></coeff-tile>
                 </div>`
               : component.type === 'optimisation-tile'
               ? html`<div class="col-sm-6 col-lg-3 mb-4">
                   <optimisation-tile
                     .appConf=${this.appWebComponents[index]}
+                    @loaded="${() => {
+                      this.reloadMasonry();
+                    }}"
                   ></optimisation-tile>
+                </div>`
+              : component.type === 'image-tile'
+              ? html`<div class="col-md-auto mb-4">
+                  <image-tile
+                    .appConf=${this.appWebComponents[index]}
+                    @loaded="${() => {
+                      this.reloadMasonry();
+                    }}"
+                  ></image-tile>
                 </div>`
               : html`<p>Component ${component.type} Not Recognised</p>`}
           `
       )}
-    </div>`;
+    `;
   }
   /* eslint-enable no-nested-ternary */
 }

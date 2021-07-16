@@ -44,13 +44,13 @@ export const appConf = {
       helpText: 'Helpful text!',
     },
     {
+      type: 'image-tile',
+      img_pth: 'caisson-figure.png',
+      img_w: '600px',
+      img_h: '600px',
+    },
+    {
       type: 'derived-input-tile',
-      gridPosition: {
-        xStart: 2,
-        yStart: 1,
-        xEnd: 3,
-        yEnd: 2,
-      },
       title: 'Derived Input',
       fields: {
         'L/D<sub>o</sub>': [null, '-'],
@@ -62,23 +62,7 @@ export const appConf = {
       },
     },
     {
-      type: 'image-tile',
-      gridPosition: {
-        xStart: 1,
-        yStart: 4,
-        xEnd: 3,
-        yEnd: 6,
-      },
-      img_pth: 'caisson-figure.png',
-    },
-    {
       type: 'output-tile',
-      gridPosition: {
-        xStart: 2,
-        yStart: 2,
-        xEnd: 3,
-        yEnd: 4,
-      },
       title: 'Output',
       fields: {
         Installation: {
@@ -99,12 +83,6 @@ export const appConf = {
     },
     {
       type: 'graph-tile',
-      gridPosition: {
-        xStart: 3,
-        yStart: 1,
-        xEnd: 5,
-        yEnd: 6,
-      },
       fields: {
         z: null,
         suz: null,

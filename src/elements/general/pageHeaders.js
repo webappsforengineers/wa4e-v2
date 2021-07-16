@@ -11,11 +11,11 @@ class headerTemplate extends StyledElement {
     return [
       super.render(),
       html`
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg bg-info">
           <div class="col-2">
             <a href="${this.homePage}"
               ><img
-                class="img-thumbnail img-fluid mx-auto d-block"
+                class="img-fluid mx-auto d-block bg-info"
                 src="/public/img/home.png"
                 alt="Home"
             /></a>
