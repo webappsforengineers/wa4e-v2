@@ -1,5 +1,5 @@
 import { caissonConf as appConf } from '../moduleConf.js';
-import { calculateCaisson as appCalc } from '../../../../wa4e-v2-maths/output/wa4e-math.js';
+import { calculateCaisson as appCalc } from '../../local_modules/wa4e-math.js';
 import { AppGeneric } from '../../elements/general/appGeneric';
 import '../../elements/myElements.js';
 

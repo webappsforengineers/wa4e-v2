@@ -1,6 +1,6 @@
 import { html, fixture, expect } from '@open-wc/testing';
 
-import '../src/we4e-v2.js';
+import '../src/wa4e-v2.js';
 
 describe('We4eV2', () => {
   let element;

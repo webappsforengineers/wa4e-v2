@@ -3,7 +3,7 @@ export const appConf = {
   appTitle: 'Suction Caisson',
   appPageTitle: 'Suction Caisson Installation and Uplift Capacity',
   appDescription: 'Installation and uplift capacity',
-  appGrid: { x: 5, y: 6 },
+  appColour: '#f4e786',
   appWebComponents: [
     {
       type: 'input-tile',

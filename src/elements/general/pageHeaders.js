@@ -11,22 +11,22 @@ class headerTemplate extends StyledElement {
     return [
       super.render(),
       html`
-        <nav class="navbar navbar-expand-lg bg-info">
+        <nav class="navbar navbar-expand-lg" style='background-color: #03a9f4'>
           <div class="col-2">
             <a href="${this.homePage}"
               ><img
-                class="img-fluid mx-auto d-block bg-info"
+                class="img-fluid mx-auto d-block"
                 src="/public/img/home.png"
                 alt="Home"
             /></a>
           </div>
           <div class="col-6">
-            <p class="h3 text-center text-wrap">
+            <p class="h3 text-center text-wrap text-white">
               ${this.getAttribute('page-title')}
             </p>
           </div>
           <div class="col">
-            <p class="h3 text-center">Web Apps for Engineers</p>
+            <p class="h6 text-center text-white">Web Apps for Engineers</p>
           </div>
         </nav>
       `,

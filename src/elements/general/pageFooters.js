@@ -23,12 +23,14 @@ class footerTemplate extends StyledElement {
       super.render(),
       html`
         <hr class="width-constrained" id="footer-hr" />
+        <div class='container'>
         <footer class="footer footer-text">
-          <p>
+          <span>
             ${this.footerText}
             <a href=${this.contactEmailLink}>${this.contactEmail}</a>
-          </p>
+          </span>
         </footer>
+        </div>
       `,
     ];
   }

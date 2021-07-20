@@ -1,6 +1,7 @@
 import { LitElement, css } from 'lit';
 
-const myStyles = css``;
+const myStyles = css`
+`;
 
 // This class extends the base LitElement Class by applying the `myStyles` css
 // and the bootstrap css via an external stylesheet

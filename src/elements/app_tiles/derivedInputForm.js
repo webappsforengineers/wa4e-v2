@@ -24,18 +24,22 @@ class derivedInputTile extends TileBase {
       ${Object.keys(this.formFields).map(
         key =>
           html` <div class="input-group">
-            <label class="input-group-text col-3" for=${key}
-              >${html([key])}</label
+            <span class="input-group-text text-wrap text-break"
+                   for=${key}
+                   style="width: 30%; text-align: left;"
+              >${html([key])}</span
             >
             <input
-              class="form-control col-6 bg-light"
+              class="form-control bg-light"
               type="text"
               disabled
               id=${key}
               .value=${this.formFields[key][0]}
             />
-            <label class="input-group-text col-3" for=${key}
-              >${html([this.formFields[key][1]])}</label
+            <span class="input-group-text text-wrap text-break"
+                   for=${key}
+                   style="width: 20%; text-align: left;"
+              >${html([this.formFields[key][1]])}</span
             >
           </div>`
       )}

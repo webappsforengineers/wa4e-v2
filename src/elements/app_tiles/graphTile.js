@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { Plotly } from '../../../../wa4e-v2-maths/output/wa4e-math.js';
+import { Plotly } from '../../local_modules/wa4e-math.js';
 import { TileBase } from './tileBase';
 
 class graphTile extends TileBase {
@@ -8,12 +8,12 @@ class graphTile extends TileBase {
       this.updateGraph();
     }
     this.graphHtml = html` <div
-      class="row row-cols-sm-1 row-cols-lg-2 row-cols-xxl-3"
+      class="row row-cols-sm-1 row-cols-lg-2 row-cols-xxl-3 gy-4"
     >
       ${Object.entries(this.appConf.plots).map(
         mapValue =>
           html`
-            <div class="col">
+            <div class="card mx-auto" style='min-width: 450px'>
               <div class="responsive-plot" id=${mapValue[0]}></div>
             </div>
           `
