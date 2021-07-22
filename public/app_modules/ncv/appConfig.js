@@ -1,46 +1,22 @@
 export const appConf = {
-  "appName": "ncv",
-  "appTitle": "Shallow Foundation NcV",
-  "appPageTitle": "",
-  "appDescription": "Undrained vertical bearing capacity of strip and circular skirted foundations",
-  "appWebComponents": {
-    "aComponent": {
-      "type": "input",
-      "size": {
-        "x": 1,
-        "y": 4
+  appName: 'ncv',
+  appTitle: 'Shallow Foundation NcV',
+  appPageTitle: '',
+  appDescription:
+    'Undrained vertical bearing capacity of strip and circular skirted foundations',
+  appWebComponents: [
+    {
+      type: 'derived-input-tile',
+      title: 'Derived Input',
+      fields: {
+        dD: [null, null, 'd/D (0&#45;1)'],
+        A: [null, 'm<sup>2</sup>sup>', 'A'],
+        kappsu: [
+          null,
+          null,
+          '&varkappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)',
+        ],
       },
-      "position": {
-        "x": 0,
-        "y": 0
-      },
-      "fields": {
-        "aSubsection": {
-          "Mass": "kg",
-          "Volume": "m3",
-          "ratio": ""
-        },
-        "bSubsection": {
-          "thing": "unit"
-        }
-      },
-      "buttons": {
-        "SUBMIT": "green",
-        "RESET": "",
-        "HELP": ""
-      }
     },
-    "bComponent": {
-      "type": "Image",
-      "size": {
-        "x": 2,
-        "y": 2
-      },
-      "position": {
-        "x": 0,
-        "y": 4
-      },
-      "imgPath": "./ncv.png"
-    }
-  }
-}
+  ],
+};
