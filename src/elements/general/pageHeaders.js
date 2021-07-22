@@ -1,31 +1,37 @@
-import { html, LitElement } from 'lit';
-import {we4eStyles} from '../../styles/we4eStyles.js';
+import { html } from 'lit';
+import { StyledElement } from '../../styles/wa4eStyleElement';
 
-class headerTemplate extends LitElement{
-  static get styles() {
-    return [
-      we4eStyles,
-    ]
-  }
-
+class headerTemplate extends StyledElement {
   constructor() {
     super();
-    this.homePage = '/public/index.html'
+    this.homePage = '/public/index.html';
   }
 
   render() {
-    return html`
-      <header>
-        <nav class='header'>
-          <a href='${this.homePage}'><img src='/public/img/home.png' alt='Home'></a>
-          <p class='title-font'>${this.getAttribute('page-title')}</p>
-          <p class='header-font'>Web Apps for Engineers</p>
+    return [
+      super.render(),
+      html`
+        <nav class="navbar navbar-expand-lg" style='background-color: #03a9f4'>
+          <div class="col-2">
+            <a href="${this.homePage}"
+              ><img
+                class="img-fluid mx-auto d-block"
+                src="/public/img/home.png"
+                alt="Home"
+            /></a>
+          </div>
+          <div class="col-6">
+            <p class="h3 text-center text-wrap text-white">
+              ${this.getAttribute('page-title')}
+            </p>
+          </div>
+          <div class="col">
+            <p class="h6 text-center text-white">Web Apps for Engineers</p>
+          </div>
         </nav>
-      </header>
-    `;
+      `,
+    ];
   }
 }
 
 customElements.define('header-element', headerTemplate);
-
-

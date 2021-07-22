@@ -1,26 +1,20 @@
-import { LitElement, html } from 'lit';
-import { we4eGrids, we4eStyles, dimensions } from '../../styles/we4eStyles.js';
+import { html } from 'lit';
+import { TileBase } from './tileBase';
 
-class imageTile extends LitElement {
-  // Get the styles
-  static get styles() {
-    return [we4eStyles, we4eGrids];
-  }
-
-  // define the JS object and/or html attributes to be passed to the app
-  static get properties() {
-    return {
-      // use .appConf in the HTML tag to send a configuration JS object to
-      // configure the tile the `.` tells the webcomponents not to serialise or
-      // stringify the object
-      appConf: { type: Object },
-    };
-  }
-
+class imageTile extends TileBase {
   render() {
-    return html`
-      <img class="caisson-figure" src=${this.appConf.img_pth} alt="caisson diagrams" />
-    `;
+    return [
+      super.render(),
+      html`
+        <img
+          class="img-fluid"
+          width=${this.appConf.img_w}
+          height=${this.appConf.img_h}
+          src=${this.appConf.img_pth}
+          alt="caisson diagrams"
+        />
+      `,
+    ];
   }
 }
 

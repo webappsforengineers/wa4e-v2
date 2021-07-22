@@ -21,3 +21,7 @@
 /out-tsc/
 
 storybook-static
+
+# Dev Test
+/src/app_modules/_test/
+/public/app_modules/_test/

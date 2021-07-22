@@ -1,66 +1,50 @@
-import { LitElement, html } from 'lit';
-import { we4eGrids, we4eStyles, dimensions } from '../../styles/we4eStyles.js';
-import { Plotly } from '../../../../wa4e-v2-maths/output/wa4e-math.js';
+import { html } from 'lit';
+import { Plotly } from '../../local_modules/wa4e-math.js';
+import { TileBase } from './tileBase';
 
-class graphTile extends LitElement {
-  // Get the styles
-  static get styles() {
-    return [we4eStyles, we4eGrids];
-  }
-
-  // define the JS object and/or html attributes to be passed to the app
-  static get properties() {
-    return {
-      // use .appConf in the HTML tag to send a configuration JS object to
-      // configure the tile the `.` tells the webcomponents not to serialise or
-      // stringify the object
-      appConf: { type: Object },
-    };
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    window.addEventListener('update-children', () => this.requestUpdate());
-  }
-
-  disconnectedCallback() {
-    window.removeEventListener('update-children', () => this.requestUpdate());
-    super.disconnectedCallback();
-  }
-
+class graphTile extends TileBase {
   render() {
-    this.renderGraph();
-    this.graphHtml = html`
-      <div class="sub-grid-container">
+    if (this.hasUpdated) {
+      this.updateGraph();
+    }
+    this.graphHtml = html` <div
+      class="row row-cols-sm-1 row-cols-lg-2 row-cols-xxl-3 gy-4"
+    >
       ${Object.entries(this.appConf.plots).map(
-      mapValue =>
-        html` <div
-          class="grid-item"
-          style="--xstart: ${mapValue[1].subGridPosition.xStart};
-                 --ystart: ${mapValue[1].subGridPosition.yStart};
-                 --xend: ${mapValue[1].subGridPosition.xEnd};
-                 --yend: ${mapValue[1].subGridPosition.yEnd};"
-        >
-          <div class='app-card'>
-            <div
-              id=${mapValue[0]}
-              class="centred"
-              style="width: 450px; height: 450px;"
-            >
+        mapValue =>
+          html`
+            <div class="card mx-auto" style='min-width: 450px'>
+              <div class="responsive-plot" id=${mapValue[0]}></div>
             </div>
-          </div>
-        </div>
-        `
-    )}</div>`;
-    return this.graphHtml;
+          `
+      )}
+    </div>`;
+    return [super.render(), this.graphHtml];
+  }
+
+  firstUpdated(_changedProperties) {
+    super.firstUpdated(_changedProperties);
+    this.renderGraph();
   }
 
   async renderGraph() {
     await this.updateComplete;
     Object.entries(this.appConf.plots).map(mapValue =>
       Plotly.newPlot(
-        this.renderRoot.querySelector(`#${mapValue[0]}`),
-        mapValue[1].dataFun(
+        document.getElementById(mapValue[0]),
+        null,
+        mapValue[1].layout
+      )
+    );
+  }
+
+  async updateGraph() {
+    await this.updateComplete;
+    Object.entries(this.appConf.plots).map(mapValue =>
+      Plotly.react(
+        document.getElementById(mapValue[0]),
+        mapValue[1].dataFun.apply(
+          this,
           Object.entries(mapValue[1].args).map(
             varName => this.appConf.fields[varName[1]]
           )

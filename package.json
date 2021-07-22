@@ -30,18 +30,20 @@
     "start:build": "npm run build && web-dev-server --root-dir dist --app-index public/index.html --open --compatibility none",
     "start": "web-dev-server"
   },
-  "name": "we4e-v2",
+  "name": "wa4e-v2",
   "version": "0.0.0",
-  "description": "Webcomponent we4e-v2 following open-wc recommendations",
+  "description": "Webcomponent wa4e-v2 following open-wc recommendations",
   "author": "we4e-v2",
   "license": "",
   "dependencies": {
     "@sideway/address": "^4.1.2",
+    "bootstrap": "^5.0.2",
     "core-js": "^3.15.2",
     "joi": "^17.4.0",
     "lit": "2.0.0-rc.2",
     "load-json-file": "^2.0.0",
     "lodash-es": "^4.17.21",
+    "masonry-layout": "^4.2.2",
     "plotly.js-dist-min": "^2.2.1"
   },
   "eslintConfig": {

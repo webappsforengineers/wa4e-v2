@@ -1,18 +1,15 @@
-import { html, LitElement } from 'lit';
-import {we4eStyles} from '../../styles/we4eStyles.js';
+import { html } from 'lit';
+import { StyledElement } from '../../styles/wa4eStyleElement';
 
-class footerTemplate extends LitElement {
-  static get styles() {
-    return [
-      we4eStyles,
-    ]
-  }
-
+class footerTemplate extends StyledElement {
   constructor() {
     super();
     this.contactEmail = `susan.gourvenec@southampton.ac.uk`;
-    this.contactEmailLink = this.contactEmail.link(`mailto:${this.contactEmail}`);
-    this.footerText = `The author shall not be liable for any direct, ` +
+    this.contactEmailLink = this.contactEmail.link(
+      `mailto:${this.contactEmail}`
+    );
+    this.footerText =
+      `The author shall not be liable for any direct, ` +
       `consequential or incidental damages arising out of the use of this ` +
       `program. The entire risk as to the quality, performance and ` +
       `application of the program lies with the user. This page was ` +
@@ -22,15 +19,20 @@ class footerTemplate extends LitElement {
   }
 
   render() {
-    return html`
-      <hr class='width-constrained' id='footer-hr' />
-      <footer class='footer footer-text'>
-        <p>
-          ${this.footerText}
-          <a href=${this.contactEmailLink}>${this.contactEmail}</a>
-        </p>
-      </footer>
-    `;
+    return [
+      super.render(),
+      html`
+        <hr class="width-constrained" id="footer-hr" />
+        <div class='container'>
+        <footer class="footer footer-text">
+          <span>
+            ${this.footerText}
+            <a href=${this.contactEmailLink}>${this.contactEmail}</a>
+          </span>
+        </footer>
+        </div>
+      `,
+    ];
   }
 }
 

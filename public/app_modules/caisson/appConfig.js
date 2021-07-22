@@ -1,26 +1,12 @@
-import {
-  makeDataCaisson,
-  makeDataTwoCaisson,
-  SuKpcLayout,
-  PenResLayout,
-  FosStabilityLayout,
-} from '../../../../wa4e-v2-maths/output/wa4e-math.js';
-
 export const appConf = {
   appName: 'caisson',
   appTitle: 'Suction Caisson',
   appPageTitle: 'Suction Caisson Installation and Uplift Capacity',
   appDescription: 'Installation and uplift capacity',
-  appGrid: { x: 5, y: 6 },
+  appColour: '#f4e786',
   appWebComponents: [
     {
       type: 'input-tile',
-      gridPosition: {
-        xStart: 1,
-        yStart: 1,
-        xEnd: 2,
-        yEnd: 4,
-      },
       title: 'Input',
       fields: {
         'Caisson Properties': {
@@ -37,20 +23,20 @@ export const appConf = {
           'S<sub>um</sub>': [5, 'kPa'],
           "z'": [5, 'm'],
           'k<sub>su</sub>': [1, 'kPa/m'],
-          '&alpha<sub>t</sub>': [0.8, null],
-          "&gamma'": [6, 'kN/m<sup>3</sup>'],
+          '&alpha;<sub>t</sub>': [0.8, null],
+          "&gamma;'": [6, 'kN/m<sup>3</sup>'],
         },
       },
       helpText: 'Helpful text!',
     },
     {
+      type: 'image-tile',
+      img_pth: 'caisson-figure.png',
+      img_w: '600px',
+      img_h: '600px',
+    },
+    {
       type: 'derived-input-tile',
-      gridPosition: {
-        xStart: 2,
-        yStart: 1,
-        xEnd: 3,
-        yEnd: 2,
-      },
       title: 'Derived Input',
       fields: {
         'L/D<sub>o</sub>': [null, '-'],
@@ -62,23 +48,7 @@ export const appConf = {
       },
     },
     {
-      type: 'image-tile',
-      gridPosition: {
-        xStart: 1,
-        yStart: 4,
-        xEnd: 3,
-        yEnd: 6,
-      },
-      img_pth: 'caisson-figure.png',
-    },
-    {
       type: 'output-tile',
-      gridPosition: {
-        xStart: 2,
-        yStart: 2,
-        xEnd: 3,
-        yEnd: 4,
-      },
       title: 'Output',
       fields: {
         Installation: {
@@ -99,12 +69,6 @@ export const appConf = {
     },
     {
       type: 'graph-tile',
-      gridPosition: {
-        xStart: 3,
-        yStart: 1,
-        xEnd: 5,
-        yEnd: 6,
-      },
       fields: {
         z: null,
         suz: null,
@@ -114,42 +78,91 @@ export const appConf = {
       },
       plots: {
         plotSuKpc: {
-          subGridPosition: {
-            xStart: 1,
-            yStart: 1,
-            xEnd: 2,
-            yEnd: 2,
+          dataFun(a, b) {
+            return [
+              {
+                x: a,
+                y: b,
+              },
+            ];
           },
-          dataFun() {
-            makeDataCaisson();
+          layout: {
+            title: '',
+            xaxis: {
+              title: 'S<sub>u</sub> (kPa)',
+              side: 'top',
+              rangemode: 'tozero',
+            },
+            yaxis: {
+              title: 'z (m)',
+              autorange: 'reversed',
+            },
+            showlegend: false,
+            mode: 'lines',
+            line: { shape: 'spline' },
           },
-          layout: SuKpcLayout,
           args: ['suz', 'z'],
         },
         plotPenRes: {
-          subGridPosition: {
-            xStart: 1,
-            yStart: 2,
-            xEnd: 2,
-            yEnd: 3,
+          dataFun(a, b, c) {
+            return [
+              {
+                name: 'Required Suction',
+                x: a,
+                y: c,
+              },
+              {
+                name: 'Penetration Resistance',
+                x: b,
+                y: c,
+              },
+            ];
           },
-          dataFun() {
-            makeDataTwoCaisson();
+          layout: {
+            type: 'scatter',
+            title: '',
+            xaxis: {
+              title: 'kN',
+              side: 'top',
+              ticksuffix: ' kN',
+            },
+            yaxis: {
+              title: 'z (m)',
+              autorange: 'reversed',
+            },
+            showlegend: true,
+            mode: 'lines',
+            line: { shape: 'spline' },
+            legend: {
+              traceorder: 'normal',
+            },
           },
-          layout: PenResLayout,
           args: ['req_suction', 'q_total', 'z'],
         },
         plotFosStability: {
-          subGridPosition: {
-            xStart: 1,
-            yStart: 3,
-            xEnd: 2,
-            yEnd: 4,
+          dataFun(a, b) {
+            return [
+              {
+                x: a,
+                y: b,
+              },
+            ];
           },
-          dataFun() {
-            makeDataCaisson();
+          layout: {
+            type: 'scatter',
+            title: '',
+            showlegend: false,
+            xaxis: {
+              title: 'FoS Plug Stability',
+              side: 'top',
+            },
+            yaxis: {
+              title: 'z (m)',
+              autorange: 'reversed',
+            },
+            mode: 'lines',
+            line: { shape: 'spline' },
           },
-          layout: FosStabilityLayout,
           args: ['fos', 'z'],
         },
       },
