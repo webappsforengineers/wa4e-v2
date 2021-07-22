@@ -7,12 +7,6 @@ export const appConf = {
   appWebComponents: [
     {
       type: 'input-tile',
-      gridPosition: {
-        xStart: 1,
-        yStart: 1,
-        xEnd: 2,
-        yEnd: 4,
-      },
       title: 'Input',
       fields: {
         'Caisson Properties': {
@@ -29,8 +23,8 @@ export const appConf = {
           'S<sub>um</sub>': [5, 'kPa'],
           "z'": [5, 'm'],
           'k<sub>su</sub>': [1, 'kPa/m'],
-          '&alpha<sub>t</sub>': [0.8, null],
-          "&gamma'": [6, 'kN/m<sup>3</sup>'],
+          '&alpha;<sub>t</sub>': [0.8, null],
+          "&gamma;'": [6, 'kN/m<sup>3</sup>'],
         },
       },
       helpText: 'Helpful text!',

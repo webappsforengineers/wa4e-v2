@@ -112,41 +112,41 @@ export class AppGeneric extends StyledElement {
                   class="col-sm-6 col-lg-3 mb-4"
                   style="left: 0; top 0;"
                 >
-                  <div class='card mx-auto p-1'>
-                  <input-tile
-                    .appConf=${this.appWebComponents[index]}
-                    @updated="${() => {
-                      this.updateComponents();
-                    }}"
-                    @reset="${() => {
-                      this.resetComponents();
-                    }}"
-                    @loaded="${() => {
-                      this.reloadMasonry();
-                    }}"
-                  ></input-tile>
+                  <div class="card mx-auto p-1">
+                    <input-tile
+                      .appConf=${this.appWebComponents[index]}
+                      @updated="${() => {
+                        this.updateComponents();
+                      }}"
+                      @reset="${() => {
+                        this.resetComponents();
+                      }}"
+                      @loaded="${() => {
+                        this.reloadMasonry();
+                      }}"
+                    ></input-tile>
                   </div>
                 </div>`
               : component.type === 'derived-input-tile'
               ? html`<div class="col-sm-6 col-lg-3 mb-4">
-                  <div class='card mx-auto p-1'>
-                  <derived-input-tile
-                    .appConf=${this.appWebComponents[index]}
-                    @loaded="${() => {
-                      this.reloadMasonry();
-                    }}"
-                  ></derived-input-tile>
+                  <div class="card mx-auto p-1">
+                    <derived-input-tile
+                      .appConf=${this.appWebComponents[index]}
+                      @loaded="${() => {
+                        this.reloadMasonry();
+                      }}"
+                    ></derived-input-tile>
                   </div>
                 </div>`
               : component.type === 'output-tile'
               ? html`<div class="col-sm-6 col-lg-3 mb-4">
-                  <div class='card mx-auto p-1'>
-                  <output-tile
-                    .appConf=${this.appWebComponents[index]}
-                    @loaded="${() => {
-                      this.reloadMasonry();
-                    }}"
-                  ></output-tile>
+                  <div class="card mx-auto p-1">
+                    <output-tile
+                      .appConf=${this.appWebComponents[index]}
+                      @loaded="${() => {
+                        this.reloadMasonry();
+                      }}"
+                    ></output-tile>
                   </div>
                 </div>`
               : component.type === 'graph-tile'
@@ -160,35 +160,47 @@ export class AppGeneric extends StyledElement {
                 </div>`
               : component.type === 'coeff-tile'
               ? html`<div class="col-sm-6 col-lg-3 mb-4">
-                  <div class='card mx-auto p-1'>
-                  <coeff-tile
-                    .appConf=${this.appWebComponents[index]}
-                    @loaded="${() => {
-                      this.reloadMasonry();
-                    }}"
-                  ></coeff-tile>
+                  <div class="card mx-auto p-1">
+                    <coeff-tile
+                      .appConf=${this.appWebComponents[index]}
+                      @loaded="${() => {
+                        this.reloadMasonry();
+                      }}"
+                    ></coeff-tile>
                   </div>
                 </div>`
               : component.type === 'optimisation-tile'
               ? html`<div class="col-sm-6 col-lg-3 mb-4">
-                  <div class='card mx-auto p-1'>
-                  <optimisation-tile
-                    .appConf=${this.appWebComponents[index]}
-                    @loaded="${() => {
-                      this.reloadMasonry();
-                    }}"
-                  ></optimisation-tile>
+                  <div class="card mx-auto p-1">
+                    <optimisation-tile
+                      .appConf=${this.appWebComponents[index]}
+                      @loaded="${() => {
+                        this.reloadMasonry();
+                      }}"
+                    ></optimisation-tile>
                   </div>
                 </div>`
               : component.type === 'image-tile'
               ? html`<div class="col-md-auto mb-4">
-                  <div class='card mx-auto p-1'>
-                  <image-tile
-                    .appConf=${this.appWebComponents[index]}
-                    @loaded="${() => {
-                      this.reloadMasonry();
-                    }}"
-                  ></image-tile>
+                  <div class="card mx-auto p-1">
+                    <image-tile
+                      .appConf=${this.appWebComponents[index]}
+                      @loaded="${() => {
+                        this.reloadMasonry();
+                      }}"
+                    ></image-tile>
+                  </div>
+                </div>`
+              : component.type === 'radio-tile'
+              ? html`<div class="col-md-auto mb-4">
+                  <div class="card mx-auto p-1">
+                    <radio-tile
+                      .appConf=${this.appWebComponents[index]}
+                      @loaded="${() => {
+                        this.reloadMasonry();
+                      }}"
+                    ></radio-tile>
+                  </div>
                 </div>`
               : html`<p>Component ${component.type} Not Recognised</p>`}
           `
