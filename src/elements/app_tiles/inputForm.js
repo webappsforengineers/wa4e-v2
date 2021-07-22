@@ -50,7 +50,7 @@ class inputTile extends TileBase {
                 <span class="input-group-text col-auto text-wrap text-break"
                       for="${key}"
                       style="width: 25%; text-align: right;"
-                  >${html([key])}</span>
+                  >${html([this.appConf.fields[keyOuter][key][2]])}</span>
                 <input
                   class="form-control"
                   id="${key}"

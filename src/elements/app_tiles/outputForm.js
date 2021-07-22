@@ -29,7 +29,7 @@ class outputTile extends TileBase {
                 <label class="input-group-text text-wrap text-break font-size-sm"
                        for="${key}"
                        style="width: 30%; text-align: left;"
-                  >${html([key])}</label
+                  >${html([this.appConf.fields[keyOuter][key][2]])}</label
                 >
                 <input
                   class="form-control bg-light"

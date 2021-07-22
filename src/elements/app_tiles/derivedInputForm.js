@@ -27,7 +27,7 @@ class derivedInputTile extends TileBase {
             <span class="input-group-text text-wrap text-break"
                    for=${key}
                    style="width: 30%; text-align: left;"
-              >${html([key])}</span
+              >${html([this.appConf.fields[key][2]])}</span
             >
             <input
               class="form-control bg-light"

@@ -46,5 +46,15 @@ export const appConf = {
       },
       helpText: 'Helpful text!',
     },
+    {
+      type: 'derived-input-tile',
+      title: 'Derived Input',
+      fields: {
+        'd/D (0&#45;1)': [null, null],
+        A: [null, 'm<sup>2</sup>sup>'],
+        '&kappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)': [null, null],
+
+      },
+    },
   ],
 };
