@@ -6,23 +6,15 @@ export const appConf = {
   appColour: '#9a76c1',
   appWebComponents: [
     {
-      type: 'radio-tile',
-      title: 'Foundation Shape',
-      options: {
-        Circular: '',
-        Strip: '',
-      },
-    },
-    {
       type: 'input-tile',
       title: 'Input',
       fields: {
         Foundation: {
-          D: [12, 'm', 'D'],
+          D_B: [12, 'm', 'D'],
           alphabase: [1, null, '&alpha;<sub>base</sub>'],
         },
         Soil: {
-          gamma: [16, 'kN/m<sub>3</sub>', '&gamma;'],
+          gamma_in: [16, 'kN/m<sub>3</sub>', '&gamma;'],
           k: [1.3e-8, 'm/s', 'k'],
           kappa: [0.044, null, '&kappa;'],
           lambda: [0.205, null, '&lambda;'],
@@ -31,7 +23,7 @@ export const appConf = {
           OCR: [1, null, 'OCR'],
           sigmaVO: [25, 'kPa', '&sigma;&#39;<sub>VO</sub>'],
           GS: [2.7, null, 'G<sub>S</sub>'],
-          gammaw: [10, 'kN/m<sup>3</sup>', '&Gamma;<sub>W</sub>'],
+          gamma_w: [10, 'kN/m<sup>3</sup>', '&gamma;<sub>W</sub>'],
         },
         Loading: {
           vpvu: [0.3, null, 'v<sub>p</sub>/v<sub>u</sub>'],
@@ -47,10 +39,42 @@ export const appConf = {
       helpText: 'Helpful text!',
     },
     {
+      type: 'radio-tile',
+      title: 'Foundation Shape',
+      options: {
+        Circular: '',
+        Strip: '',
+      },
+      onChange: {
+        Circular: {
+          fields: {
+            Foundation: {
+              D_B: [12, 'm', 'D'],
+            },
+            Method: {
+              T50: [0.035, null, 'T<sub>50</sub>'],
+              m: [-1.05, null, 'm'],
+            },
+          },
+        },
+        Strip: {
+          fields: {
+            Foundation: {
+              D_B: [12, 'm', 'B'],
+            },
+            Method: {
+              T50: [0.17, null, 'T<sub>50</sub>'],
+              m: [-0.95, null, 'm'],
+            },
+          },
+        },
+      }
+    },
+    {
       type: 'derived-input-tile',
       title: 'Derived Input',
       fields: {
-        gamma: [null, 'kN/m&sup3;', '&gamma;&apos;'],
+        gamma_out: [null, 'kN/m&sup3;', '&gamma;&apos;'],
         A: [null, 'm&sup2;', 'A'],
         phi: [null, 'degrees', '&#981;'],
         K0NC: [null, null, 'K<sub>0,NC</sub>'],
@@ -73,10 +97,11 @@ export const appConf = {
       type: 'output-tile',
       title: 'Output',
       fields: {
+        "":{
         NcV: [null, null, 'NcV'],
         Vultexc: [null, 'kPa', 'v<sub>ult,exc. surcharge</sub>'],
         Vultinc: [null, 'kPa', 'v<sub>ult,inc. surcharge</sub>'],
-        cv0: [null, 'm&sup2;/year', 'c<sub>v0</sub>'],
+        cv0_out: [null, 'm&sup2;/year', 'c<sub>v0</sub>'],
         T: [null, null, 'T'],
         U: [null, null, 'U'],
         vp: [null, 'kPa', 'v<sub>p</sub>'],
@@ -90,7 +115,7 @@ export const appConf = {
         ],
         vuconsvu: [null, null, 'v<sub>u,cons</sub>/v<sub>u</sub>'],
         pergaininvult: [null, '%', '% gain in v<sub>ult</sub>'],
-      },
+      },}
     },
   ],
 };

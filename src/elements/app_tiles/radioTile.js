@@ -2,6 +2,12 @@ import { html } from 'lit';
 import { TileBase } from './tileBase';
 
 class radioTile extends TileBase {
+
+  constructor() {
+    super();
+    this.checkValue = 'Circular';
+  }
+
   render() {
     this.checkOptions = this.appConf.options;
     this.checks = this.makeCheckCallBacks();
@@ -26,6 +32,7 @@ class radioTile extends TileBase {
             .value="${this.appConf.options[key]}"
             @click=${e => {
               this.appConf.options[key] = e.target.checked;
+              this.checkValue = key;
               // TODO: This seems overly complicated?
               Object.keys(this.checkOptions).map(
                 // eslint-disable-next-line array-callback-return
@@ -35,12 +42,23 @@ class radioTile extends TileBase {
                   }
                 }
               );
+              this.modifyForm();
             }}
           />
           <label class="form-check-label" for="${key}">${html([key])}</label>
         </div>`
     )}`;
   }
+
+  modifyForm() {
+    const myEvent = new CustomEvent('modifyForm', {
+      detail: {changeFields: this.appConf.onChange[this.checkValue]},
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(myEvent);
+  }
+
 }
 
 customElements.define(`radio-tile`, radioTile);

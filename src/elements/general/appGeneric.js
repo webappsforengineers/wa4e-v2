@@ -1,6 +1,8 @@
 import { html } from 'lit';
 import { StyledElement } from '../../styles/wa4eStyleElement';
 import { Masonry } from '../../local_modules/wa4e-math.js';
+import {lodash} from "lodash-es";
+
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -60,12 +62,12 @@ export class AppGeneric extends StyledElement {
 
   updateComponents() {
     this.output = this.appCalc(
-      this.appWebComponents.find(element => element.type === 'input-tile'),
-      0,
-      0
+      this.appWebComponents
     );
-    // ToDo: these loops take an object from the math output and map it to a tiles fields, these could be functions.
+    // TODO: delete this in favour of doing this in the math files
+    // ~~ToDo: these loops take an object from the math output and map it to a tiles fields, these could be functions.~~
     /* eslint-disable no-restricted-syntax */
+    /*
     for (const [key, value] of Object.entries(this.output.derivedInputs)) {
       this.appWebComponents.find(
         element => element.type === 'derived-input-tile'
@@ -83,6 +85,7 @@ export class AppGeneric extends StyledElement {
         element => element.type === 'graph-tile'
       ).fields[key] = value;
     }
+    */
     /* eslint-enable no-restricted-syntax */
     // Launch new event to update child components
     this.childUpdate();
@@ -99,6 +102,29 @@ export class AppGeneric extends StyledElement {
       composed: true,
     });
     this.dispatchEvent(myEvent);
+  }
+
+  modifyForm(appConfChange) {
+    function getKeys (obj, working_key =[], keys = []) {
+      console.log(obj, working_key, keys)
+      for (const [key, value] of Object.entries(obj)) {
+        console.log(key, value);
+        working_key.push(key);
+        console.log(lodash.isObject(value), lodash.isArray(value));
+        if (lodash.isObject(value) && !lodash.isArray(value)) {
+          keys.push(getKeys(value, working_key, keys))
+        }
+        else {
+          keys.push(working_key);
+        }
+      }
+      return keys
+    }
+
+    const keys = getKeys(appConfChange.changeFields)
+    console.log(keys)
+
+
   }
 
   /* eslint-disable no-nested-ternary */
@@ -198,6 +224,9 @@ export class AppGeneric extends StyledElement {
                       .appConf=${this.appWebComponents[index]}
                       @loaded="${() => {
                         this.reloadMasonry();
+                      }}"
+                      @modifyForm="${(e) => {
+                        this.modifyForm(e.detail);
                       }}"
                     ></radio-tile>
                   </div>
