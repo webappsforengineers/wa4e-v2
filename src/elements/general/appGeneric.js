@@ -103,6 +103,8 @@ export class AppGeneric extends StyledElement {
 
   modifyForm(appConfChange) {
     // Function to recursively find the paths to each attribute that is being changed
+    // TODO: fix the eslint warning `iterators/generators require regenerator-runtime, which is too heavyweight for
+    //  this guide to allow them. Separately, loops should be avoided in favor of array iterations`
     /* eslint-disable no-restricted-syntax */
     function getKeys(obj, keys, ...passedKey) {
       let workingKey = [...passedKey];
