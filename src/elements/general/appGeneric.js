@@ -1,8 +1,7 @@
 import { html } from 'lit';
+import { lodash } from 'lodash-es';
 import { StyledElement } from '../../styles/wa4eStyleElement';
 import { Masonry } from '../../local_modules/wa4e-math.js';
-import {lodash} from "lodash-es";
-
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -61,9 +60,7 @@ export class AppGeneric extends StyledElement {
   }
 
   updateComponents() {
-    this.output = this.appCalc(
-      this.appWebComponents
-    );
+    this.output = this.appCalc(this.appWebComponents);
     // TODO: delete this in favour of doing this in the math files
     // ~~ToDo: these loops take an object from the math output and map it to a tiles fields, these could be functions.~~
     /* eslint-disable no-restricted-syntax */
@@ -105,26 +102,41 @@ export class AppGeneric extends StyledElement {
   }
 
   modifyForm(appConfChange) {
-    function getKeys (obj, working_key =[], keys = []) {
-      console.log(obj, working_key, keys)
+    // Function to recursively find the paths to each attribute that is being changed
+    /* eslint-disable no-restricted-syntax */
+    function getKeys(obj, keys, ...passedKey) {
+      let workingKey = [...passedKey];
       for (const [key, value] of Object.entries(obj)) {
-        console.log(key, value);
-        working_key.push(key);
-        console.log(lodash.isObject(value), lodash.isArray(value));
+        workingKey.push(key);
         if (lodash.isObject(value) && !lodash.isArray(value)) {
-          keys.push(getKeys(value, working_key, keys))
+          getKeys(value, keys, ...workingKey);
+        } else {
+          keys.push([...workingKey]);
         }
-        else {
-          keys.push(working_key);
-        }
+        workingKey = [...passedKey];
       }
-      return keys
     }
 
-    const keys = getKeys(appConfChange.changeFields)
-    console.log(keys)
+    // Run the recursive function to generate the attribute key paths
+    const keys = [];
+    getKeys(appConfChange.changeFields, keys);
 
+    // for each defied component in appWebComponents check the key paths and if it is found update the fields
+    for (const component of this.appWebComponents) {
+      for (const key of keys) {
+        if (lodash.has(component, key)) {
+          lodash.set(
+            component,
+            key,
+            lodash.get(appConfChange.changeFields, key)
+          );
+        }
+      }
+    }
+    /* eslint-enable no-restricted-syntax */
 
+    // rerender all the app tiles to get new values
+    this.childUpdate();
   }
 
   /* eslint-disable no-nested-ternary */
@@ -225,7 +237,7 @@ export class AppGeneric extends StyledElement {
                       @loaded="${() => {
                         this.reloadMasonry();
                       }}"
-                      @modifyForm="${(e) => {
+                      @modifyForm="${e => {
                         this.modifyForm(e.detail);
                       }}"
                     ></radio-tile>

@@ -10,7 +10,7 @@ export const appConf = {
       title: 'Input',
       fields: {
         Foundation: {
-          D_B: [12, 'm', 'D'],
+          D_B: ['Select Foundation Shape', 'm', 'D or B'],
           alphabase: [1, null, '&alpha;<sub>base</sub>'],
         },
         Soil: {
@@ -30,8 +30,8 @@ export const appConf = {
           tcons: [1, 'years', 't<sub>cons</sub>'],
         },
         Method: {
-          T50: [0.035, null, 'T<sub>50</sub>'],
-          m: [-1.05, null, 'm'],
+          T50: ['Select Foundation Shape', null, 'T<sub>50</sub>'],
+          m: ['Select Foundation Shape', null, 'm'],
           fsigma: [0.8, null, 'f<sub>$sigma;</sub>'],
           fsu: [0.45, null, 'f<sub>su</sub>'],
         },
@@ -68,7 +68,7 @@ export const appConf = {
             },
           },
         },
-      }
+      },
     },
     {
       type: 'derived-input-tile',
@@ -97,25 +97,26 @@ export const appConf = {
       type: 'output-tile',
       title: 'Output',
       fields: {
-        "":{
-        NcV: [null, null, 'NcV'],
-        Vultexc: [null, 'kPa', 'v<sub>ult,exc. surcharge</sub>'],
-        Vultinc: [null, 'kPa', 'v<sub>ult,inc. surcharge</sub>'],
-        cv0_out: [null, 'm&sup2;/year', 'c<sub>v0</sub>'],
-        T: [null, null, 'T'],
-        U: [null, null, 'U'],
-        vp: [null, 'kPa', 'v<sub>p</sub>'],
-        Fsigvp: [null, 'kPa', 'f<sub>&sigma;</sub>v<sub>p</sub>'],
-        vuconsmax: [null, 'kPa', 'v<sub>u,cons_max</sub>'],
-        vucons: [null, 'kPa', 'v<sub>u,cons</sub>'],
-        vuconsvuconsmax: [
-          null,
-          null,
-          'v<sub>u,cons</sub>/v<sub>u,cons_max</sub>',
-        ],
-        vuconsvu: [null, null, 'v<sub>u,cons</sub>/v<sub>u</sub>'],
-        pergaininvult: [null, '%', '% gain in v<sub>ult</sub>'],
-      },}
+        '': {
+          NcV: [null, null, 'NcV'],
+          Vultexc: [null, 'kPa', 'v<sub>ult,exc. surcharge</sub>'],
+          Vultinc: [null, 'kPa', 'v<sub>ult,inc. surcharge</sub>'],
+          cv0_out: [null, 'm&sup2;/year', 'c<sub>v0</sub>'],
+          T: [null, null, 'T'],
+          U: [null, null, 'U'],
+          vp: [null, 'kPa', 'v<sub>p</sub>'],
+          Fsigvp: [null, 'kPa', 'f<sub>&sigma;</sub>v<sub>p</sub>'],
+          vuconsmax: [null, 'kPa', 'v<sub>u,cons_max</sub>'],
+          vucons: [null, 'kPa', 'v<sub>u,cons</sub>'],
+          vuconsvuconsmax: [
+            null,
+            null,
+            'v<sub>u,cons</sub>/v<sub>u,cons_max</sub>',
+          ],
+          vuconsvu: [null, null, 'v<sub>u,cons</sub>/v<sub>u</sub>'],
+          pergaininvult: [null, '%', '% gain in v<sub>ult</sub>'],
+        },
+      },
     },
   ],
 };
