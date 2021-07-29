@@ -4,7 +4,7 @@ import { TileBase } from './tileBase';
 class derivedInputTile extends TileBase {
   render() {
     this.formFields = this.appConf.fields;
-    this.derivedInputFields = this.makeFields();
+    this.derivedInputFields = this.makeNestedFields();
     return [
       super.render(),
       html`
@@ -19,31 +19,34 @@ class derivedInputTile extends TileBase {
     ];
   }
 
-  makeFields() {
-    return html`<div>
-      ${Object.keys(this.formFields).map(
-        key =>
-          html` <div class="input-group">
-            <span class="input-group-text text-wrap text-break"
-                   for=${key}
-                   style="width: 30%; text-align: left;"
-              >${html([this.appConf.fields[key][2]])}</span
-            >
-            <input
-              class="form-control bg-light"
-              type="text"
-              disabled
-              id=${key}
-              .value=${this.formFields[key][0]}
-            />
-            <span class="input-group-text text-wrap text-break"
-                   for=${key}
-                   style="width: 20%; text-align: left;"
-              >${html([this.formFields[key][1]])}</span
-            >
-          </div>`
-      )}
-    </div>`;
+  makeNestedFields() {
+    return html`${Object.keys(this.formFields).map(
+      keyOuter =>
+        html`<h3>${keyOuter}</h3>
+          ${Object.keys(this.appConf.fields[`${keyOuter}`]).map(
+            key =>
+              html` <div class="input-group">
+                <label
+                  class="input-group-text text-wrap text-break font-size-sm"
+                  for="${key}"
+                  style="width: 30%; text-align: left;"
+                  >${html([this.appConf.fields[keyOuter][key][2]])}</label
+                >
+                <input
+                  class="form-control bg-light"
+                  disabled
+                  id="${key}"
+                  .value="${this.appConf.fields[keyOuter][key][0]}"
+                />
+                <label
+                  class="input-group-text text-wrap text-break"
+                  for="${key}"
+                  style="min-width: 20%; text-align: left;"
+                  >${html([this.appConf.fields[keyOuter][key][1]])}</label
+                >
+              </div>`
+          )}`
+    )}`;
   }
 }
 

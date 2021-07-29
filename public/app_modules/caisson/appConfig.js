@@ -39,12 +39,14 @@ export const appConf = {
       type: 'derived-input-tile',
       title: 'Derived Input',
       fields: {
-        'LDo': [null, null, 'L/D<sub>o</sub>'],
-        'Di': [null, 'm', 'D<sub>i</sub>'],
-        'Atip': [null, 'm<sup>2</sup>', 'A<sub>tip</sub>'],
-        'Aplug': [null, 'm<sup>2</sup>', 'A<sub>plug</sub>'],
-        "Wplug": [null, 'kN', 'W&#39;<sub>plug</sub>'],
-        "Wcaisson": [null, 'kN', 'W&#39;<sub>caisson</sub>'],
+        '': {
+          LDo: [null, null, 'L/D<sub>o</sub>'],
+          Di: [null, 'm', 'D<sub>i</sub>'],
+          Atip: [null, 'm<sup>2</sup>', 'A<sub>tip</sub>'],
+          Aplug: [null, 'm<sup>2</sup>', 'A<sub>plug</sub>'],
+          Wplug: [null, 'kN', 'W&#39;<sub>plug</sub>'],
+          Wcaisson: [null, 'kN', 'W&#39;<sub>caisson</sub>'],
+        },
       },
     },
     {

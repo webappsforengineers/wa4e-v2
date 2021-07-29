@@ -5,7 +5,7 @@ import './elements/myElements.js';
 import {
   caissonConf,
   consolidatedncvConf,
-  draganchorConf,
+  dragAnchorConf,
   mccsuConf,
   ncvConf,
   pinpilesConf,
@@ -34,43 +34,47 @@ export class Wa4eV2 extends StyledElement {
         <div class="row">
           <header-element page-title=${this.title}></header-element>
         </div>
-        <div class="msnry-tiles row p-3 align-content-center"
-             data-masonry='{"percentPosition": true }'>
-          <div class="col-sm-6 col-lg-3" style='height: 350px; width: 350px'>
+        <div
+          class="msnry-tiles row p-3 align-content-center"
+          data-masonry='{"percentPosition": true }'
+        >
+          <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
             <menu-tile .appConf=${caissonConf}></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-3" style='height: 350px; width: 350px'>
+          <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
             <menu-tile .appConf=${consolidatedncvConf}></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-3" style='height: 350px; width: 350px'>
-            <menu-tile .appConf=${draganchorConf}></menu-tile>
+          <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
+            <menu-tile .appConf=${dragAnchorConf}></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-3" style='height: 350px; width: 350px'>
+          <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
             <menu-tile .appConf=${mccsuConf}></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-3" style='height: 350px; width: 350px'>
+          <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
             <menu-tile .appConf=${ncvConf}></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-3" style='height: 350px; width: 350px'>
+          <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
             <menu-tile .appConf=${pinpilesConf}></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-3" style='height: 350px; width: 350px'>
+          <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
             <menu-tile .appConf=${pipeConf}></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-3" style='height: 350px; width: 350px'>
+          <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
             <menu-tile .appConf=${vh2m2tConf}></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-3" style='height: 350px; width: 350px'>
+          <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
             <menu-tile .appConf=${vhmConf}></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-3 mb-1" style='height: 350px; width: 350px'>
+          <div
+            class="col-sm-6 col-lg-3 mb-1"
+            style="height: 350px; width: 350px"
+          >
             <menu-tile .appConf=${ztiConf}></menu-tile>
           </div>
         </div>
         <div class="row gy-1">
           <footer-element></footer-element>
         </div>
-
       `,
     ];
   }
