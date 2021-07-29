@@ -76,7 +76,7 @@ export const appConf = {
       fields: {
         gamma_eff_soil: [null, 'kN/m&sup3;', '&gamma;&apos;'],
         Fdn_area: [null, 'm&sup2;', 'A'],
-        phi_degs: [null, 'degrees', '&#981;'],
+        phi_degs: [null, 'degrees', '&#981;&#39;'],
         K0_nc: [null, null, 'K<sub>0,NC</sub>'],
         K0_oc: [null, null, 'K<sub>0,OC</sub>'],
         R_fOCR: [null, null, 's<sub>u</sub>&sigma;&#39;<sub>v</sub>'],
