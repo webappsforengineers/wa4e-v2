@@ -103,6 +103,8 @@ export const appConf = {
             line: { shape: 'spline' },
           },
           args: ['sum', 'zfs'],
+          addLines: true,
+          data: [],
         },
         plotKsu: {
           dataFun(a, b) {
@@ -127,6 +129,8 @@ export const appConf = {
             line: { shape: 'spline' },
           },
           args: ['k', 'zfk'],
+          addLines: true,
+          data: [],
         },
       },
     },

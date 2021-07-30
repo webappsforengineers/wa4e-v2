@@ -5,7 +5,7 @@ import { TileBase } from './tileBase';
 class graphTile extends TileBase {
   render() {
     if (this.hasUpdated) {
-      this.updateGraph();
+      this.configGraph();
     }
     this.graphHtml = html` <div
       class="row row-cols-sm-1 row-cols-lg-2 row-cols-xxl-3 gy-4"
@@ -38,20 +38,36 @@ class graphTile extends TileBase {
     );
   }
 
-  async updateGraph() {
+
+  async configGraph() {
     await this.updateComplete;
     Object.entries(this.appConf.plots).map(mapValue =>
-      Plotly.react(
-        document.getElementById(mapValue[0]),
-        mapValue[1].dataFun.apply(
-          this,
-          Object.entries(mapValue[1].args).map(
-            varName => this.appConf.fields[varName[1]]
-          )
-        ),
-        mapValue[1].layout
-      )
+      this.updateGraph(mapValue)
     );
+  }
+  async updateGraph(mapValue) {
+    //error here with parameter reassignment FIX THIS
+    if (mapValue[1].addLines) {
+      mapValue[1].data = mapValue[1].data.concat(mapValue[1].dataFun.apply(
+        this,
+        Object.entries(mapValue[1].args).map(
+          varName => this.appConf.fields[varName[1]]
+        )
+      ));
+    }
+    else {
+      mapValue[1].data = mapValue[1].dataFun.apply(
+        this,
+        Object.entries(mapValue[1].args).map(
+          varName => this.appConf.fields[varName[1]]
+        )
+      );
+    }
+    Plotly.react(
+      document.getElementById(mapValue[0]),
+      mapValue[1].data,
+      mapValue[1].layout
+    )
   }
 }
 

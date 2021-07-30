@@ -104,6 +104,8 @@ export const appConf = {
             line: { shape: 'spline' },
           },
           args: ['suz', 'z'],
+          addLines: false,
+          data: [],
         },
         plotPenRes: {
           dataFun(a, b, c) {
@@ -140,6 +142,8 @@ export const appConf = {
             },
           },
           args: ['req_suction', 'q_total', 'z'],
+          addLines: false,
+          data: [],
         },
         plotFosStability: {
           dataFun(a, b) {
@@ -166,6 +170,8 @@ export const appConf = {
             line: { shape: 'spline' },
           },
           args: ['fos', 'z'],
+          addLines: false,
+          data: [],
         },
       },
     },
