@@ -56,7 +56,7 @@ class inputTile extends TileBase {
                   id="${key}"
                   .value="${this.appConf.fields[keyOuter][key][0]}"
                   @change=${e => {
-                    this.appConf.fields[keyOuter][key][0] = e.target.value;
+                    this.appConf.fields[keyOuter][key][0] = Number(e.target.value);
                   }}
                 />
                 <span class="input-group-text col-auto text-wrap text-break"
