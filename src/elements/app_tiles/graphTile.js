@@ -13,7 +13,7 @@ class graphTile extends TileBase {
       ${Object.entries(this.appConf.plots).map(
         mapValue =>
           html`
-            <div class="card mx-auto" style='min-width: 450px'>
+            <div class="card mx-auto" style="min-width: 450px">
               <div class="responsive-plot" id=${mapValue[0]}></div>
             </div>
           `
@@ -38,25 +38,28 @@ class graphTile extends TileBase {
     );
   }
 
-
   async configGraph() {
     await this.updateComplete;
     Object.entries(this.appConf.plots).map(mapValue =>
       this.updateGraph(mapValue)
     );
   }
+
   async updateGraph(mapValue) {
-    //error here with parameter reassignment FIX THIS
+    // error here with parameter reassignment FIX THIS
     if (mapValue[1].addLines) {
-      mapValue[1].data = mapValue[1].data.concat(mapValue[1].dataFun.apply(
-        this,
-        Object.entries(mapValue[1].args).map(
-          varName => this.appConf.fields[varName[1]]
+      this.appConf.plots[mapValue[0]].data = this.appConf.plots[
+        mapValue[0]
+      ].data.concat(
+        mapValue[1].dataFun.apply(
+          this,
+          Object.entries(mapValue[1].args).map(
+            varName => this.appConf.fields[varName[1]]
+          )
         )
-      ));
-    }
-    else {
-      mapValue[1].data = mapValue[1].dataFun.apply(
+      );
+    } else {
+      this.appConf.plots[mapValue[0]].data = mapValue[1].dataFun.apply(
         this,
         Object.entries(mapValue[1].args).map(
           varName => this.appConf.fields[varName[1]]
@@ -65,9 +68,9 @@ class graphTile extends TileBase {
     }
     Plotly.react(
       document.getElementById(mapValue[0]),
-      mapValue[1].data,
-      mapValue[1].layout
-    )
+      this.appConf.plots[mapValue[0]].data,
+      this.appConf.plots[mapValue[0]].layout
+    );
   }
 }
 
