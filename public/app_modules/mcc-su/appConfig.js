@@ -3,6 +3,7 @@ export const appConf = {
   appTitle: 'MCC — su',
   appPageTitle: '',
   appDescription: 'Conversion of MCC parameters to su profile',
+  appColour: '#f1c04c',
   appWebComponents: [
     {
       type: 'input-tile',
@@ -81,35 +82,45 @@ export const appConf = {
               {
                 x: a,
                 y: b,
+                name: '&sigma;&#39;<sub>v</sub>',
+                type: 'scatter',
               },
               {
                 x: a,
                 y: c,
+                name: 'u<sub>hyd</sub>',
+                type: 'scatter',
               },
               {
                 x: a,
                 y: d,
+                name: '&sigma;<sub>v</sub>',
+                type: 'scatter',
               },
               {
                 x: a,
                 y: e,
+                name: '&sigma;&#39;<sub>h</sub>',
+                type: 'scatter',
               },
             ];
           },
           layout: {
-            title: '',
+            title: '<b>In Situ Stresses</b>',
+            titlefont: {
+              family: 'Roboto, sans-serif',
+              color: '#01579b',
+              size: 19,
+            },
             xaxis: {
-              title: 'S<sub>u</sub> (kPa)',
+              title: 'stress (kPa)',
               side: 'top',
-              rangemode: 'tozero',
             },
             yaxis: {
               title: 'z (m)',
               autorange: 'reversed',
             },
-            showlegend: false,
-            mode: 'lines',
-            line: { shape: 'spline' },
+            showlegend: true,
           },
           args: ['z', 'sigma_prime_v', 'u_hyd', 'sigma_v', 'sigma_prime_h'],
           addLines: false,
@@ -121,27 +132,33 @@ export const appConf = {
               {
                 x: a,
                 y: b,
+                name: 'PS',
+                type: 'scatter',
               },
               {
                 x: a,
                 y: c,
+                name: 'TX',
+                type: 'scatter',
               },
             ];
           },
           layout: {
-            title: '',
+            title: '<b>In Situ Undrained Strength</b>',
+            titlefont: {
+              family: 'Roboto, sans-serif',
+              color: '#01579b',
+              size: 19,
+            },
             xaxis: {
               title: 'S<sub>u</sub> (kPa)',
               side: 'top',
-              rangemode: 'tozero',
             },
             yaxis: {
               title: 'z (m)',
               autorange: 'reversed',
             },
-            showlegend: false,
-            mode: 'lines',
-            line: { shape: 'spline' },
+            showlegend: true,
           },
           args: ['z', 'PS_s_u', 'TX_s_u'],
           addLines: false,
