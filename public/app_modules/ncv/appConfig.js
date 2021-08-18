@@ -10,12 +10,55 @@ export const appConf = {
       title: 'Input',
       fields: {
         'Foundation Properties': {
-          B_D: [],
-          d: [],
+          B_D: ['Select Foundation Shape', 'm', 'D or B'],
+          d: [10, 'm', 'd'],
+          alpha_base: [1, null, '&alpha;<sub>base</sub>(0-1)'],
+          alpha_side: [0.1, null, '&alpha;<sub>side</sub>(0-1)'],
         },
         'Soil Properties': {
-          sum: [],
-          k: [],
+          sum: [10, 'kPa', 's<sub>um</sub>'],
+          k: [10, 'kPa/m', 'k<sub>um</sub>'],
+        },
+      },
+      helpText: 'Helpful text!',
+    },
+    {
+      type: 'radio-tile',
+      title: 'Foundation Shape',
+      options: {
+        Circular: '',
+        Strip: '',
+      },
+      onChange: {
+        Circular: {
+          fields: {
+            'Foundation Properties': {
+              B_D: [10, 'm', 'D'],
+            },
+            '': {
+              dB_dD: [null, null, 'd/D (0&#45;1)'],
+              kappsu: [
+                null,
+                null,
+                '&varkappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)',
+              ],
+            },
+          },
+        },
+        Strip: {
+          fields: {
+            'Foundation Properties': {
+              B_D: [10, 'm', 'B'],
+            },
+            '': {
+              dB_dD: [null, null, 'd/B (0&#45;1)'],
+              kappsu: [
+                null,
+                null,
+                '&varkappa;<sub>su</sub> = kB/s<sub>um</sub> (0&#45;200)',
+              ],
+            },
+          },
         },
       },
     },
@@ -24,13 +67,94 @@ export const appConf = {
       title: 'Derived Input',
       fields: {
         '': {
-          dD: [null, null, 'd/D (0&#45;1)'],
+          dB_dD: ['Select Foundation Shape', null, 'd/(D or B) (0&#45;1)'],
           A: [null, 'm<sup>2</sup>sup>', 'A'],
           kappsu: [
+            'Select Foundation Shape',
             null,
-            null,
-            '&varkappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)',
+            '&varkappa;<sub>su</sub> = k(D or B)/s<sub>um</sub> (0&#45;200)',
           ],
+          Su0: [null, null, 's<sub>u0</sub> = k <sub>su</sub>d'],
+        },
+      },
+    },
+    {
+      type: 'output-tile',
+      title: 'Output',
+      fields: {
+        '': {
+          NcV: [null, null, 'N<sub>cV</sub> = v<sub>ult</sub>/s<sub>u0</sub>'],
+          Vult_pressure: [null, 'kPa', 'v<sub>ult</sub>'],
+          Vult_force: [null, 'kN', 'V<sub>ult</sub>=v<sub>ult</sub>A'],
+        },
+      },
+    },
+    {
+      type: 'graph-tile',
+      fields: {
+        thing: null,
+      },
+      plots: {
+        db: {
+          dataFun(a, b) {
+            return [
+              {
+                x: a,
+                y: b,
+              },
+            ];
+          },
+          layout: {
+            type: 'scatter',
+            title: 'N<sub>cV</sub> as a function of d/N',
+            xaxis: {
+              title: 'd/B',
+            },
+            yaxis: {
+              title: 'N<sub>cV</sub>',
+            },
+          },
+        },
+        alphaside: {
+          dataFun(a, b) {
+            return [
+              {
+                x: a,
+                y: b,
+              },
+            ];
+          },
+          layout: {
+            type: 'scatter',
+            title: 'N<sub>cV</sub> as a function of &alpha;<sub>side</sub>',
+            xaxis: {
+              title: '&alpha;<sub>side</sub>',
+            },
+            yaxis: {
+              title: 'N<sub>cV</sub>',
+            },
+          },
+          args: [],
+        },
+        kbsum: {
+          dataFun(a, b) {
+            return [
+              {
+                x: a,
+                y: b,
+              },
+            ];
+          },
+          layout: {
+            type: 'scatter',
+            title: 'N<sub>cV</sub> as a function of kB/s<sub>um</sub>',
+            xaxis: {
+              title: 'kB/s<sub>um</sub>',
+            },
+            yaxis: {
+              title: 'N<sub>cV</sub>',
+            },
+          },
         },
       },
     },
