@@ -92,7 +92,12 @@ export const appConf = {
     {
       type: 'graph-tile',
       fields: {
-        thing: null,
+        NcV_dD: null,
+        dD: null,
+        NcV_alphaSide: null,
+        alphaSide: null,
+        NcV_kD: null,
+        kD: null,
       },
       plots: {
         db: {
@@ -101,19 +106,30 @@ export const appConf = {
               {
                 x: a,
                 y: b,
+                line: {
+                  shape: 'spline',
+                  smoothing: 0.7,
+                },
               },
             ];
           },
           layout: {
-            type: 'scatter',
-            title: 'N<sub>cV</sub> as a function of d/N',
+            title: '<b>N<sub>cV</sub> as a function of d/D</b>',
             xaxis: {
               title: 'd/B',
             },
             yaxis: {
               title: 'N<sub>cV</sub>',
             },
+            titlefont: {
+              family: 'Roboto, sans-serif',
+              color: '#01579b',
+              size: 19,
+            },
           },
+          args: ['dD', 'NcV_dD'],
+          addLines: true,
+          data: [],
         },
         alphaside: {
           dataFun(a, b) {
@@ -121,20 +137,30 @@ export const appConf = {
               {
                 x: a,
                 y: b,
+                line: {
+                  shape: 'spline',
+                  smoothing: 1,
+                },
               },
             ];
           },
           layout: {
-            type: 'scatter',
-            title: 'N<sub>cV</sub> as a function of &alpha;<sub>side</sub>',
+            title: '<b>N<sub>cV</sub> as a function of α<sub>side</sub></b>',
             xaxis: {
-              title: '&alpha;<sub>side</sub>',
+              title: 'α<sub>side</sub>',
             },
             yaxis: {
               title: 'N<sub>cV</sub>',
             },
+            titlefont: {
+              family: 'Roboto, sans-serif',
+              color: '#01579b',
+              size: 19,
+            },
           },
-          args: [],
+          args: ['alphaSide', 'NcV_alphaSide'],
+          addLines: true,
+          data: [],
         },
         kbsum: {
           dataFun(a, b) {
@@ -142,19 +168,30 @@ export const appConf = {
               {
                 x: a,
                 y: b,
+                line: {
+                  shape: 'spline',
+                  smoothing: 0.7,
+                },
               },
             ];
           },
           layout: {
-            type: 'scatter',
-            title: 'N<sub>cV</sub> as a function of kB/s<sub>um</sub>',
+            title: '<b>N<sub>cV</sub> as a function of kD/s<sub>um</sub></b>',
             xaxis: {
-              title: 'kB/s<sub>um</sub>',
+              title: 'kD/s<sub>um</sub>',
             },
             yaxis: {
               title: 'N<sub>cV</sub>',
             },
+            titlefont: {
+              family: 'Roboto, sans-serif',
+              color: '#01579b',
+              size: 19,
+            },
           },
+          args: [],
+          addLines: true,
+          data: ['kD', 'NcV_kD'],
         },
       },
     },
