@@ -11,13 +11,13 @@ export const appConf = {
       fields: {
         'Foundation Properties': {
           B_D: ['Select Foundation Shape', 'm', 'D or B'],
-          d: [10, 'm', 'd'],
+          d: [5, 'm', 'd'],
           alpha_base: [1, null, '&alpha;<sub>base</sub>(0-1)'],
           alpha_side: [0.1, null, '&alpha;<sub>side</sub>(0-1)'],
         },
         'Soil Properties': {
-          sum: [10, 'kPa', 's<sub>um</sub>'],
-          k: [10, 'kPa/m', 'k<sub>um</sub>'],
+          Sum: [10, 'kPa', 's<sub>um</sub>'],
+          K: [10, 'kPa/m', 'k<sub>um</sub>'],
         },
       },
       helpText: 'Helpful text!',
@@ -37,7 +37,7 @@ export const appConf = {
             },
             '': {
               dB_dD: [null, null, 'd/D (0&#45;1)'],
-              kappsu: [
+              kappa_su: [
                 null,
                 null,
                 '&varkappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)',
@@ -52,7 +52,7 @@ export const appConf = {
             },
             '': {
               dB_dD: [null, null, 'd/B (0&#45;1)'],
-              kappsu: [
+              kappa_su: [
                 null,
                 null,
                 '&varkappa;<sub>su</sub> = kB/s<sub>um</sub> (0&#45;200)',
@@ -69,7 +69,7 @@ export const appConf = {
         '': {
           dB_dD: ['Select Foundation Shape', null, 'd/(D or B) (0&#45;1)'],
           A: [null, 'm<sup>2</sup>sup>', 'A'],
-          kappsu: [
+          kappa_su: [
             'Select Foundation Shape',
             null,
             '&varkappa;<sub>su</sub> = k(D or B)/s<sub>um</sub> (0&#45;200)',
@@ -189,9 +189,9 @@ export const appConf = {
               size: 19,
             },
           },
-          args: [],
+          args: ['kD', 'NcV_kD'],
           addLines: true,
-          data: ['kD', 'NcV_kD'],
+          data: [],
         },
       },
     },
