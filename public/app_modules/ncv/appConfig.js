@@ -194,6 +194,10 @@ export const appConf = {
           data: [],
         },
       },
+      updateConf: {
+        noNewData: false,
+        clearData: false,
+      },
     },
   ],
 };

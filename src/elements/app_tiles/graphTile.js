@@ -43,11 +43,17 @@ class graphTile extends TileBase {
     Object.entries(this.appConf.plots).map(mapValue =>
       this.updateGraph(mapValue)
     );
+    this.appConf.updateConf.noNewData = false;
+    this.appConf.updateConf.clearData = false;
   }
 
   async updateGraph(mapValue) {
-    // error here with parameter reassignment FIX THIS
-    if (mapValue[1].addLines) {
+    if (this.appConf.updateConf.clearData) {
+      this.appConf.plots[mapValue[0]].data = [0];
+    }
+    if (this.appConf.updateConf.noNewData) {
+      // do nothing
+    } else if (mapValue[1].addLines) {
       this.appConf.plots[mapValue[0]].data = this.appConf.plots[
         mapValue[0]
       ].data.concat(

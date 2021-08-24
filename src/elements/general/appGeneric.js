@@ -61,30 +61,6 @@ export class AppGeneric extends StyledElement {
 
   updateComponents() {
     this.output = this.appCalc(this.appWebComponents);
-    // TODO: delete this in favour of doing this in the math files
-    // ~~ToDo: these loops take an object from the math output and map it to a tiles fields, these could be functions.~~
-    /* eslint-disable no-restricted-syntax */
-    /*
-    for (const [key, value] of Object.entries(this.output.derivedInputs)) {
-      this.appWebComponents.find(
-        element => element.type === 'derived-input-tile'
-      ).fields[key][0] = value;
-    }
-    for (const [keyOuter, valueOuter] of Object.entries(this.output.outputs)) {
-      for (const [keyInner, valueInner] of Object.entries(valueOuter)) {
-        this.appWebComponents.find(
-          element => element.type === 'output-tile'
-        ).fields[keyOuter][keyInner][0] = valueInner;
-      }
-    }
-    for (const [key, value] of Object.entries(this.output.graphData)) {
-      this.appWebComponents.find(
-        element => element.type === 'graph-tile'
-      ).fields[key] = value;
-    }
-    */
-    /* eslint-enable no-restricted-syntax */
-    // Launch new event to update child components
     this.childUpdate();
   }
 
@@ -136,6 +112,14 @@ export class AppGeneric extends StyledElement {
       }
     }
     /* eslint-enable no-restricted-syntax */
+
+    // If we are checking a radio then no new data is added so we disable replotting
+    const graphTileIndex = this.appWebComponents.findIndex(
+      element => element.type === 'graph-tile'
+    );
+    if (graphTileIndex !== -1) {
+      this.appWebComponents[graphTileIndex].updateConf.noNewData = true;
+    }
 
     // rerender all the app tiles to get new values
     this.childUpdate();
