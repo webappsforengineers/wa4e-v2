@@ -119,6 +119,7 @@ export class AppGeneric extends StyledElement {
     );
     if (graphTileIndex !== -1) {
       this.appWebComponents[graphTileIndex].updateConf.noNewData = true;
+      this.appWebComponents[graphTileIndex].updateConf.clearData = true;
     }
 
     // rerender all the app tiles to get new values

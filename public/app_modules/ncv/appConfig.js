@@ -4,6 +4,7 @@ export const appConf = {
   appPageTitle: 'N<sub>cV</sub> for Shallow Foundation',
   appDescription:
     'Undrained vertical bearing capacity of strip and circular skirted foundations',
+  appColour: '#a6d686',
   appWebComponents: [
     {
       type: 'input-tile',
@@ -42,6 +43,36 @@ export const appConf = {
                 null,
                 '&varkappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)',
               ],
+              A: [null, 'm<sup>2</sup>', 'A<sub>circular</sub>'],
+            },
+          },
+          plots: {
+            db: {
+              layout: {
+                title: '<b>N<sub>cV</sub> as a function of d/D</b>',
+                xaxis: {
+                  title: 'd/D',
+                },
+                titlefont: {
+                  family: 'Roboto, sans-serif',
+                  color: '#01579b',
+                  size: 19,
+                },
+              },
+            },
+            kbsum: {
+              layout: {
+                title:
+                  '<b>N<sub>cV</sub> as a function of kD/s<sub>um</sub></b>',
+                xaxis: {
+                  title: 'kD/s<sub>um</sub>',
+                },
+                titlefont: {
+                  family: 'Roboto, sans-serif',
+                  color: '#01579b',
+                  size: 19,
+                },
+              },
             },
           },
         },
@@ -57,6 +88,36 @@ export const appConf = {
                 null,
                 '&varkappa;<sub>su</sub> = kB/s<sub>um</sub> (0&#45;200)',
               ],
+              A: [null, 'm<sup>2</sup>/m', 'A<sub>strip</sub>'],
+            },
+          },
+          plots: {
+            db: {
+              layout: {
+                title: '<b>N<sub>cV</sub> as a function of d/B</b>',
+                xaxis: {
+                  title: 'd/B',
+                },
+                titlefont: {
+                  family: 'Roboto, sans-serif',
+                  color: '#01579b',
+                  size: 19,
+                },
+              },
+            },
+            kbsum: {
+              layout: {
+                title:
+                  '<b>N<sub>cV</sub> as a function of kB/s<sub>um</sub></b>',
+                xaxis: {
+                  title: 'kB/s<sub>um</sub>',
+                },
+                titlefont: {
+                  family: 'Roboto, sans-serif',
+                  color: '#01579b',
+                  size: 19,
+                },
+              },
             },
           },
         },
@@ -68,7 +129,7 @@ export const appConf = {
       fields: {
         '': {
           dB_dD: ['Select Foundation Shape', null, 'd/(D or B) (0&#45;1)'],
-          A: [null, 'm<sup>2</sup>sup>', 'A'],
+          A: ['Select Foundation Shape', null, null],
           kappa_su: [
             'Select Foundation Shape',
             null,
@@ -114,7 +175,7 @@ export const appConf = {
             ];
           },
           layout: {
-            title: '<b>N<sub>cV</sub> as a function of d/D</b>',
+            title: '<b>N<sub>cV</sub> as a function of d/B</b>',
             xaxis: {
               title: 'd/B',
             },
@@ -176,9 +237,9 @@ export const appConf = {
             ];
           },
           layout: {
-            title: '<b>N<sub>cV</sub> as a function of kD/s<sub>um</sub></b>',
+            title: '<b>N<sub>cV</sub> as a function of kB/s<sub>um</sub></b>',
             xaxis: {
-              title: 'kD/s<sub>um</sub>',
+              title: 'kB/s<sub>um</sub>',
             },
             yaxis: {
               title: 'N<sub>cV</sub>',

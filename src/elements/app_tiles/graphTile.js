@@ -49,7 +49,7 @@ class graphTile extends TileBase {
 
   async updateGraph(mapValue) {
     if (this.appConf.updateConf.clearData) {
-      this.appConf.plots[mapValue[0]].data = [0];
+      this.appConf.plots[mapValue[0]].data = [];
     }
     if (this.appConf.updateConf.noNewData) {
       // do nothing
