@@ -1,46 +1,288 @@
 export const appConf = {
-  "appName": "pinpiles",
-  "appTitle": "Mudmat & Hybrid Mudmat VH2M2T",
-  "appPageTitle": "",
-  "appDescription": "Undrained 6 DoF capacity of rectangular skirted mudmat and pinpiled mudmats",
-  "appWebComponents": {
-    "aComponent": {
-      "type": "input",
-      "size": {
-        "x": 1,
-        "y": 4
-      },
-      "position": {
-        "x": 0,
-        "y": 0
-      },
-      "fields": {
-        "aSubsection": {
-          "Mass": "kg",
-          "Volume": "m3",
-          "ratio": ""
+  appName: 'pinpiles',
+  appTitle: 'Mudmat & Hybrid Mudmat VH<sub>2</sub>M<sub>2</sub>T',
+  appPageTitle: 'Hybrid Mudmat VH<sub>2</sub>M<sub>2</sub>T',
+  appDescription:
+    'Undrained 6 DoF capacity of rectangular skirted mudmat and pinpiled mudmats',
+  appColour: '#698ef1',
+  appWebComponents: [
+    {
+      type: 'input-tile',
+      title: 'Input',
+      fields: {
+        'Characteristic Soil Shear Strength': {
+          s_um: [0.5, 'kPa', 's<sub>um</sub>'],
+          k: [1, 'kPa/m', 'k'],
+          gam_dash: [5, 'kN/m<sup>3</sup>', '&gamma;&#39;<sub>avg</sub>'],
         },
-        "bSubsection": {
-          "thing": "unit"
-        }
+        'Characteristic Loads and Eccentricities': {
+          V_c: [600, 'kN', 'V<sub>p</sub>'],
+          e_xV: [0, 'm', 'e<sub>xV</sub>'],
+          e_yV: [0, 'm', 'e<sub>yV</sub>'],
+          H_xc: [50, 'kN', 'H<sub>xc</sub>'],
+          e_yHx: [2, 'm', 'e<sub>yHx</sub>'],
+          e_zHx: [5, 'm', 'e<sub>zHx</sub>'],
+          H_yc: [90, 'kN', 'H<sub>yc</sub>'],
+          e_xHy: [3, 'm', 'e<sub>xHy</sub>'],
+          e_zHy: [5, 'm', 'e<sub>zHy</sub>'],
+        },
+        'Relative Loads Taken By Piles': {
+          beta_pV: ['Select Foundation', null, '&beta;<sub>pV</sub>'],
+          beta_pH: ['Select Foundation', null, '&beta;<sub>pH</sub>'],
+          beta_pM: ['Select Foundation', null, '&beta;<sub>pM</sub>'],
+        },
+        'Load and Material Factors (&#8805;1)': {
+          lambda_V: [1.1, null, '&lambda;<sub>V</sub>'],
+          lambda_H: [1.35, null, '&lambda;<sub>H</sub>'],
+          lambda_s: [1.25, null, '&lambda;<sub>s</sub>'],
+        },
+        'Mudmat Geometry': {
+          B: [7.5, 'm', 'B'],
+          BoverL: [0.5, null, 'B/L'],
+          doverB: [0.081, null, 'd<sub>skirt</sub>/B (0-0.3)'],
+        },
+        'Skirt-soil Interaction': {
+          alpha_skirt: [1, null, '&alpha;<sub>skirt</sub>'],
+        },
+        'Pile Group, Geometry': {
+          D_pile: [0.9, 'm', 'D<sub>pile</sub>'],
+          W_pile: [40, 'kN', 'W<sub>pile</sub>'],
+          B_piles: [4, 'm', 'B<sub>piles</sub> (0-9.10)'],
+          L_piles: [9, null, 'L<sub>piles</sub> (0-19.10)'],
+          L_embed: [9, 'm', 'L<sub>embed</sub>'],
+          d_shadow_over_d: [1, null, 'd<sub>shadow</sub>/d<sub>skirt</sub>'],
+        },
+        'Pile-soil Interaction': {
+          alpha_piles: [1, null, '&alpha;<sub>piles</sub>'],
+          Nc_piles: [9, null, 'N<sub>c,piles</sub>'],
+          f_end_t: [0, null, 'f<sub>end,t</sub>'],
+        },
       },
-      "buttons": {
-        "SUBMIT": "green",
-        "RESET": "",
-        "HELP": ""
-      }
+      helpText: 'Helpful text!',
     },
-    "bComponent": {
-      "type": "Image",
-      "size": {
-        "x": 2,
-        "y": 2
+    {
+      type: 'radio-tile',
+      title: 'Foundation',
+      options: {
+        'Mudmat Foundation Only': '',
+        'Pile Group Only': '',
+        'Hybrid Piled Mudmat': '',
       },
-      "position": {
-        "x": 0,
-        "y": 4
+      onChange: {
+        'Mudmat Foundation Only': {
+          fields: {
+            'Relative Loads Taken By Piles': {
+              beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],
+              beta_pH: [0.776, null, '&beta;<sub>pH</sub>'],
+              beta_pM: [0.478, null, '&beta;<sub>pM</sub>'],
+            },
+          },
+        },
+        'Pile Group Only': {
+          fields: {
+            'Relative Loads Taken By Piles': {
+              beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],
+              beta_pH: [0.776, null, '&beta;<sub>pH</sub>'],
+              beta_pM: [0.478, null, '&beta;<sub>pM</sub>'],
+            },
+          },
+        },
+        'Hybrid Piled Mudmat': {
+          fields: {
+            'Relative Loads Taken By Piles': {
+              beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],
+              beta_pH: [0.747, null, '&beta;<sub>pH</sub>'],
+              beta_pM: [0.287, null, '&beta;<sub>pM</sub>'],
+            },
+          },
+        },
       },
-      "imgPath": "./pinpiles.png"
-    }
-  }
-}
+    },
+    {
+      type: 'derived-input-tile',
+      title: 'Derived Input',
+      fields: {
+        Mat: {
+          L: [null, 'm', 'L'],
+          d_skirt: [null, 'm', 'd<sub>skirt</sub>'],
+          A: [null, 'm<sup>2</sup>', 'A'],
+          s_u0: [null, 'kPa', 's<sub>u0</sub>'],
+          kappa: [null, null, '&kappa;(0-10)'],
+        },
+        'Design Loads': {
+          V: [null, 'kN', 'V'],
+          H_x: [null, 'kN', 'H<sub>x</sub>'],
+          H_y: [null, 'kN', 'H<sub>y</sub>'],
+          H: [null, 'kN', 'H'],
+          theta: [null, 'rads', '&theta;'],
+          theta_degrees: [null, 'degs', '&theta;'],
+          M_x: [null, 'kNm', 'M<sub>x</sub>'],
+          M_y: [null, 'kNm', 'M<sub>y</sub>'],
+          M: [null, 'kNm', 'M'],
+          theta_M: [null, 'rads', '&theta;<sub>M</sub>'],
+          theta_M_degrees: [null, 'degs', '&theta;<sub>M</sub>'],
+          T: [null, 'kNm', 'T'],
+        },
+        Pile: {
+          L_embed_overB_piles: [
+            null,
+            null,
+            'L<sub>embed</sub>/B<sub>piles</sub>',
+          ],
+          d_shadow: [null, 'm', 'd<sub>shadow</sub>'],
+          theta_piles: [null, 'rads', '&theta;<sub>piles</sub>'],
+          theta_piles_degs: [null, 'rads', '&theta;<sub>piles</sub>'],
+          s_u_pavg: [null, 'kPa', 's<sub>u,pagv</sub>'],
+          s_u_ptip: [null, 'kPa', 's<sub>u,ptip</sub>'],
+        },
+        'Mudmat Share': {
+          V: [null, 'kN', 'V'],
+          H_x: [null, 'kN', 'H<sub>x</sub>'],
+          H_y: [null, 'kN', 'H<sub>y</sub>'],
+          H: [null, 'kN', 'H'],
+          M_x: [null, 'kNm', 'M<sub>x</sub>'],
+          M_y: [null, 'kNm', 'M<sub>y</sub>'],
+          M: [null, 'kNm', 'M'],
+          T: [null, 'kNm', 'T'],
+        },
+        'Pile Group Share': {
+          V: [null, 'kN', 'V'],
+          H_x: [null, 'kN', 'H<sub>x</sub>'],
+          H_y: [null, 'kN', 'H<sub>y</sub>'],
+          H: [null, 'kN', 'H'],
+          M_x: [null, 'kNm', 'M<sub>x</sub>'],
+          M_y: [null, 'kNm', 'M<sub>y</sub>'],
+          M: [null, 'kNm', 'M'],
+          T: [null, 'kNm', 'T'],
+        },
+      },
+    },
+    {
+      type: 'graph-tile',
+      fields: {
+        zt_H: null,
+        zt_M: null,
+        T_H: null,
+        T_M: null,
+        H_m: null,
+        M_m: null,
+        t0_H: null,
+        t0_M: null,
+        tn0_H: null,
+        tn0_M: null,
+        H_p: null,
+        M_p: null,
+      },
+      plots: {
+        mudmatDesign: {
+          dataFun(a, b, c, d, e, f) {
+            return [
+              {
+                x: a,
+                y: b,
+                name: 'Zero Torque',
+                type: 'scatter',
+              },
+              {
+                x: c,
+                y: d,
+                name: `T = ${Number(d).toFixed(1)} kNm`,
+                type: 'scatter',
+              },
+              {
+                x: [e],
+                y: [f],
+                name: 'Design - Mudmat',
+                type: 'scatter',
+                marker: {
+                  symbol: 'diamond',
+                  size: 12,
+                  color: '#01579b',
+                },
+              },
+            ];
+          },
+          layout: {
+            title: '<b>Mudmat Design</b>',
+            titlefont: {
+              family: 'Roboto, sans-serif',
+              color: '#01579b',
+              size: 19,
+            },
+            xaxis: {
+              title: 'Resultant horizontal load, H<sub>mudmat</sub> (kN)',
+            },
+            yaxis: {
+              title: 'Resultant moment (kNm)',
+            },
+            showlegend: true,
+            legend: {
+              yanchor: 'top',
+              x: 0,
+              y: 2.1,
+            },
+          },
+          args: ['zt_H', 'zt_M', 'T_H', 'T_M', 'H_m', 'M_m'],
+          addLines: false,
+          data: [],
+        },
+        inSituUndrainedStresses: {
+          dataFun(a, b, c, d, e, f) {
+            return [
+              {
+                x: a,
+                y: b,
+                name: 'T = 0',
+                type: 'scatter',
+              },
+              {
+                x: c,
+                y: d,
+                name: 'T != 0',
+                type: 'scatter',
+              },
+              {
+                x: [e],
+                y: [f],
+                name: 'Design - Piles',
+                type: 'scatter',
+                marker: {
+                  symbol: 'diamond',
+                  size: 12,
+                  color: '#01579b',
+                },
+              },
+            ];
+          },
+          layout: {
+            title: '<b>Pile Group Design</b>',
+            titlefont: {
+              family: 'Roboto, sans-serif',
+              color: '#01579b',
+              size: 19,
+            },
+            xaxis: {
+              title: 'Resultant horizontal load, H<sub>piles</sub> (kN)',
+            },
+            yaxis: {
+              title: 'Resultant moment (kNm)',
+            },
+            showlegend: true,
+            legend: {
+              yanchor: 'top',
+              x: 0,
+              y: 2.1,
+            },
+          },
+          args: ['t0_H', 't0_M', 'tn0_H', 'tn0_M', 'H_p', 'M_p'],
+          addLines: false,
+          data: [],
+        },
+      },
+      updateConf: {
+        noNewData: false,
+        clearData: false,
+      },
+    },
+  ],
+};
