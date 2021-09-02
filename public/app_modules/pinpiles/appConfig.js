@@ -61,44 +61,6 @@ export const appConf = {
       helpText: 'Helpful text!',
     },
     {
-      type: 'radio-tile',
-      title: 'Foundation',
-      options: {
-        'Mudmat Foundation Only': '',
-        'Pile Group Only': '',
-        'Hybrid Piled Mudmat': '',
-      },
-      onChange: {
-        'Mudmat Foundation Only': {
-          fields: {
-            'Relative Loads Taken By Piles': {
-              beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],
-              beta_pH: [0.776, null, '&beta;<sub>pH</sub>'],
-              beta_pM: [0.478, null, '&beta;<sub>pM</sub>'],
-            },
-          },
-        },
-        'Pile Group Only': {
-          fields: {
-            'Relative Loads Taken By Piles': {
-              beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],
-              beta_pH: [0.776, null, '&beta;<sub>pH</sub>'],
-              beta_pM: [0.478, null, '&beta;<sub>pM</sub>'],
-            },
-          },
-        },
-        'Hybrid Piled Mudmat': {
-          fields: {
-            'Relative Loads Taken By Piles': {
-              beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],
-              beta_pH: [0.747, null, '&beta;<sub>pH</sub>'],
-              beta_pM: [0.287, null, '&beta;<sub>pM</sub>'],
-            },
-          },
-        },
-      },
-    },
-    {
       type: 'derived-input-tile',
       title: 'Derived Input',
       fields: {
@@ -290,5 +252,63 @@ export const appConf = {
       img_w: '370px',
       img_h: '356px',
     },
+    {
+      type: 'radio-tile',
+      title: 'Foundation',
+      options: {
+        'Mudmat Foundation Only': '',
+        'Pile Group Only': '',
+        'Hybrid Piled Mudmat': '',
+      },
+      onChange: {
+        'Mudmat Foundation Only': {
+          fields: {
+            'Relative Loads Taken By Piles': {
+              beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],
+              beta_pH: [0.776, null, '&beta;<sub>pH</sub>'],
+              beta_pM: [0.478, null, '&beta;<sub>pM</sub>'],
+            },
+          },
+        },
+        'Pile Group Only': {
+          fields: {
+            'Relative Loads Taken By Piles': {
+              beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],
+              beta_pH: [0.776, null, '&beta;<sub>pH</sub>'],
+              beta_pM: [0.478, null, '&beta;<sub>pM</sub>'],
+            },
+          },
+        },
+        'Hybrid Piled Mudmat': {
+          fields: {
+            'Relative Loads Taken By Piles': {
+              beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],
+              beta_pH: [0.747, null, '&beta;<sub>pH</sub>'],
+              beta_pM: [0.287, null, '&beta;<sub>pM</sub>'],
+            },
+          },
+        },
+      },
+    },
+    {
+      type: 'optimization-tile',
+      title: 'Optimization',
+      fields: {
+        "": {
+          SMClessTotal: [0, 'kNM', "SMC - Total"],
+          Threshold: [1, null, "Threshold"],
+          Solution: [null, null, "Solution"],
+          solution_beta_pV: [null, null, '&beta;<sub>pV</sub>'],
+          solution_beta_pH: [null, null, '&beta;<sub>pH</sub>'],
+          solution_beta_pM: [null, null, '&beta;<sub>pM</sub>'],
+        }
+      },
+      options: {
+        BOption: [null, "B"],
+        doverBOption: [null, "d<sub>skirt</sub>/B"],
+        lambda_HOption: [null, "&lambda;<sub>H</sub>"],
+        lambda_sOption: [null, "&lambda;<sub>s</sub>"],
+      }
+    }
   ],
 };

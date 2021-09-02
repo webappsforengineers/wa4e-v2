@@ -7,3 +7,4 @@ import './app_tiles/imageTile.js';
 import './app_tiles/outputForm.js';
 import './app_tiles/graphTile.js';
 import './app_tiles/radioTile.js';
+import './app_tiles/optimizationTile.js';

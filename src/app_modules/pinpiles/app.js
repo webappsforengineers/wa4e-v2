@@ -1,5 +1,6 @@
 import { pinpilesConf as appConf } from '../moduleConf.js';
 import { calculatePinpiles as appCalc } from '../../local_modules/wa4e-math.js';
+import { optimisePinpiles as appOptimize} from '../../local_modules/wa4e-math.js';
 import { AppGeneric } from '../../elements/general/appGeneric';
 import '../../elements/myElements.js';
 

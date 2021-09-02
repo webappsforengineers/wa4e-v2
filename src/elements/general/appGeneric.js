@@ -69,6 +69,7 @@ export class AppGeneric extends StyledElement {
     // TODO: Fix this
   }
 
+  // This is called to launch a reload event in any subtiles
   childUpdate() {
     const myEvent = new CustomEvent('update-children', {
       bubbles: true,
@@ -124,6 +125,11 @@ export class AppGeneric extends StyledElement {
 
     // rerender all the app tiles to get new values
     this.childUpdate();
+  }
+
+  optimize() {
+    this.output = this.appOptimize(this.appWebComponents)
+    this.childUpdate()
   }
 
   /* eslint-disable no-nested-ternary */
@@ -228,6 +234,20 @@ export class AppGeneric extends StyledElement {
                         this.modifyForm(e.detail);
                       }}"
                     ></radio-tile>
+                  </div>
+                </div>`
+                : component.type === 'radio-tile'
+                ? html`<div class="col-md-auto mb-4">
+                  <div class="card mx-auto p-1">
+                    <optimization-tile
+                      .appConf=${this.appWebComponents[index]}
+                      @loaded="${() => {
+                                this.reloadMasonry();
+                              }}"
+                      @optimize="${e => {
+                                this.optimize(e.detail);
+                              }}"
+                    ></optimization-tile>
                   </div>
                 </div>`
               : html`<p>Component ${component.type} Not Recognised</p>`}
