@@ -1,6 +1,9 @@
 import { pinpilesConf as appConf } from '../moduleConf.js';
-import { calculatePinpiles as appCalc } from '../../local_modules/wa4e-math.js';
-import { optimisePinpiles as appOptimize} from '../../local_modules/wa4e-math.js';
+import {
+  calculatePinpiles as appCalc,
+  optimizePinpiles as appOptimize,
+} from '../../local_modules/wa4e-math.js';
+
 import { AppGeneric } from '../../elements/general/appGeneric';
 import '../../elements/myElements.js';
 
@@ -13,6 +16,7 @@ export class App extends AppGeneric {
     this.output = {};
     this.appTiles = this.makeAppTiles();
     this.appCalc = appCalc;
+    this.appOptimize = appOptimize;
   }
 }
 

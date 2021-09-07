@@ -128,8 +128,8 @@ export class AppGeneric extends StyledElement {
   }
 
   optimize() {
-    this.output = this.appOptimize(this.appWebComponents)
-    this.childUpdate()
+    this.output = this.appOptimize(this.appWebComponents);
+    this.childUpdate();
   }
 
   /* eslint-disable no-nested-ternary */
@@ -236,17 +236,20 @@ export class AppGeneric extends StyledElement {
                     ></radio-tile>
                   </div>
                 </div>`
-                : component.type === 'radio-tile'
-                ? html`<div class="col-md-auto mb-4">
+              : component.type === 'optimization-tile'
+              ? html`<div class="col-md-auto mb-4">
                   <div class="card mx-auto p-1">
                     <optimization-tile
                       .appConf=${this.appWebComponents[index]}
                       @loaded="${() => {
-                                this.reloadMasonry();
-                              }}"
+                        this.reloadMasonry();
+                      }}"
                       @optimize="${e => {
-                                this.optimize(e.detail);
-                              }}"
+                        this.optimize(e.detail);
+                      }}"
+                      @clear="${() => {
+                        this.childUpdate();
+                      }}"
                     ></optimization-tile>
                   </div>
                 </div>`

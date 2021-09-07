@@ -47,8 +47,8 @@ export const appConf = {
         'Pile Group, Geometry': {
           D_pile: [0.9, 'm', 'D<sub>pile</sub>'],
           W_pile: [40, 'kN', 'W<sub>pile</sub>'],
-          B_piles: [4, 'm', 'B<sub>piles</sub> (0-9.10)'],
-          L_piles: [9, null, 'L<sub>piles</sub> (0-19.10)'],
+          B_piles: [6, 'm', 'B<sub>piles</sub> (0-9.10)'],
+          L_piles: [13, null, 'L<sub>piles</sub> (0-19.10)'],
           L_embed: [9, 'm', 'L<sub>embed</sub>'],
           d_shadow_over_d: [1, null, 'd<sub>shadow</sub>/d<sub>skirt</sub>'],
         },
@@ -294,21 +294,21 @@ export const appConf = {
       type: 'optimization-tile',
       title: 'Optimization',
       fields: {
-        "": {
-          SMClessTotal: [0, 'kNM', "SMC - Total"],
-          Threshold: [1, null, "Threshold"],
-          Solution: [null, null, "Solution"],
+        '': {
+          SMClessTotal: [0, 'kNM', 'SMC - Total'],
+          Threshold: [1, null, 'Threshold'],
+          Solution: [null, null, 'Solution'],
           solution_beta_pV: [null, null, '&beta;<sub>pV</sub>'],
           solution_beta_pH: [null, null, '&beta;<sub>pH</sub>'],
           solution_beta_pM: [null, null, '&beta;<sub>pM</sub>'],
-        }
+        },
       },
       options: {
-        BOption: [null, "B"],
-        doverBOption: [null, "d<sub>skirt</sub>/B"],
-        lambda_HOption: [null, "&lambda;<sub>H</sub>"],
-        lambda_sOption: [null, "&lambda;<sub>s</sub>"],
-      }
-    }
+        BOption: [null, 'B'],
+        doverBOption: [null, 'd<sub>skirt</sub>/B'],
+        lambda_HOption: [null, '&lambda;<sub>H</sub>'],
+        lambda_sOption: [null, '&lambda;<sub>s</sub>'],
+      },
+    },
   ],
 };
