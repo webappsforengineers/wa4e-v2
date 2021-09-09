@@ -58,6 +58,48 @@ export const appConf = {
           f_end_t: [0, null, 'f<sub>end,t</sub>'],
         },
       },
+      subComponents: [
+        {
+          type: 'radio-tile',
+          index: 4,
+          position: 'beforeTitle',
+          title: 'Foundation',
+          options: {
+            'Mudmat Foundation Only': '',
+            'Pile Group Only': '',
+            'Hybrid Piled Mudmat': '',
+          },
+          onChange: {
+            'Mudmat Foundation Only': {
+              fields: {
+                'Relative Loads Taken By Piles': {
+                  beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],
+                  beta_pH: [0.776, null, '&beta;<sub>pH</sub>'],
+                  beta_pM: [0.478, null, '&beta;<sub>pM</sub>'],
+                },
+              },
+            },
+            'Pile Group Only': {
+              fields: {
+                'Relative Loads Taken By Piles': {
+                  beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],
+                  beta_pH: [0.776, null, '&beta;<sub>pH</sub>'],
+                  beta_pM: [0.478, null, '&beta;<sub>pM</sub>'],
+                },
+              },
+            },
+            'Hybrid Piled Mudmat': {
+              fields: {
+                'Relative Loads Taken By Piles': {
+                  beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],
+                  beta_pH: [0.747, null, '&beta;<sub>pH</sub>'],
+                  beta_pM: [0.287, null, '&beta;<sub>pM</sub>'],
+                },
+              },
+            },
+          },
+        },
+      ],
       helpText: 'Helpful text!',
     },
     {
@@ -134,10 +176,12 @@ export const appConf = {
         tn0_M: null,
         H_p: null,
         M_p: null,
+        mudMatTlabel: 0,
+        pileGroupTlabel: 0,
       },
       plots: {
         mudmatDesign: {
-          dataFun(a, b, c, d, e, f) {
+          dataFun(a, b, c, d, e, f, label) {
             return [
               {
                 x: a,
@@ -148,7 +192,7 @@ export const appConf = {
               {
                 x: c,
                 y: d,
-                name: `T = ${Number(d).toFixed(1)} kNm`,
+                name: `T = ${Number(label).toFixed(1)} kNm`,
                 type: 'scatter',
               },
               {
@@ -184,12 +228,12 @@ export const appConf = {
               y: 2.1,
             },
           },
-          args: ['zt_H', 'zt_M', 'T_H', 'T_M', 'H_m', 'M_m'],
+          args: ['zt_H', 'zt_M', 'T_H', 'T_M', 'H_m', 'M_m', 'mudMatTlabel'],
           addLines: false,
           data: [],
         },
         inSituUndrainedStresses: {
-          dataFun(a, b, c, d, e, f) {
+          dataFun(a, b, c, d, e, f, label) {
             return [
               {
                 x: a,
@@ -200,7 +244,7 @@ export const appConf = {
               {
                 x: c,
                 y: d,
-                name: 'T != 0',
+                name: `T = ${Number(label).toFixed(1)} BH`,
                 type: 'scatter',
               },
               {
@@ -236,7 +280,15 @@ export const appConf = {
               y: 2.1,
             },
           },
-          args: ['t0_H', 't0_M', 'tn0_H', 'tn0_M', 'H_p', 'M_p'],
+          args: [
+            't0_H',
+            't0_M',
+            'tn0_H',
+            'tn0_M',
+            'H_p',
+            'M_p',
+            'pileGroupTlabel',
+          ],
           addLines: false,
           data: [],
         },
@@ -251,44 +303,6 @@ export const appConf = {
       img_pth: 'pinpiles-figure.png',
       img_w: '370px',
       img_h: '356px',
-    },
-    {
-      type: 'radio-tile',
-      title: 'Foundation',
-      options: {
-        'Mudmat Foundation Only': '',
-        'Pile Group Only': '',
-        'Hybrid Piled Mudmat': '',
-      },
-      onChange: {
-        'Mudmat Foundation Only': {
-          fields: {
-            'Relative Loads Taken By Piles': {
-              beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],
-              beta_pH: [0.776, null, '&beta;<sub>pH</sub>'],
-              beta_pM: [0.478, null, '&beta;<sub>pM</sub>'],
-            },
-          },
-        },
-        'Pile Group Only': {
-          fields: {
-            'Relative Loads Taken By Piles': {
-              beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],
-              beta_pH: [0.776, null, '&beta;<sub>pH</sub>'],
-              beta_pM: [0.478, null, '&beta;<sub>pM</sub>'],
-            },
-          },
-        },
-        'Hybrid Piled Mudmat': {
-          fields: {
-            'Relative Loads Taken By Piles': {
-              beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],
-              beta_pH: [0.747, null, '&beta;<sub>pH</sub>'],
-              beta_pM: [0.287, null, '&beta;<sub>pM</sub>'],
-            },
-          },
-        },
-      },
     },
     {
       type: 'optimization-tile',

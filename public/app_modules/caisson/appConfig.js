@@ -27,6 +27,7 @@ export const appConf = {
           gamma: [6, 'kN/m<sup>3</sup>', '&gamma;&#39;'],
         },
       },
+      subComponents: [],
       helpText: 'Helpful text!',
     },
     {

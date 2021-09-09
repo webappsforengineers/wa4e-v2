@@ -32,6 +32,7 @@ export const appConf = {
           offset: [6.2, 'm', 'offset'],
         },
       },
+      subComponents: [],
       helpText: 'Helpful text!',
     },
     {

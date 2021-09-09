@@ -36,6 +36,7 @@ export const appConf = {
           fsu: [0.45, null, 'f<sub>su</sub>'],
         },
       },
+      subComponents: [],
       helpText: 'Helpful text!',
     },
     {

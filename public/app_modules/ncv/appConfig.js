@@ -21,6 +21,7 @@ export const appConf = {
           K: [10, 'kPa/m', 'k<sub>um</sub>'],
         },
       },
+      subComponents: [],
       helpText: 'Helpful text!',
     },
     {

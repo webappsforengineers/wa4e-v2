@@ -22,6 +22,7 @@ export const appConf = {
           depth_of_interest: [10, 'm', 'DoI'],
         },
       },
+      subComponents: [],
       helpText: 'Helpful text!',
     },
     {
