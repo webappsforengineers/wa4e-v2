@@ -6,7 +6,7 @@ class inputTile extends TileBase {
   render() {
     this.formFields = this.appConf.fields;
     this.subComponents = this.appConf.subComponents;
-    this.input_fields = this.makeNestedCallbackFields();
+    this.input_fields = this.arrangeFields();
 
     return [
       super.render(),
@@ -43,122 +43,42 @@ class inputTile extends TileBase {
     ];
   }
 
-  makeNestedCallbackFields() {
+  arrangeFields() {
     return html`${Object.keys(this.formFields).map((keyOuter, index) => {
       const subComponent = this.subComponents.find(
         element => element.index === index
       );
       let htmlReturn = html``;
       if (typeof subComponent === 'undefined') {
-        htmlReturn = html` <h3>${keyOuter}</h3>
-          ${Object.keys(this.appConf.fields[`${keyOuter}`]).map(
-            key =>
-              html` <div class="input-group">
-                <span
-                  class="input-group-text col-auto text-wrap text-break"
-                  for="${key}"
-                  style="width: 25%; text-align: right;"
-                  >${html([this.appConf.fields[keyOuter][key][2]])}</span
-                >
-                <input
-                  class="form-control"
-                  id="${key}"
-                  .value="${this.appConf.fields[keyOuter][key][0]}"
-                  @change=${e => {
-                    this.appConf.fields[keyOuter][key][0] = Number(
-                      e.target.value
-                    );
-                  }}
-                />
-                <span
-                  class="input-group-text col-auto text-wrap text-break"
-                  for="${key}"
-                  style="width: 20%; text-align: left;"
-                  >${html([this.appConf.fields[keyOuter][key][1]])}</span
-                >
-              </div>`
-          )}`;
-      } else {
         htmlReturn = html`
-          ${subComponent.position === 'beforeTitle'
-            ? html`${this.makeSubComponent(index)}
-                <h3>${keyOuter}</h3>`
-            : html`<h3>${keyOuter}</h3>`}${subComponent.position ===
-          'afterTitle'
-            ? html`${this.makeSubComponent(index)}`
-            : html` ${Object.keys(this.appConf.fields[`${keyOuter}`]).map(
-                key =>
-                  html`<div class="input-group">
-                    <span
-                      class="input-group-text col-auto text-wrap text-break"
-                      for="${key}"
-                      style="width: 25%; text-align: right;"
-                      >${html([this.appConf.fields[keyOuter][key][2]])}</span
-                    >
-                    <input
-                      class="form-control"
-                      id="${key}"
-                      .value="${this.appConf.fields[keyOuter][key][0]}"
-                      @change=${e => {
-                        this.appConf.fields[keyOuter][key][0] = Number(
-                          e.target.value
-                        );
-                      }}
-                    />
-                    <span
-                      class="input-group-text col-auto text-wrap text-break"
-                      for="${key}"
-                      style="width: 20%; text-align: left;"
-                      >${html([this.appConf.fields[keyOuter][key][1]])}</span
-                    >
-                  </div>`
-              )}`}${subComponent.position === 'end'
-            ? html`${this.makeSubComponent(index)}`
-            : html` ${Object.keys(this.appConf.fields[`${keyOuter}`]).map(
-                key =>
-                  html`<div class="input-group">
-                    <span
-                      class="input-group-text col-auto text-wrap text-break"
-                      for="${key}"
-                      style="width: 25%; text-align: right;"
-                      >${html([this.appConf.fields[keyOuter][key][2]])}</span
-                    >
-                    <input
-                      class="form-control"
-                      id="${key}"
-                      .value="${this.appConf.fields[keyOuter][key][0]}"
-                      @change=${e => {
-                        this.appConf.fields[keyOuter][key][0] = Number(
-                          e.target.value
-                        );
-                      }}
-                    />
-                    <span
-                      class="input-group-text col-auto text-wrap text-break"
-                      for="${key}"
-                      style="width: 20%; text-align: left;"
-                      >${html([this.appConf.fields[keyOuter][key][1]])}</span
-                    >
-                  </div>`
-              )}`}
+          <h3>${keyOuter}</h3>
+          ${this.makeNestedCallbackFields(keyOuter)}
         `;
+      } else {
+        /* eslint-disable no-nested-ternary */
+        htmlReturn = html` ${subComponent.position === 'beforeTitle'
+          ? html`
+              ${this.makeSubComponent(index)}
+              <h3>${keyOuter}</h3>
+              ${this.makeNestedCallbackFields(keyOuter)}
+            `
+          : subComponent.position === 'afterTitle'
+          ? html`
+              <h3>${keyOuter}</h3>
+              ${this.makeSubComponent(index)}
+              ${this.makeNestedCallbackFields(keyOuter)}
+            `
+          : subComponent.position === 'afterContent'
+          ? html`
+              <h3>${keyOuter}</h3>
+              ${this.makeSubComponent(index)}
+              ${this.makeNestedCallbackFields(keyOuter)}
+            `
+          : html`<p>SubComponentPositionUndefined</p>`}`;
+        /* eslint-enable no-nested-ternary */
       }
       return htmlReturn;
     })}`;
-  }
-
-  makeSubComponent(index) {
-    // Currently this only supportsd radio tiles but other subcomponent tile
-    // classes can be added using the same structure as found in appGeneric
-    const component = this.subComponents.find(
-      element => element.index === index
-    );
-    const subcomponentHTML = html` ${component.type === 'radio-tile'
-      ? html`<div class="card mx-auto p-1">
-          <radio-tile .appConf=${component}></radio-tile>
-        </div>`
-      : html`<p>Component ${component.type} Not Recognised</p>`}`;
-    return html`${subcomponentHTML}`;
   }
 
   appUpdate() {

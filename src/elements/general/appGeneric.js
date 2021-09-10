@@ -154,6 +154,9 @@ export class AppGeneric extends StyledElement {
                     @modifyForm="${e => {
                       this.modifyForm(e.detail);
                     }}"
+                    @clear="${() => {
+                      this.childUpdate();
+                    }}"
                   ></input-tile>
                 </div>
               </div>`
@@ -248,6 +251,9 @@ export class AppGeneric extends StyledElement {
                     }}"
                     @clear="${() => {
                       this.childUpdate();
+                    }}"
+                    @modifyForm="${e => {
+                      this.modifyForm(e.detail);
                     }}"
                   ></optimization-tile>
                 </div>

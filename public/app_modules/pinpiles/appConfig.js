@@ -65,9 +65,9 @@ export const appConf = {
           position: 'beforeTitle',
           title: 'Foundation',
           options: {
-            'Mudmat Foundation Only': '',
-            'Pile Group Only': '',
-            'Hybrid Piled Mudmat': '',
+            mudmatFoundationOnly: [null, 'Mudmat Foundation Only'],
+            pileGroupOnly: [null, 'Pile Group Only'],
+            hybridPiledMudmat: [null, 'Hybrid Piled Mudmat'],
           },
           onChange: {
             'Mudmat Foundation Only': {
@@ -98,6 +98,7 @@ export const appConf = {
               },
             },
           },
+          modifyOnClick: true,
         },
       ],
       helpText: 'Helpful text!',
@@ -317,12 +318,21 @@ export const appConf = {
           solution_beta_pM: [null, null, '&beta;<sub>pM</sub>'],
         },
       },
-      options: {
-        BOption: [null, 'B'],
-        doverBOption: [null, 'd<sub>skirt</sub>/B'],
-        lambda_HOption: [null, '&lambda;<sub>H</sub>'],
-        lambda_sOption: [null, '&lambda;<sub>s</sub>'],
-      },
+      subComponents: [
+        {
+          type: 'radio-tile',
+          index: 0,
+          position: 'afterTitle',
+          title: 'Using Input',
+          options: {
+            BOption: [null, 'B'],
+            doverBOption: [null, 'd<sub>skirt</sub>/B'],
+            lambda_HOption: [null, '&lambda;<sub>H</sub>'],
+            lambda_sOption: [null, '&lambda;<sub>s</sub>'],
+          },
+          clearOnClick: true,
+        },
+      ],
     },
   ],
 };

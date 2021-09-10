@@ -2,7 +2,6 @@ import { html } from 'lit';
 import { TileBase } from './tileBase';
 
 class radioTile extends TileBase {
-
   constructor() {
     super();
     this.checkValue = 'Circular';
@@ -29,36 +28,48 @@ class radioTile extends TileBase {
             type="radio"
             name="${this.appConf.title}"
             id="${key}"
-            .value="${this.appConf.options[key]}"
+            .value="${key}"
             @click=${e => {
-              this.appConf.options[key] = e.target.checked;
+              this.appConf.options[key][0] = e.target.checked;
               this.checkValue = key;
               // TODO: This seems overly complicated?
               Object.keys(this.checkOptions).map(
                 // eslint-disable-next-line array-callback-return
                 notSelected => {
                   if (notSelected !== key) {
-                    this.appConf.options[notSelected] = !e.target.checked;
+                    this.appConf.options[notSelected][0] = !e.target.checked;
                   }
                 }
               );
-              this.modifyForm();
+              if (this.appConf.clearOnClick) {
+                this.clearOutput();
+              }
+              if (this.appConf.modifyOnClick) {
+                this.modifyForm();
+              }
             }}
           />
-          <label class="form-check-label" for="${key}">${html([key])}</label>
+          <label class="form-check-label" for="${key}">${html([key][1])}</label>
         </div>`
     )}`;
   }
 
   modifyForm() {
     const myEvent = new CustomEvent('modifyForm', {
-      detail: {changeFields: this.appConf.onChange[this.checkValue]},
+      detail: { changeFields: this.appConf.onChange[this.checkValue] },
       bubbles: true,
       composed: true,
     });
     this.dispatchEvent(myEvent);
   }
 
+  clearOutput() {
+    const myEvent = new CustomEvent('clear', {
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(myEvent);
+  }
 }
 
 customElements.define(`radio-tile`, radioTile);

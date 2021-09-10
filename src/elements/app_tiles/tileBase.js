@@ -1,3 +1,4 @@
+import { html } from 'lit';
 import { StyledElement } from '../../styles/wa4eStyleElement';
 
 // This defines the base class to build the app-tiles
@@ -35,5 +36,75 @@ export class TileBase extends StyledElement {
     });
     await this.updateComplete;
     this.dispatchEvent(myEvent);
+  }
+
+  // Generic field making functions used by multiple apps
+
+  makeNestedFields(keyOuter) {
+    return html`${Object.keys(this.appConf.fields[`${keyOuter}`]).map(
+      key =>
+        html` <div class="input-group">
+          <label
+            class="input-group-text text-wrap text-break font-size-sm"
+            for="${key}"
+            style="width: 30%; text-align: left;"
+            >${html([this.appConf.fields[keyOuter][key][2]])}</label
+          >
+          <input
+            class="form-control bg-light"
+            disabled
+            id="${key}"
+            .value="${this.appConf.fields[keyOuter][key][0]}"
+          />
+          <label
+            class="input-group-text text-wrap text-break"
+            for="${key}"
+            style="min-width: 20%; text-align: left;"
+            >${html([this.appConf.fields[keyOuter][key][1]])}</label
+          >
+        </div>`
+    )}`;
+  }
+
+  makeNestedCallbackFields(keyOuter) {
+    return html` ${Object.keys(this.appConf.fields[`${keyOuter}`]).map(
+      key =>
+        html`<div class="input-group">
+          <span
+            class="input-group-text col-auto text-wrap text-break"
+            for="${key}"
+            style="width: 25%; text-align: right;"
+            >${html([this.appConf.fields[keyOuter][key][2]])}</span
+          >
+          <input
+            class="form-control"
+            id="${key}"
+            .value="${this.appConf.fields[keyOuter][key][0]}"
+            @change=${e => {
+              this.appConf.fields[keyOuter][key][0] = Number(e.target.value);
+            }}
+          />
+          <span
+            class="input-group-text col-auto text-wrap text-break"
+            for="${key}"
+            style="width: 20%; text-align: left;"
+            >${html([this.appConf.fields[keyOuter][key][1]])}</span
+          >
+        </div>`
+    )}`;
+  }
+
+  makeSubComponent(index) {
+    // Currently this only supportsd radio tiles but other subcomponent tile
+    // classes can be added using the same structure as found in appGeneric
+    const component = this.subComponents.find(
+      element => element.index === index
+    );
+    const subcomponentHTML = html` ${component.type === 'radio-tile'
+      ? html`<div class="card mx-auto p-1">
+          <radio-tile .appConf=${component}></radio-tile>
+        </div>`
+      : html`<p>Component ${component.type} Not Recognised</p>`}`;
+    return html`${subcomponentHTML}`;
   }
 }
