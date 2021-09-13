@@ -1,6 +1,5 @@
 import { html } from 'lit';
 import { TileBase } from './tileBase';
-import '../mySubComponents.js';
 
 class optimizationTile extends TileBase {
   render() {

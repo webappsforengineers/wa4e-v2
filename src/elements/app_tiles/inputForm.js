@@ -1,6 +1,5 @@
 import { html } from 'lit';
 import { TileBase } from './tileBase';
-import '../mySubComponents.js';
 
 class inputTile extends TileBase {
   render() {
@@ -48,7 +47,7 @@ class inputTile extends TileBase {
       const subComponent = this.subComponents.find(
         element => element.index === index
       );
-      let htmlReturn = html``;
+      let htmlReturn;
       if (typeof subComponent === 'undefined') {
         htmlReturn = html`
           <h3>${keyOuter}</h3>
@@ -56,23 +55,23 @@ class inputTile extends TileBase {
         `;
       } else {
         /* eslint-disable no-nested-ternary */
-        htmlReturn = html` ${subComponent.position === 'beforeTitle'
+        htmlReturn = html`${subComponent.position === 'beforeTitle'
           ? html`
-              ${this.makeSubComponent(index)}
+              <div>${this.makeSubComponent(index)}</div>
               <h3>${keyOuter}</h3>
-              ${this.makeNestedCallbackFields(keyOuter)}
+              <div>${this.makeNestedCallbackFields(keyOuter)}</div>
             `
           : subComponent.position === 'afterTitle'
           ? html`
               <h3>${keyOuter}</h3>
-              ${this.makeSubComponent(index)}
-              ${this.makeNestedCallbackFields(keyOuter)}
+              <div>${this.makeSubComponent(index)}</div>
+              <div>${this.makeNestedCallbackFields(keyOuter)}</div>
             `
           : subComponent.position === 'afterContent'
           ? html`
               <h3>${keyOuter}</h3>
-              ${this.makeSubComponent(index)}
-              ${this.makeNestedCallbackFields(keyOuter)}
+              <div>${this.makeSubComponent(index)}</div>
+              <div>${this.makeNestedCallbackFields(keyOuter)}</div>
             `
           : html`<p>SubComponentPositionUndefined</p>`}`;
         /* eslint-enable no-nested-ternary */

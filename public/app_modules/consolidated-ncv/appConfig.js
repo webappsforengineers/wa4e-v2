@@ -36,40 +36,44 @@ export const appConf = {
           fsu: [0.45, null, 'f<sub>su</sub>'],
         },
       },
-      subComponents: [],
+      subComponents: [
+        {
+          type: 'radio-tile',
+          index: 0,
+          position: 'beforeTitle',
+          title: 'Foundation Shape',
+          options: {
+            Circular: [null, 'Circular'],
+            Strip: [null, 'Strip'],
+          },
+          onChange: {
+            Circular: {
+              fields: {
+                Foundation: {
+                  D_B: [12, 'm', 'D'],
+                },
+                Method: {
+                  T_50: [0.035, null, 'T<sub>50</sub>'],
+                  m_const: [-1.05, null, 'm'],
+                },
+              },
+            },
+            Strip: {
+              fields: {
+                Foundation: {
+                  D_B: [12, 'm', 'B'],
+                },
+                Method: {
+                  T_50: [0.17, null, 'T<sub>50</sub>'],
+                  m_const: [-0.95, null, 'm'],
+                },
+              },
+            },
+          },
+          modifyOnClick: true,
+        },
+      ],
       helpText: 'Helpful text!',
-    },
-    {
-      type: 'radio-tile',
-      title: 'Foundation Shape',
-      options: {
-        Circular: '',
-        Strip: '',
-      },
-      onChange: {
-        Circular: {
-          fields: {
-            Foundation: {
-              D_B: [12, 'm', 'D'],
-            },
-            Method: {
-              T_50: [0.035, null, 'T<sub>50</sub>'],
-              m_const: [-1.05, null, 'm'],
-            },
-          },
-        },
-        Strip: {
-          fields: {
-            Foundation: {
-              D_B: [12, 'm', 'B'],
-            },
-            Method: {
-              T_50: [0.17, null, 'T<sub>50</sub>'],
-              m_const: [-0.95, null, 'm'],
-            },
-          },
-        },
-      },
     },
     {
       type: 'derived-input-tile',

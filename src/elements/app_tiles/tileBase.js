@@ -100,11 +100,13 @@ export class TileBase extends StyledElement {
     const component = this.subComponents.find(
       element => element.index === index
     );
-    const subcomponentHTML = html` ${component.type === 'radio-tile'
-      ? html`<div class="card mx-auto p-1">
-          <radio-tile .appConf=${component}></radio-tile>
-        </div>`
-      : html`<p>Component ${component.type} Not Recognised</p>`}`;
-    return html`${subcomponentHTML}`;
+    const subcomponentHTML = html`
+      ${component.type === 'radio-tile'
+        ? html` <div class="card mx-auto p-1">
+            <radio-tile .appConf=${component}></radio-tile>
+          </div>`
+        : html`<p>Component ${component.type} Not Recognised</p>`}
+    `;
+    return subcomponentHTML;
   }
 }

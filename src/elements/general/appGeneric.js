@@ -2,6 +2,8 @@ import { html } from 'lit';
 import { lodash } from 'lodash-es';
 import { StyledElement } from '../../styles/wa4eStyleElement';
 import { Masonry } from '../../local_modules/wa4e-math.js';
+import '../mySubComponents.js';
+import '../myElements.js';
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -224,20 +226,6 @@ export class AppGeneric extends StyledElement {
                   ></image-tile>
                 </div>
               </div>`
-            : component.type === 'radio-tile'
-            ? html`<div class="col-md-auto mb-4">
-                <div class="card mx-auto p-1">
-                  <radio-tile
-                    .appConf=${this.appWebComponents[index]}
-                    @loaded="${() => {
-                      this.reloadMasonry();
-                    }}"
-                    @modifyForm="${e => {
-                      this.modifyForm(e.detail);
-                    }}"
-                  ></radio-tile>
-                </div>
-              </div>`
             : component.type === 'optimization-tile'
             ? html`<div class="col-md-auto mb-4">
                 <div class="card mx-auto p-1">
@@ -264,3 +252,20 @@ export class AppGeneric extends StyledElement {
   }
   /* eslint-enable no-nested-ternary */
 }
+
+/*
+            : component.type === 'radio-tile'
+            ? html`<div class="col-md-auto mb-4">
+                <div class="card mx-auto p-1">
+                  <radio-tile
+                    .appConf=${this.appWebComponents[index]}
+                    @loaded="${() => {
+                      this.reloadMasonry();
+                    }}"
+                    @modifyForm="${e => {
+                      this.modifyForm(e.detail);
+                    }}"
+                  ></radio-tile>
+                </div>
+              </div>`
+ */

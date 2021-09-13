@@ -21,108 +21,111 @@ export const appConf = {
           K: [10, 'kPa/m', 'k<sub>um</sub>'],
         },
       },
-      subComponents: [],
+      subComponents: [
+        {
+          type: 'radio-tile',
+          index: 0,
+          position: 'afterTitle',
+          title: 'Foundation Shape',
+          options: {
+            Circular: [null, 'Circular'],
+            Strip: [null, 'Strip'],
+          },
+          onChange: {
+            Circular: {
+              fields: {
+                'Foundation Properties': {
+                  B_D: [10, 'm', 'D'],
+                },
+                '': {
+                  dB_dD: [null, null, 'd/D (0&#45;1)'],
+                  kappa_su: [
+                    null,
+                    null,
+                    '&varkappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)',
+                  ],
+                  A: [null, 'm<sup>2</sup>', 'A<sub>circular</sub>'],
+                },
+              },
+              plots: {
+                db: {
+                  layout: {
+                    title: '<b>N<sub>cV</sub> as a function of d/D</b>',
+                    xaxis: {
+                      title: 'd/D',
+                    },
+                    titlefont: {
+                      family: 'Roboto, sans-serif',
+                      color: '#01579b',
+                      size: 19,
+                    },
+                  },
+                },
+                kbsum: {
+                  layout: {
+                    title:
+                      '<b>N<sub>cV</sub> as a function of kD/s<sub>um</sub></b>',
+                    xaxis: {
+                      title: 'kD/s<sub>um</sub>',
+                    },
+                    titlefont: {
+                      family: 'Roboto, sans-serif',
+                      color: '#01579b',
+                      size: 19,
+                    },
+                  },
+                },
+              },
+            },
+            Strip: {
+              fields: {
+                'Foundation Properties': {
+                  B_D: [10, 'm', 'B'],
+                },
+                '': {
+                  dB_dD: [null, null, 'd/B (0&#45;1)'],
+                  kappa_su: [
+                    null,
+                    null,
+                    '&varkappa;<sub>su</sub> = kB/s<sub>um</sub> (0&#45;200)',
+                  ],
+                  A: [null, 'm<sup>2</sup>/m', 'A<sub>strip</sub>'],
+                },
+              },
+              plots: {
+                db: {
+                  layout: {
+                    title: '<b>N<sub>cV</sub> as a function of d/B</b>',
+                    xaxis: {
+                      title: 'd/B',
+                    },
+                    titlefont: {
+                      family: 'Roboto, sans-serif',
+                      color: '#01579b',
+                      size: 19,
+                    },
+                  },
+                },
+                kbsum: {
+                  layout: {
+                    title:
+                      '<b>N<sub>cV</sub> as a function of kB/s<sub>um</sub></b>',
+                    xaxis: {
+                      title: 'kB/s<sub>um</sub>',
+                    },
+                    titlefont: {
+                      family: 'Roboto, sans-serif',
+                      color: '#01579b',
+                      size: 19,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      ],
       helpText: 'Helpful text!',
-    },
-    {
-      type: 'radio-tile',
-      title: 'Foundation Shape',
-      options: {
-        Circular: '',
-        Strip: '',
-      },
-      onChange: {
-        Circular: {
-          fields: {
-            'Foundation Properties': {
-              B_D: [10, 'm', 'D'],
-            },
-            '': {
-              dB_dD: [null, null, 'd/D (0&#45;1)'],
-              kappa_su: [
-                null,
-                null,
-                '&varkappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)',
-              ],
-              A: [null, 'm<sup>2</sup>', 'A<sub>circular</sub>'],
-            },
-          },
-          plots: {
-            db: {
-              layout: {
-                title: '<b>N<sub>cV</sub> as a function of d/D</b>',
-                xaxis: {
-                  title: 'd/D',
-                },
-                titlefont: {
-                  family: 'Roboto, sans-serif',
-                  color: '#01579b',
-                  size: 19,
-                },
-              },
-            },
-            kbsum: {
-              layout: {
-                title:
-                  '<b>N<sub>cV</sub> as a function of kD/s<sub>um</sub></b>',
-                xaxis: {
-                  title: 'kD/s<sub>um</sub>',
-                },
-                titlefont: {
-                  family: 'Roboto, sans-serif',
-                  color: '#01579b',
-                  size: 19,
-                },
-              },
-            },
-          },
-        },
-        Strip: {
-          fields: {
-            'Foundation Properties': {
-              B_D: [10, 'm', 'B'],
-            },
-            '': {
-              dB_dD: [null, null, 'd/B (0&#45;1)'],
-              kappa_su: [
-                null,
-                null,
-                '&varkappa;<sub>su</sub> = kB/s<sub>um</sub> (0&#45;200)',
-              ],
-              A: [null, 'm<sup>2</sup>/m', 'A<sub>strip</sub>'],
-            },
-          },
-          plots: {
-            db: {
-              layout: {
-                title: '<b>N<sub>cV</sub> as a function of d/B</b>',
-                xaxis: {
-                  title: 'd/B',
-                },
-                titlefont: {
-                  family: 'Roboto, sans-serif',
-                  color: '#01579b',
-                  size: 19,
-                },
-              },
-            },
-            kbsum: {
-              layout: {
-                title:
-                  '<b>N<sub>cV</sub> as a function of kB/s<sub>um</sub></b>',
-                xaxis: {
-                  title: 'kB/s<sub>um</sub>',
-                },
-                titlefont: {
-                  family: 'Roboto, sans-serif',
-                  color: '#01579b',
-                  size: 19,
-                },
-              },
-            },
-          },
-        },
-      },
     },
     {
       type: 'derived-input-tile',
