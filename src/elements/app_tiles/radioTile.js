@@ -14,13 +14,13 @@ class radioTile extends TileBase {
       super.render(),
       html`
         <h2>${this.appConf.title}</h2>
-        <div>${this.checks}</div>
+        ${this.checks}
       `,
     ];
   }
 
   makeCheckCallBacks() {
-    return html`${Object.keys(this.checkOptions).map(
+    const checkFields = html`${Object.keys(this.checkOptions).map(
       key =>
         html`<div class="form-check form-check-inline">
           <input
@@ -45,18 +45,21 @@ class radioTile extends TileBase {
                 this.clearOutput();
               }
               if (this.appConf.modifyOnClick) {
-                this.modifyForm();
+                this.modifyForm(this.checkValue);
               }
             }}
           />
-          <label class="form-check-label" for="${key}">${html([key][1])}</label>
+          <label class="form-check-label" for="${key}"
+            >${this.checkOptions[key][1]}</label
+          >
         </div>`
     )}`;
+    return checkFields;
   }
 
-  modifyForm() {
+  modifyForm(checkValue) {
     const myEvent = new CustomEvent('modifyForm', {
-      detail: { changeFields: this.appConf.onChange[this.checkValue] },
+      detail: { changeFields: this.appConf.onChange[checkValue] },
       bubbles: true,
       composed: true,
     });

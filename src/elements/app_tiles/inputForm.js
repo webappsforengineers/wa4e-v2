@@ -6,7 +6,8 @@ class inputTile extends TileBase {
     this.formFields = this.appConf.fields;
     this.subComponents = this.appConf.subComponents;
     this.input_fields = this.arrangeFields();
-
+    window.console.log('from input render okay here');
+    window.console.log(this.input_fields);
     return [
       super.render(),
       html`

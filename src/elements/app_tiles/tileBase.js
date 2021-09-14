@@ -94,6 +94,7 @@ export class TileBase extends StyledElement {
     )}`;
   }
 
+  /* eslint-disable no-nested-ternary */
   makeSubComponent(index) {
     // Currently this only supportsd radio tiles but other subcomponent tile
     // classes can be added using the same structure as found in appGeneric
@@ -105,8 +106,13 @@ export class TileBase extends StyledElement {
         ? html` <div class="card mx-auto p-1">
             <radio-tile .appConf=${component}></radio-tile>
           </div>`
+        : component.type === 'test-tile'
+        ? html` <div class="card mx-auto p-1">
+            <test-tile .appConf=${component}></test-tile>
+          </div>`
         : html`<p>Component ${component.type} Not Recognised</p>`}
     `;
     return subcomponentHTML;
   }
+  /* eslint-enable no-nested-ternary */
 }

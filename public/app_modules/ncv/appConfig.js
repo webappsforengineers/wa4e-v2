@@ -28,8 +28,8 @@ export const appConf = {
           position: 'afterTitle',
           title: 'Foundation Shape',
           options: {
-            Circular: [null, 'Circular'],
-            Strip: [null, 'Strip'],
+            Circular: ['', 'Circular'],
+            Strip: ['', 'Strip'],
           },
           onChange: {
             Circular: {
@@ -123,6 +123,8 @@ export const appConf = {
               },
             },
           },
+          clearOnClick: false,
+          modifyOnClick: true,
         },
       ],
       helpText: 'Helpful text!',

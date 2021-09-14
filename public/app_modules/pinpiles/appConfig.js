@@ -70,7 +70,7 @@ export const appConf = {
             hybridPiledMudmat: [null, 'Hybrid Piled Mudmat'],
           },
           onChange: {
-            'Mudmat Foundation Only': {
+            mudmatFoundationOnly: {
               fields: {
                 'Relative Loads Taken By Piles': {
                   beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],
@@ -79,7 +79,7 @@ export const appConf = {
                 },
               },
             },
-            'Pile Group Only': {
+            pileGroupOnly: {
               fields: {
                 'Relative Loads Taken By Piles': {
                   beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],
@@ -88,7 +88,7 @@ export const appConf = {
                 },
               },
             },
-            'Hybrid Piled Mudmat': {
+            hybridPiledMudmat: {
               fields: {
                 'Relative Loads Taken By Piles': {
                   beta_pV: [0.332, null, '&beta;<sub>pV</sub>'],

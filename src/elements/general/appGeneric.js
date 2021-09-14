@@ -23,6 +23,8 @@ export class AppGeneric extends StyledElement {
   }
 
   render() {
+    window.console.log('from appgeneric');
+    window.console.log(this.appTiles);
     return [
       super.render(),
       html`
@@ -140,7 +142,7 @@ export class AppGeneric extends StyledElement {
       ${this.appWebComponents.map(
         (component, index) =>
           html` ${component.type === 'input-tile'
-            ? html`<div class="col-sm-6 col-lg-3 mb-4" style="left: 0; top 0;">
+            ? html`<div class="col-sm-6 col-lg-3 mb-4";">
                 <div class="card mx-auto p-1">
                   <input-tile
                     .appConf=${this.appWebComponents[index]}
