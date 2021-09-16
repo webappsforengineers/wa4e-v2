@@ -25,6 +25,16 @@ class optimizationTile extends TileBase {
     ];
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener('clear', () => this.requestUpdate());
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener('clear', () => this.requestUpdate());
+    super.disconnectedCallback();
+  }
+
   appOptimize() {
     const myEvent = new CustomEvent('optimize', {
       bubbles: true,
@@ -35,49 +45,42 @@ class optimizationTile extends TileBase {
   }
 
   clearOutput() {
-    /* const myEvent = new CustomEvent('clear', {
-      bubbles: true,
-      composed: true,
-    }); */
     this.formFields[''].Solution[0] = null;
     this.formFields[''].solution_beta_pV[0] = null;
     this.formFields[''].solution_beta_pH[0] = null;
     this.formFields[''].solution_beta_pM[0] = null;
-    // this.dispatchEvent(myEvent);
   }
 
   arrangeFields() {
     return html`${Object.keys(this.formFields).map((keyOuter, index) => {
-      const subComponent = this.subComponents.find(
+      /* const subComponent = this.subComponents.find(
         element => element.index === index
+      ); */
+      const [beforeTitle, afterTitle, afterContent] = this.getSubComponents(
+        this.subComponents,
+        index
       );
-      let htmlReturn = html``;
-      if (typeof subComponent === 'undefined') {
-        htmlReturn = html`
-          <h3>${keyOuter}</h3>
-          ${this.makeNestedFields(keyOuter)}
-        `;
-      } else {
-        /* eslint-disable no-nested-ternary */
-        htmlReturn = html` ${subComponent.position === 'beforeTitle'
-          ? html`
-              ${this.makeSubComponent(index)}
-              <h3>${keyOuter}</h3>
-              ${this.makeNestedFields(keyOuter)}
-            `
-          : subComponent.position === 'afterTitle'
-          ? html`
-              <h3>${keyOuter}</h3>
-              ${this.makeSubComponent(index)} ${this.makeNestedFields(keyOuter)}
-            `
-          : subComponent.position === 'afterContent'
-          ? html`
-              <h3>${keyOuter}</h3>
-              ${this.makeSubComponent(index)} ${this.makeNestedFields(keyOuter)}
-            `
-          : html`<p>SubComponentPositionUndefined</p>`}`;
-        /* eslint-enable no-nested-ternary */
-      }
+
+      /* eslint-disable no-nested-ternary */
+      const htmlReturn = html`
+        <div>
+          ${html`${beforeTitle.map(subIndex =>
+            this.makeSubComponent(subIndex)
+          )}`}
+        </div>
+        <h3>${keyOuter}</h3>
+        <div>
+          ${html`${afterTitle.map(subIndex =>
+            this.makeSubComponent(subIndex)
+          )}`}
+        </div>
+        <div>${this.makeNestedFields(keyOuter)}</div>
+        <div>
+          ${html`${afterContent.map(subIndex =>
+            this.makeSubComponent(subIndex)
+          )}`}
+        </div>
+      `;
       return htmlReturn;
     })}`;
   }

@@ -1,3 +1,4 @@
+/* eslint-disable no-sparse-arrays */
 export const appConf = {
   appName: 'ncv',
   appTitle: 'Shallow Foundation NcV',
@@ -11,14 +12,14 @@ export const appConf = {
       title: 'Input',
       fields: {
         'Foundation Properties': {
-          B_D: ['Select Foundation Shape', 'm', 'D or B'],
-          d: [5, 'm', 'd'],
-          alpha_base: [1, null, '&alpha;<sub>base</sub>(0-1)'],
-          alpha_side: [0.1, null, '&alpha;<sub>side</sub>(0-1)'],
+          B_D: ['Select Foundation Shape', 'm', 'D or B', ''],
+          d: [5, 'm', 'd', ''],
+          alpha_base: [1, null, '&alpha;<sub>base</sub>(0-1)', ''],
+          alpha_side: [0.1, null, '&alpha;<sub>side</sub>(0-1)', ''],
         },
         'Soil Properties': {
-          Sum: [10, 'kPa', 's<sub>um</sub>'],
-          K: [10, 'kPa/m', 'k<sub>um</sub>'],
+          Sum: [10, 'kPa', 's<sub>um</sub>', ''],
+          K: [10, 'kPa/m', 'k<sub>um</sub>', ''],
         },
       },
       subComponents: [
@@ -26,25 +27,28 @@ export const appConf = {
           type: 'radio-tile',
           index: 0,
           position: 'afterTitle',
+          display: '',
           title: 'Foundation Shape',
           options: {
-            Circular: ['', 'Circular'],
-            Strip: ['', 'Strip'],
+            Circular: ['', 'Circular', ''],
+            Strip: ['', 'Strip', ''],
           },
           onChange: {
             Circular: {
               fields: {
                 'Foundation Properties': {
-                  B_D: [10, 'm', 'D'],
+                  B_D: [10, 'm', 'D', ''],
                 },
                 '': {
-                  dB_dD: [null, null, 'd/D (0&#45;1)'],
+                  dB_dD: [null, null, 'd/D (0&#45;1)', ''],
                   kappa_su: [
                     null,
                     null,
                     '&varkappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)',
+                    ,
+                    '',
                   ],
-                  A: [null, 'm<sup>2</sup>', 'A<sub>circular</sub>'],
+                  A: [null, 'm<sup>2</sup>', 'A<sub>circular</sub>', ''],
                 },
               },
               plots: {
@@ -80,16 +84,18 @@ export const appConf = {
             Strip: {
               fields: {
                 'Foundation Properties': {
-                  B_D: [10, 'm', 'B'],
+                  B_D: [10, 'm', 'B', ''],
                 },
                 '': {
-                  dB_dD: [null, null, 'd/B (0&#45;1)'],
+                  dB_dD: [null, null, 'd/B (0&#45;1)', ''],
                   kappa_su: [
                     null,
                     null,
                     '&varkappa;<sub>su</sub> = kB/s<sub>um</sub> (0&#45;200)',
+                    ,
+                    '',
                   ],
-                  A: [null, 'm<sup>2</sup>/m', 'A<sub>strip</sub>'],
+                  A: [null, 'm<sup>2</sup>/m', 'A<sub>strip</sub>', ''],
                 },
               },
               plots: {
@@ -134,14 +140,16 @@ export const appConf = {
       title: 'Derived Input',
       fields: {
         '': {
-          dB_dD: ['Select Foundation Shape', null, 'd/(D or B) (0&#45;1)'],
-          A: ['Select Foundation Shape', null, null],
+          dB_dD: ['Select Foundation Shape', null, 'd/(D or B) (0&#45;1)', ''],
+          A: ['Select Foundation Shape', null, null, ''],
           kappa_su: [
             'Select Foundation Shape',
             null,
             '&varkappa;<sub>su</sub> = k(D or B)/s<sub>um</sub> (0&#45;200)',
+            ,
+            '',
           ],
-          Su0: [null, null, 's<sub>u0</sub> = k <sub>su</sub>d'],
+          Su0: [null, null, 's<sub>u0</sub> = k <sub>su</sub>d', ''],
         },
       },
     },
@@ -150,9 +158,14 @@ export const appConf = {
       title: 'Output',
       fields: {
         '': {
-          NcV: [null, null, 'N<sub>cV</sub> = v<sub>ult</sub>/s<sub>u0</sub>'],
-          Vult_pressure: [null, 'kPa', 'v<sub>ult</sub>'],
-          Vult_force: [null, 'kN', 'V<sub>ult</sub>=v<sub>ult</sub>A'],
+          NcV: [
+            null,
+            null,
+            'N<sub>cV</sub> = v<sub>ult</sub>/s<sub>u0</sub>',
+            '',
+          ],
+          Vult_pressure: [null, 'kPa', 'v<sub>ult</sub>', ''],
+          Vult_force: [null, 'kN', 'V<sub>ult</sub>=v<sub>ult</sub>A', ''],
         },
       },
     },

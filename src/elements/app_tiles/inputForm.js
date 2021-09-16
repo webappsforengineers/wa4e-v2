@@ -45,38 +45,33 @@ class inputTile extends TileBase {
 
   arrangeFields() {
     return html`${Object.keys(this.formFields).map((keyOuter, index) => {
-      const subComponent = this.subComponents.find(
+      /* const subComponent = this.subComponents.find(
         element => element.index === index
+      ); */
+      const [beforeTitle, afterTitle, afterContent] = this.getSubComponents(
+        this.subComponents,
+        index
       );
-      let htmlReturn;
-      if (typeof subComponent === 'undefined') {
-        htmlReturn = html`
-          <h3>${keyOuter}</h3>
-          ${this.makeNestedCallbackFields(keyOuter)}
-        `;
-      } else {
-        /* eslint-disable no-nested-ternary */
-        htmlReturn = html`${subComponent.position === 'beforeTitle'
-          ? html`
-              <div>${this.makeSubComponent(index)}</div>
-              <h3>${keyOuter}</h3>
-              <div>${this.makeNestedCallbackFields(keyOuter)}</div>
-            `
-          : subComponent.position === 'afterTitle'
-          ? html`
-              <h3>${keyOuter}</h3>
-              <div>${this.makeSubComponent(index)}</div>
-              <div>${this.makeNestedCallbackFields(keyOuter)}</div>
-            `
-          : subComponent.position === 'afterContent'
-          ? html`
-              <h3>${keyOuter}</h3>
-              <div>${this.makeSubComponent(index)}</div>
-              <div>${this.makeNestedCallbackFields(keyOuter)}</div>
-            `
-          : html`<p>SubComponentPositionUndefined</p>`}`;
-        /* eslint-enable no-nested-ternary */
-      }
+      /* eslint-disable no-nested-ternary */
+      const htmlReturn = html`
+        <div>
+          ${html`${beforeTitle.map(subIndex =>
+            this.makeSubComponent(subIndex)
+          )}`}
+        </div>
+        <h3>${keyOuter}</h3>
+        <div>
+          ${html`${afterTitle.map(subIndex =>
+            this.makeSubComponent(subIndex)
+          )}`}
+        </div>
+        <div>${this.makeNestedCallbackFields(keyOuter)}</div>
+        <div>
+          ${html`${afterContent.map(subIndex =>
+            this.makeSubComponent(subIndex)
+          )}`}
+        </div>
+      `;
       return htmlReturn;
     })}`;
   }

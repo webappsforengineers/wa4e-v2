@@ -22,7 +22,10 @@ class radioTile extends TileBase {
   makeCheckCallBacks() {
     const checkFields = html`${Object.keys(this.checkOptions).map(
       key =>
-        html`<div class="form-check form-check-inline">
+        html`<div
+          class="form-check form-check-inline"
+          style="display: ${this.appConf.options[key][2]};"
+        >
           <input
             class="form-check-input"
             type="radio"

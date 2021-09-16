@@ -43,7 +43,10 @@ export class TileBase extends StyledElement {
   makeNestedFields(keyOuter) {
     return html`${Object.keys(this.appConf.fields[`${keyOuter}`]).map(
       key =>
-        html` <div class="input-group">
+        html` <div
+          class="input-group"
+          style="display: ${this.appConf.fields[keyOuter][key][3]};"
+        >
           <label
             class="input-group-text text-wrap text-break font-size-sm"
             for="${key}"
@@ -69,7 +72,10 @@ export class TileBase extends StyledElement {
   makeNestedCallbackFields(keyOuter) {
     return html` ${Object.keys(this.appConf.fields[`${keyOuter}`]).map(
       key =>
-        html`<div class="input-group">
+        html`<div
+          class="input-group"
+          style="display: ${this.appConf.fields[keyOuter][key][3]};"
+        >
           <span
             class="input-group-text col-auto text-wrap text-break"
             for="${key}"
@@ -94,17 +100,45 @@ export class TileBase extends StyledElement {
     )}`;
   }
 
+  /* eslint-disable class-methods-use-this */
+  getSubComponents(subCompArr, superIdx) {
+    const beforeTitle = [];
+    const afterTitle = [];
+    const afterContent = [];
+    /* eslint-disable no-restricted-syntax */
+    for (const [index, subComp] of subCompArr.entries()) {
+      if (subComp.index === superIdx) {
+        if (subComp.position === 'beforeTitle') {
+          beforeTitle.push(index);
+        } else if (subComp.position === 'afterTitle') {
+          afterTitle.push(index);
+        } else if (subComp.position === 'afterContent') {
+          afterContent.push(index);
+        }
+      }
+    }
+    /* eslint-enable no-restricted-syntax */
+    return [beforeTitle, afterTitle, afterContent];
+  }
+
+  /* eslint-enable class-methods-use-this */
   /* eslint-disable no-nested-ternary */
   makeSubComponent(index) {
-    // Currently this only supportsd radio tiles but other subcomponent tile
-    // classes can be added using the same structure as found in appGeneric
-    const component = this.subComponents.find(
-      element => element.index === index
-    );
+    // Currently this only supports radio and test tiles but other subcomponent
+    // tile classes can be added using the same structure as found in appGeneric
+    const component = this.subComponents[index];
     const subcomponentHTML = html`
       ${component.type === 'radio-tile'
-        ? html` <div class="card mx-auto p-1">
-            <radio-tile .appConf=${component}></radio-tile>
+        ? html` <div
+            class="card mx-auto p-1"
+            style="display: ${component.display};"
+          >
+            <radio-tile
+              .appConf=${component}
+              @clear="${() => {
+                this.clearOutput();
+              }}"
+            ></radio-tile>
           </div>`
         : component.type === 'test-tile'
         ? html` <div class="card mx-auto p-1">
