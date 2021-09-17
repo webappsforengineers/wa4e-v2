@@ -248,6 +248,14 @@ export class AppGeneric extends StyledElement {
                   ></optimization-tile>
                 </div>
               </div>`
+            : component.type === 'text-tile'
+            ? html`<div class="col-md-auto mb-4">
+                <div class="card mx-auto p-1">
+                  <text-tile
+                    .appConf=${this.appWebComponents[index]}
+                  ></text-tile>
+                </div>
+              </div>`
             : html`<p>Component ${component.type} Not Recognised</p>`}`
       )}
     `;

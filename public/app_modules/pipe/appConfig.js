@@ -389,5 +389,10 @@ export const appConf = {
         },
       ],
     },
+    {
+      type: 'text-tile',
+      title: 'Output',
+      text: 'N/A',
+    },
   ],
 };
