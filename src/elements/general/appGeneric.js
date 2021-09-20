@@ -23,8 +23,6 @@ export class AppGeneric extends StyledElement {
   }
 
   render() {
-    window.console.log('from appgeneric');
-    window.console.log(this.appTiles);
     return [
       super.render(),
       html`

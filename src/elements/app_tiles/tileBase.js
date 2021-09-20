@@ -140,6 +140,14 @@ export class TileBase extends StyledElement {
               }}"
             ></radio-tile>
           </div>`
+        : component.type === 'table-tile'
+        ? html` <div class="card mx-auto p-1">
+            <table-tile .appConf=${component}></table-tile>
+          </div>`
+        : component.type === 'input-table'
+        ? html` <div class="card mx-auto p-1">
+            <input-table .appConf=${component}></input-table>
+          </div>`
         : component.type === 'test-tile'
         ? html` <div class="card mx-auto p-1">
             <test-tile .appConf=${component}></test-tile>

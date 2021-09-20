@@ -3,6 +3,10 @@ import { TileBase } from './tileBase';
 
 class textTile extends TileBase {
   render() {
+    this.subComponents = this.appConf.subComponents;
+    this.text = this.appConf.text;
+    this.tileContent = this.arrangeFields();
+    window.console.log(this.subComponents);
     return [
       super.render(),
       html`
@@ -11,10 +15,48 @@ class textTile extends TileBase {
         <div>
           <h2>${this.appConf.title}</h2>
           <!-- Here are the forms attributes -->
-          <p>${this.appConf.text}</p>
+          <p>${this.tileContent}</p>
         </div>
       `,
     ];
+  }
+
+  // Arrange fields is simmilar amoungst all 1st level tiles, it orginises the
+  // fields and the subcomponents in a way sutable for the tile.
+  arrangeFields() {
+    return html`${Object.keys(this.text).map((keyOuter, index) => {
+      let beforeTitle;
+      let afterTitle;
+      let afterContent;
+      if (typeof this.subComponents === 'undefined') {
+        [beforeTitle, afterTitle, afterContent] = [[], [], []];
+      } else {
+        [beforeTitle, afterTitle, afterContent] = this.getSubComponents(
+          this.subComponents,
+          index
+        );
+      }
+      /* eslint-disable no-nested-ternary */
+      const htmlReturn = html`
+        <div>
+          ${html`${beforeTitle.map(subIndex =>
+            this.makeSubComponent(subIndex)
+          )}`}
+        </div>
+        <p class="${this.text[keyOuter].format}">${this.text[keyOuter].text}</p>
+        <div>
+          ${html`${afterTitle.map(subIndex =>
+            this.makeSubComponent(subIndex)
+          )}`}
+        </div>
+        <div>
+          ${html`${afterContent.map(subIndex =>
+            this.makeSubComponent(subIndex)
+          )}`}
+        </div>
+      `;
+      return htmlReturn;
+    })}`;
   }
 }
 

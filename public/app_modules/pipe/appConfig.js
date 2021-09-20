@@ -391,8 +391,56 @@ export const appConf = {
     },
     {
       type: 'text-tile',
+      title: 'Data',
+      text: {
+        subTitle: {
+          text: 'Recommended values from DNV-RP-F109',
+          format: 'h4',
+        },
+        frictionTableTitle: {
+          text: 'Friction coefficient:',
+          format: '',
+        },
+        safteyTableTitle: {
+          text: 'Safety factor:',
+          format: '',
+        },
+      },
+      subComponents: [
+        {
+          type: 'table-tile',
+          index: 1,
+          position: 'afterTitle',
+          display: '',
+          title: ' ',
+          content: {
+            1: ['Sand seabed', '0.6'],
+            2: ['Clay seabed', '0.2'],
+          },
+        },
+        {
+          type: 'table-tile',
+          index: 2,
+          position: 'afterTitle',
+          display: '',
+          title: ' ',
+          content: {
+            1: ['Conservativeness', 'Low', 'Normal', 'High'],
+            2: ['Sand and rock', '0.95', '1.50', '2.16'],
+            3: ['Clay', '0.95', '1.56', '2.31'],
+          },
+        },
+      ],
+    },
+    {
+      type: 'text-tile',
       title: 'Output',
-      text: 'N/A',
+      text: {
+        result: {
+          text: 'N/A',
+          format: '',
+        },
+      },
     },
   ],
 };
