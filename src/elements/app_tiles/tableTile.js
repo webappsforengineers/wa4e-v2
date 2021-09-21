@@ -17,7 +17,7 @@ class tableTile extends TileBase {
   }
 
   arrangeFields() {
-    return html`${Object.values(this.appConf.content).map(rowValues => {
+    return html`${Object.values(this.tableContent).map(rowValues => {
       const htmlRow = html`
         <tr>
           ${rowValues.map(value => html`<td>${value}</td>`)}

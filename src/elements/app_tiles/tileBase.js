@@ -43,7 +43,7 @@ export class TileBase extends StyledElement {
   makeNestedFields(keyOuter) {
     return html`${Object.keys(this.appConf.fields[`${keyOuter}`]).map(
       key =>
-        html` <div
+        html`<div
           class="input-group"
           style="display: ${this.appConf.fields[keyOuter][key][3]};"
         >

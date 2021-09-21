@@ -135,41 +135,99 @@ export const appConf = {
           s_u_pavg: [null, 'kPa', 's<sub>u,pagv</sub>', ''],
           s_u_ptip: [null, 'kPa', 's<sub>u,ptip</sub>', ''],
         },
-        'Design Loads': {
-          V: [null, 'kN', 'V', ''],
-          H_x: [null, 'kN', 'H<sub>x</sub>', ''],
-          H_y: [null, 'kN', 'H<sub>y</sub>', ''],
-          H: [null, 'kN', 'H', ''],
-          theta: [null, 'rads', '&theta;', ''],
-          theta_degrees: [null, 'degs', '&theta;', ''],
-          M_x: [null, 'kNm', 'M<sub>x</sub>', ''],
-          M_y: [null, 'kNm', 'M<sub>y</sub>', ''],
-          M: [null, 'kNm', 'M', ''],
-          theta_M: [null, 'rads', '&theta;<sub>M</sub>', ''],
-          theta_M_degrees: [null, 'degs', '&theta;<sub>M</sub>', ''],
-          T: [null, 'kNm', 'T', ''],
-        },
-        'Mudmat Share': {
-          V_m: [null, 'kN', 'V', ''],
-          H_xm: [null, 'kN', 'H<sub>x</sub>', ''],
-          H_ym: [null, 'kN', 'H<sub>y</sub>', ''],
-          H_m: [null, 'kN', 'H', ''],
-          M_xm: [null, 'kNm', 'M<sub>x</sub>', ''],
-          M_ym: [null, 'kNm', 'M<sub>y</sub>', ''],
-          M_m: [null, 'kNm', 'M', ''],
-          T_m: [null, 'kNm', 'T', ''],
-        },
-        'Pile Group Share': {
-          V_p: [null, 'kN', 'V', ''],
-          H_xp: [null, 'kN', 'H<sub>x</sub>', ''],
-          H_yp: [null, 'kN', 'H<sub>y</sub>', ''],
-          H_p: [null, 'kN', 'H', ''],
-          M_xp: [null, 'kNm', 'M<sub>x</sub>', ''],
-          M_yp: [null, 'kNm', 'M<sub>y</sub>', ''],
-          M_p: [null, 'kNm', 'M', ''],
-          T_p: [null, 'kNm', 'T', ''],
-        },
       },
+      subComponents: [
+        {
+          type: 'input-table',
+          index: 1,
+          position: 'afterContent',
+          display: '',
+          title: '',
+          content: {
+            0: {
+              header: ['Design Loads', '', 'Mudmat Share', 'Pile Group Share'],
+            },
+            1: {
+              label: 'V',
+              values: [
+                [null, 'kN', ''],
+                [null, 'kN', ''],
+                [null, 'kN', ''],
+              ],
+            },
+            2: {
+              label: 'H<sub>x</sub>',
+              values: [
+                [null, 'kN', ''],
+                [null, 'kN', ''],
+                [null, 'kN', ''],
+              ],
+            },
+            3: {
+              label: 'H<sub>y</sub>',
+              values: [
+                [null, 'kN', ''],
+                [null, 'kN', ''],
+                [null, 'kN', ''],
+              ],
+            },
+            4: {
+              label: 'H',
+              values: [
+                [null, 'kN', ''],
+                [null, 'kN', ''],
+                [null, 'kN', ''],
+              ],
+            },
+            5: {
+              label: '&theta;',
+              values: [
+                [null, 'rads', ''],
+                [null, 'degs', ''],
+              ],
+            },
+            6: {
+              label: 'M<sub>x</sub>',
+              values: [
+                [null, 'kNm', ''],
+                [null, 'kNm', ''],
+                [null, 'kNm', ''],
+              ],
+            },
+            7: {
+              label: 'M<sub>y</sub>',
+              values: [
+                [null, 'kNm', ''],
+                [null, 'kNm', ''],
+                [null, 'kNm', ''],
+              ],
+            },
+            8: {
+              label: 'M',
+              values: [
+                [null, 'kNm', ''],
+                [null, 'kNm', ''],
+                [null, 'kNm', ''],
+              ],
+            },
+            9: {
+              label: '&theta;<sub>M</sub>',
+              values: [
+                [null, 'rads', ''],
+                [null, 'degs', ''],
+              ],
+            },
+            10: {
+              label: 'T',
+              values: [
+                [null, 'kNm', ''],
+                [null, 'kNm', ''],
+                [null, 'kNm', ''],
+              ],
+            },
+          },
+        },
+      ],
     },
     {
       type: 'graph-tile',
