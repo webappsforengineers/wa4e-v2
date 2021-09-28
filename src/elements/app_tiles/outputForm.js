@@ -4,6 +4,7 @@ import { TileBase } from './tileBase';
 class outputTile extends TileBase {
   render() {
     this.formFields = this.appConf.fields;
+    this.subComponents = this.appConf.subComponents;
     this.outputFields = this.arrangeFields();
     return [
       super.render(),
@@ -19,12 +20,41 @@ class outputTile extends TileBase {
     ];
   }
 
-  arrangeFields() {
+  /* arrangeFields() {
     return html`${Object.keys(this.formFields).map(keyOuter => {
       let htmlReturn = html``;
       htmlReturn = html`
         <h3>${keyOuter}</h3>
         ${this.makeNestedFields(keyOuter)}
+      `;
+      return htmlReturn;
+    })}`;
+  } */
+
+  arrangeFields() {
+    return html`${Object.keys(this.formFields).map((keyOuter, index) => {
+      const [beforeTitle, afterTitle, afterContent] = this.getSubComponents(
+        this.subComponents,
+        index
+      );
+      const htmlReturn = html`
+        <div>
+          ${html`${beforeTitle.map(subIndex =>
+            this.makeSubComponent(subIndex)
+          )}`}
+        </div>
+        <h3>${keyOuter}</h3>
+        <div>
+          ${html`${afterTitle.map(subIndex =>
+            this.makeSubComponent(subIndex)
+          )}`}
+        </div>
+        <div>${this.makeNestedFields(keyOuter)}</div>
+        <div>
+          ${html`${afterContent.map(subIndex =>
+            this.makeSubComponent(subIndex)
+          )}`}
+        </div>
       `;
       return htmlReturn;
     })}`;

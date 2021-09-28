@@ -5,7 +5,6 @@ class tableTile extends TileBase {
   render() {
     this.tableContent = this.appConf.content;
     this.htmlTableContent = this.arrangeFields();
-    window.console.log(this.htmlTableContent);
     return [
       super.render(),
       html`

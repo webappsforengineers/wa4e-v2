@@ -1,9 +1,10 @@
 export const appConf = {
-  appName: "vh2m2t",
-  appTitle: "Mudmat UU & CU VH2M2T",
-  appPageTitle: "",
-  appDescription: "Undrained and consolidated undrained 6 DoF undrained capacity of rectangular mudmat",
-  appColour: "#c1476a",
+  appName: 'vh2m2t',
+  appTitle: 'Mudmat UU & CU VH2M2T',
+  appPageTitle: '',
+  appDescription:
+    'Undrained and consolidated undrained 6 DoF undrained capacity of rectangular mudmat',
+  appColour: '#c1476a',
   appWebComponents: [
     {
       type: 'input-tile',
@@ -18,7 +19,7 @@ export const appConf = {
           s_um: [5, 'kPa', 's<sub>um</sub>', ''],
           k: [2, 'kPa/m', 'k', ''],
           c_v: [10, 'm<sup>2</sup>/year', 'c<sub>v</sub>', ''],
-          gamma: [6, 'kN/m<sup>3</sup>', '&gamma;&#39;',''],
+          gamma: [6, 'kN/m<sup>3</sup>', '&gamma;&#39;', ''],
           T_lag: [6, 'months', 'T<sub>lag</sub>', ''],
         },
         'Characteristic Loads and Eccentricities': {
@@ -39,6 +40,7 @@ export const appConf = {
           lambda_s: [1, null, '&lambda;<sub>s</sub>', ''],
         },
       },
+      subComponents: [],
     },
     {
       type: 'derived-input-tile',
@@ -60,8 +62,9 @@ export const appConf = {
           M: [null, 'kNm', 'M', ''],
           theta_M: [null, 'radians', '&theta;<sub>M</sub>', ''],
           T: [null, 'kNm', 'T', ''],
-        }
-      }
+        },
+      },
+      subComponents: [],
     },
     {
       type: 'optimization-tile',
@@ -71,7 +74,7 @@ export const appConf = {
           spareMomentCapacity: [0, 'kNm', 'SMC', ''],
           Threshold: [1, null, 'Threshold', ''],
           Solution: [null, null, 'Solution', ''],
-        }
+        },
       },
       subComponents: [
         {
@@ -83,8 +86,8 @@ export const appConf = {
             BOption: [null, 'B', ''],
             lambda_sOption: [null, '&lambda;<sub>s</sub>', ''],
           },
-        }
-      ]
+        },
+      ],
     },
     {
       type: 'output-tile',
@@ -113,13 +116,14 @@ export const appConf = {
           H_max_red_T: [null, 'kN', 'H<sub>max</sub>', ''],
           M_max_red_T: [null, 'kNm', 'M<sub>max</sub>', ''],
         },
-      }
+      },
+      subComponents: [],
     },
     {
       type: 'output-tile',
       title: 'Output',
       fields: {
-        '': {}
+        '': {},
       },
       subComponents: [
         {
@@ -130,77 +134,109 @@ export const appConf = {
           title: ' ',
           content: {
             0: {
-              header: ['Uniaxial (CU)', '', 'Gain']
+              header: ['Uniaxial (CU)', '', '', 'Gain'],
             },
             1: {
-              label:'V<sub>u,cons</sub>',
+              label: 'V<sub>u,cons</sub>',
               values: [
                 [null, 'kN', ''],
                 [null, '%', ''],
-              ]
+              ],
             },
             2: {
-              label:'H<sub>u,cons</sub>',
-              values:  [
+              label: 'H<sub>u,cons</sub>',
+              values: [
                 [null, 'kN', ''],
                 [null, '%', ''],
-              ]
+              ],
             },
             3: {
-              label:'H<sub>u,cons</sub>',
-              values:  [
+              label: 'H<sub>u,cons</sub>',
+              values: [
                 [null, 'kN', ''],
                 [null, '%', ''],
-              ]
+              ],
             },
             4: {
-              label:'M<sub>u,cons</sub>',
-              values:  [
+              label: 'M<sub>u,cons</sub>',
+              values: [
                 [null, 'kNm', ''],
                 [null, '%', ''],
-              ]
+              ],
             },
             5: {
-              label:'M<sub>u,cons</sub>',
-              values:  [
+              label: 'M<sub>u,cons</sub>',
+              values: [
                 [null, 'kNm', ''],
                 [null, '%', ''],
-              ]
+              ],
             },
             6: {
-              label:'T<sub>u,cons</sub>',
-              values:  [
+              label: 'T<sub>u,cons</sub>',
+              values: [
                 [null, 'kNm', ''],
                 [null, '%', ''],
-              ]
+              ],
             },
             7: {
               label: 'T<sub>v</sub>',
               values: [
-                [null, null],
-              ]
+                [null, null, ''],
+                ['N/A', null, ''],
+              ],
             },
             8: {
               label: 'U',
               values: [
-                [null, null],
-              ]
-            }
+                [null, null, ''],
+                ['N/A', null, ''],
+              ],
+            },
           },
         },
-      ]
+      ],
     },
     {
       type: 'derived-input-tile',
       title: 'Model Coefficients',
       fields: {
         '': {
-          fsufsigma_V: [0.439, null, 'f<sub>su</sub>f<sub>&sigma;<sub>V</sub></sub>', ''],
-          fsufsigma_Hx: [0.919, null, 'f<sub>su</sub>f<sub>&sigma;<sub>H<sub>x</sub></sub></sub>', ''],
-          fsufsigma_Hy: [0.919, null, 'f<sub>su</sub>f<sub>&sigma;<sub>H<sub>y</sub></sub></sub>', ''],
-          fsufsigma_Mx: [0.354, null, 'f<sub>su</sub>f<sub>&sigma;<sub>M<sub>x</sub></sub></sub>', ''],
-          fsufsigma_My: [0.538, null, 'f<sub>su</sub>f<sub>&sigma;<sub>M<sub>y</sub></sub></sub>', ''],
-          fsufsigma_T: [1.071, null, 'f<sub>su</sub>f<sub>&sigma;<sub>T</sub></sub>', ''],
+          fsufsigma_V: [
+            0.439,
+            null,
+            'f<sub>su</sub>f<sub>&sigma;<sub>V</sub></sub>',
+            '',
+          ],
+          fsufsigma_Hx: [
+            0.919,
+            null,
+            'f<sub>su</sub>f<sub>&sigma;<sub>H<sub>x</sub></sub></sub>',
+            '',
+          ],
+          fsufsigma_Hy: [
+            0.919,
+            null,
+            'f<sub>su</sub>f<sub>&sigma;<sub>H<sub>y</sub></sub></sub>',
+            '',
+          ],
+          fsufsigma_Mx: [
+            0.354,
+            null,
+            'f<sub>su</sub>f<sub>&sigma;<sub>M<sub>x</sub></sub></sub>',
+            '',
+          ],
+          fsufsigma_My: [
+            0.538,
+            null,
+            'f<sub>su</sub>f<sub>&sigma;<sub>M<sub>y</sub></sub></sub>',
+            '',
+          ],
+          fsufsigma_T: [
+            1.071,
+            null,
+            'f<sub>su</sub>f<sub>&sigma;<sub>T</sub></sub>',
+            '',
+          ],
           R_: [0.286, null, 'R', ''],
           T_50: [0.043, null, 'T<sub>50</sub>', ''],
           m: [1.05, null, 'm', ''],
@@ -209,22 +245,57 @@ export const appConf = {
       },
       subComponents: [
         {
-          type: 'table-tile',
+          type: 'input-table',
           index: 1,
           position: 'afterTitle',
           display: '',
           title: ' ',
           content: {
-           0: {
-             label: '',
-             values: [
-               [],
-               [],
-             ],
-           },
+            0: {
+              label: null,
+              values: [
+                [1.001, null, 'g1<sub>v</sub>', ''],
+                [0.671, null, 'g2<sub>v</sub>', ''],
+              ],
+            },
+            1: {
+              label: null,
+              values: [
+                [1.021, null, 'g1<sub>H<sub>x</sub></sub>', ''],
+                [0.709, null, 'g2<sub>H<sub>x</sub></sub>', ''],
+              ],
+            },
+            2: {
+              label: null,
+              values: [
+                [1.021, null, 'g1<sub>H<sub>y</sub></sub>', ''],
+                [0.709, null, 'g2<sub>H<sub>y</sub></sub>', ''],
+              ],
+            },
+            3: {
+              label: null,
+              values: [
+                [1.007, null, 'g1<sub>M<sub>x</sub></sub>', ''],
+                [0.784, null, 'g2<sub>M<sub>x</sub></sub>', ''],
+              ],
+            },
+            4: {
+              label: null,
+              values: [
+                [0.998, null, 'g1<sub>M<sub>y</sub></sub>', ''],
+                [0.788, null, 'g2<sub>M<sub>y</sub></sub>', ''],
+              ],
+            },
+            5: {
+              label: null,
+              values: [
+                [1.003, null, 'g1<sub>T</sub>', ''],
+                [0.673, null, 'g2<sub>T</sub>', ''],
+              ],
+            },
           },
         },
-      ]
+      ],
     },
     {
       type: 'image-tile',
@@ -266,11 +337,11 @@ export const appConf = {
             mode: 'lines',
             line: { shape: 'spline' },
           },
-          args: ['',],
+          args: [''],
           addLines: false,
           data: [],
         },
-      }
-    }
-    ],
-}
+      },
+    },
+  ],
+};
