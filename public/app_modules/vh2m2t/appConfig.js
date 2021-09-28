@@ -1,7 +1,7 @@
 export const appConf = {
   appName: 'vh2m2t',
   appTitle: 'Mudmat UU & CU VH2M2T',
-  appPageTitle: '',
+  appPageTitle: '6 DoF Loading Capacity of Shallow Foundations',
   appDescription:
     'Undrained and consolidated undrained 6 DoF undrained capacity of rectangular mudmat',
   appColour: '#c1476a',
@@ -121,7 +121,7 @@ export const appConf = {
     },
     {
       type: 'output-tile',
-      title: 'Output',
+      title: 'Output Table',
       fields: {
         '': {},
       },
@@ -306,41 +306,72 @@ export const appConf = {
     {
       type: 'graph-tile',
       fields: {
-        z: null,
-        suz: null,
-        q_total: null,
-        req_suction: null,
-        fos: null,
+        t_not_eq_0_H: null,
+        t_not_eq_0_M: null,
+        t_eq_0_H: null,
+        t_eq_0_M: null,
+        H: null,
+        M: null,
       },
       plots: {
         plotSuKpc: {
-          dataFun(a, b) {
+          dataFun(a, b, c, d, e, f) {
             return [
               {
                 x: a,
                 y: b,
+              },
+              {
+                x: c,
+                y: d,
+              },
+              {
+                x: e,
+                y: f,
+                name: `Load Point: ${Number(e).toFixed(1)} kN, ${Number(
+                  f
+                ).toFixed(1)} kNm`,
+                type: 'scatter',
+                marker: {
+                  symbol: 'diamond',
+                  size: 12,
+                  color: '#01579b',
+                },
               },
             ];
           },
           layout: {
             title: '',
             xaxis: {
-              title: 'Resultant Horizontal Load (kN)',
-              side: 'top',
-              rangemode: 'tozero',
+              title: 'Resultant horizontal load (kN)',
             },
             yaxis: {
               title: 'Resultant moment (kNm)',
-              autorange: 'reversed',
+            },
+            titlefont: {
+              family: 'Roboto, sans-serif',
+              color: '#01579b',
+              size: 19,
             },
             showlegend: false,
             mode: 'lines',
             line: { shape: 'spline' },
           },
-          args: [''],
+          args: [
+            't_not_eq_0_H',
+            't_not_eq_0_H',
+            't_eq_0_H',
+            't_eq_0_H',
+            'H',
+            'M',
+          ],
           addLines: false,
           data: [],
         },
+      },
+      updateConf: {
+        noNewData: false,
+        clearData: false,
       },
     },
   ],
