@@ -107,6 +107,7 @@ export const appConf = {
           args: ['sum', 'zfs'],
           addLines: true,
           data: [],
+          show: true,
         },
         plotKsu: {
           dataFun(a, b) {
@@ -133,6 +134,7 @@ export const appConf = {
           args: ['k', 'zfk'],
           addLines: true,
           data: [],
+          show: true,
         },
       },
       updateConf: {

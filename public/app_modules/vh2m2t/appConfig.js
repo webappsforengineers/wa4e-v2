@@ -356,6 +356,7 @@ export const appConf = {
             showlegend: false,
             mode: 'lines',
             line: { shape: 'spline' },
+            show: true,
           },
           args: [
             't_not_eq_0_H',

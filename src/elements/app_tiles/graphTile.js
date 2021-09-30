@@ -13,7 +13,10 @@ class graphTile extends TileBase {
       ${Object.entries(this.appConf.plots).map(
         mapValue =>
           html`
-            <div class="card mx-auto" style="min-width: 450px">
+            <div
+              class="card mx-auto"
+              style="min-width: 450px; display: ${mapValue[1].display};"
+            >
               <div class="responsive-plot" id=${mapValue[0]}></div>
             </div>
           `

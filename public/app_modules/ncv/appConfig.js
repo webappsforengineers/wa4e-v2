@@ -210,6 +210,7 @@ export const appConf = {
           args: ['dD', 'NcV_dD'],
           addLines: true,
           data: [],
+          show: true,
         },
         alphaside: {
           dataFun(a, b) {
@@ -241,6 +242,7 @@ export const appConf = {
           args: ['alphaSide', 'NcV_alphaSide'],
           addLines: true,
           data: [],
+          show: true,
         },
         kbsum: {
           dataFun(a, b) {
@@ -272,6 +274,7 @@ export const appConf = {
           args: ['kD', 'NcV_kD'],
           addLines: true,
           data: [],
+          show: true,
         },
       },
       updateConf: {

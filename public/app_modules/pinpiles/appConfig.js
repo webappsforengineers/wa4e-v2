@@ -299,6 +299,7 @@ export const appConf = {
           args: ['zt_H', 'zt_M', 'T_H', 'T_M', 'H_m', 'M_m', 'mudMatTlabel'],
           addLines: false,
           data: [],
+          show: true,
         },
         inSituUndrainedStresses: {
           dataFun(a, b, c, d, e, f, label) {
@@ -359,6 +360,7 @@ export const appConf = {
           ],
           addLines: false,
           data: [],
+          show: true,
         },
       },
       updateConf: {

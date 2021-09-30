@@ -21,41 +21,68 @@ class radioTile extends TileBase {
 
   makeCheckCallBacks() {
     const checkFields = html`${Object.keys(this.checkOptions).map(
-      key =>
-        html`<div
-          class="form-check form-check-inline"
-          style="display: ${this.appConf.options[key][2]};"
-        >
-          <input
-            class="form-check-input"
-            type="radio"
-            name="${this.appConf.title}"
-            id="${key}"
-            .value="${key}"
-            @click=${e => {
-              this.appConf.options[key][0] = e.target.checked;
-              this.checkValue = key;
-              // TODO: This seems overly complicated?
-              Object.keys(this.checkOptions).map(
-                // eslint-disable-next-line array-callback-return
-                notSelected => {
-                  if (notSelected !== key) {
-                    this.appConf.options[notSelected][0] = !e.target.checked;
+      key => html`<div
+        class="form-check form-check-inline"
+        style="display: ${this.appConf.options[key][2]};"
+      >
+        ${this.appConf.options[key][0]
+          ? html`<input
+              class="form-check-input"
+              type="radio"
+              name="${this.appConf.title}"
+              id="${key}"
+              .value="${key}"
+              @click=${e => {
+                this.appConf.options[key][0] = e.target.checked;
+                this.checkValue = key;
+                // TODO: This seems overly complicated?
+                Object.keys(this.checkOptions).map(
+                  // eslint-disable-next-line array-callback-return
+                  notSelected => {
+                    if (notSelected !== key) {
+                      this.appConf.options[notSelected][0] = !e.target.checked;
+                    }
                   }
+                );
+                if (this.appConf.clearOnClick) {
+                  this.clearOutput();
                 }
-              );
-              if (this.appConf.clearOnClick) {
-                this.clearOutput();
-              }
-              if (this.appConf.modifyOnClick) {
-                this.modifyForm(this.checkValue);
-              }
-            }}
-          />
-          <label class="form-check-label" for="${key}"
-            >${this.checkOptions[key][1]}</label
-          >
-        </div>`
+                if (this.appConf.modifyOnClick) {
+                  this.modifyForm(this.checkValue);
+                }
+              }}
+              checked
+            />`
+          : html`<input
+              class="form-check-input"
+              type="radio"
+              name="${this.appConf.title}"
+              id="${key}"
+              .value="${key}"
+              @click=${e => {
+                this.appConf.options[key][0] = e.target.checked;
+                this.checkValue = key;
+                // TODO: This seems overly complicated?
+                Object.keys(this.checkOptions).map(
+                  // eslint-disable-next-line array-callback-return
+                  notSelected => {
+                    if (notSelected !== key) {
+                      this.appConf.options[notSelected][0] = !e.target.checked;
+                    }
+                  }
+                );
+                if (this.appConf.clearOnClick) {
+                  this.clearOutput();
+                }
+                if (this.appConf.modifyOnClick) {
+                  this.modifyForm(this.checkValue);
+                }
+              }}
+            />`}
+        <label class="form-check-label" for="${key}"
+          >${this.checkOptions[key][1]}</label
+        >
+      </div>`
     )}`;
     return checkFields;
   }

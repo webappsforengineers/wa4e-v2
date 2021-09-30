@@ -20,17 +20,6 @@ class outputTile extends TileBase {
     ];
   }
 
-  /* arrangeFields() {
-    return html`${Object.keys(this.formFields).map(keyOuter => {
-      let htmlReturn = html``;
-      htmlReturn = html`
-        <h3>${keyOuter}</h3>
-        ${this.makeNestedFields(keyOuter)}
-      `;
-      return htmlReturn;
-    })}`;
-  } */
-
   arrangeFields() {
     return html`${Object.keys(this.formFields).map((keyOuter, index) => {
       const [beforeTitle, afterTitle, afterContent] = this.getSubComponents(

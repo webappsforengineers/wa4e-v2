@@ -139,6 +139,7 @@ export const appConf = {
           args: ['z', 'sigma_prime_v', 'u_hyd', 'sigma_v', 'sigma_prime_h'],
           addLines: false,
           data: [],
+          show: true,
         },
         inSituUndrainedStresses: {
           dataFun(a, b, c) {
@@ -177,6 +178,7 @@ export const appConf = {
           args: ['z', 'PS_s_u', 'TX_s_u'],
           addLines: false,
           data: [],
+          show: true,
         },
       },
       updateConf: {
