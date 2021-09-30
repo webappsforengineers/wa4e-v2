@@ -359,9 +359,9 @@ export const appConf = {
           },
           args: [
             't_not_eq_0_H',
-            't_not_eq_0_H',
+            't_not_eq_0_M',
             't_eq_0_H',
-            't_eq_0_H',
+            't_eq_0_M',
             'H',
             'M',
           ],
