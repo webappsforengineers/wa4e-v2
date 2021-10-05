@@ -1,5 +1,8 @@
 import { ztiConf as appConf } from '../moduleConf.js';
-import { calculateCaisson as appCalc } from '../../../../wa4e-v2-maths/output/wa4e-math.js';
+import {
+  calculateZTI as appCalc,
+  optimizeZTI as appOptimize,
+} from '../../local_modules/wa4e-math.js';
 import { AppGeneric } from '../../elements/general/appGeneric';
 import '../../elements/myElements.js';
 
@@ -12,6 +15,7 @@ export class App extends AppGeneric {
     this.output = {};
     this.appTiles = this.makeAppTiles();
     this.appCalc = appCalc;
+    this.appOptimize = appOptimize;
   }
 }
 

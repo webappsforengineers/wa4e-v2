@@ -72,8 +72,8 @@ export const appConf = {
       fields: {
         '': {
           spareMomentCapacity: [0, 'kNm', 'SMC', ''],
-          Threshold: [1, null, 'Threshold', ''],
-          Solution: [null, null, 'Solution', ''],
+          threshold: [1, null, 'Threshold', ''],
+          solution: [null, null, 'Solution', ''],
         },
       },
       subComponents: [

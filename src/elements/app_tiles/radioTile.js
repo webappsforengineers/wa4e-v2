@@ -2,11 +2,6 @@ import { html } from 'lit';
 import { TileBase } from './tileBase';
 
 class radioTile extends TileBase {
-  constructor() {
-    super();
-    this.checkValue = 'Circular';
-  }
-
   render() {
     this.checkOptions = this.appConf.options;
     this.checks = this.makeCheckCallBacks();
