@@ -12,7 +12,7 @@ class outputTile extends TileBase {
         <!-- This 'div' defines the tile as a grid item and the style options
       defines the corners of the tile on the grid. -->
         <div>
-          <h2>${this.appConf.title}</h2>
+          <h2>${html([this.appConf.title])}</h2>
           <!-- Here are the forms attributes -->
           <p>${this.outputFields}</p>
         </div>
@@ -32,7 +32,7 @@ class outputTile extends TileBase {
             this.makeSubComponent(subIndex)
           )}`}
         </div>
-        <h3>${keyOuter}</h3>
+        <h3>${html([keyOuter])}</h3>
         <div>
           ${html`${afterTitle.map(subIndex =>
             this.makeSubComponent(subIndex)

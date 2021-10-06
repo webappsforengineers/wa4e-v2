@@ -36,7 +36,7 @@ export const appConf = {
           lambda_V: [1, null, '&lambda;<sub>V</sub>', ''],
           lambda_H: [1, null, '&lambda;<sub>H</sub>', ''],
           lambda_s_UTI: [1.25, null, '&lambda;<sub>s,UTI</sub>', ''],
-          lambda_s_ZTI: [1.25, null, '&lambda;<sub>s,ZTI</sub>', ''],
+          lambda_s_ZTI: [1.25, null, '&lambda;<sub>s,ZTI</sub>', 'none'],
         },
       },
       subComponents: [
@@ -49,6 +49,49 @@ export const appConf = {
             UTI: [true, 'Unlimited-tension Interface', ''],
             ZTI: [false, 'Zero-tension Interface', ''],
           },
+          onChange: {
+            UTI: {
+              fields: {
+                'Load and Material Factors (&#8805;1)': {
+                  lambda_s_UTI: [1.25, null, '&lambda;<sub>s,UTI</sub>', ''],
+                  lambda_s_ZTI: [
+                    1.25,
+                    null,
+                    '&lambda;<sub>s,ZTI</sub>',
+                    'none',
+                  ],
+                },
+              },
+              subComponents: {
+                0: {
+                  options: {
+                    lambda_sOption: [null, '&lambda;<sub>s,UTI</sub>', ''],
+                  },
+                },
+              },
+            },
+            ZTI: {
+              fields: {
+                'Load and Material Factors (&#8805;1)': {
+                  lambda_s_UTI: [
+                    1.25,
+                    null,
+                    '&lambda;<sub>s,UTI</sub>',
+                    'none',
+                  ],
+                  lambda_s_ZTI: [1.25, null, '&lambda;<sub>s,ZTI</sub>', ''],
+                },
+              },
+              subComponents: {
+                0: {
+                  options: {
+                    lambda_sOption: [null, '&lambda;<sub>s,ZTI</sub>', ''],
+                  },
+                },
+              },
+            },
+          },
+          modifyOnClick: true,
         },
       ],
     },
@@ -97,7 +140,7 @@ export const appConf = {
           title: 'Using Input',
           options: {
             BOption: [null, 'B', ''],
-            lambda_sOption: [null, '&lambda;<sub>s</sub>', ''],
+            lambda_sOption: [null, '&lambda;<sub>s,UTI</sub>', ''],
           },
         },
       ],

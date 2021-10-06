@@ -8,7 +8,7 @@ class radioTile extends TileBase {
     return [
       super.render(),
       html`
-        <h2>${this.appConf.title}</h2>
+        <h2>${html([this.appConf.title])}</h2>
         ${this.checks}
       `,
     ];
@@ -74,9 +74,9 @@ class radioTile extends TileBase {
                 }
               }}
             />`}
-        <label class="form-check-label" for="${key}"
-          >${this.checkOptions[key][1]}</label
-        >
+        <label class="form-check-label" for="${key}">
+          ${html([this.checkOptions[key][1]])}
+        </label>
       </div>`
     )}`;
     return checkFields;
