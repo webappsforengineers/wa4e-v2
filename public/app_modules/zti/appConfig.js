@@ -142,6 +142,7 @@ export const appConf = {
             BOption: [null, 'B', ''],
             lambda_sOption: [null, '&lambda;<sub>s,UTI</sub>', ''],
           },
+          clearOnClick: true,
         },
       ],
     },

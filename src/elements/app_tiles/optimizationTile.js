@@ -45,7 +45,7 @@ class optimizationTile extends TileBase {
   }
 
   clearOutput() {
-    this.formFields[''].Solution[0] = null;
+    this.formFields[''].solution[0] = null;
     // this.formFields[''].solution_beta_pV[0] = null;
     // this.formFields[''].solution_beta_pH[0] = null;
     // this.formFields[''].solution_beta_pM[0] = null;

@@ -381,7 +381,7 @@ export const appConf = {
         '': {
           SMClessTotal: [0, 'kNM', 'SMC - Total', ''],
           Threshold: [1, null, 'Threshold', ''],
-          Solution: [null, null, 'Solution', ''],
+          solution: [null, null, 'Solution', ''],
           solution_beta_pV: [null, null, '&beta;<sub>pV</sub>', ''],
           solution_beta_pH: [null, null, '&beta;<sub>pH</sub>', ''],
           solution_beta_pM: [null, null, '&beta;<sub>pM</sub>', ''],
