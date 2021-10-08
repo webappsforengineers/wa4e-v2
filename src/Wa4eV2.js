@@ -10,6 +10,7 @@ import {
   ncvConf,
   pinpilesConf,
   pipeConf,
+  spletConf,
   vh2m2tConf,
   vhmConf,
   ztiConf,
@@ -58,6 +59,9 @@ export class Wa4eV2 extends StyledElement {
           </div>
           <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
             <menu-tile .appConf=${pipeConf}></menu-tile>
+          </div>
+          <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
+            <menu-tile .appConf=${spletConf}></menu-tile>
           </div>
           <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
             <menu-tile .appConf=${vh2m2tConf}></menu-tile>

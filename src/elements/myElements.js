@@ -8,5 +8,3 @@ import './app_tiles/outputForm.js';
 import './app_tiles/graphTile.js';
 import './app_tiles/optimizationTile.js';
 import './app_tiles/textTile.js';
-import './app_tiles/tableTile.js';
-import './app_tiles/inputTableTile.js';
