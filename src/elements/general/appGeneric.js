@@ -254,6 +254,15 @@ export class AppGeneric extends StyledElement {
                   ></text-tile>
                 </div>
               </div>`
+            : component.type === 'batch-tile'
+            ? html`<div class="col-md-auto mb-4">
+              <div class="card mx-auto p-1">
+                <batch-tile
+                  .appConf=${this.appWebComponents}
+                  .appName=${this.appName}
+                ></batch-tile>
+              </div>
+            </div>`
             : html`<p>Component ${component.type} Not Recognised</p>`}`
       )}
     `;

@@ -41,6 +41,8 @@
     "@stdlib/array-logspace": "^0.0.6",
     "bootstrap": "^5.0.2",
     "core-js": "^3.15.2",
+    "dropzone": "^5.9.3",
+    "file-saver-es": "^2.0.5",
     "joi": "^17.4.0",
     "lit": "2.0.0-rc.2",
     "load-json-file": "^2.0.0",
