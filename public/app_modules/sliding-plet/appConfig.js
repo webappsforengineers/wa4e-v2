@@ -39,7 +39,7 @@ export const appConf = {
           beta: [0.8, null, '&beta;', ''],
           chi: [2.5, null, '&chi;', ''],
           alphaint: [1, null, '&alpha;<sub>init</sub>', ''],
-          InitStressFracc: [1, null, 'InitStressFrac', ''],
+          InitStressFrac: [1, null, 'InitStressFrac', ''],
         },
       },
       subComponents: [],

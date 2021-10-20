@@ -37,6 +37,8 @@
   "license": "",
   "dependencies": {
     "@sideway/address": "^4.1.2",
+    "@stdlib/array-linspace": "^0.0.6",
+    "@stdlib/array-logspace": "^0.0.6",
     "bootstrap": "^5.0.2",
     "core-js": "^3.15.2",
     "joi": "^17.4.0",
