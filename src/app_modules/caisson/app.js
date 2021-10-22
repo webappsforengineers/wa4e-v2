@@ -1,6 +1,6 @@
 import { caissonConf as appConf } from '../moduleConf.js';
 import { calculateCaisson as appCalc } from '../../local_modules/wa4e-math.js';
-import { AppGeneric } from '../../elements/general/appGeneric';
+import { AppGeneric } from '../../elements/general/appGeneric.js';
 
 export class App extends AppGeneric {
   constructor() {

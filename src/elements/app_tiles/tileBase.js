@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { StyledElement } from '../../styles/wa4eStyleElement';
+import { StyledElement } from '../../styles/wa4eStyleElement.js';
 
 // This defines the base class to build the app-tiles
 export class TileBase extends StyledElement {

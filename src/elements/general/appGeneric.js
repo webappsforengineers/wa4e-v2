@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import { lodash } from 'lodash-es';
-import { StyledElement } from '../../styles/wa4eStyleElement';
+import { StyledElement } from '../../styles/wa4eStyleElement.js';
 import { Masonry } from '../../local_modules/wa4e-math.js';
 import '../mySubComponents.js';
 import '../myElements.js';
@@ -64,6 +64,10 @@ export class AppGeneric extends StyledElement {
   updateComponents() {
     this.output = this.appCalc(this.appWebComponents);
     this.childUpdate();
+  }
+
+  runCloneCalc(appWebCompClone) {
+    this.appCalc(appWebCompClone.appConfClone);
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -140,7 +144,7 @@ export class AppGeneric extends StyledElement {
       ${this.appWebComponents.map(
         (component, index) =>
           html` ${component.type === 'input-tile'
-            ? html`<div class="col-sm-6 col-lg-3 mb-4";">
+            ? html`<div class="col-sm-6 col-lg-3 mb-4">
                 <div class="card mx-auto p-1">
                   <input-tile
                     .appConf=${this.appWebComponents[index]}
@@ -256,13 +260,16 @@ export class AppGeneric extends StyledElement {
               </div>`
             : component.type === 'batch-tile'
             ? html`<div class="col-md-auto mb-4">
-              <div class="card mx-auto p-1">
-                <batch-tile
-                  .appConf=${this.appWebComponents}
-                  .appName=${this.appName}
-                ></batch-tile>
-              </div>
-            </div>`
+                <div class="card mx-auto p-1">
+                  <batch-tile
+                    @cloneCalc="${e => {
+                      this.runCloneCalc(e.detail);
+                    }}"
+                    .appConf=${this.appWebComponents}
+                    .appName=${this.appName}
+                  ></batch-tile>
+                </div>
+              </div>`
             : html`<p>Component ${component.type} Not Recognised</p>`}`
       )}
     `;
