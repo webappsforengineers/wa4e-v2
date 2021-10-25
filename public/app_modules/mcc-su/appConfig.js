@@ -57,6 +57,7 @@ export const appConf = {
           ],
         },
       },
+      subComponents: [],
     },
     {
       type: 'output-tile',
@@ -71,6 +72,7 @@ export const appConf = {
           k_tx: [null, 'kPa/m', 'k', ''],
         },
       },
+      subComponents: [],
     },
     {
       type: 'image-tile',
@@ -185,6 +187,10 @@ export const appConf = {
         noNewData: false,
         clearData: false,
       },
+    },
+    {
+      type: 'batch-tile',
+      title: 'Batch Calculation',
     },
   ],
 };

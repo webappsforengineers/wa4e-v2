@@ -250,5 +250,9 @@ export const appConf = {
         clearData: false,
       },
     },
+    {
+      type: 'batch-tile',
+      title: 'Batch Calculation',
+    },
   ],
 };

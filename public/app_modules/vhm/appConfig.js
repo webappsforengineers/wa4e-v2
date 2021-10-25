@@ -261,5 +261,9 @@ export const appConf = {
       img_w: '650px',
       img_h: '340px',
     },
+    {
+      type: 'batch-tile',
+      title: 'Batch Calculation',
+    },
   ],
 };

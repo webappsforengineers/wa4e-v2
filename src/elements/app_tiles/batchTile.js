@@ -14,6 +14,7 @@ class batchTile extends TileBase {
     this.formFields = this.appConf.find(
       element => element.type === 'input-tile'
     ).fields;
+    this.subComponents = this.appConf.find(element => element.type === 'input-tile').subComponents;
     this.fileData = null;
     return [
       super.render(),
@@ -122,6 +123,24 @@ class batchTile extends TileBase {
   generateCSV() {
     const csv = [];
     let ix = 0;
+    let choiceIdx;
+
+    // Find any radio tiles, title them and add possible checks.
+    this.subComponents.forEach((subComp, subCompIdx) => {
+      if (subComp.type === 'radio-tile') {
+        csv[ix] = ['Radio Choice:', subComp.title, subCompIdx].join(',');
+        ix += 1;
+        choiceIdx = 1;
+        Object.entries(subComp.options).forEach(([radioChoice, value]) => {
+          csv[ix] = [choiceIdx, radioChoice, value[0]].join(',');
+          ix += 1;
+          choiceIdx += 1;
+        })
+      }
+    })
+    csv[ix] = ['Main Fields:'].join(',')
+    ix += 1;
+    // Now do the main fields
     Object.keys(this.formFields).forEach(keyOuter => {
       Object.entries(this.formFields[keyOuter]).forEach(([keyInner, value]) => {
         csv[ix] = [keyOuter, keyInner, value[0]].join(',');
@@ -140,18 +159,35 @@ class batchTile extends TileBase {
     const rows = this.fileData.split('\n');
     // Map the rows
     // split values from each row into an array
-    let arr = rows.map(row => row.split(delimiter));
+    let arr = rows.map(row => row.split(delimiter).map(item => item.replace(/(\r\n|\n|\r)/gm, "")));
     arr = zip(...arr);
     // run the calculation
     // First we make a copy of appWebComponents
     const appConfClone = cloneDeep(this.appConf);
     const csv = [];
     let ix = 0;
+    let choiceIdx;
+
     // Create field names
     appConfClone.forEach(tile => {
       if (
         ['input-tile', 'derived-input-tile', 'output-tile'].includes(tile.type)
       ) {
+        // Find any radio tiles, title them and add possible checks.
+        Object.keys(tile.subComponents).forEach((subComp, subCompIdx) => {
+          if (subComp.type === 'radio-tile') {
+            csv[ix] = ['radio choice', subComp.title, subCompIdx].join(',')
+            ix += 1;
+            choiceIdx = 1;
+            // eslint-disable-next-line no-unused-vars
+            Object.entries(subComp.options).forEach(([radioChoice, value]) => {
+              csv[ix] = [choiceIdx, radioChoice].join(',')
+              ix += 1;
+              choiceIdx += 1;
+            })
+          }
+        })
+        // Now do the main fields
         Object.keys(tile.fields).forEach(keyOuter => {
           // eslint-disable-next-line no-unused-vars
           Object.entries(tile.fields[keyOuter]).forEach(([keyInner, value]) => {
@@ -161,12 +197,22 @@ class batchTile extends TileBase {
         });
       }
     });
+
+    let fieldTypeSwitch;
+    let subCompIdx;
     // Loop over the values from the third row onwards
     arr.slice(2).forEach(input => {
       input.forEach((value, index) => {
-        appConfClone.find(element => element.type === 'input-tile').fields[
-          arr[0][index]
-        ][arr[1][index]][0] = value;
+        if (arr[0][index] === 'Radio Choice:') {
+          fieldTypeSwitch = 'radio';
+          subCompIdx = arr[2][index];
+        } else if (arr[0][index] === 'Main Fields:') {
+          fieldTypeSwitch = 'main';
+        } else if (fieldTypeSwitch === 'radio') {
+          appConfClone.find(element => element.type === 'input-tile').subComponents[subCompIdx].options[arr[1][index]] = value;
+        } else if (fieldTypeSwitch === 'main' ) {
+          appConfClone.find(element => element.type === 'input-tile').fields[arr[0][index]][arr[1][index]][0] = value;
+        }
       });
       this.launchCloneCalc(appConfClone);
       ix = 0;

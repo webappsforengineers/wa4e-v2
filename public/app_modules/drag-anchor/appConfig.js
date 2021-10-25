@@ -52,6 +52,7 @@ export const appConf = {
           Ta2: [null, 'kN', 'T<sub>a</sub>', 'block', ''],
         },
       },
+      subComponents: [],
     },
     {
       type: 'output-tile',
@@ -66,6 +67,7 @@ export const appConf = {
           h: [null, null, '&eta; = T<sub>m</sub>/W', 'block', ''],
         },
       },
+      subComponents: [],
     },
     {
       type: 'image-tile',
@@ -141,6 +143,10 @@ export const appConf = {
         noNewData: false,
         clearData: false,
       },
+    },
+    {
+      type: 'batch-tile',
+      title: 'Batch Calculation',
     },
   ],
 };

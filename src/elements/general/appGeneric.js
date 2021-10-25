@@ -14,6 +14,7 @@ export class AppGeneric extends StyledElement {
     return {
       appWebComponents: { type: Object },
       title: { type: String },
+      appName: { type: String },
       output: { type: Object },
       appTiles: { type: html },
       appCalc: { type: Function },

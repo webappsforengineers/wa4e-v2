@@ -10,6 +10,7 @@ export class TileBase extends StyledElement {
       // configure the tile the `.` tells the webcomponents not to serialise or
       // stringify the object
       appConf: { type: Object },
+      appName: { type: String },
     };
   }
 

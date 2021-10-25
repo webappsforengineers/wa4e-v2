@@ -1,12 +1,11 @@
 import { html } from 'lit';
-import { TileBase } from './tileBase';
+import { TileBase } from './tileBase.js';
 
 class textTile extends TileBase {
   render() {
     this.subComponents = this.appConf.subComponents;
     this.text = this.appConf.text;
     this.tileContent = this.arrangeFields();
-    window.console.log(this.subComponents);
     return [
       super.render(),
       html`

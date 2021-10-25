@@ -68,5 +68,9 @@ export const appConf = {
       },
       subComponents: [],
     },
+    {
+      type: 'batch-tile',
+      title: 'Batch Calculation',
+    },
   ],
 };

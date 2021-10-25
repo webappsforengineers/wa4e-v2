@@ -186,6 +186,6 @@ export const appConf = {
     {
       type: 'batch-tile',
       title: 'Batch Calculation',
-    }
+    },
   ],
 };
