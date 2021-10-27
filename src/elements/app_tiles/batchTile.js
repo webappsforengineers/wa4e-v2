@@ -14,7 +14,9 @@ class batchTile extends TileBase {
     this.formFields = this.appConf.find(
       element => element.type === 'input-tile'
     ).fields;
-    this.subComponents = this.appConf.find(element => element.type === 'input-tile').subComponents;
+    this.subComponents = this.appConf.find(
+      element => element.type === 'input-tile'
+    ).subComponents;
     this.fileData = null;
     return [
       super.render(),
@@ -80,6 +82,7 @@ class batchTile extends TileBase {
     const { files } = dt;
 
     if (files.length !== 1) {
+      // eslint-disable-next-line no-alert
       window.alert('Single file upload only. All files removed.');
     } else {
       this.handleFile(files[0]);
@@ -89,6 +92,7 @@ class batchTile extends TileBase {
   clickFile(e) {
     const { files } = e.currentTarget;
     if (files.length !== 1) {
+      // eslint-disable-next-line no-alert
       window.alert('Single file upload only. All files removed.');
     } else {
       this.handleFile(files[0]);
@@ -97,6 +101,7 @@ class batchTile extends TileBase {
 
   async handleFile(fileObj) {
     if (this.fileData !== null) {
+      // eslint-disable-next-line no-alert
       window.alert('Single file upload only. Previous file is removed.');
     }
 
@@ -109,6 +114,7 @@ class batchTile extends TileBase {
       },
       error => {
         /* code if some error */
+        // eslint-disable-next-line no-alert
         window.alert(`file load failed with error ${error}`);
         // remove all data from fileData
         this.fileData = null;
@@ -135,10 +141,10 @@ class batchTile extends TileBase {
           csv[ix] = [choiceIdx, radioChoice, value[0]].join(',');
           ix += 1;
           choiceIdx += 1;
-        })
+        });
       }
-    })
-    csv[ix] = ['Main Fields:'].join(',')
+    });
+    csv[ix] = ['Main Fields:'].join(',');
     ix += 1;
     // Now do the main fields
     Object.keys(this.formFields).forEach(keyOuter => {
@@ -159,7 +165,9 @@ class batchTile extends TileBase {
     const rows = this.fileData.split('\n');
     // Map the rows
     // split values from each row into an array
-    let arr = rows.map(row => row.split(delimiter).map(item => item.replace(/(\r\n|\n|\r)/gm, "")));
+    let arr = rows.map(row =>
+      row.split(delimiter).map(item => item.replace(/(\r\n|\n|\r)/gm, ''))
+    );
     arr = zip(...arr);
     // run the calculation
     // First we make a copy of appWebComponents
@@ -167,6 +175,7 @@ class batchTile extends TileBase {
     const csv = [];
     let ix = 0;
     let choiceIdx;
+    let firstMain = true;
 
     // Create field names
     appConfClone.forEach(tile => {
@@ -174,20 +183,32 @@ class batchTile extends TileBase {
         ['input-tile', 'derived-input-tile', 'output-tile'].includes(tile.type)
       ) {
         // Find any radio tiles, title them and add possible checks.
-        Object.keys(tile.subComponents).forEach((subComp, subCompIdx) => {
-          if (subComp.type === 'radio-tile') {
-            csv[ix] = ['radio choice', subComp.title, subCompIdx].join(',')
-            ix += 1;
-            choiceIdx = 1;
-            // eslint-disable-next-line no-unused-vars
-            Object.entries(subComp.options).forEach(([radioChoice, value]) => {
-              csv[ix] = [choiceIdx, radioChoice].join(',')
+        Object.entries(tile.subComponents).forEach(
+          ([subCompIdx, subCompVal]) => {
+            if (subCompVal.type === 'radio-tile') {
+              csv[ix] = ['radio choice', subCompVal.title, subCompIdx].join(
+                ','
+              );
               ix += 1;
-              choiceIdx += 1;
-            })
+              choiceIdx = 1;
+              // eslint-disable-next-line no-unused-vars
+              Object.entries(subCompVal.options).forEach(
+                ([radioChoice, value]) => {
+                  csv[ix] = [choiceIdx, radioChoice].join(',');
+                  ix += 1;
+                  choiceIdx += 1;
+                }
+              );
+            }
           }
-        })
+        );
         // Now do the main fields
+        // If its the first non subcomp
+        if (firstMain === true) {
+          csv[ix] = ['Main Fields:'].join(',');
+          ix += 1;
+          firstMain = false;
+        }
         Object.keys(tile.fields).forEach(keyOuter => {
           // eslint-disable-next-line no-unused-vars
           Object.entries(tile.fields[keyOuter]).forEach(([keyInner, value]) => {
@@ -197,6 +218,26 @@ class batchTile extends TileBase {
         });
       }
     });
+
+    function parseBool(inputValue) {
+      if (
+        [1, '1', 'TRUE', 'True', 'true', 'T', 't', 'y', 'yes'].includes(
+          inputValue
+        )
+      ) {
+        return true;
+      }
+      if (
+        [0, '0', 'FALSE', 'False', 'false', 'F', 'f', 'n', 'no', ''].includes(
+          inputValue
+        )
+      ) {
+        return false;
+      }
+      // eslint-disable-next-line no-alert
+      window.alert(`${inputValue} is not a valid boolean option in input csv`);
+      return undefined;
+    }
 
     let fieldTypeSwitch;
     let subCompIdx;
@@ -209,27 +250,54 @@ class batchTile extends TileBase {
         } else if (arr[0][index] === 'Main Fields:') {
           fieldTypeSwitch = 'main';
         } else if (fieldTypeSwitch === 'radio') {
-          appConfClone.find(element => element.type === 'input-tile').subComponents[subCompIdx].options[arr[1][index]] = value;
-        } else if (fieldTypeSwitch === 'main' ) {
-          appConfClone.find(element => element.type === 'input-tile').fields[arr[0][index]][arr[1][index]][0] = value;
+          appConfClone.find(
+            element => element.type === 'input-tile'
+          ).subComponents[subCompIdx].options[arr[1][index]][0] =
+            parseBool(value);
+        } else if (fieldTypeSwitch === 'main') {
+          appConfClone.find(element => element.type === 'input-tile').fields[
+            arr[0][index]
+          ][arr[1][index]][0] = Number(value);
         }
       });
       this.launchCloneCalc(appConfClone);
+
       ix = 0;
+      firstMain = true;
       appConfClone.forEach(tile => {
         if (
           ['input-tile', 'derived-input-tile', 'output-tile'].includes(
             tile.type
           )
         ) {
+          // Find any radio tiles, title them and add possible checks.
+          // eslint-disable-next-line no-unused-vars
+          Object.entries(tile.subComponents).forEach(([idx, subCompVal]) => {
+            if (subCompVal.type === 'radio-tile') {
+              ix += 1;
+              // eslint-disable-next-line no-unused-vars
+              Object.entries(subCompVal.options).forEach(
+                ([radioChoice, value]) => {
+                  csv[ix] = [csv[ix], value[0]].join(',');
+                  ix += 1;
+                }
+              );
+            }
+          });
+          if (firstMain === true) {
+            ix += 1;
+            firstMain = false;
+          }
+          /* now do the main fields */
           Object.keys(tile.fields).forEach(keyOuter => {
-            // eslint-disable-next-line no-unused-vars
+            /* eslint-disable no-unused-vars */
             Object.entries(tile.fields[keyOuter]).forEach(
               ([keyInner, value]) => {
                 csv[ix] = [csv[ix], value[0]].join(',');
                 ix += 1;
               }
             );
+            /* eslint-enable no-unused-vars */
           });
         }
       });
