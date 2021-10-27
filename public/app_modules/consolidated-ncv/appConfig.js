@@ -108,6 +108,7 @@ export const appConf = {
           cv0: [null, 'm&sup2;/year', 'c<sub>v0</sub>', ''],
         },
       },
+      subComponents: [],
     },
     {
       type: 'output-tile',
@@ -135,6 +136,11 @@ export const appConf = {
           rel_gain_vu_percentage: [null, '%', '% gain in v<sub>ult</sub>', ''],
         },
       },
+      subComponents: [],
+    },
+    {
+      type: 'batch-tile',
+      title: 'Batch Calculation',
     },
   ],
 };

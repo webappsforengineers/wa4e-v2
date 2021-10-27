@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { StyledElement } from '../../styles/wa4eStyleElement';
+import { StyledElement } from '../../styles/wa4eStyleElement.js';
 
 // This defines the base class to build the app-tiles
 export class TileBase extends StyledElement {
@@ -10,6 +10,7 @@ export class TileBase extends StyledElement {
       // configure the tile the `.` tells the webcomponents not to serialise or
       // stringify the object
       appConf: { type: Object },
+      appName: { type: String },
     };
   }
 

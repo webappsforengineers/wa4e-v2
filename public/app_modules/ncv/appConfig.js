@@ -152,6 +152,7 @@ export const appConf = {
           Su0: [null, null, 's<sub>u0</sub> = k <sub>su</sub>d', ''],
         },
       },
+      subComponents: [],
     },
     {
       type: 'output-tile',
@@ -168,6 +169,7 @@ export const appConf = {
           Vult_force: [null, 'kN', 'V<sub>ult</sub>=v<sub>ult</sub>A', ''],
         },
       },
+      subComponents: [],
     },
     {
       type: 'graph-tile',
@@ -281,6 +283,10 @@ export const appConf = {
         noNewData: false,
         clearData: false,
       },
+    },
+    {
+      type: 'batch-tile',
+      title: 'Batch Calculation',
     },
   ],
 };

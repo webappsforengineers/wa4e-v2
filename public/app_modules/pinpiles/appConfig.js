@@ -45,7 +45,7 @@ export const appConf = {
         'Skirt-soil Interaction': {
           alpha_skirt: [1, null, '&alpha;<sub>skirt</sub>', ''],
         },
-        'Pile Group, Geometry': {
+        'Pile Group Geometry': {
           D_pile: [0.9, 'm', 'D<sub>pile</sub>', ''],
           W_pile: [40, 'kN', 'W<sub>pile</sub>', ''],
           B_piles: [6, 'm', 'B<sub>piles</sub> (0-9.10)', ''],
@@ -403,6 +403,10 @@ export const appConf = {
           clearOnClick: true,
         },
       ],
+    },
+    {
+      type: 'batch-tile',
+      title: 'Batch Calculation',
     },
   ],
 };

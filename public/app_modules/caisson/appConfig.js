@@ -50,6 +50,7 @@ export const appConf = {
           Wcaisson: [null, 'kN', 'W&#39;<sub>caisson</sub>', ''],
         },
       },
+      subComponents: [],
     },
     {
       type: 'output-tile',
@@ -70,6 +71,7 @@ export const appConf = {
           VT3: [null, 'kN', 'V<sub>T,3</sub>', ''],
         },
       },
+      subComponents: [],
     },
     {
       type: 'graph-tile',
@@ -180,6 +182,10 @@ export const appConf = {
         noNewData: false,
         clearData: false,
       },
+    },
+    {
+      type: 'batch-tile',
+      title: 'Batch Calculation',
     },
   ],
 };
