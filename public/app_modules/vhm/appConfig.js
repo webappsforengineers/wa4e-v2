@@ -7,6 +7,20 @@ export const appConf = {
   appColour: '#75dff4',
   appWebComponents: [
     {
+      type: 'text-tile',
+      title: 'About this app:',
+      text: {
+        subTitle: {
+          text: 'Undrained planar VHM capacity for circular foundations for varying embedment ratio & soil strength heterogeneity.',
+          format: 'h5',
+        },
+        blurb: {
+          text: 'This app enables calculation of minimum diameter, embedment depth or material factor to ensure undrained ultimate limit state is not reached for circular skirted* foundations under planar VHM loading and soil profiles of varying strength heterogeneity. The approximating expressions for the uniaxial capacities and failure envelopes are derived from finite element analysis results adopting a Tresca constitutive model. The results are published in <a href="http://dx.doi.org/10.1680/geolett.14.00010">“A generalized failure envelope for undrained capacity of circular shallow foundations under general loading“ by Vulpe, C., Gourvenec, S. & Power, M. (2014),  Géotechnique Letters</a> \n *Note: The skirted foundation is modelled as a solid rigid plug on the assumption that sufficient internal skirts are provided in practice to ensure structural stability of the skirted foundation and no geotechnical failure mechanism within the skirted compartment. The assumption of the skirted geometry justifies the unlimited tension interface under overturning moment at low vertical loads. ',
+          format: '',
+        },
+      },
+    },
+    {
       type: 'input-tile',
       title: 'Input',
       fields: {

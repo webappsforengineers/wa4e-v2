@@ -8,9 +8,11 @@ class inputTableTile extends TileBase {
     return [
       super.render(),
       html`
-        <table class="table">
-          ${this.htmlTableContent}
-        </table>
+        <div class="table-responsive">
+          <table class="table">
+            ${this.htmlTableContent}
+          </table>
+        </div>
       `,
     ];
   }
@@ -18,7 +20,7 @@ class inputTableTile extends TileBase {
   arrangeFields() {
     return html`${Object.values(this.tableContent).map(rowValues => {
       const htmlRow = html`
-        <div class="input-group row">${this.makeRow(rowValues)}</div>
+        <div class="input-group">${this.makeRow(rowValues)}</div>
       `;
       return htmlRow;
     })}`;

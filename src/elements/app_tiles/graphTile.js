@@ -1,27 +1,24 @@
 import { html } from 'lit';
 import { Plotly } from '../../local_modules/wa4e-math.js';
-import { TileBase } from './tileBase';
+import { TileBase } from './tileBase.js';
 
 class graphTile extends TileBase {
   render() {
     if (this.hasUpdated) {
       this.configGraph();
     }
-    this.graphHtml = html` <div
-      class="row row-cols-sm-1 row-cols-lg-2 row-cols-xxl-3 gy-4"
-    >
+    this.graphHtml = html`
       ${Object.entries(this.appConf.plots).map(
         mapValue =>
           html`
-            <div
-              class="card mx-auto"
-              style="min-width: 450px; display: ${mapValue[1].display};"
-            >
-              <div class="responsive-plot" id=${mapValue[0]}></div>
+            <div class="col py-2">
+              <div class="card" style="display: ${mapValue[1].display};">
+                <div class="responsive-plot" id=${mapValue[0]}></div>
+              </div>
             </div>
           `
       )}
-    </div>`;
+    `;
     return [super.render(), this.graphHtml];
   }
 

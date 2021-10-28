@@ -1,8 +1,8 @@
 /* eslint-disable no-sparse-arrays */
 export const appConf = {
   appName: 'mcc-su',
-  appTitle: 'MCC — su',
-  appPageTitle: '',
+  appTitle: 'MCC - s<sub>u</sub>',
+  appPageTitle: 'MCC - s<sub>u</sub>',
   appDescription: 'Conversion of MCC parameters to su profile',
   appColour: '#f1c04c',
   appWebComponents: [

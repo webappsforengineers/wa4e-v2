@@ -1,4 +1,5 @@
 // import { hmrPlugin, presets } from '@open-wc/dev-server-hmr';
+// import { LitElement } from 'lit';
 import { rollupAdapter, fromRollup } from '@web/dev-server-rollup';
 import commonjs from '@rollup/plugin-commonjs';
 import rollupReplace from '@rollup/plugin-replace';

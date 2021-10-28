@@ -7,6 +7,23 @@ export const appConf = {
   appColour: '#c1476a',
   appWebComponents: [
     {
+      type: 'text-tile',
+      title: 'About this app:',
+      text: {
+        subTitle: {
+          text: 'Undrained 6 DoF capacity of 2:1 rectangular skirted mudmats, pile groups and hybrid piled-mudmats ',
+          format: 'h5',
+        },
+        blurb: {
+          text:
+            'This app enables sizing of a skirted* mudmats and hybrid pin-piled mudmats for undrained ultimate limit state under loading in six degrees of freedom (V, H2, M2, T) on deposits with varying linearly increasing strength with depth. Mudmat aspect ratio is fixed at B/L = 0.5 while embedment ratio d/B can range from 0 up to 0.3. An unlimited tension interface is assumed between the underside of the mudmat and the soil while the skirt-soil interface roughness can range from smooth ( = 0) to fully rough ( = 1). Load distribution between the mudmat and piles can be explored by considering each part separately or together. The allowable capacity under the six-degree-of-freedom loading is expressed in terms of a two-dimensional failure envelope for the resultant horizontal and moment loading, after due allowance for the vertical and torsional components of load. The failure envelope framework allows for optimization of foundation size through minimum foundation breadth, embedment ratio or material factor. \n' +
+            'The results and framework for the mudmat solution are described in detail in <a href="http://dx.doi.org/10.1680/geot.13.P.051"> “Design approach for rectangular mudmats under fully three dimensional loading” by Feng, X., Randolph, M. F., Gourvenec, S. & Wallerand, R. (2014), Géotechnique 64(1): 51-63. </a>   \n' +
+            '*Note: The skirted mudmat is modelled as a solid rigid plug on the assumption that sufficient internal skirts are provided to ensure structural stability of the skirted foundation and no geotechnical failure mechanism within the skirted compartment. The assumption of the skirted geometry justifies the unlimited tension interface under overturning moment at low vertical loads.\n',
+          format: '',
+        },
+      },
+    },
+    {
       type: 'input-tile',
       title: 'Input',
       fields: {

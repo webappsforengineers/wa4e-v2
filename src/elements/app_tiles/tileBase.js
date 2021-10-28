@@ -130,10 +130,7 @@ export class TileBase extends StyledElement {
     const component = this.subComponents[index];
     const subcomponentHTML = html`
       ${component.type === 'radio-tile'
-        ? html` <div
-            class="card mx-auto p-1"
-            style="display: ${component.display};"
-          >
+        ? html` <div style="display: ${component.display};">
             <radio-tile
               .appConf=${component}
               @clear="${() => {
@@ -142,15 +139,15 @@ export class TileBase extends StyledElement {
             ></radio-tile>
           </div>`
         : component.type === 'table-tile'
-        ? html` <div class="card mx-auto p-1">
+        ? html` <div>
             <table-tile .appConf=${component}></table-tile>
           </div>`
         : component.type === 'input-table'
-        ? html` <div class="card mx-auto p-1">
+        ? html` <div>
             <input-table .appConf=${component}></input-table>
           </div>`
         : component.type === 'test-tile'
-        ? html` <div class="card mx-auto p-1">
+        ? html` <div>
             <test-tile .appConf=${component}></test-tile>
           </div>`
         : html`<p>Component ${component.type} Not Recognised</p>`}

@@ -2,6 +2,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^0.4.2",
     "@open-wc/building-rollup": "^1.10.0",
+    "@open-wc/dev-server-hmr": "^0.1.2-next.0",
     "@open-wc/eslint-config": "^7.0.0",
     "@open-wc/testing": "^3.0.1",
     "@rollup/plugin-commonjs": "^19.0.0",
@@ -48,7 +49,8 @@
     "lodash-es": "^4.17.21",
     "masonry-layout": "^4.2.2",
     "mathjs": "^9.4.4",
-    "plotly.js-dist-min": "^2.2.1"
+    "plotly.js-dist-min": "^2.2.1",
+    "rfs": "^9.0.6"
   },
   "eslintConfig": {
     "extends": [
