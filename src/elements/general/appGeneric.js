@@ -277,20 +277,3 @@ export class AppGeneric extends StyledElement {
   }
   /* eslint-enable no-nested-ternary */
 }
-
-/*
-            : component.type === 'radio-tile'
-            ? html`<div class="col-md-auto mb-4">
-                <div class="card mx-auto p-1">
-                  <radio-tile
-                    .appConf=${this.appWebComponents[index]}
-                    @loaded="${() => {
-                      this.reloadMasonry();
-                    }}"
-                    @modifyForm="${e => {
-                      this.modifyForm(e.detail);
-                    }}"
-                  ></radio-tile>
-                </div>
-              </div>`
- */

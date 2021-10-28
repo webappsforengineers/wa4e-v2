@@ -121,8 +121,8 @@ export class TileBase extends StyledElement {
     /* eslint-enable no-restricted-syntax */
     return [beforeTitle, afterTitle, afterContent];
   }
-
   /* eslint-enable class-methods-use-this */
+
   /* eslint-disable no-nested-ternary */
   makeSubComponent(index) {
     // Currently this only supports radio and test tiles but other subcomponent
