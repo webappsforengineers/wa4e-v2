@@ -7,6 +7,23 @@ export const appConf = {
     'Undrained 6 DoF capacity of rectangular mudmat with unlimited and zero tension interface',
   appWebComponents: [
     {
+      type: 'text-tile',
+      title: 'About this app:',
+      text: {
+        subTitle: {
+          text: 'Undrained 6 DoF capacity of rectangular mudmats with unlimited and zero tension interface',
+          format: 'h5',
+        },
+        blurb: {
+          text:
+            'This app enables sizing of a rectangular mudmats with either zero or unlimited tension interface for undrained ultimate limit state under loading in six degrees of freedom (V, H2, M2, T) on deposits with linearly increasing strength with depth. Mudmat aspect ratio can range from B/L of 0.33 – 1* and embedment ratio d/B from 0 up to 0.3*. The allowable capacity under the six-degree-of-freedom loading is expressed in terms of a two-dimensional failure envelope for the resultant horizontal and moment loading, after due allowance for the vertical and torsional components of load. The failure envelope framework allows for essentially instantaneous generation of failure envelopes and optimisation of a foundation design as a function of foundation dimension or material factor.\n' +
+            'Details of the unlimited tension interface (UTI) solution is published in <a href="http://dx.doi.org/10.1680/geot.13.P.051">“Design approach for rectangular mudmats under fully three dimensional loading” by Feng, X., Randolph, M. F., Gourvenec, S. & Wallerand, R. (2014), Géotechnique 64(1): 51-63, and the zero tension interface (ZTI) solution is published in <a href="http://dx.doi.org/10.1680/jgeot.16.P.097">“Effect of interface condition on the undrained capacity of subsea mudmats under six degree-of-freedom loading”, Shen, Z., Feng, X. & Gourvenec, S. (2017), Géotechnique 67(4):338-349</a>\n' +
+            '*Note: The mudmat for the ZTI case is modelled as a surface foundation, such that with embedment is represented by a reduced ground level, capturing higher shear strength where it increases with depth.',
+          format: '',
+        },
+      },
+    },
+    {
       type: 'input-tile',
       title: 'Input',
       fields: {

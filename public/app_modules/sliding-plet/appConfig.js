@@ -6,6 +6,22 @@ export const appConf = {
   appDescription: 'Script to calculate sliding PLET settlement',
   appWebComponents: [
     {
+      type: 'text-tile',
+      title: 'About this app:',
+      text: {
+        subTitle: {
+          text: 'Evolution of resistance and settlement of a tolerably mobile mudmat from episodic sliding and intervening consolidation',
+          format: 'h5',
+        },
+        blurb: {
+          text:
+            'This app enables prediction of the evolution of undrained sliding resistance and settlement of a tolerably mobile mudmat foundation on a normally consolidated fine grained deposit due to episodes of monotonic sliding with intervening consolidation.  Changes in soil strength profile with depth below the sliding foundation can also be predicted. The app enables exploration of the sensitivity of geotechnical properties on the performance of the foundation over the whole life of the structure. The predictions are based on a critical state inspired (CSI) framework, that has been validated against centrifuge model tests, and is shown to capture the essential elements of the soil–structure interaction, which include: (a) the changing soil strength from cycles of sliding and pore pressure generation; (b) the regain in strength due to dissipation of excess pore pressure (consolidation); and (c) the soil contraction and consequent settlement of the foundation caused by the consolidation process. \n' +
+            'Details of the centrifuge model tests underpinning the theoretical framework are published in <a href="http://dx.doi.org/10.1680/geot.14.P.098"> “Tolerably mobile subsea foundations – Observations of performance” by Cocjin. M., Gourvenec, S., White, D.J & Randolph, M.F. (2014), Géotechnique 64(11): 895-909</a>, and details of the theoretical framework are published in <a href="http://dx.doi.org/10.1680/jgeot.16.P.137"> “Theoretical framework for predicting the response of tolerably mobile subsea installations” by Cocjin. M., Gourvenec, S., White, D.J & Randolph, M.F. (2017), Géotechnique 67(7):608-620 </a>',
+          format: '',
+        },
+      },
+    },
+    {
       type: 'input-tile',
       title: 'Input',
       fields: {

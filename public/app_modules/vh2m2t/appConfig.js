@@ -7,6 +7,22 @@ export const appConf = {
   appColour: '#c1476a',
   appWebComponents: [
     {
+      type: 'text-tile',
+      title: 'About this app:',
+      text: {
+        subTitle: {
+          text: 'Undrained and consolidated undrained 6 DoF capacity of rectangular mudmats with unlimited and zero tension interface for varying aspect ratio and embedment ratio (&alpha; = 1)',
+          format: 'h5',
+        },
+        blurb: {
+          text:
+            'This app enables calculation of consolidated undrained ultimate limit states for rectangular skirted mudmats in a normally consolidated fine grained deposit under loading in six degrees of freedom as a function of magnitude of vertical preload and duration of consolidation. The app considers foundation aspect ratios B/L from 0.33 – 1 (square), embedment ratios d/B from 0 to 0.3, and fully rough skirt-soil roughness and unlimited tension interface. Increases in uniaxial and combined capacity were identified through results from coupled 3D FEA using a Modified Cam Clay constitutive model showing that the consolidated undrained failure envelope could be simply scaled from the (unconsolidated) undrained failure envelope solution. The critical state inspired (CSI) theoretical framework developed by Gourvenec et al. (2014, <a href="http://dx.doi.org/10.1680/geot">http://dx.doi.org/10.1680/geot</a>. 13.P.101) is applied to predict the uniaxial capacities as a function of magnitude of preload and duration of consolidation. \n' +
+            'The results and interpretation underpinning this app are published in <a href="http://dx.doi.org/10.1680/geot./14-P-090"> “Consolidated undrained load-carrying capacity of mudmats under combined loading in six degrees-of-freedom” by Feng, X. & Gourvenec, S. (2015), Géotechnique, 65(7): 563-575.</a>',
+          format: '',
+        },
+      },
+    },
+    {
       type: 'input-tile',
       title: 'Input',
       fields: {

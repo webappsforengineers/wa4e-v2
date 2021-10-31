@@ -8,9 +8,11 @@ class tableTile extends TileBase {
     return [
       super.render(),
       html`
-        <table class="table">
-          ${this.htmlTableContent}
-        </table>
+        <div class="table-responsive">
+          <table class="table">
+            ${this.htmlTableContent}
+          </table>
+        </div>
       `,
     ];
   }

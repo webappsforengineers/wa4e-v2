@@ -112,7 +112,7 @@ To create a new app the following steps must be followed:
    * Import the app adding to line 5+ in src/wa4e-v2.js
    * Add the HTML in the div starting on line 38 in src/wa4e-v2.js
 * Add the script file in wa4e-math/app_modules/app-name-script.js
-   * Export the calculation (and optimisation) in wa4e-math/wa4e-math.js
+   * Export the calculation (and optimisation) in wa4e-math/wa4e-math.mjs
    * Run `bash roll-n-copy.sh` to compile the maths and send it to wa4e/src/local_modules/ 
 
 
@@ -265,7 +265,7 @@ wa4e
 │   │   ├── myElements.js
 │   │   └── mySubComponents.js
 │   ├── local_modules
-│   │   └── wa4e-math.js
+│   │   └── wa4e-math.mjs
 │   ├── styles
 │   │   └── wa4eStyleElement.js
 │   └── wa4e-v2.js
@@ -301,12 +301,12 @@ wa4e-math
 │       └── zti-script.js
 ├── babel.config.json
 ├── local_modules
-│   ├── helper.js
+│   ├── helper.mjs
 │   └── mathCustom.js
 ├── output
-│   └── wa4e-math.js
+│   └── wa4e-math.mjs
 ├── package-lock.json
 ├── package.json
 ├── roll-n-copy.sh
 ├── rollup.config.js
-└── wa4e-math.js
+└── wa4e-math.mjs

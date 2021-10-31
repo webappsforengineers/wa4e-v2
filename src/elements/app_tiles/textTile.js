@@ -42,7 +42,9 @@ class textTile extends TileBase {
             this.makeSubComponent(subIndex)
           )}`}
         </div>
-        <p class="${this.text[keyOuter].format}">${this.text[keyOuter].text}</p>
+        <p class="${this.text[keyOuter].format}">
+          ${html([this.text[keyOuter].text])}
+        </p>
         <div>
           ${html`${afterTitle.map(subIndex =>
             this.makeSubComponent(subIndex)

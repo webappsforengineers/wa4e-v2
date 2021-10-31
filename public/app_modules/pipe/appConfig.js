@@ -7,6 +7,20 @@ export const appConf = {
   appColour: '#6fb072',
   appWebComponents: [
     {
+      type: 'text-tile',
+      title: 'About this app:',
+      text: {
+        subTitle: {
+          text: 'Required pipe weight',
+          format: 'h5',
+        },
+        blurb: {
+          text: 'Still to do …',
+          format: '',
+        },
+      },
+    },
+    {
       type: 'input-tile',
       title: 'Input',
       fields: {
@@ -24,7 +38,7 @@ export const appConf = {
           lateralDisplacementLessThan: [
             null,
             'D (pipe diameter)',
-            'LateralDisplacement',
+            'Lateral Displacement',
             'none',
           ],
         },
@@ -76,7 +90,7 @@ export const appConf = {
                           lateralDisplacementLessThan: [
                             null,
                             'D (pipe diameter)',
-                            'LateralDisplacement',
+                            'Lateral Displacement',
                             'none',
                           ],
                         },
@@ -95,7 +109,7 @@ export const appConf = {
                           lateralDisplacementLessThan: [
                             null,
                             'D (pipe diameter)',
-                            'LateralDisplacement',
+                            'Lateral Displacement',
                             'none',
                           ],
                         },
@@ -114,7 +128,7 @@ export const appConf = {
                           lateralDisplacementLessThan: [
                             null,
                             'D (pipe diameter)',
-                            'LateralDisplacement',
+                            'Lateral Displacement',
                             '',
                           ],
                         },
@@ -139,7 +153,7 @@ export const appConf = {
                   lateralDisplacementLessThan: [
                     null,
                     'D (pipe diameter)',
-                    'LateralDisplacement',
+                    'Lateral Displacement',
                     'none',
                   ],
                 },
@@ -169,7 +183,7 @@ export const appConf = {
                           lateralDisplacementLessThan: [
                             null,
                             'D (pipe diameter)',
-                            'LateralDisplacement',
+                            'Lateral Displacement',
                             'none',
                           ],
                         },
@@ -213,7 +227,7 @@ export const appConf = {
                           lateralDisplacementLessThan: [
                             null,
                             'D (pipe diameter)',
-                            'LateralDisplacement',
+                            'Lateral Displacement',
                             'none',
                           ],
                         },
@@ -257,7 +271,7 @@ export const appConf = {
                           lateralDisplacementLessThan: [
                             null,
                             'D (pipe diameter)',
-                            'LateralDisplacement',
+                            'Lateral Displacement',
                             'none',
                           ],
                         },
@@ -324,7 +338,7 @@ export const appConf = {
                   lateralDisplacementLessThan: [
                     null,
                     'D (pipe diameter)',
-                    'LateralDisplacement',
+                    'Lateral Displacement',
                     'none',
                   ],
                 },
@@ -343,7 +357,7 @@ export const appConf = {
                   lateralDisplacementLessThan: [
                     null,
                     'D (pipe diameter)',
-                    'LateralDisplacement',
+                    'Lateral Displacement',
                     'none',
                   ],
                 },
@@ -362,7 +376,7 @@ export const appConf = {
                   lateralDisplacementLessThan: [
                     null,
                     'D (pipe diameter)',
-                    'LateralDisplacement',
+                    'Lateral Displacement',
                     '',
                   ],
                 },

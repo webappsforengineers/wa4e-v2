@@ -7,6 +7,22 @@ export const appConf = {
   appColour: '#9a76c1',
   appWebComponents: [
     {
+      type: 'text-tile',
+      title: 'About this app:',
+      text: {
+        subTitle: {
+          text: 'Surface Foundation Consolidated Undrained NcV',
+          format: 'h5',
+        },
+        blurb: {
+          text:
+            'This app enables calculation of increase in undrained vertical bearing capacity from vertical (including self-weight) preloading and consolidation considering the magnitude and duration of an applied preload and the initial over-consolidation ratio of the deposit. Increases in bearing capacity were identified through results from finite element analyses using a Modified Cam Clay constitutive model, from which a simple critical state inspired (CSI) theoretical framework was developed to predict the bearing capacity as a function of magnitude of preload, consolidation time, OCR and interface roughness. \n' +
+            'The FEA results and theoretical framework are published in <a href="http://dx.doi.org/10.1680/geot. 13.P.101">“A method for predicting the consolidated undrained capacity of shallow foundations on clay“ by Gourvenec, S., Vulpe, C. & Murthy, T. (2014) , Géotechnique, 64(3): 215–225 </a>',
+          format: '',
+        },
+      },
+    },
+    {
       type: 'input-tile',
       title: 'Input',
       fields: {

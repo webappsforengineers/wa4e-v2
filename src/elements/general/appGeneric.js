@@ -28,17 +28,15 @@ export class AppGeneric extends StyledElement {
       super.render(),
       html`
         <div class="row">
-          <header-element page-title=${this.title}></header-element>
+          <header-element .pageTitle=${this.title}></header-element>
         </div>
         <div class="container-fluid bg-light">
-          <div class="container bg-light">
-            <div
-              id="msnry-tiles"
-              class="msnry-tiles row"
-              data-masonry='{"percentPosition": true }'
-            >
-              ${this.appTiles}
-            </div>
+          <div
+            id="msnry-tiles"
+            class="msnry-tiles row row-cols-sm-1 row-cols-lg-2 row-cols-xxl-3 g-2"
+            data-masonry='{"percentPosition": true }'
+          >
+            ${this.appTiles}
           </div>
         </div>
         <div class="row">
@@ -145,8 +143,8 @@ export class AppGeneric extends StyledElement {
       ${this.appWebComponents.map(
         (component, index) =>
           html` ${component.type === 'input-tile'
-            ? html`<div class="col-sm-6 col-lg-3 mb-4">
-                <div class="card mx-auto p-1">
+            ? html`<div class="col">
+                <div class="card ">
                   <input-tile
                     .appConf=${this.appWebComponents[index]}
                     @updated="${() => {
@@ -168,8 +166,8 @@ export class AppGeneric extends StyledElement {
                 </div>
               </div>`
             : component.type === 'derived-input-tile'
-            ? html`<div class="col-sm-6 col-lg-3 mb-4">
-                <div class="card mx-auto p-1">
+            ? html`<div class="col">
+                <div class="card  ">
                   <derived-input-tile
                     .appConf=${this.appWebComponents[index]}
                     @loaded="${() => {
@@ -179,8 +177,8 @@ export class AppGeneric extends StyledElement {
                 </div>
               </div>`
             : component.type === 'output-tile'
-            ? html`<div class="col-sm-6 col-lg-3 mb-4">
-                <div class="card mx-auto p-1">
+            ? html`<div class="col">
+                <div class="card  ">
                   <output-tile
                     .appConf=${this.appWebComponents[index]}
                     @loaded="${() => {
@@ -189,18 +187,9 @@ export class AppGeneric extends StyledElement {
                   ></output-tile>
                 </div>
               </div>`
-            : component.type === 'graph-tile'
-            ? html`<div class="col-sm-12 col-lg-9 mb-4">
-                <graph-tile
-                  .appConf=${this.appWebComponents[index]}
-                  @loaded="${() => {
-                    this.reloadMasonry();
-                  }}"
-                ></graph-tile>
-              </div>`
             : component.type === 'coeff-tile'
-            ? html`<div class="col-sm-6 col-lg-3 mb-4">
-                <div class="card mx-auto p-1">
+            ? html`<div class="col">
+                <div class="card  ">
                   <coeff-tile
                     .appConf=${this.appWebComponents[index]}
                     @loaded="${() => {
@@ -210,8 +199,8 @@ export class AppGeneric extends StyledElement {
                 </div>
               </div>`
             : component.type === 'optimisation-tile'
-            ? html`<div class="col-sm-6 col-lg-3 mb-4">
-                <div class="card mx-auto p-1">
+            ? html`<div class="col">
+                <div class="card  ">
                   <optimisation-tile
                     .appConf=${this.appWebComponents[index]}
                     @loaded="${() => {
@@ -221,8 +210,8 @@ export class AppGeneric extends StyledElement {
                 </div>
               </div>`
             : component.type === 'image-tile'
-            ? html`<div class="col-md-auto mb-4">
-                <div class="card mx-auto p-1">
+            ? html`<div class="col">
+                <div class="card  ">
                   <image-tile
                     .appConf=${this.appWebComponents[index]}
                     @loaded="${() => {
@@ -232,8 +221,8 @@ export class AppGeneric extends StyledElement {
                 </div>
               </div>`
             : component.type === 'optimization-tile'
-            ? html`<div class="col-md-auto mb-4">
-                <div class="card mx-auto p-1">
+            ? html`<div class="col">
+                <div class="card  ">
                   <optimization-tile
                     .appConf=${this.appWebComponents[index]}
                     @loaded="${() => {
@@ -252,16 +241,16 @@ export class AppGeneric extends StyledElement {
                 </div>
               </div>`
             : component.type === 'text-tile'
-            ? html`<div class="col-md-auto mb-4">
-                <div class="card mx-auto p-1">
+            ? html`<div class="col">
+                <div class="card  ">
                   <text-tile
                     .appConf=${this.appWebComponents[index]}
                   ></text-tile>
                 </div>
               </div>`
             : component.type === 'batch-tile'
-            ? html`<div class="col-md-auto mb-4">
-                <div class="card mx-auto p-1">
+            ? html`<div class="col">
+                <div class="card  ">
                   <batch-tile
                     @cloneCalc="${e => {
                       this.runCloneCalc(e.detail);
@@ -271,6 +260,13 @@ export class AppGeneric extends StyledElement {
                   ></batch-tile>
                 </div>
               </div>`
+            : component.type === 'graph-tile'
+            ? html`<graph-tile
+                .appConf=${this.appWebComponents[index]}
+                @loaded="${() => {
+                  this.reloadMasonry();
+                }}"
+              ></graph-tile>`
             : html`<p>Component ${component.type} Not Recognised</p>`}`
       )}
     `;
