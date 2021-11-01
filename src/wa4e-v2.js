@@ -40,6 +40,18 @@ export class Wa4eV2 extends StyledElement {
         <div class="row">
           <div class="col-1"></div>
           <div class="col-10">
+            <h4 style="color: red">
+              WebAppsForEngineers V2 is in beta, the app has been reimplemented
+              to modernise the app framework. The new batch tiles are due to be
+              tested. For general use we suggest using the original site found
+              <a href="appsforengineers.com/index.html">here</a>.
+            </h4>
+          </div>
+          <div class="col-1"></div>
+        </div>
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-10">
             <h1>
               Freeware web-based calculation tools for geotechnical engineers
             </h1>

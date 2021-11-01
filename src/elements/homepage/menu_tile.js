@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { StyledElement } from '../../styles/wa4eStyleElement';
+import { StyledElement } from '../../styles/wa4eStyleElement.js';
 
 class menuTile extends StyledElement {
   // define the JS object and/or html attributes to be passed to the app
@@ -17,10 +17,11 @@ class menuTile extends StyledElement {
     this.appConf = {};
   }
 
+  /* eslint-disable lit-a11y/anchor-has-content */
   render() {
     // create static data paths
-    this.appPage = `/public/app_modules/${this.appConf.appName}/index.html`;
-    this.appImg = `/public/img/${this.appConf.appName}.png`;
+    this.appPage = `../../../public/app_modules/${this.appConf.appName}/index.html`;
+    this.appImg = `../../../public/img/${this.appConf.appName}.png`;
     return [
       super.render(),
       html`
@@ -44,6 +45,7 @@ class menuTile extends StyledElement {
       `,
     ];
   }
+  /* eslint-enable lit-a11y/anchor-has-content */
 }
 
 customElements.define('menu-tile', menuTile);
