@@ -1,30 +1,4 @@
-<p align="center">
-  <img width="200" src="https://open-wc.org/hero.png"></img>
-</p>
 
-## Open-wc Starter App
+## Freeware web-based calculation tools for geotechnical engineers
 
-[![Built with open-wc recommendations](https://img.shields.io/badge/built%20with-open--wc-blue.svg)](https://github.com/open-wc)
-
-## Quickstart
-
-To get started:
-
-```bash
-npm init @open-wc
-# requires node 10 & npm 6 or higher
-```
-
-## Scripts
-
-- `start` runs your app for development, reloading on file changes
-- `start:build` runs your app after it has been built using the build command
-- `build` builds your app and outputs it in your `dist` directory
-- `test` runs your test suite with Web Test Runner
-- `lint` runs the linter for your project
-
-## Tooling configs
-
-For most of the tools, the configuration is in the `package.json` to reduce the amount of files in your project.
-
-If you customize the configuration a lot, you can consider moving them to individual files.
+Webappsforengineers are freely available online geotechnical engineering calculation tools based on published research and developed for research dissemination and teaching. The apps enable users to engage with published methods and frameworks immediately, allowing initial sizing calculations to be performed and exploration of the sensitivity of design inputs (e.g. geotechnical properties and loads) on design outputs (e.g. foundation or anchor geometry and resistance). In some cases geometry of the structure is an input, although a key value of many of the automated calculation tools presented in these apps is the ability to change the design question from ‘is the factor of safety for this foundation sufficient?’ to ‘what is the minimum geometry of the foundation to ensure the required factor of safety?’. The latter is arguably the more useful design question and the optimization routines in those tools applying a failure envelope methodology, enable automated iteration to determine the optimized geometry.
