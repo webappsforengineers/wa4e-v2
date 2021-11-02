@@ -35,7 +35,7 @@ export class Wa4eV2 extends StyledElement {
       super.render(),
       html`
         <div class="row">
-          <header-element page-title=${this.title}></header-element>
+          <header-element page-title="${this.title}"></header-element>
         </div>
         <div class="row">
           <div class="col-1"></div>
@@ -85,37 +85,37 @@ export class Wa4eV2 extends StyledElement {
           data-masonry='{"percentPosition": true }'
         >
           <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
-            <menu-tile .appConf=${ncvConf}></menu-tile>
+            <menu-tile .appConf="${ncvConf}"></menu-tile>
           </div>
           <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
-            <menu-tile .appConf=${vhmConf}></menu-tile>
+            <menu-tile .appConf="${vhmConf}"></menu-tile>
           </div>
           <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
-            <menu-tile .appConf=${consolidatedncvConf}></menu-tile>
+            <menu-tile .appConf="${consolidatedncvConf}"></menu-tile>
           </div>
           <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
-            <menu-tile .appConf=${pinpilesConf}></menu-tile>
+            <menu-tile .appConf="${pinpilesConf}"></menu-tile>
           </div>
           <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
-            <menu-tile .appConf=${ztiConf}></menu-tile>
+            <menu-tile .appConf="${ztiConf}"></menu-tile>
           </div>
           <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
-            <menu-tile .appConf=${vh2m2tConf}></menu-tile>
+            <menu-tile .appConf="${vh2m2tConf}"></menu-tile>
           </div>
           <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
-            <menu-tile .appConf=${spletConf}></menu-tile>
+            <menu-tile .appConf="${spletConf}"></menu-tile>
           </div>
           <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
-            <menu-tile .appConf=${mccsuConf}></menu-tile>
+            <menu-tile .appConf="${mccsuConf}"></menu-tile>
           </div>
           <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
-            <menu-tile .appConf=${caissonConf}></menu-tile>
+            <menu-tile .appConf="${caissonConf}"></menu-tile>
           </div>
           <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
-            <menu-tile .appConf=${dragAnchorConf}></menu-tile>
+            <menu-tile .appConf="${dragAnchorConf}"></menu-tile>
           </div>
           <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
-            <menu-tile .appConf=${pipeConf}></menu-tile>
+            <menu-tile .appConf="${pipeConf}"></menu-tile>
           </div>
           <div class="col-sm-6 col-lg-3" style="height: 350px; width: 350px">
             <div
@@ -125,7 +125,7 @@ export class Wa4eV2 extends StyledElement {
               <img
                 class="card-img-top"
                 style="max-width: 150px; max-height: 150px;"
-                src="../public/img/geocalc.png"
+                src="img/geocalc.png"
                 alt="Geocalcs icon"
               />
               <div class="card-body">
