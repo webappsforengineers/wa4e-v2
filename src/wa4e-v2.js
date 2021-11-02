@@ -44,7 +44,7 @@ export class Wa4eV2 extends StyledElement {
               WebAppsForEngineers V2 is in beta, the app has been reimplemented
               to modernise the app framework. The new batch tiles are due to be
               tested. For general use we suggest using the original site found
-              <a href="appsforengineers.com/index.html">here</a>.
+              <a href="https://webappsforengineers.com/index.html">here</a>.
             </h4>
           </div>
           <div class="col-1"></div>
