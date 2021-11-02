@@ -16,44 +16,54 @@ export default merge(baseConfig, {
   // any <script type="module"> inside will be bundled by rollup
   preserveEntrySignatures: 'strict',
   input: {
-    'public/index.html': './public/index.html',
-    'public/app_modules/caisson/index.html':
-      './public/app_modules/caisson/index.html',
-    'public/app_modules/consolidated-ncv/index.html':
-      './public/app_modules/consolidated-ncv/index.html',
-    'public/app_modules/drag-anchor/index.html':
-      './public/app_modules/drag-anchor/index.html',
-    'public/app_modules/mcc-su/index.html':
-      './public/app_modules/mcc-su/index.html',
-    'public/app_modules/ncv/index.html': './public/app_modules/ncv/index.html',
-    'public/app_modules/pinpiles/index.html':
-      './public/app_modules/pinpiles/index.html',
-    'public/app_modules/pipe/index.html':
-      './public/app_modules/pipe/index.html',
-    'public/app_modules/sliding-plet/index.html':
-      './public/app_modules/sliding-plet/index.html',
-    'public/app_modules/vh2m2t/index.html':
-      './public/app_modules/vh2m2t/index.html',
-    'public/app_modules/vhm/index.html': './public/app_modules/vhm/index.html',
-    'public/app_modules/zti/index.html': './public/app_modules/zti/index.html',
+    'index.html': './src/index.html',
+    'app_modules/caisson/index.html': './src/app_modules/caisson/index.html',
+    'app_modules/consolidated-ncv/index.html':
+      './src/app_modules/consolidated-ncv/index.html',
+    'app_modules/drag-anchor/index.html':
+      './src/app_modules/drag-anchor/index.html',
+    'app_modules/mcc-su/index.html': './src/app_modules/mcc-su/index.html',
+    'app_modules/ncv/index.html': './src/app_modules/ncv/index.html',
+    'app_modules/pinpiles/index.html': './src/app_modules/pinpiles/index.html',
+    'app_modules/pipe/index.html': './src/app_modules/pipe/index.html',
+    'app_modules/sliding-plet/index.html':
+      './src/app_modules/sliding-plet/index.html',
+    'app_modules/vh2m2t/index.html': './src/app_modules/vh2m2t/index.html',
+    'app_modules/vhm/index.html': './src/app_modules/vhm/index.html',
+    'app_modules/zti/index.html': './src/app_modules/zti/index.html',
   },
+  /*
+  input: [
+    'index.html',
+    'app_modules/caisson/index.html',
+    'app_modules/consolidated-ncv/index.html',
+    'app_modules/drag-anchor/index.html',
+    'app_modules/mcc-su/index.html',
+    'app_modules/ncv/index.html',
+    'app_modules/pinpiles/index.html',
+    'app_modules/pipe/index.html',
+    'app_modules/sliding-plet/index.html',
+    'app_modules/vh2m2t/index.html',
+    'app_modules/vhm/index.html',
+    'app_modules/zti/index.html',
+  ], */
   output: {
     format: 'es',
     dir: 'dist',
     // preserveModules: true,
-    // preserveModulesRoot: 'public',
+    // preserveModulesRoot: 'src',
   },
 
   // alternatively, you can use your JS as entrypoint for rollup and
   // optionally set a HTML template manually
-  // input: './app.js',
+  // input: './src/app.js',
   plugins: [
-    commonjs(),
-    resolve(),
+    // html({ rootDir: path.join(process.cwd(), 'src'), flattenOutput: false }),
     html(),
     copy({
-      targets: [{ src: './public/img/*', dest: './dist' }],
-      flatten: false,
+      targets: [{ src: './src/img/*', dest: './dist/img/' }],
     }),
+    commonjs(),
+    resolve(),
   ],
 });

@@ -4,7 +4,7 @@ import { StyledElement } from '../../styles/wa4eStyleElement.js';
 class headerTemplate extends StyledElement {
   constructor() {
     super();
-    this.homePage = '/src/index.html';
+    this.homePage = '../../index.html'; // TODO: Update this to the static http:// link for the hosted site
   }
 
   static get properties() {
