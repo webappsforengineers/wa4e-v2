@@ -25,13 +25,13 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
             </span>
           </footer>
         </div>
-      `),this.footerText,this.contactEmailLink,this.contactEmail)]}});let Q,tt=t=>t;customElements.define("header-element",class extends Z{constructor(){super(),this.homePage="../../index.html"}static get properties(){return{pageTitle:{type:String}}}render(){return[super.render(),E(Q||(Q=tt`
+      `),this.footerText,this.contactEmailLink,this.contactEmail)]}});let Q,tt=t=>t;customElements.define("header-element",class extends Z{constructor(){super(),this.homePage="https://webappsforengineers.com/wa4e-v2/dist/index.html"}static get properties(){return{pageTitle:{type:String}}}render(){return[super.render(),E(Q||(Q=tt`
         <nav class="navbar navbar-expand-lg" style="background-color: #03a9f4">
           <div class="col-2">
             <a href="${0}"
               ><img
                 class="img-fluid mx-auto d-block"
-                src="/src/img/home.png"
+                src="../../img/home.png"
                 alt="Home"
             /></a>
           </div>

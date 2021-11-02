@@ -1,4 +1,4 @@
-import{S as e,p as t}from"./f544fdcc.js";import{a as i}from"./8d54de41.js";import{a as s}from"./70179364.js";import{a as o}from"./cc4a78b6.js";import{a as l}from"./4077184c.js";import{a}from"./1428c1ff.js";import{a as n}from"./70141f7a.js";import{a as r}from"./470d2e29.js";import{a as c}from"./70e590c1.js";import{a as d}from"./b5c4b27d.js";import{a as p}from"./4cf8a1b6.js";import{a as m}from"./362949b9.js";let h,g=e=>e;class u extends e{static get properties(){return{title:{type:String}}}constructor(){super(),this.title=""}render(){return[super.render(),t(h||(h=g`
+import{S as e,p as t}from"./44de498c.js";import{a as i}from"./8d54de41.js";import{a as s}from"./70179364.js";import{a as o}from"./cc4a78b6.js";import{a as l}from"./4077184c.js";import{a}from"./1428c1ff.js";import{a as n}from"./70141f7a.js";import{a as r}from"./470d2e29.js";import{a as d}from"./70e590c1.js";import{a as c}from"./b5c4b27d.js";import{a as p}from"./4cf8a1b6.js";import{a as m}from"./362949b9.js";let h,g=e=>e;class u extends e{static get properties(){return{title:{type:String}}}constructor(){super(),this.title=""}render(){return[super.render(),t(h||(h=g`
         <div class="row">
           <header-element page-title="${0}"></header-element>
         </div>
@@ -104,4 +104,4 @@ import{S as e,p as t}from"./f544fdcc.js";import{a as i}from"./8d54de41.js";impor
         <div class="row gy-1">
           <footer-element></footer-element>
         </div>
-      `),this.title,a,p,s,n,m,d,c,l,i,o,r)]}}customElements.define("wa4e-v2",u);export{u as Wa4eV2};
+      `),this.title,a,p,s,n,m,c,d,l,i,o,r)]}}customElements.define("wa4e-v2",u);export{u as Wa4eV2};
