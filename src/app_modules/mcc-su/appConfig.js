@@ -7,6 +7,20 @@ export const appConf = {
   appColour: '#f1c04c',
   appWebComponents: [
     {
+      type: 'text-tile',
+      title: 'About this app:',
+      text: {
+        subTitle: {
+          text: 'Conversion of MCC parameters to undrained shear strength profile with depth',
+          format: 'h5',
+        },
+        blurb: {
+          text: 'This app enables calculation of an undrained shear strength profile with depth from Modified Cam Clay parameters (&lambda;, &kappa;, z, M & ecs). Details of the equations are available here [link to the document currently on ‘Additional Reading’ – but will need to be embedded elsewhere as that tile is going]',
+          format: '',
+        },
+      },
+    },
+    {
       type: 'input-tile',
       title: 'Input',
       fields: {
