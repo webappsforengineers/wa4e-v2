@@ -26,18 +26,18 @@ class menuTile extends StyledElement {
       super.render(),
       html`
         <div
-          class="card text-center text-wrap align-items-center p-3"
-          style="height: 325px; width: 325px; background-color: ${this.appConf
-            .appColour}"
+          class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
+          style="background-color: ${this.appConf
+            .appColour}; aspect-ratio: 0.61;"
         >
           <img
-            class="card-img-top"
-            style="max-width: 150px; max-height: 150px;"
             src=${this.appImg}
+            class="card-img-top img-fluid"
+            style="width: 90%; height: 150px; object-fit: scale-down;"
             alt="${this.appConf.appName} icon"
           />
           <div class="card-body">
-            <h5 class="card-title">${html([this.appConf.appTitle])}</h5>
+            <h6 class="card-title">${html([this.appConf.appTitle])}</h6>
             <p class="card-text">${this.appConf.appDescription}</p>
             <a href=${this.appPage} class="stretched-link"></a>
           </div>

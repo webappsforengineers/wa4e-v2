@@ -42,7 +42,7 @@ class inputTableTile extends TileBase {
             ? html` <input
                   class="form-control bg-light col-2"
                   disabled
-                  .value="${value[0]}"
+                  .value="${value[0].toFixed(2)}"
                 />
                 <label class="input-group-text col-1"
                   >${html([value[1]])}</label
@@ -54,7 +54,7 @@ class inputTableTile extends TileBase {
                 <input
                   class="form-control bg-light col-1"
                   disabled
-                  .value="${value[0]}"
+                  .value="${value[0].toFixed(2)}"
                 />
                 <label class="input-group-text col-1"
                   >${html([value[1]])}</label

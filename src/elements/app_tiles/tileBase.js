@@ -58,7 +58,7 @@ export class TileBase extends StyledElement {
             class="form-control bg-light"
             disabled
             id="${key}"
-            .value="${this.appConf.fields[keyOuter][key][0]}"
+            .value="${this.appConf.fields[keyOuter][key][0].toFixed(2)}"
           />
           <label
             class="input-group-text text-wrap text-break"
