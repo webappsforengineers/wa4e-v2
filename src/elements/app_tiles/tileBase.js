@@ -41,6 +41,15 @@ export class TileBase extends StyledElement {
 
   // Generic field making functions used by multiple apps
 
+  // eslint-disable-next-line class-methods-use-this
+  parseNum (maybeNum) {
+    if (typeof maybeNum === 'number'){
+    return maybeNum.toFixed(2)
+    }
+    // if its not a number just return it
+    return maybeNum
+  }
+
   makeNestedFields(keyOuter) {
     return html`${Object.keys(this.appConf.fields[`${keyOuter}`]).map(
       key =>
@@ -58,7 +67,7 @@ export class TileBase extends StyledElement {
             class="form-control bg-light"
             disabled
             id="${key}"
-            .value="${this.appConf.fields[keyOuter][key][0].toFixed(2)}"
+            .value="${this.parseNum(this.appConf.fields[keyOuter][key][0])}"
           />
           <label
             class="input-group-text text-wrap text-break"
