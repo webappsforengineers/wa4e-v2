@@ -82,40 +82,40 @@ export class Wa4eV2 extends StyledElement {
           </div>
 
           <div class="row" data-masonry='{"percentPosition": true }'>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${ncvConf}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${vhmConf}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${consolidatedncvConf}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${pinpilesConf}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${ztiConf}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${vh2m2tConf}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${spletConf}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${mccsuConf}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${caissonConf}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${dragAnchorConf}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${pipeConf}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <div
                 class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
                 style="background-color: #f492e3; aspect-ratio: 0.61;"
