@@ -1,8 +1,8 @@
 import { S as e, p as t } from './a37c4663.js';
-import { a as l } from './8d54de41.js';
+import { a as i } from './8d54de41.js';
 import { a as o } from './70179364.js';
-import { a as i } from './cc4a78b6.js';
-import { a as s } from './cfb26dd6.js';
+import { a as s } from './cc4a78b6.js';
+import { a as l } from './cfb26dd6.js';
 import { a } from './1428c1ff.js';
 import { a as n } from './6432928c.js';
 import { a as c } from './470d2e29.js';
@@ -73,40 +73,40 @@ class g extends e {
           </div>
 
           <div class="row" data-masonry='{"percentPosition": true }'>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${0}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${0}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${0}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${0}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${0}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${0}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${0}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${0}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${0}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${0}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${0}"></menu-tile>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <div
                 class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
                 style="background-color: #f492e3; aspect-ratio: 0.61;"
@@ -142,9 +142,9 @@ class g extends e {
         p,
         m,
         r,
-        s,
         l,
         i,
+        s,
         c
       ),
     ];
