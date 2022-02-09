@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { lodash } from 'lodash-es';
+import { isArray, isObject, has, set, get } from 'lodash-es';
 import { StyledElement } from '../../styles/wa4eStyleElement.js';
 import { Masonry } from '../../local_modules/wa4e-math.js';
 import '../mySubComponents.js';
@@ -92,7 +92,7 @@ export class AppGeneric extends StyledElement {
       let workingKey = [...passedKey];
       for (const [key, value] of Object.entries(obj)) {
         workingKey.push(key);
-        if (lodash.isObject(value) && !lodash.isArray(value)) {
+        if (isObject(value) && !isArray(value)) {
           getKeys(value, keys, ...workingKey);
         } else {
           keys.push([...workingKey]);
@@ -108,12 +108,8 @@ export class AppGeneric extends StyledElement {
     // for each defied component in appWebComponents check the key paths and if it is found update the fields
     for (const component of this.appWebComponents) {
       for (const key of keys) {
-        if (lodash.has(component, key)) {
-          lodash.set(
-            component,
-            key,
-            lodash.get(appConfChange.changeFields, key)
-          );
+        if (has(component, key)) {
+          set(component, key, get(appConfChange.changeFields, key));
         }
       }
     }

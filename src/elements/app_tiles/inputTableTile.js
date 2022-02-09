@@ -26,6 +26,15 @@ class inputTableTile extends TileBase {
     })}`;
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  parseNum (maybeNum) {
+    if (typeof maybeNum === 'number'){
+      return maybeNum.toFixed(2)
+    }
+    // if its not a number just return it
+    return maybeNum
+  }
+
   /* eslint-disable class-methods-use-this */
   /* eslint-disable no-nested-ternary */
   makeRow(rowValues) {
@@ -42,7 +51,7 @@ class inputTableTile extends TileBase {
             ? html` <input
                   class="form-control bg-light col-2"
                   disabled
-                  .value="${value[0]}"
+                  .value="${this.parseNum(value[0])}"
                 />
                 <label class="input-group-text col-1"
                   >${html([value[1]])}</label
@@ -54,7 +63,7 @@ class inputTableTile extends TileBase {
                 <input
                   class="form-control bg-light col-1"
                   disabled
-                  .value="${value[0]}"
+                  .value="${this.parseNum(value[0])}"
                 />
                 <label class="input-group-text col-1"
                   >${html([value[1]])}</label

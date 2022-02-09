@@ -1,4 +1,6 @@
 {
+  "main": "./src/wa4e-v2.js",
+  "module": "./src/wa4e-v2.js",
   "devDependencies": {
     "@eslint/eslintrc": "^0.4.2",
     "@open-wc/building-rollup": "^1.10.0",
@@ -11,6 +13,7 @@
     "@web/dev-server": "^0.1.16",
     "@web/dev-server-esbuild": "^0.2.12",
     "@web/dev-server-rollup": "^0.3.4",
+    "@web/rollup-plugin-html": "^1.10.1",
     "@web/test-runner": "^0.12.20",
     "deepmerge": "^4.2.2",
     "eslint": "^7.30.0",
@@ -20,7 +23,8 @@
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.45.2"
+    "rollup": "^2.45.2",
+    "rollup-plugin-copy": "^3.4.0"
   },
   "scripts": {
     "lint": "eslint --ext .js,.html . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
@@ -28,7 +32,7 @@
     "test": "web-test-runner --coverage",
     "test:watch": "web-test-runner --watch",
     "build": "rimraf dist && rollup -c rollup.config.js",
-    "start:build": "npm run build && web-dev-server --root-dir dist --app-index public/index.html --open --compatibility none",
+    "start:build": "npm run build && es-dev-server --root-dir dist --app-index src/index.html --open --compatibility none",
     "start": "web-dev-server"
   },
   "name": "wa4e-v2",

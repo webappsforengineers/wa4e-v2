@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { StyledElement } from '../../styles/wa4eStyleElement';
+import { StyledElement } from '../../styles/wa4eStyleElement.js';
 
 class footerTemplate extends StyledElement {
   constructor() {
@@ -23,13 +23,13 @@ class footerTemplate extends StyledElement {
       super.render(),
       html`
         <hr class="width-constrained" id="footer-hr" />
-        <div class='container'>
-        <footer class="footer footer-text">
-          <span>
-            ${this.footerText}
-            <a href=${this.contactEmailLink}>${this.contactEmail}</a>
-          </span>
-        </footer>
+        <div class="container">
+          <footer class="footer footer-text">
+            <span>
+              ${this.footerText}
+              <a href=${this.contactEmailLink}>${this.contactEmail}</a>
+            </span>
+          </footer>
         </div>
       `,
     ];

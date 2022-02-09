@@ -1,0 +1,10 @@
+Radio Choice:,Foundation Shape,0
+1,Circular,
+2,Strip,
+Main Fields:
+Foundation Properties,B_D,Select Foundation Shape
+Foundation Properties,d,5
+Foundation Properties,alpha_base,1
+Foundation Properties,alpha_side,0.1
+Soil Properties,Sum,10
+Soil Properties,K,10
