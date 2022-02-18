@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { TileBase } from './tileBase';
+import { TileBase } from './tileBase.js';
 
 class testSubTile extends TileBase {
   render() {

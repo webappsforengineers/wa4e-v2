@@ -88,5 +88,21 @@ export const appConf = {
       type: 'batch-tile',
       title: 'Batch Calculation',
     },
+    {
+      type: 'output-tile',
+      title: 'Output',
+      fields: {
+        '': {
+          cycles: [null, null, 'Cycle', ''],
+          sliding_event: [null, null, 'Sliding Event', ''],
+          time_months: [null, 'months', 'Time', ''],
+          time_years: [null, 'years', 'Time', ''],
+          hult: [null, 'kN', 'Hult', ''],
+          cons_settlement: [null, 'm', 'Cons. settlement wc', ''],
+          shear_settlement: [null, 'm', 'Shear settlement ws', ''],
+          total_settlement: [null, 'm', 'Total settlement wt', ''],
+        },
+      },
+    },
   ],
 };

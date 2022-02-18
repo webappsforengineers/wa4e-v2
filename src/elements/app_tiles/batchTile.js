@@ -1,9 +1,7 @@
 import { html } from 'lit';
 import { saveAs } from 'file-saver-es';
 import { zip, cloneDeep } from 'lodash-es';
-// import * as URL from 'url';
-// eslint-disable-next-line import/extensions
-import { TileBase } from './tileBase';
+import { TileBase } from './tileBase.js';
 
 class batchTile extends TileBase {
   render() {
@@ -191,8 +189,8 @@ class batchTile extends TileBase {
               );
               ix += 1;
               choiceIdx = 1;
-              // eslint-disable-next-line no-unused-vars
               Object.entries(subCompVal.options).forEach(
+                // eslint-disable-next-line no-unused-vars
                 ([radioChoice, value]) => {
                   csv[ix] = [choiceIdx, radioChoice].join(',');
                   ix += 1;
@@ -275,8 +273,8 @@ class batchTile extends TileBase {
           Object.entries(tile.subComponents).forEach(([idx, subCompVal]) => {
             if (subCompVal.type === 'radio-tile') {
               ix += 1;
-              // eslint-disable-next-line no-unused-vars
               Object.entries(subCompVal.options).forEach(
+                // eslint-disable-next-line no-unused-vars
                 ([radioChoice, value]) => {
                   csv[ix] = [csv[ix], value[0]].join(',');
                   ix += 1;
