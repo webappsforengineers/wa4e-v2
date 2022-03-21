@@ -20,8 +20,8 @@ class textTile extends TileBase {
     ];
   }
 
-  // Arrange fields is simmilar amoungst all 1st level tiles, it orginises the
-  // fields and the subcomponents in a way sutable for the tile.
+  // Arrange fields is similar amongst all 1st level tiles, it organises the
+  // fields and the subcomponents in a way suitable for the tile.
   arrangeFields() {
     return html`${Object.keys(this.text).map((keyOuter, index) => {
       let beforeTitle;

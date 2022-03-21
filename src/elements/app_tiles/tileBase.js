@@ -42,12 +42,12 @@ export class TileBase extends StyledElement {
   // Generic field making functions used by multiple apps
 
   // eslint-disable-next-line class-methods-use-this
-  parseNum (maybeNum) {
-    if (typeof maybeNum === 'number'){
-    return maybeNum.toFixed(2)
+  parseNum(maybeNum) {
+    if (typeof maybeNum === 'number') {
+      return maybeNum.toFixed(2);
     }
-    // if its not a number just return it
-    return maybeNum
+    // if it's not a number just return it
+    return maybeNum;
   }
 
   makeNestedFields(keyOuter) {
