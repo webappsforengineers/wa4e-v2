@@ -36,7 +36,7 @@ Whilst Lit will at some point be deprecated in much the same way this is the nat
 Configuration example:
 
 
-GitHub: https://github.com/Southampton-RSG/wa4e-v2/blob/master/public/app_modules/pinpiles/appConfig.js
+GitHub: https://github.com/Southampton-RSG/wa4e-v2/blob/master/public/app_modules/pinpiles/appConfig.mjs
 
 
 The configuration files are written in JSON format that is easily interpreted by JS, basic config such as titles, description, and colour are included. The list of  tiles to render is contained in appWebComponents (line 9), each basic tile contains:
@@ -106,7 +106,7 @@ Briefly, AppGeneric contains tools to build an app these tools are orchestrated 
 
 To create a new app the following steps must be followed:
 * Add a folder with the new app name in wa4e/public/app_modules wa4e/src/app_modules wa4e-math/app_modules
-* Write the wa4e/public/app_modules/new-app/appConfig.js file using available app tiles.
+* Write the wa4e/public/app_modules/new-app/appConfig.mjs file using available app tiles.
    * Export the appConf in module config
 * Add an app.js file in wa4e/public/app_modules/new-app/app.js
    * Import the app adding to line 5+ in src/wa4e-v2.js
@@ -191,7 +191,7 @@ wa4e
 │   ├── app_modules
 │   │   ├── _test
 │   │   ├── caisson
-│   │   │   ├── appConfig.js
+│   │   │   ├── appConfig.mjs
 │   │   │   └── index.html
 │   │   ├── consolidated-ncv
 │   │   │   └── ...
@@ -244,7 +244,6 @@ wa4e
 │   ├── elements
 │   │   ├── app_tiles
 │   │   │   ├── batchTile.js
-│   │   │   ├── derivedInputForm.js
 │   │   │   ├── graphTile.js
 │   │   │   ├── imageTile.js
 │   │   │   ├── inputForm.js

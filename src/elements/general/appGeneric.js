@@ -164,12 +164,12 @@ export class AppGeneric extends StyledElement {
             : component.type === 'derived-input-tile'
             ? html`<div class="col">
                 <div class="card  ">
-                  <derived-input-tile
+                  <output-tile
                     .appConf=${this.appWebComponents[index]}
                     @loaded="${() => {
                       this.reloadMasonry();
                     }}"
-                  ></derived-input-tile>
+                  ></output-tile>
                 </div>
               </div>`
             : component.type === 'output-tile'
