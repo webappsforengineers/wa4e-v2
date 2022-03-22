@@ -30,16 +30,14 @@ export const appConf = {
             "unit": "m",
             "value": 24,
             "visible": "",
-            "lb": "",
-            "ub": ""
+            "lb": 20,
+            "ub": 30
           },
           "Do": {
             "label": "D<sub>o</sub>",
             "unit": "m",
             "value": 6,
             "visible": "",
-            "lb": "",
-            "ub": ""
           },
           "t": {
             "label": "t",

@@ -54,7 +54,7 @@ export class TileBase extends StyledElement {
     return html`${Object.keys(this.appConf.fields[`${keyOuter}`]).map(
       key =>
         html`<div
-          class="input-group"
+          class="input-group was-validated"
           style="display: ${this.appConf.fields[keyOuter][key].visible};"
         >
           <label
@@ -76,14 +76,36 @@ export class TileBase extends StyledElement {
 
   getInputTag(callback, key, keyOuter) {
     let inputTag;
+    let lb;
+    let ub;
+    if (
+      typeof this.appConf.fields[keyOuter][key].lb !== 'undefined' &&
+      this.appConf.fields[keyOuter][key].lb !== ''
+    ) {
+      lb = this.appConf.fields[keyOuter][key].lb;
+    } else {
+      lb = -Infinity;
+    }
+    if (
+      typeof this.appConf.fields[keyOuter][key].lb !== 'undefined' &&
+      this.appConf.fields[keyOuter][key].lb !== ''
+    ) {
+      ub = this.appConf.fields[keyOuter][key].ub;
+    } else {
+      ub = +Infinity;
+    }
     if (callback) {
       inputTag = html`<input
+        type="number"
         class="form-control"
         id="${key}"
         .value="${this.appConf.fields[keyOuter][key].value}"
         @change=${e => {
           this.appConf.fields[keyOuter][key].value = Number(e.target.value);
         }}
+        min=${lb}
+        max=${ub}
+        step="0.000001"
       />`;
     } else {
       inputTag = html`<input
@@ -91,6 +113,9 @@ export class TileBase extends StyledElement {
         disabled
         id="${key}"
         .value="${this.parseNum(this.appConf.fields[keyOuter][key].value)}"
+        min=${lb}
+        max=${ub}
+        step="0.000001"
       />`;
     }
     return inputTag;
