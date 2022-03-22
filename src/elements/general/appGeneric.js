@@ -143,7 +143,7 @@ export class AppGeneric extends StyledElement {
                 <div class="card ">
                   <form-tile
                     .appConf=${this.appWebComponents[index]}
-                    .callback="True"
+                    .callback=${true}
                     @updated="${() => {
                       this.updateComponents();
                     }}"
@@ -167,7 +167,7 @@ export class AppGeneric extends StyledElement {
                 <div class="card  ">
                   <form-tile
                     .appConf=${this.appWebComponents[index]}
-                    .callback="False"
+                    .callback=${false}
                     @loaded="${() => {
                       this.reloadMasonry();
                     }}"
@@ -179,7 +179,7 @@ export class AppGeneric extends StyledElement {
                 <div class="card  ">
                   <form-tile
                     .appConf=${this.appWebComponents[index]}
-                    .callback="False"
+                    .callback=${false}
                     @loaded="${() => {
                       this.reloadMasonry();
                     }}"

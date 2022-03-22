@@ -7,7 +7,7 @@ class formTile extends TileBase {
     const newProperties = {
       callback: { type: Boolean },
     };
-    return newProperties.add(super.properties);
+    return Object.assign(newProperties, super.properties);
   }
 
   render() {

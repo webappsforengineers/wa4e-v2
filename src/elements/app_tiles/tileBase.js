@@ -55,7 +55,7 @@ export class TileBase extends StyledElement {
       key =>
         html`<div
           class="input-group"
-          style="display: ${this.appConf.fields[keyOuter][key][3]};"
+          style="display: ${this.appConf.fields[keyOuter][key].visible};"
         >
           <label
             class="input-group-text text-wrap text-break font-size-sm"
@@ -80,9 +80,9 @@ export class TileBase extends StyledElement {
       inputTag = html`<input
         class="form-control"
         id="${key}"
-        .value="${this.appConf.fields[keyOuter][key][0]}"
+        .value="${this.appConf.fields[keyOuter][key].value}"
         @change=${e => {
-          this.appConf.fields[keyOuter][key][0] = Number(e.target.value);
+          this.appConf.fields[keyOuter][key].value = Number(e.target.value);
         }}
       />`;
     } else {
@@ -90,7 +90,7 @@ export class TileBase extends StyledElement {
         class="form-control bg-light"
         disabled
         id="${key}"
-        .value="${this.parseNum(this.appConf.fields[keyOuter][key][0])}"
+        .value="${this.parseNum(this.appConf.fields[keyOuter][key].value)}"
       />`;
     }
     return inputTag;
