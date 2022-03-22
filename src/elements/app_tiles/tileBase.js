@@ -50,7 +50,7 @@ export class TileBase extends StyledElement {
     return maybeNum;
   }
 
-  makeNestedFields(keyOuter) {
+  makeNestedFields(keyOuter, callback) {
     return html`${Object.keys(this.appConf.fields[`${keyOuter}`]).map(
       key =>
         html`<div
@@ -61,53 +61,39 @@ export class TileBase extends StyledElement {
             class="input-group-text text-wrap text-break font-size-sm"
             for="${key}"
             style="width: 30%; text-align: left;"
-            >${html([this.appConf.fields[keyOuter][key][2]])}</label
+            >${html([this.appConf.fields[keyOuter][key].label])}</label
           >
-          <input
-            class="form-control bg-light"
-            disabled
-            id="${key}"
-            .value="${this.parseNum(this.appConf.fields[keyOuter][key][0])}"
-          />
+          ${this.getInputTag(callback, key, keyOuter)}
           <label
             class="input-group-text text-wrap text-break"
             for="${key}"
             style="min-width: 20%; text-align: left;"
-            >${html([this.appConf.fields[keyOuter][key][1]])}</label
+            >${html([this.appConf.fields[keyOuter][key].unit])}</label
           >
         </div>`
     )}`;
   }
 
-  makeNestedCallbackFields(keyOuter) {
-    return html` ${Object.keys(this.appConf.fields[`${keyOuter}`]).map(
-      key =>
-        html`<div
-          class="input-group"
-          style="display: ${this.appConf.fields[keyOuter][key][3]};"
-        >
-          <span
-            class="input-group-text col-auto text-wrap text-break"
-            for="${key}"
-            style="width: 25%; text-align: right;"
-            >${html([this.appConf.fields[keyOuter][key][2]])}</span
-          >
-          <input
-            class="form-control"
-            id="${key}"
-            .value="${this.appConf.fields[keyOuter][key][0]}"
-            @change=${e => {
-              this.appConf.fields[keyOuter][key][0] = Number(e.target.value);
-            }}
-          />
-          <span
-            class="input-group-text col-auto text-wrap text-break"
-            for="${key}"
-            style="width: 20%; text-align: left;"
-            >${html([this.appConf.fields[keyOuter][key][1]])}</span
-          >
-        </div>`
-    )}`;
+  getInputTag(callback, key, keyOuter) {
+    let inputTag;
+    if (callback) {
+      inputTag = html`<input
+        class="form-control"
+        id="${key}"
+        .value="${this.appConf.fields[keyOuter][key][0]}"
+        @change=${e => {
+          this.appConf.fields[keyOuter][key][0] = Number(e.target.value);
+        }}
+      />`;
+    } else {
+      inputTag = html`<input
+        class="form-control bg-light"
+        disabled
+        id="${key}"
+        .value="${this.parseNum(this.appConf.fields[keyOuter][key][0])}"
+      />`;
+    }
+    return inputTag;
   }
 
   /* eslint-disable class-methods-use-this */

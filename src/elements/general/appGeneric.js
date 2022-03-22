@@ -141,8 +141,9 @@ export class AppGeneric extends StyledElement {
           html` ${component.type === 'input-tile'
             ? html`<div class="col">
                 <div class="card ">
-                  <input-tile
+                  <form-tile
                     .appConf=${this.appWebComponents[index]}
+                    .callback="True"
                     @updated="${() => {
                       this.updateComponents();
                     }}"
@@ -158,29 +159,31 @@ export class AppGeneric extends StyledElement {
                     @clear="${() => {
                       this.childUpdate();
                     }}"
-                  ></input-tile>
+                  ></form-tile>
                 </div>
               </div>`
             : component.type === 'derived-input-tile'
             ? html`<div class="col">
                 <div class="card  ">
-                  <output-tile
+                  <form-tile
                     .appConf=${this.appWebComponents[index]}
+                    .callback="False"
                     @loaded="${() => {
                       this.reloadMasonry();
                     }}"
-                  ></output-tile>
+                  ></form-tile>
                 </div>
               </div>`
             : component.type === 'output-tile'
             ? html`<div class="col">
                 <div class="card  ">
-                  <output-tile
+                  <form-tile
                     .appConf=${this.appWebComponents[index]}
+                    .callback="False"
                     @loaded="${() => {
                       this.reloadMasonry();
                     }}"
-                  ></output-tile>
+                  ></form-tile>
                 </div>
               </div>`
             : component.type === 'coeff-tile'
