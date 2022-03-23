@@ -1,4 +1,4 @@
-import { vh2m2tConf as appConf } from '../moduleConf.js';
+import { vh2m2tConf as appConf } from '../moduleConf.mjs';
 import {
   calculateVH2M2T as appCalc,
   optimizeVH2M2T as appOptimize,

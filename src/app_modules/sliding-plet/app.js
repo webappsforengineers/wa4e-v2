@@ -1,4 +1,4 @@
-import { spletConf as appConf } from '../moduleConf.js';
+import { spletConf as appConf } from '../moduleConf.mjs';
 import { calculateSlidingPLET as appCalc } from '../../local_modules/wa4e-math.js';
 
 import { AppGeneric } from '../../elements/general/appGeneric.js';

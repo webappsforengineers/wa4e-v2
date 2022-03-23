@@ -1,4 +1,4 @@
-import { pipeConf as appConf } from '../moduleConf.js';
+import { pipeConf as appConf } from '../moduleConf.mjs';
 import { calculatePipe as appCalc } from '../../local_modules/wa4e-math.js';
 import { AppGeneric } from '../../elements/general/appGeneric.js';
 import '../../elements/myElements.js';

@@ -240,7 +240,7 @@ wa4e
 │   │   │   └── app.js
 │   │   ├── zti
 │   │   │   └── app.js
-│   │   └── moduleConf.js
+│   │   └── moduleConf.mjs
 │   ├── elements
 │   │   ├── app_tiles
 │   │   │   ├── batchTile.js

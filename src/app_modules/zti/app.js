@@ -1,4 +1,4 @@
-import { ztiConf as appConf } from '../moduleConf.js';
+import { ztiConf as appConf } from '../moduleConf.mjs';
 import {
   calculateZTI as appCalc,
   optimizeZTI as appOptimize,

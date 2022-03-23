@@ -1,4 +1,4 @@
-import { mccsuConf as appConf } from '../moduleConf.js';
+import { mccsuConf as appConf } from '../moduleConf.mjs';
 import { calculateMCC as appCalc } from '../../local_modules/wa4e-math.js';
 import { AppGeneric } from '../../elements/general/appGeneric.js';
 

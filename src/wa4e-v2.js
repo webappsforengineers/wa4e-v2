@@ -14,7 +14,7 @@ import {
   vh2m2tConf,
   vhmConf,
   ztiConf,
-} from './app_modules/moduleConf.js';
+} from './app_modules/moduleConf.mjs';
 
 /* eslint-disable lit-a11y/anchor-has-content */
 

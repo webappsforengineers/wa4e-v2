@@ -1,4 +1,4 @@
-import { pinpilesConf as appConf } from '../moduleConf.js';
+import { pinpilesConf as appConf } from '../moduleConf.mjs';
 import {
   calculatePinpiles as appCalc,
   optimizePinpiles as appOptimize,

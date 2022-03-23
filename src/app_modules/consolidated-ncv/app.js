@@ -1,4 +1,4 @@
-import { consolidatedncvConf as appConf } from '../moduleConf.js';
+import { consolidatedncvConf as appConf } from '../moduleConf.mjs';
 import { calculateConsolidatedNcV as appCalc } from '../../local_modules/wa4e-math.js';
 import { AppGeneric } from '../../elements/general/appGeneric.js';
 
