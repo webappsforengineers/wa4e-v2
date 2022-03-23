@@ -143,16 +143,36 @@ export const appConf = {
           "position": "afterContent",
           "title": "Plot Type",
           "options": {
-            "hhmm_opt": [
-              true,
-              "h/h*,m/m*",
-              ""
-            ],
-            "HfMf_opt": [
-              false,
-              "H<sub>f</sub>,M<sub>f</sub>",
-              ""
-            ]
+            "0": {
+              "check_status": true,
+              "label": "N/A",
+              "visible": ""
+            },
+            "1": {
+              "check_status": null,
+              "label": "D",
+              "visible": ""
+            },
+            "2": {
+              "check_status": null,
+              "label": "d",
+              "visible": ""
+            },
+            "3": {
+              "check_status": null,
+              "label": "s<sub>um,f</sub>",
+              "visible": ""
+            },
+            "4": {
+              "check_status": null,
+              "label": "k<sub>su,f</sub>",
+              "visible": ""
+            },
+            "5": {
+              "check_status": null,
+              "label": "&lambda;<sub>m</sub>",
+              "visible": ""
+            }
           },
           "onChange": {
             "hhmm_opt": {

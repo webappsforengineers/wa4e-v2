@@ -199,16 +199,16 @@ export const appConf = {
           "position": "beforeTitle",
           "title": "Interface Condition",
           "options": {
-            "UTI": [
-              true,
-              "Unlimited-tension Interface",
-              ""
-            ],
-            "ZTI": [
-              false,
-              "Zero-tension Interface",
-              ""
-            ]
+            "UTI": {
+              "check_status": true,
+              "label": "Unlimited-tension Interface",
+              "visible": ""
+            },
+            "ZTI": {
+              "check_status": false,
+              "label": "Zero-tension Interface",
+              "visible": ""
+            }
           },
           "onChange": {
             "UTI": {
@@ -444,16 +444,16 @@ export const appConf = {
           "display": "",
           "title": "Using Input",
           "options": {
-            "BOption": [
-              null,
-              "B",
-              ""
-            ],
-            "lambda_sOption": [
-              null,
-              "&lambda;<sub>s,UTI</sub>",
-              ""
-            ]
+            "BOption": {
+              "check_status": null,
+              "label": "B",
+              "visible": ""
+            },
+            "lambda_sOption": {
+              "check_status": null,
+              "label": "&lambda;<sub>s,UTI</sub>",
+              "visible": ""
+            }
           },
           "clearOnClick": true
         }

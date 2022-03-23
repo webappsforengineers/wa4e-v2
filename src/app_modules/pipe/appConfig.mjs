@@ -109,16 +109,16 @@ export const appConf = {
           "display": "",
           "title": "Task",
           "options": {
-            "evalReqPipeWeight": [
-              "",
-              "Evaluate required pipe weight",
-              ""
-            ],
-            "stabilityDisplacement": [
-              "",
-              "Check the stability / calculate the displacement",
-              ""
-            ]
+            "halfPipe": {
+              "check_status": "",
+              "label": "0.5D (half pipe diameter – virtual stability)",
+              "visible": ""
+            },
+            "tenPipe": {
+              "check_status": "",
+              "label": "10D (10 pipe diameter)",
+              "visible": ""
+            }
           },
           "onChange": {
             "evalReqPipeWeight": {

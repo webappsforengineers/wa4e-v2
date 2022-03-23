@@ -185,16 +185,16 @@ export const appConf = {
           "display": "",
           "title": "Foundation Shape",
           "options": {
-            "Circular": [
-              null,
-              "Circular",
-              ""
-            ],
-            "Strip": [
-              null,
-              "Strip",
-              ""
-            ]
+            "Circular": {
+              "check_status": null,
+              "label": "Circular",
+              "visible": ""
+            },
+            "Strip": {
+              "check_status": null,
+              "label": "Strip",
+              "visible": ""
+            }
           },
           "onChange": {
             "Circular": {

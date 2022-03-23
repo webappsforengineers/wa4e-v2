@@ -323,16 +323,16 @@ export const appConf = {
           "position": "afterTitle",
           "title": "Using Input",
           "options": {
-            "BOption": [
-              null,
-              "B",
-              ""
-            ],
-            "lambda_sOption": [
-              null,
-              "&lambda;<sub>s</sub>",
-              ""
-            ]
+            "BOption": {
+              "check_status": null,
+              "label": "B",
+              "visible": ""
+            },
+            "lambda_sOption": {
+              "check_status": null,
+              "label": "&lambda;<sub>s</sub>",
+              "visible": ""
+            }
           }
         }
       ]

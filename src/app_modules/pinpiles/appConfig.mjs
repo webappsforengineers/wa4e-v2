@@ -297,21 +297,21 @@ export const appConf = {
           "display": "",
           "title": "Foundation",
           "options": {
-            "mudmatFoundationOnly": [
-              null,
-              "Mudmat Foundation Only",
-              ""
-            ],
-            "pileGroupOnly": [
-              null,
-              "Pile Group Only",
-              ""
-            ],
-            "hybridPiledMudmat": [
-              null,
-              "Hybrid Piled Mudmat",
-              ""
-            ]
+            "mudmatFoundationOnly": {
+              "check_status": null,
+              "label": "Mudmat Foundation Only",
+              "visible": ""
+            },
+            "pileGroupOnly": {
+              "check_status": null,
+              "label": "Pile Group Only",
+              "visible": ""
+            },
+            "hybridPiledMudmat": {
+              "check_status": null,
+              "label": "Hybrid Piled Mudmat",
+              "visible": ""
+            }
           },
           "onChange": {
             "mudmatFoundationOnly": {
@@ -860,26 +860,26 @@ export const appConf = {
           "display": "",
           "title": "Using Input",
           "options": {
-            "BOption": [
-              null,
-              "B",
-              ""
-            ],
-            "doverBOption": [
-              null,
-              "d<sub>skirt</sub>/B",
-              ""
-            ],
-            "lambda_HOption": [
-              null,
-              "&lambda;<sub>H</sub>",
-              ""
-            ],
-            "lambda_sOption": [
-              null,
-              "&lambda;<sub>s</sub>",
-              ""
-            ]
+            "BOption": {
+              "check_status": null,
+              "label": "B",
+              "visible": ""
+            },
+            "doverBOption": {
+              "check_status": null,
+              "label": "d<sub>skirt</sub>/B",
+              "visible": ""
+            },
+            "lambda_HOption": {
+              "check_status": null,
+              "label": "&lambda;<sub>H</sub>",
+              "visible": ""
+            },
+            "lambda_sOption": {
+              "check_status": null,
+              "label": "&lambda;<sub>s</sub>",
+              "visible": ""
+            }
           },
           "clearOnClick": true
         }
