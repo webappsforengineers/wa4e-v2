@@ -20,7 +20,7 @@ class radioTile extends TileBase {
         class="form-check form-check-inline"
         style="display: ${this.appConf.options[key][2]};"
       >
-        ${this.appConf.options[key][0]
+        ${this.appConf.options[key].check_status
           ? html`<input
               class="form-check-input"
               type="radio"
@@ -28,14 +28,15 @@ class radioTile extends TileBase {
               id="${key}"
               .value="${key}"
               @click=${e => {
-                this.appConf.options[key][0] = e.target.checked;
+                this.appConf.options[key] = e.target.checked;
                 this.checkValue = key;
                 // TODO: This seems overly complicated?
                 Object.keys(this.checkOptions).map(
                   // eslint-disable-next-line array-callback-return
                   notSelected => {
                     if (notSelected !== key) {
-                      this.appConf.options[notSelected][0] = !e.target.checked;
+                      this.appConf.options[notSelected].check_status =
+                        !e.target.checked;
                     }
                   }
                 );
@@ -55,14 +56,15 @@ class radioTile extends TileBase {
               id="${key}"
               .value="${key}"
               @click=${e => {
-                this.appConf.options[key][0] = e.target.checked;
+                this.appConf.options[key].check_status = e.target.checked;
                 this.checkValue = key;
                 // TODO: This seems overly complicated?
                 Object.keys(this.checkOptions).map(
                   // eslint-disable-next-line array-callback-return
                   notSelected => {
                     if (notSelected !== key) {
-                      this.appConf.options[notSelected][0] = !e.target.checked;
+                      this.appConf.options[notSelected].check_status =
+                        !e.target.checked;
                     }
                   }
                 );
