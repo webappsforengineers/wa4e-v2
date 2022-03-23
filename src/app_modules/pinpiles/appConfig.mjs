@@ -802,42 +802,54 @@ export const appConf = {
       "title": "Optimization",
       "fields": {
         "": {
-          "SMClessTotal": [
-            0,
-            "kNM",
-            "SMC - Total",
-            ""
-          ],
-          "Threshold": [
-            1,
-            null,
-            "Threshold",
-            ""
-          ],
-          "solution": [
-            null,
-            null,
-            "Solution",
-            ""
-          ],
-          "solution_beta_pV": [
-            null,
-            null,
-            "&beta;<sub>pV</sub>",
-            ""
-          ],
-          "solution_beta_pH": [
-            null,
-            null,
-            "&beta;<sub>pH</sub>",
-            ""
-          ],
-          "solution_beta_pM": [
-            null,
-            null,
-            "&beta;<sub>pM</sub>",
-            ""
-          ]
+          "SMClessTotal": {
+            "label": "SMC - Total",
+            "unit": "kNM",
+            "value": 0,
+            "visible": "",
+            "lb": "",
+            "ub": ""
+          },
+          "Threshold": {
+            "label": "Threshold",
+            "unit": null,
+            "value": 1,
+            "visible": "",
+            "lb": "",
+            "ub": ""
+          },
+          "solution": {
+            "label": "Solution",
+            "unit": null,
+            "value": null,
+            "visible": "",
+            "lb": "",
+            "ub": ""
+          },
+          "solution_beta_pV": {
+            "label": "&beta;<sub>pV</sub>",
+            "unit": null,
+            "value": null,
+            "visible": "",
+            "lb": "",
+            "ub": ""
+          },
+          "solution_beta_pH": {
+            "label": "&beta;<sub>pH</sub>",
+            "unit": null,
+            "value": null,
+            "visible": "",
+            "lb": "",
+            "ub": ""
+          },
+          "solution_beta_pM": {
+            "label": "&beta;<sub>pM</sub>",
+            "unit": null,
+            "value": null,
+            "visible": "",
+            "lb": "",
+            "ub": ""
+          }
         }
       },
       "subComponents": [
@@ -878,4 +890,4 @@ export const appConf = {
       "title": "Batch Calculation"
     }
   ]
-};
+}

@@ -484,4 +484,4 @@ export const appConf = {
       "title": "Batch Calculation"
     }
   ]
-};
+}

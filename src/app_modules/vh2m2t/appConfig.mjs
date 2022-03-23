@@ -1,3 +1,4 @@
+/* eslint-disable no-sparse-arrays */
 export const appConf = {
   "appName": "vh2m2t",
   "appTitle": "Mudmat UU & CU VH2M2T",
@@ -289,24 +290,30 @@ export const appConf = {
       "title": "Optimization",
       "fields": {
         "": {
-          "spareMomentCapacity": [
-            0,
-            "kNm",
-            "SMC",
-            ""
-          ],
-          "threshold": [
-            1,
-            null,
-            "Threshold",
-            ""
-          ],
-          "solution": [
-            null,
-            null,
-            "Solution",
-            ""
-          ]
+          "spareMomentCapacity": {
+            "label": "SMC",
+            "unit": "kNm",
+            "value": 0,
+            "visible": "",
+            "lb": "",
+            "ub": ""
+          },
+          "threshold": {
+            "label": "Threshold",
+            "unit": null,
+            "value": 1,
+            "visible": "",
+            "lb": "",
+            "ub": ""
+          },
+          "solution": {
+            "label": "Solution",
+            "unit": null,
+            "value": null,
+            "visible": "",
+            "lb": "",
+            "ub": ""
+          }
         }
       },
       "subComponents": [
@@ -720,4 +727,4 @@ export const appConf = {
       "title": "Batch Calculation"
     }
   ]
-};
+}

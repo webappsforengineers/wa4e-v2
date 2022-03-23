@@ -1,3 +1,4 @@
+/* eslint-disable no-sparse-arrays */
 export const appConf = {
   "appName": "sliding-plet",
   "appTitle": "Sliding PLET",
@@ -404,4 +405,4 @@ export const appConf = {
       }
     }
   ]
-};
+}

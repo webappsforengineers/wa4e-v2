@@ -37,7 +37,7 @@ export const appConf = {
             "label": "D<sub>o</sub>",
             "unit": "m",
             "value": 6,
-            "visible": "",
+            "visible": ""
           },
           "t": {
             "label": "t",
@@ -389,4 +389,4 @@ export const appConf = {
       "title": "Batch Calculation"
     }
   ]
-};
+}

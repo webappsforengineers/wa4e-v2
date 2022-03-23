@@ -1,3 +1,4 @@
+/* eslint-disable no-sparse-arrays */
 export const appConf = {
   "appName": "vhm",
   "appTitle": "Shallow Foundation VHM",
@@ -485,4 +486,4 @@ export const appConf = {
       "title": "Batch Calculation"
     }
   ]
-};
+}

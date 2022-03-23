@@ -676,4 +676,4 @@ export const appConf = {
       }
     }
   ]
-};
+}

@@ -1,3 +1,4 @@
+/* eslint-disable no-sparse-arrays */
 export const appConf = {
   "appName": "zti",
   "appTitle": "Mudmat UTI & ZTI VH2M2T",
@@ -409,24 +410,30 @@ export const appConf = {
       "title": "Optimization",
       "fields": {
         "": {
-          "spareMomentCapacity": [
-            0,
-            "kNM",
-            "SMC",
-            ""
-          ],
-          "threshold": [
-            1,
-            null,
-            "Threshold",
-            ""
-          ],
-          "solution": [
-            null,
-            null,
-            "Solution",
-            ""
-          ]
+          "spareMomentCapacity": {
+            "label": "SMC",
+            "unit": "kNM",
+            "value": 0,
+            "visible": "",
+            "lb": "",
+            "ub": ""
+          },
+          "threshold": {
+            "label": "Threshold",
+            "unit": null,
+            "value": 1,
+            "visible": "",
+            "lb": "",
+            "ub": ""
+          },
+          "solution": {
+            "label": "Solution",
+            "unit": null,
+            "value": null,
+            "visible": "",
+            "lb": "",
+            "ub": ""
+          }
         }
       },
       "subComponents": [
@@ -641,4 +648,4 @@ export const appConf = {
       "title": "Batch Calculation"
     }
   ]
-};
+}
