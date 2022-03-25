@@ -34,6 +34,7 @@ for (let x in apps) {
       let index = 0;
       for (let subComponent of appConf.appWebComponents[key].subComponents) {
         new_obj[index] = subComponent
+        index++;
       }
       appConf.appWebComponents[key].subComponents = new_obj
     }
