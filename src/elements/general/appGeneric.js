@@ -87,7 +87,7 @@ export class AppGeneric extends StyledElement {
     merge(this.appWebComponents, appConfChange.changeFields);
 
     // If we are checking a radio then no new data is added so we disable replotting
-    const graphTileIndex = this.appWebComponents.findIndex(
+    const graphTileIndex = Object.values(this.appWebComponents).findIndex(
       element => element.type === 'graph-tile'
     );
     if (graphTileIndex !== -1) {
