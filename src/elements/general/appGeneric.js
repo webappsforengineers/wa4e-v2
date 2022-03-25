@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { isArray, isObject, has, set, get } from 'lodash-es';
+import { merge } from 'lodash-es';
 import { StyledElement } from '../../styles/wa4eStyleElement.js';
 import { Masonry } from '../../local_modules/wa4e-math.js';
 import '../mySubComponents.js';
@@ -84,36 +84,7 @@ export class AppGeneric extends StyledElement {
   }
 
   modifyForm(appConfChange) {
-    // Function to recursively find the paths to each attribute that is being changed
-    // TODO: fix the eslint warning `iterators/generators require regenerator-runtime, which is too heavyweight for
-    //  this guide to allow them. Separately, loops should be avoided in favor of array iterations`
-    /* eslint-disable no-restricted-syntax */
-    function getKeys(obj, keys, ...passedKey) {
-      let workingKey = [...passedKey];
-      for (const [key, value] of Object.entries(obj)) {
-        workingKey.push(key);
-        if (isObject(value) && !isArray(value)) {
-          getKeys(value, keys, ...workingKey);
-        } else {
-          keys.push([...workingKey]);
-        }
-        workingKey = [...passedKey];
-      }
-    }
-
-    // Run the recursive function to generate the attribute key paths
-    const keys = [];
-    getKeys(appConfChange.changeFields, keys);
-
-    // for each defied component in appWebComponents check the key paths and if it is found update the fields
-    for (const component of this.appWebComponents) {
-      for (const key of keys) {
-        if (has(component, key)) {
-          set(component, key, get(appConfChange.changeFields, key));
-        }
-      }
-    }
-    /* eslint-enable no-restricted-syntax */
+    merge(this.appWebComponents, appConfChange.changeFields);
 
     // If we are checking a radio then no new data is added so we disable replotting
     const graphTileIndex = this.appWebComponents.findIndex(

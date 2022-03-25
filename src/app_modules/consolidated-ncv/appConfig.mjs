@@ -1,4 +1,6 @@
 /* eslint-disable no-sparse-arrays */
+import { changeObj } from './onChange.mjs';
+
 export const appConf = {
   "appName": "consolidated-ncv",
   "appTitle": "Consolidated NcV",
@@ -196,60 +198,7 @@ export const appConf = {
               "visible": ""
             }
           },
-          "onChange": {
-            "Circular": {
-              "fields": {
-                "Foundation": {
-                  "D_B": [
-                    12,
-                    "m",
-                    "D",
-                    ""
-                  ]
-                },
-                "Method": {
-                  "T_50": [
-                    0.035,
-                    null,
-                    "T<sub>50</sub>",
-                    ""
-                  ],
-                  "m_const": [
-                    -1.05,
-                    null,
-                    "m",
-                    ""
-                  ]
-                }
-              }
-            },
-            "Strip": {
-              "fields": {
-                "Foundation": {
-                  "D_B": [
-                    12,
-                    "m",
-                    "B",
-                    ""
-                  ]
-                },
-                "Method": {
-                  "T_50": [
-                    0.17,
-                    null,
-                    "T<sub>50</sub>",
-                    ""
-                  ],
-                  "m_const": [
-                    -0.95,
-                    null,
-                    "m",
-                    ""
-                  ]
-                }
-              }
-            }
-          },
+          "onChange": changeObj,
           "modifyOnClick": true
         }
       },

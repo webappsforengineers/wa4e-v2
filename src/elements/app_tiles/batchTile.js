@@ -6,13 +6,14 @@ import { TileBase } from './tileBase.js';
 class batchTile extends TileBase {
   render() {
     // We need this as batch-tile has the unique property of needing all the app components
-    this.localAppConf = this.appConf.find(
+    const appConfArray = Object.values(this.appConf);
+    this.localAppConf = appConfArray.find(
       element => element.type === 'batch-tile'
     );
-    this.formFields = this.appConf.find(
+    this.formFields = appConfArray.find(
       element => element.type === 'input-tile'
     ).fields;
-    this.subComponents = this.appConf.find(
+    this.subComponents = appConfArray.find(
       element => element.type === 'input-tile'
     ).subComponents;
     this.fileData = null;
