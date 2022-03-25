@@ -27,12 +27,12 @@ class inputTableTile extends TileBase {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  parseNum (maybeNum) {
-    if (typeof maybeNum === 'number'){
-      return maybeNum.toFixed(2)
+  parseNum(maybeNum) {
+    if (typeof maybeNum === 'number') {
+      return maybeNum.toFixed(2);
     }
     // if its not a number just return it
-    return maybeNum
+    return maybeNum;
   }
 
   /* eslint-disable class-methods-use-this */

@@ -3,72 +3,72 @@
 // the correct element.
 
 export const changeObj = {
-    "Circular": {
-      "1": {
-        "fields": {
-          "Foundation": {
-            "D_B": {
-              "value": 12,
-              "unit": "m",
-              "label": "D",
-              "visible": '',
-              "lb": "",
-              "ub": ""
-            }
+  Circular: {
+    1: {
+      fields: {
+        Foundation: {
+          D_B: {
+            value: 12,
+            unit: 'm',
+            label: 'D',
+            visible: '',
+            lb: '',
+            ub: '',
           },
-          "Method": {
-            "T_50": {
-              "value": 0.035,
-              "unit": null,
-              "label": 'T<sub>50</sub>',
-              "visible": '',
-              "lb": "",
-              "ub": ""
-            },
-            "m_const": {
-              "value": -1.05,
-              "unit": null,
-              "label": "m",
-              "visible": '',
-              "lb": "",
-              "ub": ""
-            }
-          }
-        }
-      }
+        },
+        Method: {
+          T_50: {
+            value: 0.035,
+            unit: null,
+            label: 'T<sub>50</sub>',
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+          m_const: {
+            value: -1.05,
+            unit: null,
+            label: 'm',
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+        },
+      },
     },
-    "Strip": {
-      "1": {
-        "fields": {
-          "Foundation": {
-            "D_B": {
-              "value": 12,
-              "unit": "m",
-              "label": "B",
-              "visible": '',
-              "lb": "",
-              "ub": ""
-            }
+  },
+  Strip: {
+    1: {
+      fields: {
+        Foundation: {
+          D_B: {
+            value: 12,
+            unit: 'm',
+            label: 'B',
+            visible: '',
+            lb: '',
+            ub: '',
           },
-          "Method": {
-            "T_50": {
-              "value": 0.17,
-              "unit": null,
-              "label": 'T<sub>50</sub>',
-              "visible": '',
-              "lb": "",
-              "ub": ""
-            },
-            "m_const": {
-              "value": -0.95,
-              "unit": null,
-              "label": "m",
-              "visible": '',
-              "lb": "",
-              "ub": ""
-            }
-          }
-        }
-      }
-    }
-}
+        },
+        Method: {
+          T_50: {
+            value: 0.17,
+            unit: null,
+            label: 'T<sub>50</sub>',
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+          m_const: {
+            value: -0.95,
+            unit: null,
+            label: 'm',
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+        },
+      },
+    },
+  },
+};

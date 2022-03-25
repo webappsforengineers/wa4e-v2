@@ -3,28 +3,28 @@
 // the correct element.
 
 export const changeObj = {
-  "hhmm_opt": {
-    "4": {
-      "plots": {
-        "hhmm": {
-          "display": "flex"
+  hhmm_opt: {
+    4: {
+      plots: {
+        hhmm: {
+          display: 'flex',
         },
-        "HfMf": {
-          "display": "none"
-        }
-      }
+        HfMf: {
+          display: 'none',
+        },
+      },
     },
   },
-  "HfMf_opt": {
-    "4": {
-      "plots": {
-        "hhmm": {
-          "display": "none"
+  HfMf_opt: {
+    4: {
+      plots: {
+        hhmm: {
+          display: 'none',
         },
-        "HfMf": {
-          "display": "flex"
-        }
-      }
-    }
+        HfMf: {
+          display: 'flex',
+        },
+      },
+    },
   },
-}
+};
