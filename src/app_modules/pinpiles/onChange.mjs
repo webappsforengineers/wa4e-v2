@@ -3,76 +3,76 @@
 // the correct element.
 
 export const changeObj = {
-  "mudmatFoundationOnly": {
-    "fields": {
-      "Relative Loads Taken By Piles": {
-        "beta_pV": [
-          0.332,
-          null,
-          "&beta;<sub>pV</sub>",
-          ""
-        ],
+  "mudmatFoundationOnly": {"1": {"fields": {
+  "fields": {
+    "Relative Loads Taken By Piles": {
+      "beta_pV": [
+        0.332,
+        null,
+        "&beta;<sub>pV</sub>",
+        ""
+      ],
         "beta_pH": [
-          0.776,
-          null,
-          "&beta;<sub>pH</sub>",
-          ""
-        ],
+        0.776,
+        null,
+        "&beta;<sub>pH</sub>",
+        ""
+      ],
         "beta_pM": [
-          0.478,
-          null,
-          "&beta;<sub>pM</sub>",
-          ""
-        ]
-      }
-    }
-  },
-  "pileGroupOnly": {
-    "fields": {
-      "Relative Loads Taken By Piles": {
-        "beta_pV": [
-          0.332,
-          null,
-          "&beta;<sub>pV</sub>",
-          ""
-        ],
-        "beta_pH": [
-          0.776,
-          null,
-          "&beta;<sub>pH</sub>",
-          ""
-        ],
-        "beta_pM": [
-          0.478,
-          null,
-          "&beta;<sub>pM</sub>",
-          ""
-        ]
-      }
-    }
-  },
-  "hybridPiledMudmat": {
-    "fields": {
-      "Relative Loads Taken By Piles": {
-        "beta_pV": [
-          0.332,
-          null,
-          "&beta;<sub>pV</sub>",
-          ""
-        ],
-        "beta_pH": [
-          0.747,
-          null,
-          "&beta;<sub>pH</sub>",
-          ""
-        ],
-        "beta_pM": [
-          0.287,
-          null,
-          "&beta;<sub>pM</sub>",
-          ""
-        ]
-      }
+        0.478,
+        null,
+        "&beta;<sub>pM</sub>",
+        ""
+      ]
     }
   }
+}}},
+  "pileGroupOnly": {"1": {"fields": {
+  "fields": {
+    "Relative Loads Taken By Piles": {
+      "beta_pV": [
+        0.332,
+        null,
+        "&beta;<sub>pV</sub>",
+        ""
+      ],
+        "beta_pH": [
+        0.776,
+        null,
+        "&beta;<sub>pH</sub>",
+        ""
+      ],
+        "beta_pM": [
+        0.478,
+        null,
+        "&beta;<sub>pM</sub>",
+        ""
+      ]
+    }
+  }
+}}},
+  "hybridPiledMudmat": {"1": {"fields": {
+        "fields": {
+          "Relative Loads Taken By Piles": {
+            "beta_pV": [
+              0.332,
+              null,
+              "&beta;<sub>pV</sub>",
+              ""
+            ],
+            "beta_pH": [
+              0.747,
+              null,
+              "&beta;<sub>pH</sub>",
+              ""
+            ],
+            "beta_pM": [
+              0.287,
+              null,
+              "&beta;<sub>pM</sub>",
+              ""
+            ]
+          }
+        }
+      }}},
 }

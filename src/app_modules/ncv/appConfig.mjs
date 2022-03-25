@@ -1,4 +1,5 @@
-/* eslint-disable no-sparse-arrays */
+import { changeObj } from './onChange.mjs';
+
 export const appConf = {
   "appName": "ncv",
   "appTitle": "Shallow Foundation NcV",
@@ -96,130 +97,7 @@ export const appConf = {
               "visible": ""
             }
           },
-          "onChange": {
-            "Circular": {
-              "fields": {
-                "Foundation Properties": {
-                  "B_D": [
-                    10,
-                    "m",
-                    "D",
-                    ""
-                  ]
-                },
-                "": {
-                  "dB_dD": [
-                    null,
-                    null,
-                    "d/D (0&#45;1)",
-                    ""
-                  ],
-                  "kappa_su": [
-                    null,
-                    null,
-                    "&varkappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)",
-                    null,
-                    ""
-                  ],
-                  "A": [
-                    null,
-                    "m<sup>2</sup>",
-                    "A<sub>circular</sub>",
-                    ""
-                  ]
-                }
-              },
-              "plots": {
-                "db": {
-                  "layout": {
-                    "title": "<b>N<sub>cV</sub> as a function of d/D</b>",
-                    "xaxis": {
-                      "title": "d/D"
-                    },
-                    "titlefont": {
-                      "family": "Roboto, sans-serif",
-                      "color": "#01579b",
-                      "size": 19
-                    }
-                  }
-                },
-                "kbsum": {
-                  "layout": {
-                    "title": "<b>N<sub>cV</sub> as a function of kD/s<sub>um</sub></b>",
-                    "xaxis": {
-                      "title": "kD/s<sub>um</sub>"
-                    },
-                    "titlefont": {
-                      "family": "Roboto, sans-serif",
-                      "color": "#01579b",
-                      "size": 19
-                    }
-                  }
-                }
-              }
-            },
-            "Strip": {
-              "fields": {
-                "Foundation Properties": {
-                  "B_D": [
-                    10,
-                    "m",
-                    "B",
-                    ""
-                  ]
-                },
-                "": {
-                  "dB_dD": [
-                    null,
-                    null,
-                    "d/B (0&#45;1)",
-                    ""
-                  ],
-                  "kappa_su": [
-                    null,
-                    null,
-                    "&varkappa;<sub>su</sub> = kB/s<sub>um</sub> (0&#45;200)",
-                    null,
-                    ""
-                  ],
-                  "A": [
-                    null,
-                    "m<sup>2</sup>/m",
-                    "A<sub>strip</sub>",
-                    ""
-                  ]
-                }
-              },
-              "plots": {
-                "db": {
-                  "layout": {
-                    "title": "<b>N<sub>cV</sub> as a function of d/B</b>",
-                    "xaxis": {
-                      "title": "d/B"
-                    },
-                    "titlefont": {
-                      "family": "Roboto, sans-serif",
-                      "color": "#01579b",
-                      "size": 19
-                    }
-                  }
-                },
-                "kbsum": {
-                  "layout": {
-                    "title": "<b>N<sub>cV</sub> as a function of kB/s<sub>um</sub></b>",
-                    "xaxis": {
-                      "title": "kB/s<sub>um</sub>"
-                    },
-                    "titlefont": {
-                      "family": "Roboto, sans-serif",
-                      "color": "#01579b",
-                      "size": 19
-                    }
-                  }
-                }
-              }
-            }
-          },
+          "onChange": changeObj,
           "clearOnClick": false,
           "modifyOnClick": true
         }

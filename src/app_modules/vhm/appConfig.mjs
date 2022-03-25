@@ -1,4 +1,5 @@
-/* eslint-disable no-sparse-arrays */
+import { changeObj } from './onChange.mjs';
+
 export const appConf = {
   "appName": "vhm",
   "appTitle": "Shallow Foundation VHM",
@@ -143,6 +144,26 @@ export const appConf = {
           "position": "afterContent",
           "title": "Plot Type",
           "options": {
+            "hhmm_opt": {
+              'check_status': true,
+              'label': "h/h*,m/m*",
+              'visible': ""
+            },
+            "HfMf_opt": {
+              'check_status': false,
+              'label': "H<sub>f</sub>,M<sub>f</sub>",
+              'visible': ""
+            }
+          },
+          "onChange": changeObj,
+          "modifyOnClick": true
+        },
+        "1": {
+          "type": "radio-tile",
+          "index": 3,
+          "position": "afterContent",
+          "title": "Optimize",
+          "options": {
             "0": {
               "check_status": true,
               "label": "N/A",
@@ -174,67 +195,6 @@ export const appConf = {
               "visible": ""
             }
           },
-          "onChange": {
-            "hhmm_opt": {
-              "plots": {
-                "hhmm": {
-                  "display": "flex"
-                },
-                "HfMf": {
-                  "display": "none"
-                }
-              }
-            },
-            "HfMf_opt": {
-              "plots": {
-                "hhmm": {
-                  "display": "none"
-                },
-                "HfMf": {
-                  "display": "flex"
-                }
-              }
-            }
-          },
-          "modifyOnClick": true
-        },
-        "1": {
-          "type": "radio-tile",
-          "index": 3,
-          "position": "afterContent",
-          "title": "Optimize",
-          "options": {
-            "0": [
-              true,
-              "N/A",
-              ""
-            ],
-            "1": [
-              null,
-              "D",
-              ""
-            ],
-            "2": [
-              null,
-              "d",
-              ""
-            ],
-            "3": [
-              null,
-              "s<sub>um,f</sub>",
-              ""
-            ],
-            "4": [
-              null,
-              "k<sub>su,f</sub>",
-              ""
-            ],
-            "5": [
-              null,
-              "&lambda;<sub>m</sub>",
-              ""
-            ]
-          }
         }
       }
     },

@@ -1,4 +1,5 @@
-/* eslint-disable no-sparse-arrays */
+import { changeObj } from './onChange.mjs';
+
 export const appConf = {
   "appName": "zti",
   "appTitle": "Mudmat UTI & ZTI VH2M2T",
@@ -210,66 +211,7 @@ export const appConf = {
               "visible": ""
             }
           },
-          "onChange": {
-            "UTI": {
-              "fields": {
-                "Load and Material Factors (&#8805;1)": {
-                  "lambda_s_UTI": [
-                    1.25,
-                    null,
-                    "&lambda;<sub>s,UTI</sub>",
-                    ""
-                  ],
-                  "lambda_s_ZTI": [
-                    1.25,
-                    null,
-                    "&lambda;<sub>s,ZTI</sub>",
-                    "none"
-                  ]
-                }
-              },
-              "subComponents": {
-                "0": {
-                  "options": {
-                    "lambda_sOption": [
-                      null,
-                      "&lambda;<sub>s,UTI</sub>",
-                      ""
-                    ]
-                  }
-                }
-              }
-            },
-            "ZTI": {
-              "fields": {
-                "Load and Material Factors (&#8805;1)": {
-                  "lambda_s_UTI": [
-                    1.25,
-                    null,
-                    "&lambda;<sub>s,UTI</sub>",
-                    "none"
-                  ],
-                  "lambda_s_ZTI": [
-                    1.25,
-                    null,
-                    "&lambda;<sub>s,ZTI</sub>",
-                    ""
-                  ]
-                }
-              },
-              "subComponents": {
-                "0": {
-                  "options": {
-                    "lambda_sOption": [
-                      null,
-                      "&lambda;<sub>s,ZTI</sub>",
-                      ""
-                    ]
-                  }
-                }
-              }
-            }
-          },
+          "onChange": changeObj,
           "modifyOnClick": true
         }
       }

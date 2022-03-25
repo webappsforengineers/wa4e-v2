@@ -3,7 +3,7 @@
 // the correct element.
 
 const stabilityWeight = {
-  "absLatStability": {
+  "absLatStability": {"1": {"fields":  {
     "fields": {
       'Stability Criterion': {
         "mu": {
@@ -37,8 +37,8 @@ const stabilityWeight = {
         "display": 'none',
       },
     },
-  },
-  "genLatStability": {
+  }}},
+  "genLatStability": {"1": {"fields":  {
     "fields": {
       'Stability Criterion': {
         "mu": {
@@ -72,8 +72,8 @@ const stabilityWeight = {
         "display": '',
       },
     },
-  },
-  "dynLatStability": {
+  }}},
+  "dynLatStability": {"1": {"fields":  {
     "fields": {
       'Stability Criterion': {
         "mu": {
@@ -107,11 +107,11 @@ const stabilityWeight = {
         "display": 'none',
       },
     },
-  },
+  }}},
 }
 
 const stabilityDisplacement = {
-  "absLatStability": {
+  "absLatStability": {"1": {"fields":  {
     "fields": {
       'Stability Criterion': {
         "mu": {
@@ -170,8 +170,8 @@ const stabilityDisplacement = {
         "display": 'none',
       },
     },
-  },
-  "genLatStability": {
+  }}},
+  "genLatStability": {"1": {"fields":  {
     "fields": {
       'Stability Criterion': {
         "mu": {
@@ -230,8 +230,8 @@ const stabilityDisplacement = {
         "display": 'none',
       },
     },
-  },
-  "dynLatStability": {
+  }}},
+  "dynLatStability": {"1": {"fields":  {
     "fields": {
       'Stability Criterion': {
         "mu": {
@@ -290,11 +290,11 @@ const stabilityDisplacement = {
         "display": 'none',
       },
     },
-  },
+  }}},
 }
 
 export const changeObj = {
-  "evalReqPipeWeight": {
+  "evalReqPipeWeight": {"1": {"fields": {
     "fields": {
       'Calculation Parameters': {
         "pipew": {
@@ -335,8 +335,8 @@ export const changeObj = {
         "modifyOnClick": true,
       },
     },
-  },
-  "stabilityDisplacement": {
+  }}},
+  "stabilityDisplacement": {"1": {"fields": {
     "fields": {
       'Calculation Parameters': {
         "pipew": {
@@ -390,7 +390,7 @@ export const changeObj = {
         "display": 'none',
       },
     },
-  },
+  }}},
 }
 
 

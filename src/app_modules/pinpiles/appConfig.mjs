@@ -1,4 +1,5 @@
-/* eslint-disable no-sparse-arrays */
+import { changeObj } from './onChange.mjs';
+
 export const appConf = {
   "appName": "pinpiles",
   "appTitle": "Mudmat & Hybrid Mudmat VH<sub>2</sub>M<sub>2</sub>T",
@@ -313,80 +314,7 @@ export const appConf = {
               "visible": ""
             }
           },
-          "onChange": {
-            "mudmatFoundationOnly": {
-              "fields": {
-                "Relative Loads Taken By Piles": {
-                  "beta_pV": [
-                    0.332,
-                    null,
-                    "&beta;<sub>pV</sub>",
-                    ""
-                  ],
-                  "beta_pH": [
-                    0.776,
-                    null,
-                    "&beta;<sub>pH</sub>",
-                    ""
-                  ],
-                  "beta_pM": [
-                    0.478,
-                    null,
-                    "&beta;<sub>pM</sub>",
-                    ""
-                  ]
-                }
-              }
-            },
-            "pileGroupOnly": {
-              "fields": {
-                "Relative Loads Taken By Piles": {
-                  "beta_pV": [
-                    0.332,
-                    null,
-                    "&beta;<sub>pV</sub>",
-                    ""
-                  ],
-                  "beta_pH": [
-                    0.776,
-                    null,
-                    "&beta;<sub>pH</sub>",
-                    ""
-                  ],
-                  "beta_pM": [
-                    0.478,
-                    null,
-                    "&beta;<sub>pM</sub>",
-                    ""
-                  ]
-                }
-              }
-            },
-            "hybridPiledMudmat": {
-              "fields": {
-                "Relative Loads Taken By Piles": {
-                  "beta_pV": [
-                    0.332,
-                    null,
-                    "&beta;<sub>pV</sub>",
-                    ""
-                  ],
-                  "beta_pH": [
-                    0.747,
-                    null,
-                    "&beta;<sub>pH</sub>",
-                    ""
-                  ],
-                  "beta_pM": [
-                    0.287,
-                    null,
-                    "&beta;<sub>pM</sub>",
-                    ""
-                  ]
-                }
-              }
-            }
-          },
+          "onChange": changeObj,
           "modifyOnClick": true
         }
       },

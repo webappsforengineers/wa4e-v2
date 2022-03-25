@@ -1,4 +1,3 @@
-/* eslint-disable no-sparse-arrays */
 import { changeObj } from './onChange.mjs';
 
 export const appConf = {
