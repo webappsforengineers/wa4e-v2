@@ -26,20 +26,23 @@ const apps = [caissonConf,
   vhmConf,
   ztiConf]
 
-
 for (let x in apps) {
-  let new_obj = {};
-  let appConf = apps[x];
-  let index=0;
-  for (let component of appConf.appWebComponents) {
-    new_obj[index] = component
-    index ++;
+  let appConf = apps[x]
+  for (let key of Object.keys(appConf.appWebComponents)) {
+    if (appConf.appWebComponents[key].subComponents !== undefined) {
+      let new_obj = {};
+      let index = 0;
+      for (let subComponent of appConf.appWebComponents[key].subComponents) {
+        new_obj[index] = subComponent
+      }
+      appConf.appWebComponents[key].subComponents = new_obj
+    }
   }
-  appConf.appWebComponents = new_obj
+
   let newText = "/* eslint-disable no-sparse-arrays */\n" +
     "export const appConf = " + JSON.stringify(appConf, null, 2)
 
-  fs.writeFile("./"+appConf.appName+"/appConfig.mjs", newText, (err) => {
+  fs.writeFile("./"+appConf.appName+"/appConfigTest.mjs", newText, (err) => {
     // In case of a error throw err.
     if (err) throw err;
   });
