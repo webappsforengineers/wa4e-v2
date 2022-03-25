@@ -192,8 +192,8 @@ export const appConf = {
           }
         }
       },
-      "subComponents": [
-        {
+      "subComponents": {
+        "0": {
           "type": "radio-tile",
           "index": 0,
           "position": "beforeTitle",
@@ -272,7 +272,7 @@ export const appConf = {
           },
           "modifyOnClick": true
         }
-      ]
+      }
     },
     "2": {
       "type": "derived-input-tile",
@@ -403,7 +403,7 @@ export const appConf = {
           }
         }
       },
-      "subComponents": []
+      "subComponents": {}
     },
     "3": {
       "type": "optimization-tile",
@@ -436,8 +436,8 @@ export const appConf = {
           }
         }
       },
-      "subComponents": [
-        {
+      "subComponents": {
+        "0": {
           "type": "radio-tile",
           "index": 0,
           "position": "afterTitle",
@@ -457,7 +457,7 @@ export const appConf = {
           },
           "clearOnClick": true
         }
-      ]
+      }
     },
     "4": {
       "type": "output-tile",
@@ -592,7 +592,7 @@ export const appConf = {
           }
         }
       },
-      "subComponents": []
+      "subComponents": {}
     },
     "5": {
       "type": "graph-tile",

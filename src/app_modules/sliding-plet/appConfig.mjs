@@ -225,7 +225,7 @@ export const appConf = {
           }
         }
       },
-      "subComponents": []
+      "subComponents": {}
     },
     "2": {
       "type": "derived-input-tile",
@@ -326,7 +326,7 @@ export const appConf = {
           }
         }
       },
-      "subComponents": []
+      "subComponents": {}
     },
     "3": {
       "type": "batch-tile",

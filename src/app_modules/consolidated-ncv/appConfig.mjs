@@ -177,8 +177,8 @@ export const appConf = {
           }
         }
       },
-      "subComponents": [
-        {
+      "subComponents": {
+        "0": {
           "type": "radio-tile",
           "index": 0,
           "position": "beforeTitle",
@@ -252,7 +252,7 @@ export const appConf = {
           },
           "modifyOnClick": true
         }
-      ],
+      },
       "helpText": "Helpful text!"
     },
     "2": {
@@ -365,7 +365,7 @@ export const appConf = {
           }
         }
       },
-      "subComponents": []
+      "subComponents": {}
     },
     "3": {
       "type": "output-tile",
@@ -477,7 +477,7 @@ export const appConf = {
           }
         }
       },
-      "subComponents": []
+      "subComponents": {}
     },
     "4": {
       "type": "batch-tile",

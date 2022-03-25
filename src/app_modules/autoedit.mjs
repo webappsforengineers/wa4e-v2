@@ -43,7 +43,7 @@ for (let x in apps) {
   let newText = "/* eslint-disable no-sparse-arrays */\n" +
     "export const appConf = " + JSON.stringify(appConf, null, 2)
 
-  fs.writeFile("./"+appConf.appName+"/appConfigTest.mjs", newText, (err) => {
+  fs.writeFile("./"+appConf.appName+"/appConfig.mjs", newText, (err) => {
     // In case of a error throw err.
     if (err) throw err;
   });

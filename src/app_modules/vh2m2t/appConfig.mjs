@@ -201,7 +201,7 @@ export const appConf = {
           }
         }
       },
-      "subComponents": []
+      "subComponents": {}
     },
     "2": {
       "type": "derived-input-tile",
@@ -283,7 +283,7 @@ export const appConf = {
         },
         "Partial Consolidation": {}
       },
-      "subComponents": []
+      "subComponents": {}
     },
     "3": {
       "type": "optimization-tile",
@@ -316,8 +316,8 @@ export const appConf = {
           }
         }
       },
-      "subComponents": [
-        {
+      "subComponents": {
+        "0": {
           "type": "radio-tile",
           "index": 0,
           "position": "afterTitle",
@@ -335,7 +335,7 @@ export const appConf = {
             }
           }
         }
-      ]
+      }
     },
     "4": {
       "type": "output-tile",
@@ -343,7 +343,7 @@ export const appConf = {
       "fields": {
         "": {}
       },
-      "subComponents": []
+      "subComponents": {}
     },
     "5": {
       "type": "output-tile",
@@ -351,8 +351,8 @@ export const appConf = {
       "fields": {
         "": {}
       },
-      "subComponents": [
-        {
+      "subComponents": {
+        "0": {
           "type": "input-table",
           "index": 0,
           "position": "afterTitle",
@@ -489,7 +489,7 @@ export const appConf = {
             }
           }
         }
-      ]
+      }
     },
     "6": {
       "type": "derived-input-tile",
@@ -553,8 +553,8 @@ export const appConf = {
         },
         "Partial Consolidation": {}
       },
-      "subComponents": [
-        {
+      "subComponents": {
+        "0": {
           "type": "input-table",
           "index": 1,
           "position": "afterTitle",
@@ -665,7 +665,7 @@ export const appConf = {
             }
           }
         }
-      ]
+      }
     },
     "7": {
       "type": "image-tile",

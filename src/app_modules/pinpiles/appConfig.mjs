@@ -289,8 +289,8 @@ export const appConf = {
           }
         }
       },
-      "subComponents": [
-        {
+      "subComponents": {
+        "0": {
           "type": "radio-tile",
           "index": 4,
           "position": "beforeTitle",
@@ -389,7 +389,7 @@ export const appConf = {
           },
           "modifyOnClick": true
         }
-      ],
+      },
       "helpText": "Helpful text!"
     },
     "2": {
@@ -488,8 +488,8 @@ export const appConf = {
           }
         }
       },
-      "subComponents": [
-        {
+      "subComponents": {
+        "0": {
           "type": "input-table",
           "index": 1,
           "position": "afterContent",
@@ -696,7 +696,7 @@ export const appConf = {
             }
           }
         }
-      ]
+      }
     },
     "3": {
       "type": "graph-tile",
@@ -852,8 +852,8 @@ export const appConf = {
           }
         }
       },
-      "subComponents": [
-        {
+      "subComponents": {
+        "0": {
           "type": "radio-tile",
           "index": 0,
           "position": "afterTitle",
@@ -883,7 +883,7 @@ export const appConf = {
           },
           "clearOnClick": true
         }
-      ]
+      }
     },
     "6": {
       "type": "batch-tile",

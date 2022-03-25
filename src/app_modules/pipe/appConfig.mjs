@@ -101,8 +101,8 @@ export const appConf = {
           }
         }
       },
-      "subComponents": [
-        {
+      "subComponents": {
+        "0": {
           "type": "radio-tile",
           "index": 0,
           "position": "beforeTitle",
@@ -508,7 +508,7 @@ export const appConf = {
           },
           "modifyOnClick": true
         },
-        {
+        "1": {
           "type": "radio-tile",
           "index": 1,
           "position": "afterTitle",
@@ -534,7 +534,7 @@ export const appConf = {
           "onChange": {},
           "modifyOnClick": true
         },
-        {
+        "2": {
           "type": "radio-tile",
           "index": 1,
           "position": "afterContent",
@@ -553,7 +553,7 @@ export const appConf = {
             }
           }
         }
-      ]
+      }
     },
     "2": {
       "type": "text-tile",
@@ -572,8 +572,8 @@ export const appConf = {
           "format": ""
         }
       },
-      "subComponents": [
-        {
+      "subComponents": {
+        "0": {
           "type": "table-tile",
           "index": 1,
           "position": "afterTitle",
@@ -590,7 +590,7 @@ export const appConf = {
             ]
           }
         },
-        {
+        "1": {
           "type": "table-tile",
           "index": 2,
           "position": "afterTitle",
@@ -617,7 +617,7 @@ export const appConf = {
             ]
           }
         }
-      ]
+      }
     },
     "3": {
       "type": "text-tile",

@@ -136,8 +136,8 @@ export const appConf = {
           }
         }
       },
-      "subComponents": [
-        {
+      "subComponents": {
+        "0": {
           "type": "radio-tile",
           "index": 3,
           "position": "afterContent",
@@ -198,7 +198,7 @@ export const appConf = {
           },
           "modifyOnClick": true
         },
-        {
+        "1": {
           "type": "radio-tile",
           "index": 3,
           "position": "afterContent",
@@ -236,7 +236,7 @@ export const appConf = {
             ]
           }
         }
-      ]
+      }
     },
     "2": {
       "type": "derived-input-tile",
@@ -309,7 +309,7 @@ export const appConf = {
           }
         }
       },
-      "subComponents": []
+      "subComponents": {}
     },
     "3": {
       "type": "output-tile",
@@ -421,7 +421,7 @@ export const appConf = {
           }
         }
       },
-      "subComponents": []
+      "subComponents": {}
     },
     "4": {
       "type": "graph-tile",

@@ -131,7 +131,7 @@ export const appConf = {
           }
         }
       },
-      "subComponents": [],
+      "subComponents": {},
       "helpText": "Helpful text!"
     },
     "2": {
@@ -195,7 +195,7 @@ export const appConf = {
           }
         }
       },
-      "subComponents": []
+      "subComponents": {}
     },
     "4": {
       "type": "output-tile",
@@ -286,7 +286,7 @@ export const appConf = {
           }
         }
       },
-      "subComponents": []
+      "subComponents": {}
     },
     "5": {
       "type": "graph-tile",
