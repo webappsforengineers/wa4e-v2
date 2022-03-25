@@ -18,7 +18,7 @@ class radioTile extends TileBase {
     const checkFields = html`${Object.keys(this.checkOptions).map(
       key => html`<div
         class="form-check form-check-inline"
-        style="display: ${this.appConf.options[key][2]};"
+        style="display: ${this.appConf.options[key].visible};"
       >
         ${this.appConf.options[key].check_status
           ? html`<input
@@ -77,7 +77,7 @@ class radioTile extends TileBase {
               }}
             />`}
         <label class="form-check-label" for="${key}">
-          ${html([this.checkOptions[key][1]])}
+          ${html([this.checkOptions[key].label])}
         </label>
       </div>`
     )}`;

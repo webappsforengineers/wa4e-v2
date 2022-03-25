@@ -136,7 +136,7 @@ export class AppGeneric extends StyledElement {
   /* eslint-disable no-nested-ternary */
   makeAppTiles() {
     return html`
-      ${this.appWebComponents.map(
+      ${Object.values(this.appWebComponents).map(
         (component, index) =>
           html` ${component.type === 'input-tile'
             ? html`<div class="col">
