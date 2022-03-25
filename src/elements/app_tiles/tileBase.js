@@ -127,7 +127,7 @@ export class TileBase extends StyledElement {
     const afterTitle = [];
     const afterContent = [];
     /* eslint-disable no-restricted-syntax */
-    for (const [index, subComp] of subCompArr.entries()) {
+    for (const [index, subComp] of Object.entries(subCompArr)) {
       if (subComp.index === superIdx) {
         if (subComp.position === 'beforeTitle') {
           beforeTitle.push(index);
