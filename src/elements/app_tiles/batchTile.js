@@ -110,7 +110,9 @@ class batchTile extends TileBase {
         // write the value of the file to fileData
         if (value.slice(-2) === '\n') {
           this.fileData = value.slice(0, -2);
-        } else this.fileData = value;
+        } else {
+          this.fileData = value;
+        }
       },
       error => {
         /* code if some error */
