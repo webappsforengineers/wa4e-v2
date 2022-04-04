@@ -551,6 +551,31 @@ export const appConf = {
       },
       plots: {
         momentLoad: {
+          dataFun(a, b, c, d, e, f, g, h) {
+            return [
+              {
+                x: a,
+                y: b,
+                name: `UTI: &lambda;<sub>s</sub> = ${c}`,
+              },
+              {
+                x: d,
+                y: e,
+                name: `UTI: &lambda;<sub>s</sub> = ${f}`,
+              },
+              {
+                x: g,
+                y: h,
+                name: `Design`,
+                type: 'scatter',
+                marker: {
+                  symbol: 'diamond',
+                  size: 12,
+                  color: '#01579b',
+                },
+              },
+            ];
+          },
           args: [
             'UTI_H',
             'UTI_M',

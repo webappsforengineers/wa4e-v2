@@ -542,6 +542,31 @@ export const appConf = {
       },
       plots: {
         plotSuKpc: {
+          dataFun(a, b, c, d, e, f) {
+            return [
+              {
+                x: a,
+                y: b,
+              },
+              {
+                x: c,
+                y: d,
+              },
+              {
+                x: e,
+                y: f,
+                name: `Load Point: ${Number(e).toFixed(1)} kN, ${Number(
+                  f
+                ).toFixed(1)} kNm`,
+                type: 'scatter',
+                marker: {
+                  symbol: 'diamond',
+                  size: 12,
+                  color: '#01579b',
+                },
+              },
+            ];
+          },
           layout: {
             title: '',
             xaxis: {

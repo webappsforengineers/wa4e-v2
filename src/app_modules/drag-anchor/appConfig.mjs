@@ -274,6 +274,15 @@ export const appConf = {
       },
       plots: {
         plotSum: {
+          dataFun(a, b) {
+            return [
+              {
+                name: 'Sum',
+                x: a,
+                y: b,
+              },
+            ];
+          },
           layout: {
             type: 'scatter',
             title: 'S<sub>um</sub> = 0 kPa',
@@ -294,6 +303,15 @@ export const appConf = {
           show: true,
         },
         plotKsu: {
+          dataFun(a, b) {
+            return [
+              {
+                name: 'Ksu',
+                x: a,
+                y: b,
+              },
+            ];
+          },
           layout: {
             type: 'scatter',
             title: 'k<sub>su</sub> = 0 kPa/m',

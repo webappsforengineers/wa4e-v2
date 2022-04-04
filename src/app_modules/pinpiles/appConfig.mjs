@@ -530,6 +530,33 @@ export const appConf = {
       },
       plots: {
         mudmatDesign: {
+          dataFun(a, b, c, d, e, f, label) {
+            return [
+              {
+                x: a,
+                y: b,
+                name: 'Zero Torque',
+                type: 'scatter',
+              },
+              {
+                x: c,
+                y: d,
+                name: `T = ${Number(label).toFixed(1)} kNm`,
+                type: 'scatter',
+              },
+              {
+                x: [e],
+                y: [f],
+                name: 'Design - Mudmat',
+                type: 'scatter',
+                marker: {
+                  symbol: 'diamond',
+                  size: 12,
+                  color: '#01579b',
+                },
+              },
+            ];
+          },
           layout: {
             title: '<b>Mudmat Design</b>',
             titlefont: {
@@ -556,6 +583,33 @@ export const appConf = {
           show: true,
         },
         inSituUndrainedStresses: {
+          dataFun(a, b, c, d, e, f, label) {
+            return [
+              {
+                x: a,
+                y: b,
+                name: 'T = 0',
+                type: 'scatter',
+              },
+              {
+                x: c,
+                y: d,
+                name: `T = ${Number(label).toFixed(1)} BH`,
+                type: 'scatter',
+              },
+              {
+                x: [e],
+                y: [f],
+                name: 'Design - Piles',
+                type: 'scatter',
+                marker: {
+                  symbol: 'diamond',
+                  size: 12,
+                  color: '#01579b',
+                },
+              },
+            ];
+          },
           layout: {
             title: '<b>Pile Group Design</b>',
             titlefont: {

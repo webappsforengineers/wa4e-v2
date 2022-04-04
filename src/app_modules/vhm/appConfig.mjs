@@ -399,6 +399,38 @@ export const appConf = {
       },
       plots: {
         hhmm: {
+          dataFun(a, b, c, d, e) {
+            return [
+              {
+                x: a,
+                y: b,
+                z: e,
+                name: 'Failure Envelope',
+                type: 'contour',
+                colorscale: [
+                  ['0.0', 'rgb(224, 224, 224)'],
+                  ['1.0', 'rgb(255, 255, 255)'],
+                ],
+                autocontour: false,
+                showscale: false,
+                contours: {
+                  start: 1,
+                  end: 1,
+                  size: 1,
+                },
+              },
+              {
+                x: c,
+                y: d,
+                type: 'scatter',
+                marker: {
+                  symbol: 'diamond',
+                  size: 12,
+                  color: '#01579b',
+                },
+              },
+            ];
+          },
           layout: {
             title:
               '<b>Failure envelope & factored load in terms of normalised (h/h*, m/m*)</b>',
@@ -420,6 +452,39 @@ export const appConf = {
           display: 'block',
         },
         HfMf: {
+          dataFun(a, b, c, d, e) {
+            return [
+              {
+                x: a,
+                y: b,
+                z: e,
+                type: 'contour',
+                name: 'Failure Envelope',
+                colorscale: [
+                  ['0.0', 'rgb(224, 224, 224)'],
+                  ['1.0', 'rgb(255, 255, 255)'],
+                ],
+                autocontour: false,
+                showscale: false,
+                contours: {
+                  start: 1,
+                  end: 1,
+                  size: 1,
+                },
+              },
+              {
+                x: c,
+                y: d,
+                type: 'scatter',
+                name: 'Failure Envelope',
+                marker: {
+                  symbol: 'diamond',
+                  size: 12,
+                  color: '#01579b',
+                },
+              },
+            ];
+          },
           layout: {
             title:
               '<b>Failure envelope & factored load in terms of factored (H<sub>f</sub>, M<sub>f</sub>)</b>',

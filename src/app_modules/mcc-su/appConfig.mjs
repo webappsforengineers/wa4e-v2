@@ -244,6 +244,34 @@ export const appConf = {
       },
       plots: {
         inSituStresses: {
+          dataFun(a, b, c, d, e) {
+            return [
+              {
+                x: a,
+                y: b,
+                name: '&sigma;&#39;<sub>v</sub>',
+                type: 'scatter',
+              },
+              {
+                x: a,
+                y: c,
+                name: 'u<sub>hyd</sub>',
+                type: 'scatter',
+              },
+              {
+                x: a,
+                y: d,
+                name: '&sigma;<sub>v</sub>',
+                type: 'scatter',
+              },
+              {
+                x: a,
+                y: e,
+                name: '&sigma;&#39;<sub>h</sub>',
+                type: 'scatter',
+              },
+            ];
+          },
           layout: {
             title: '<b>In Situ Stresses</b>',
             titlefont: {
@@ -267,6 +295,22 @@ export const appConf = {
           show: true,
         },
         inSituUndrainedStresses: {
+          dataFun(a, b, c) {
+            return [
+              {
+                x: a,
+                y: b,
+                name: 'PS',
+                type: 'scatter',
+              },
+              {
+                x: a,
+                y: c,
+                name: 'TX',
+                type: 'scatter',
+              },
+            ];
+          },
           layout: {
             title: '<b>In Situ Undrained Strength</b>',
             titlefont: {

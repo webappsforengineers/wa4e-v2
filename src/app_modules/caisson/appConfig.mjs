@@ -299,6 +299,14 @@ export const appConf = {
       },
       plots: {
         plotSuKpc: {
+          dataFun(a, b) {
+            return [
+              {
+                x: a,
+                y: b,
+              },
+            ];
+          },
           layout: {
             title: '',
             xaxis: {
@@ -321,6 +329,20 @@ export const appConf = {
           data: [],
         },
         plotPenRes: {
+          dataFun(a, b, c) {
+            return [
+              {
+                name: 'Required Suction',
+                x: a,
+                y: c,
+              },
+              {
+                name: 'Penetration Resistance',
+                x: b,
+                y: c,
+              },
+            ];
+          },
           layout: {
             type: 'scatter',
             title: '',
@@ -347,6 +369,14 @@ export const appConf = {
           data: [],
         },
         plotFosStability: {
+          dataFun(a, b) {
+            return [
+              {
+                x: a,
+                y: b,
+              },
+            ];
+          },
           layout: {
             type: 'scatter',
             title: '',

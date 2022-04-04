@@ -191,6 +191,18 @@ export const appConf = {
       },
       plots: {
         db: {
+          dataFun(a, b) {
+            return [
+              {
+                x: a,
+                y: b,
+                line: {
+                  shape: 'spline',
+                  smoothing: 0.7,
+                },
+              },
+            ];
+          },
           layout: {
             title: '<b>N<sub>cV</sub> as a function of d/B</b>',
             xaxis: {
@@ -211,6 +223,18 @@ export const appConf = {
           show: true,
         },
         alphaside: {
+          dataFun(a, b) {
+            return [
+              {
+                x: a,
+                y: b,
+                line: {
+                  shape: 'spline',
+                  smoothing: 1,
+                },
+              },
+            ];
+          },
           layout: {
             title: '<b>N<sub>cV</sub> as a function of α<sub>side</sub></b>',
             xaxis: {
@@ -231,6 +255,18 @@ export const appConf = {
           show: true,
         },
         kbsum: {
+          dataFun(a, b) {
+            return [
+              {
+                x: a,
+                y: b,
+                line: {
+                  shape: 'spline',
+                  smoothing: 0.7,
+                },
+              },
+            ];
+          },
           layout: {
             title: '<b>N<sub>cV</sub> as a function of kB/s<sub>um</sub></b>',
             xaxis: {
