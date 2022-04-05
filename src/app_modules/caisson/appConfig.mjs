@@ -150,8 +150,8 @@ export const appConf = {
             unit: null,
             value: null,
             visible: '',
-            lb: '',
-            ub: '',
+            lb: '0',
+            ub: '1',
           },
           Di: {
             label: 'D<sub>i</sub>',

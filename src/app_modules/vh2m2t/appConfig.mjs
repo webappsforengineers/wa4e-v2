@@ -39,8 +39,8 @@ export const appConf = {
             unit: null,
             value: 0.5,
             visible: '',
-            lb: '',
-            ub: '',
+            lb: '0.33',
+            ub: '1',
           },
           doverB: {
             label: 'd/B (0 - 0.3)',
@@ -171,8 +171,8 @@ export const appConf = {
             unit: null,
             value: 0.5,
             visible: '',
-            lb: '',
-            ub: '',
+            lb: '0',
+            ub: '1',
           },
         },
         'Load and Material Factors (&#8805;1)': {

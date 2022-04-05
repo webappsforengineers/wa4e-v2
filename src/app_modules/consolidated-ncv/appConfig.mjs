@@ -39,8 +39,8 @@ export const appConf = {
             unit: null,
             value: 1,
             visible: '',
-            lb: '',
-            ub: '',
+            lb: '0',
+            ub: '1',
           },
         },
         Soil: {
@@ -131,8 +131,8 @@ export const appConf = {
             unit: null,
             value: 0.3,
             visible: '',
-            lb: '',
-            ub: '',
+            lb: '0',
+            ub: '1',
           },
           t_cons: {
             label: 't<sub>cons</sub>',

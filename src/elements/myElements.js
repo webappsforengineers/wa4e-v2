@@ -7,3 +7,4 @@ import './app_tiles/graphTile.js';
 import './app_tiles/optimizationTile.js';
 import './app_tiles/textTile.js';
 import './app_tiles/batchTile.js';
+import './app_tiles/inputField.js';

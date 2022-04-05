@@ -57,8 +57,8 @@ export const appConf = {
             label: 'k<sub>su</sub>(0-50)',
             unit: 'kPa/m',
             value: 2,
-            lb: '',
-            ub: '',
+            lb: '0',
+            ub: '50',
           },
         },
         Loads: {
@@ -209,8 +209,8 @@ export const appConf = {
             unit: null,
             value: null,
             visible: '',
-            lb: '',
-            ub: '',
+            lb: '0',
+            ub: '0.5',
           },
           A: {
             label: 'A',
@@ -225,8 +225,8 @@ export const appConf = {
             unit: null,
             value: null,
             visible: '',
-            lb: '',
-            ub: '',
+            lb: '0',
+            ub: '100',
           },
           su0: {
             label: 's<sub>u0</sub>',

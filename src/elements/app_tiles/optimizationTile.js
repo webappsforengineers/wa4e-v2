@@ -45,11 +45,9 @@ class optimizationTile extends TileBase {
   }
 
   clearOutput() {
-    Object.keys(
-      this.formFields[''].forEach(key => {
-        this.formFields[''][key].value = null;
-      })
-    );
+    for (const thing of Object.values(this.formFields[''])) {
+      thing.value = null;
+    }
   }
 
   arrangeFields() {

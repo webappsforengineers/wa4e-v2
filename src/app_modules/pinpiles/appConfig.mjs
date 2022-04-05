@@ -192,8 +192,8 @@ export const appConf = {
             unit: null,
             value: 0.5,
             visible: '',
-            lb: '',
-            ub: '',
+            lb: '0.33',
+            ub: '1',
           },
           doverB: {
             label: 'd<sub>skirt</sub>/B (0-0.3)',
@@ -210,8 +210,8 @@ export const appConf = {
             unit: null,
             value: 1,
             visible: '',
-            lb: '',
-            ub: '',
+            lb: '0',
+            ub: '1',
           },
         },
         'Pile Group Geometry': {
@@ -232,20 +232,34 @@ export const appConf = {
             ub: '',
           },
           B_piles: {
-            label: 'B<sub>piles</sub> (0-9.10)',
+            label: 'B<sub>piles</sub>',
             unit: 'm',
             value: 6,
             visible: '',
-            lb: '',
-            ub: '',
+            lb: '0',
+            ub() {
+              return (
+                appConf.appWebComponents[1].fields['Mudmat Geometry'].B.value -
+                appConf.appWebComponents[1].fields['Pile Group Geometry'].D_pile
+                  .value
+              );
+            },
           },
           L_piles: {
-            label: 'L<sub>piles</sub> (0-19.10)',
+            label: 'L<sub>piles</sub>',
             unit: null,
             value: 13,
             visible: '',
-            lb: '',
-            ub: '',
+            lb: '0',
+            ub() {
+              return (
+                2 *
+                  appConf.appWebComponents[1].fields['Mudmat Geometry'].B
+                    .value -
+                appConf.appWebComponents[1].fields['Pile Group Geometry'].D_pile
+                  .value
+              );
+            },
           },
           L_embed: {
             label: 'L<sub>embed</sub>',
@@ -343,7 +357,7 @@ export const appConf = {
             ub: '',
           },
           A: {
-            label: 'A',
+            label: 'A = B x L',
             unit: 'm<sup>2</sup>',
             value: null,
             visible: '',
@@ -351,7 +365,7 @@ export const appConf = {
             ub: '',
           },
           s_u0: {
-            label: 's<sub>u0</sub>',
+            label: 's<sub>u0</sub>=k<sub>su</sub>d',
             unit: 'kPa',
             value: null,
             visible: '',
