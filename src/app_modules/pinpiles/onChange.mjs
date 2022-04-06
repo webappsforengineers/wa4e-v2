@@ -6,11 +6,30 @@ export const changeObj = {
   mudmatFoundationOnly: {
     1: {
       fields: {
-        fields: {
-          'Relative Loads Taken By Piles': {
-            beta_pV: [0.332, null, '&beta;<sub>pV</sub>', ''],
-            beta_pH: [0.776, null, '&beta;<sub>pH</sub>', ''],
-            beta_pM: [0.478, null, '&beta;<sub>pM</sub>', ''],
+        'Relative Loads Taken By Piles': {
+          beta_pV: {
+            label: '&beta;<sub>pV</sub>',
+            unit: null,
+            value: 0.332,
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+          beta_pH: {
+            label: '&beta;<sub>pH</sub>',
+            unit: null,
+            value: 0.776,
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+          beta_pM: {
+            label: '&beta;<sub>pM</sub>',
+            unit: null,
+            value: 0.478,
+            visible: '',
+            lb: '',
+            ub: '',
           },
         },
       },
@@ -19,11 +38,30 @@ export const changeObj = {
   pileGroupOnly: {
     1: {
       fields: {
-        fields: {
-          'Relative Loads Taken By Piles': {
-            beta_pV: [0.332, null, '&beta;<sub>pV</sub>', ''],
-            beta_pH: [0.776, null, '&beta;<sub>pH</sub>', ''],
-            beta_pM: [0.478, null, '&beta;<sub>pM</sub>', ''],
+        'Relative Loads Taken By Piles': {
+          beta_pV: {
+            label: '&beta;<sub>pV</sub>',
+            unit: null,
+            value: 0.332,
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+          beta_pH: {
+            label: '&beta;<sub>pH</sub>',
+            unit: null,
+            value: 0.776,
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+          beta_pM: {
+            label: '&beta;<sub>pM</sub>',
+            unit: null,
+            value: 0.478,
+            visible: '',
+            lb: '',
+            ub: '',
           },
         },
       },
@@ -32,11 +70,30 @@ export const changeObj = {
   hybridPiledMudmat: {
     1: {
       fields: {
-        fields: {
-          'Relative Loads Taken By Piles': {
-            beta_pV: [0.332, null, '&beta;<sub>pV</sub>', ''],
-            beta_pH: [0.747, null, '&beta;<sub>pH</sub>', ''],
-            beta_pM: [0.287, null, '&beta;<sub>pM</sub>', ''],
+        'Relative Loads Taken By Piles': {
+          beta_pV: {
+            label: '&beta;<sub>pV</sub>',
+            unit: null,
+            value: 0.332,
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+          beta_pH: {
+            label: '&beta;<sub>pH</sub>',
+            unit: null,
+            value: 0.747,
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+          beta_pM: {
+            label: '&beta;<sub>pM</sub>',
+            unit: null,
+            value: 0.287,
+            visible: '',
+            lb: '',
+            ub: '',
           },
         },
       },

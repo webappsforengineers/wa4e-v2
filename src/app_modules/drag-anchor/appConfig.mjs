@@ -95,7 +95,7 @@ export const appConf = {
           },
           Ap: {
             label: 'A<sub>p</sub>',
-            unit: 'M<sup>2</sup>',
+            unit: 'm<sup>2</sup>',
             value: 12,
             visible: '',
             lb: '',
@@ -170,7 +170,7 @@ export const appConf = {
             ub: '',
           },
           q_p_w: {
-            label: '&theta;&#39;w',
+            label: '&theta;&#39;<sub>w</sub>',
             unit: 'radians',
             value: null,
             visible: '',
@@ -196,7 +196,7 @@ export const appConf = {
             ub: '',
           },
           su_dz: {
-            label: '&int;su dz',
+            label: '&int;s<sub>u</sub> dz',
             unit: null,
             value: null,
             visible: '',

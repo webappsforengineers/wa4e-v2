@@ -6,7 +6,7 @@ export const changeObj = {
   UTI: {
     1: {
       fields: {
-        'Load and Material Factors (&#8805;1)': {
+        'Load and Material Factors': {
           lambda_s_UTI: {
             value: 1.25,
             unit: null,
@@ -43,7 +43,7 @@ export const changeObj = {
   ZTI: {
     1: {
       fields: {
-        'Load and Material Factors (&#8805;1)': {
+        'Load and Material Factors': {
           lambda_s_UTI: {
             value: 1.25,
             unit: null,

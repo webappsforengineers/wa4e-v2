@@ -18,9 +18,9 @@ Characteristic Loads and Eccentricities,e_zHy,5,5,5
 Relative Loads Taken By Piles,beta_pV,0.332,0.332,0.332
 Relative Loads Taken By Piles,beta_pH,0.776,0.776,0.747
 Relative Loads Taken By Piles,beta_pM,0.487,0.478,0.287
-Load and Material Factors (&#8805;1),lambda_V,1.1,1.1,1.1
-Load and Material Factors (&#8805;1),lambda_H,1.35,1.35,1.35
-Load and Material Factors (&#8805;1),lambda_s,1.25,1.25,1.25
+Load and Material Factors,lambda_V,1.1,1.1,1.1
+Load and Material Factors,lambda_H,1.35,1.35,1.35
+Load and Material Factors,lambda_s,1.25,1.25,1.25
 Mudmat Geometry,B,7.5,7.5,7.5
 Mudmat Geometry,BoverL,0.5,0.5,0.5
 Mudmat Geometry,doverB,0.081,0.081,0.081

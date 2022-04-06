@@ -3,7 +3,7 @@ import { changeObj } from './onChange.mjs';
 export const appConf = {
   appName: 'pinpiles',
   appTitle: 'Mudmat & Hybrid Mudmat VH<sub>2</sub>M<sub>2</sub>T',
-  appPageTitle: 'Hybrid Mudmat VH<sub>2</sub>M<sub>2</sub>T',
+  appPageTitle: 'Mudmat & Hybrid Mudmat VH<sub>2</sub>M<sub>2</sub>T',
   appDescription:
     'Undrained 6 DoF capacity of rectangular skirted mudmat and pinpiled mudmats',
   appColour: '#698ef1',
@@ -152,7 +152,7 @@ export const appConf = {
             ub: '',
           },
         },
-        'Load and Material Factors (&#8805;1)': {
+        'Load and Material Factors': {
           lambda_V: {
             label: '&lambda;<sub>V</sub>',
             unit: null,
@@ -284,8 +284,8 @@ export const appConf = {
             unit: null,
             value: 1,
             visible: '',
-            lb: '',
-            ub: '',
+            lb: '0',
+            ub: '1',
           },
           Nc_piles: {
             label: 'N<sub>c,piles</sub>',
@@ -373,7 +373,7 @@ export const appConf = {
             ub: '',
           },
           kappa: {
-            label: '&kappa;(0-10)',
+            label: '&kappa;=k<sub>su</sub> B/s<sub>u0</sub> (0-10)',
             unit: null,
             value: null,
             visible: '',

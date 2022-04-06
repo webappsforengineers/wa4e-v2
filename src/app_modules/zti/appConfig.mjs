@@ -40,16 +40,16 @@ export const appConf = {
             unit: null,
             value: 0.5,
             visible: '',
-            lb: '',
-            ub: '',
+            lb: '0.33',
+            ub: '1',
           },
           doverB: {
             label: 'd<sub>skirt</sub>/B (0-0.3)',
             unit: null,
             value: 0,
             visible: '',
-            lb: '',
-            ub: '',
+            lb: '0',
+            ub: '0.3',
           },
         },
         'Characteristic Soil Shear Strength': {
@@ -62,7 +62,7 @@ export const appConf = {
             ub: '',
           },
           k: {
-            label: 'k',
+            label: 'k<sub>su</sub>',
             unit: 'kPa/m',
             value: 1,
             visible: '',
@@ -159,7 +159,7 @@ export const appConf = {
             ub: '',
           },
         },
-        'Load and Material Factors (&#8805;1)': {
+        'Load and Material Factors': {
           lambda_V: {
             label: '&lambda;<sub>V</sub>',
             unit: null,
@@ -239,7 +239,7 @@ export const appConf = {
             ub: '',
           },
           A: {
-            label: 'A',
+            label: 'A = B x L',
             unit: 'm<sup>2</sup>',
             value: null,
             visible: '',
@@ -247,7 +247,7 @@ export const appConf = {
             ub: '',
           },
           s_u0: {
-            label: 's<sub>u0</sub>',
+            label: 's<sub>u0</sub> = k<sub>su</sub> d',
             unit: 'kPa',
             value: null,
             visible: '',
@@ -255,12 +255,12 @@ export const appConf = {
             ub: '',
           },
           kappa: {
-            label: '&kappa;(0-10)',
+            label: '&kappa; = k<sub>su</sub> B/s<sub>u0</sub> ',
             unit: null,
             value: null,
             visible: '',
-            lb: '',
-            ub: '',
+            lb: '0',
+            ub: '10',
           },
         },
         'Factored Loads': {
