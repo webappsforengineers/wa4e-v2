@@ -4,7 +4,7 @@ import { StyledElement } from '../../styles/wa4eStyleElement.js';
 class headerTemplate extends StyledElement {
   constructor() {
     super();
-    this.homePage = 'https://webappsforengineers.com/wa4e-v2/dist/index.html';
+    this.homePage = '/index';
   }
 
   static get properties() {
@@ -25,7 +25,7 @@ class headerTemplate extends StyledElement {
             <a href="${this.homePage}"
               ><img
                 class="img-fluid mx-auto d-block"
-                src="../../img/home.png"
+                src="img/home.png"
                 alt="Home"
             /></a>
           </div>
