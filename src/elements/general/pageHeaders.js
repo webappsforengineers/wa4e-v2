@@ -4,7 +4,7 @@ import { StyledElement } from '../../styles/wa4eStyleElement.js';
 class headerTemplate extends StyledElement {
   constructor() {
     super();
-    this.homePage = '/index';
+    this.homePage = '/wa4e-v2/index';
   }
 
   static get properties() {
