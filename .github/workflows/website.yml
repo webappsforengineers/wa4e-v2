@@ -1,0 +1,26 @@
+name: Website
+on:
+  push:
+    branches:
+      - "dev"
+  pull_request: null
+jobs:
+  build-setup:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout the lesson
+        uses: actions/checkout@v2
+
+      - name: Setup Git
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+
+      - name: Deploy the website to gh-pages
+        uses: JamesIves/github-pages-deploy-action@4.1.7
+        with:
+          branch: gh-pages
+          folder: "dist"
+          token: ${{ secrets.GITHUB_TOKEN }}
