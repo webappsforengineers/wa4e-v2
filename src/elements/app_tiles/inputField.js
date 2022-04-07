@@ -51,7 +51,7 @@ export class InputField extends StyledElement {
         class="input-group-text text-wrap text-break"
         for="${this.key}"
         style="min-width: 20%; text-align: left;"
-        >${html([this.unit])}</label
+        >${html([this.appConf.unit])}</label
       >
     </div> `;
   }

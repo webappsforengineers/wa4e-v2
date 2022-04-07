@@ -131,13 +131,13 @@ class batchTile extends TileBase {
     let choiceIdx;
 
     // Find any radio tiles, title them and add possible checks.
-    this.subComponents.forEach((subComp, subCompIdx) => {
+    Object.entries(this.subComponents).forEach(([subCompIdx, subComp]) => {
       if (subComp.type === 'radio-tile') {
         csv[ix] = ['Radio Choice:', subComp.title, subCompIdx].join(',');
         ix += 1;
         choiceIdx = 1;
         Object.entries(subComp.options).forEach(([radioChoice, value]) => {
-          csv[ix] = [choiceIdx, radioChoice, value[0]].join(',');
+          csv[ix] = [choiceIdx, radioChoice, value.check_status].join(',');
           ix += 1;
           choiceIdx += 1;
         });
@@ -148,7 +148,7 @@ class batchTile extends TileBase {
     // Now do the main fields
     Object.keys(this.formFields).forEach(keyOuter => {
       Object.entries(this.formFields[keyOuter]).forEach(([keyInner, value]) => {
-        csv[ix] = [keyOuter, keyInner, value[0]].join(',');
+        csv[ix] = [keyOuter, keyInner, value.value].join(',');
         ix += 1;
       });
     });
@@ -177,7 +177,7 @@ class batchTile extends TileBase {
     let firstMain = true;
 
     // Create field names
-    appConfClone.forEach(tile => {
+    Object.values(appConfClone).forEach(tile => {
       if (
         ['input-tile', 'derived-input-tile', 'output-tile'].includes(tile.type)
       ) {
@@ -249,21 +249,21 @@ class batchTile extends TileBase {
         } else if (arr[0][index] === 'Main Fields:') {
           fieldTypeSwitch = 'main';
         } else if (fieldTypeSwitch === 'radio') {
-          appConfClone.find(
+          Object.values(appConfClone).find(
             element => element.type === 'input-tile'
-          ).subComponents[subCompIdx].options[arr[1][index]][0] =
+          ).subComponents[subCompIdx].options[arr[1][index]].check_status =
             parseBool(value);
         } else if (fieldTypeSwitch === 'main') {
-          appConfClone.find(element => element.type === 'input-tile').fields[
-            arr[0][index]
-          ][arr[1][index]][0] = Number(value);
+          Object.values(appConfClone).find(
+            element => element.type === 'input-tile'
+          ).fields[arr[0][index]][arr[1][index]].value = Number(value);
         }
       });
       this.launchCloneCalc(appConfClone);
 
       ix = 0;
       firstMain = true;
-      appConfClone.forEach(tile => {
+      Object.values(appConfClone).forEach(tile => {
         if (
           ['input-tile', 'derived-input-tile', 'output-tile'].includes(
             tile.type
@@ -277,7 +277,7 @@ class batchTile extends TileBase {
               Object.entries(subCompVal.options).forEach(
                 // eslint-disable-next-line no-unused-vars
                 ([radioChoice, value]) => {
-                  csv[ix] = [csv[ix], value[0]].join(',');
+                  csv[ix] = [csv[ix], value.check_status].join(',');
                   ix += 1;
                 }
               );
@@ -292,7 +292,7 @@ class batchTile extends TileBase {
             /* eslint-disable no-unused-vars */
             Object.entries(tile.fields[keyOuter]).forEach(
               ([keyInner, value]) => {
-                csv[ix] = [csv[ix], value[0]].join(',');
+                csv[ix] = [csv[ix], value.value].join(',');
                 ix += 1;
               }
             );
