@@ -243,7 +243,7 @@ wa4e
 │   │   └── moduleConf.mjs
 │   ├── elements
 │   │   ├── app_tiles
-│   │   │   ├── batchTile.js
+│   │   │   ├── batchTile.mjs
 │   │   │   ├── graphTile.js
 │   │   │   ├── imageTile.js
 │   │   │   ├── formTile.js

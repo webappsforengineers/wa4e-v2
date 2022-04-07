@@ -1,7 +1,10 @@
 import { html } from 'lit';
 import { saveAs } from 'file-saver-es';
 import { zip, cloneDeep } from 'lodash-es';
+// import * as XLSX from 'xlsx/xlsx.mjs'
 import { TileBase } from './tileBase.js';
+
+// const xlsxUtils = XLSX.utils;
 
 class batchTile extends TileBase {
   render() {
