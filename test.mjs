@@ -72,15 +72,18 @@ function restructureFields(fieldsArray) {
   function checkLength(thing) {
     return thing.length === 1;
   }
+  function whereTrue(thing) {
+    return thing;
+  }
   const fieldsObj = {};
   const slicePoints = fieldsArray.map(checkLength);
 
   let sliceIndex;
   const groupSplits = [];
   while (slicePoints.length > 0) {
-    sliceIndex = slicePoints.findIndex(true);
+    sliceIndex = slicePoints.slice(1).findIndex(whereTrue);
     if (sliceIndex === -1) {
-      throw Error('No Group found');
+      sliceIndex = slicePoints.length;
     }
     groupSplits.push(fieldsArray.slice(0, sliceIndex));
     for (let i = 0; i <= sliceIndex; i += 1) {
@@ -90,11 +93,11 @@ function restructureFields(fieldsArray) {
   }
 
   groupSplits.forEach(restructureGroup, fieldsObj);
-  // return fieldsObj
+  return fieldsObj;
 }
 
 function destructureComponents(componentsObj) {
-  let componentArray = [];
+  const componentArray = [];
   let headerArr;
   Object.entries(componentsObj).forEach(([compKey, compObj]) => {
     if (
@@ -104,16 +107,22 @@ function destructureComponents(componentsObj) {
         [compKey, compObj.type, compObj.title],
         ['key', 'Name', 'Unit', 'ValueMin', 'ValueMax', 'Value(s)...'],
       ];
-      componentArray = componentArray.concat(
-        headerArr.concat(destructureFields(compObj.fields))
-      );
+      componentArray.push(headerArr.concat(destructureFields(compObj.fields)));
     }
   });
   return componentArray;
 }
 
 function restructureComponents(componentsArray) {
-  restructureFields(componentsArray);
+  const restructuredCompObj = {};
+  componentsArray.forEach(fieldsArr => {
+    restructuredCompObj[fieldsArr[0][0]] = {
+      type: fieldsArr[0][1],
+      title: fieldsArr[0][2],
+      fields: restructureFields(fieldsArr.slice(2)),
+    };
+  });
+  return restructuredCompObj;
 }
 
 const output = destructureComponents(appConf.appWebComponents);
