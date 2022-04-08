@@ -1,3 +1,4 @@
+import { cloneDeep, merge, forIn } from 'lodash-es';
 import { appConf } from './src/app_modules/caisson/appConfig.mjs';
 
 // import * as XLSX from 'xlsx/xlsx.mjs'
@@ -22,14 +23,20 @@ import { appConf } from './src/app_modules/caisson/appConfig.mjs';
 
 // Functions to destructure and restructure a single field in the appConf Objects
 function destructureField(fieldKey, fieldObj) {
+  function getValue(valueElement) {
+    if (typeof valueElement === 'number') {
+      return [valueElement];
+    }
+    return valueElement;
+  }
+
   return [
     fieldKey,
     fieldObj.label,
     fieldObj.unit,
     fieldObj.lb,
     fieldObj.ub,
-    fieldObj.value,
-  ];
+  ].concat(getValue(fieldObj.value));
 }
 
 function restructureField(fieldArray) {
@@ -114,21 +121,62 @@ function destructureComponents(componentsObj) {
 }
 
 function restructureComponents(componentsArray) {
+  function getLength(thing) {
+    if (typeof thing === 'number') {
+      return 1;
+    }
+    return thing.length;
+  }
   const restructuredCompObj = {};
   componentsArray.forEach(fieldsArr => {
     restructuredCompObj[fieldsArr[0][0]] = {
       type: fieldsArr[0][1],
       title: fieldsArr[0][2],
+      valuesLength: getLength(fieldsArr[4].slice(5)),
       fields: restructureFields(fieldsArr.slice(2)),
     };
   });
   return restructuredCompObj;
 }
 
+// Merge the restructured components into the original object
+function mergeWithOriginal(restructuredObj, originalObj) {
+  const newObj = cloneDeep(originalObj);
+  merge(newObj.appWebComponents, restructuredObj);
+  return newObj;
+}
+
+// Clone object for each entry in the values arrays
+function splitValues(mergedObj) {
+  const inputLength = Object.values(mergedObj.appWebComponents).find(
+    element => element.type === 'input-tile'
+  ).valuesLength;
+  for (let i = 0; i < inputLength; i += 1) {
+    const cloneObj = cloneDeep(mergedObj);
+    const paths = forIn(cloneObj);
+    // eslint-disable-next-line no-console
+    console.log(paths);
+  }
+}
+
+// Combine objects on each field-groups value
+// function combineValues(objsToCombine) {
+//
+// }
+
+// Testing
 const output = destructureComponents(appConf.appWebComponents);
 // eslint-disable-next-line no-console
 console.log(output);
 
-const input = restructureComponents(output);
+const inputObj = restructureComponents(output);
 // eslint-disable-next-line no-console
-console.log(input);
+console.log(inputObj);
+
+const mergedObj = mergeWithOriginal(inputObj, appConf);
+// eslint-disable-next-line no-console
+console.log(mergedObj);
+
+const objectArrays = splitValues(mergedObj);
+// eslint-disable-next-line no-console
+console.log(objectArrays);
