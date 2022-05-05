@@ -1,10 +1,11 @@
 import { html } from 'lit';
 import { saveAs } from 'file-saver-es';
 import { zip, cloneDeep } from 'lodash-es';
-// import * as XLSX from 'xlsx/xlsx.mjs'
+import * as XLSX from 'xlsx/xlsx.mjs'
 import { TileBase } from './tileBase.js';
+import { structureUtils } from '../../local_modules/appConfDeReStrut.mjs';
 
-// const xlsxUtils = XLSX.utils;
+const xlsxUtils = XLSX.utils;
 
 class batchTile extends TileBase {
   render() {
@@ -20,6 +21,7 @@ class batchTile extends TileBase {
       element => element.type === 'input-tile'
     ).subComponents;
     this.fileData = null;
+    this.workbook = null;
     return [
       super.render(),
       html`
@@ -39,7 +41,7 @@ class batchTile extends TileBase {
         </p>
         <h4>3. Upload the file</h4>
         <div class="input-group">
-          <input class="form-control" type="file" id="dropbox" accept=".csv" />
+          <input class="form-control" type="file" id="dropbox" accept=".xlsx" />
           <button
             id="dropbox-button"
             class="btn btn-outline-secondary"
@@ -107,12 +109,13 @@ class batchTile extends TileBase {
       window.alert('Single file upload only. Previous file is removed.');
     }
 
-    const filePromise = fileObj.text();
+    const filePromise = fileObj.arrayBuffer();
     filePromise.then(
       value => {
         /* code if successful */
         // write the value of the file to fileData
         this.fileData = value;
+        this.workbook = XLSX.read(this.fileData)
       },
       error => {
         /* code if some error */
@@ -129,185 +132,224 @@ class batchTile extends TileBase {
    * @returns {Object} An object that can be downloaded as a csv
    */
   generateCSV() {
-    const csv = [];
-    let ix = 0;
-    let choiceIdx;
+    // const csv = [];
+    // let ix = 0;
+    // let choiceIdx;
 
+    const output = structureUtils.destructureComponents(this.appConf);
+    let workbook = xlsxUtils.book_new();
+    for (let sheet_ix in output) {
+      xlsxUtils.book_append_sheet(
+        workbook,
+        xlsxUtils.aoa_to_sheet(output[sheet_ix]),
+        output[sheet_ix][0][1],
+        true
+      );
+    }
+    //Stuff to save a sheet
+    var wbout = XLSX.write(workbook, {bookType:'xlsx',  type: 'binary'});
+
+    function s2ab(s) {
+      const buf = new ArrayBuffer(s.length); //convert s to arrayBuffer
+      const view = new Uint8Array(buf);  //create uint8array as viewer
+      for (let i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF; //convert to octet
+      return buf;
+    }
+
+    const blob = new Blob([s2ab(wbout)],{type:"application/octet-stream"});
     // Find any radio tiles, title them and add possible checks.
-    Object.entries(this.subComponents).forEach(([subCompIdx, subComp]) => {
-      if (subComp.type === 'radio-tile') {
-        csv[ix] = ['Radio Choice:', subComp.title, subCompIdx].join(',');
-        ix += 1;
-        choiceIdx = 1;
-        Object.entries(subComp.options).forEach(([radioChoice, value]) => {
-          csv[ix] = [choiceIdx, radioChoice, value.check_status].join(',');
-          ix += 1;
-          choiceIdx += 1;
-        });
-      }
-    });
-    csv[ix] = ['Main Fields:'].join(',');
-    ix += 1;
-    // Now do the main fields
-    Object.keys(this.formFields).forEach(keyOuter => {
-      Object.entries(this.formFields[keyOuter]).forEach(([keyInner, value]) => {
-        csv[ix] = [keyOuter, keyInner, value.value].join(',');
-        ix += 1;
-      });
-    });
-    const csvstr = csv.join('\n');
-    const blob = new Blob([csvstr], { type: 'text,csv;charset=utf-8;' });
-    saveAs(blob, `${this.appName}-template.csv`);
+    // Object.entries(this.subComponents).forEach(([subCompIdx, subComp]) => {
+    //   if (subComp.type === 'radio-tile') {
+    //     csv[ix] = ['Radio Choice:', subComp.title, subCompIdx].join(',');
+    //     ix += 1;
+    //     choiceIdx = 1;
+    //     Object.entries(subComp.options).forEach(([radioChoice, value]) => {
+    //       csv[ix] = [choiceIdx, radioChoice, value.check_status].join(',');
+    //       ix += 1;
+    //       choiceIdx += 1;
+    //     });
+    //   }
+    // });
+    // csv[ix] = ['Main Fields:'].join(',');
+    // ix += 1;
+    // // Now do the main fields
+    // Object.keys(this.formFields).forEach(keyOuter => {
+    //   Object.entries(this.formFields[keyOuter]).forEach(([keyInner, value]) => {
+    //     csv[ix] = [keyOuter, keyInner, value.value].join(',');
+    //     ix += 1;
+    //   });
+    // });
+    // const csvstr = csv.join('\n');
+    // const blob = new Blob([csvstr], { type: 'text,csv;charset=utf-8;' });
+
+    saveAs(blob, `${this.appName}-template.xlsx`);
   }
 
   runCalc() {
-    // minipulate the csv string
-    const delimiter = ',';
-    // use split to create an array of each csv value row
-    const rows = this.fileData.split('\n');
-    // Map the rows
-    // split values from each row into an array
-    let arr = rows.map(row =>
-      row.split(delimiter).map(item => item.replace(/(\r\n|\n|\r)/gm, ''))
-    );
-    arr = zip(...arr);
-    // run the calculation
-    // First we make a copy of appWebComponents
-    const appConfClone = cloneDeep(this.appConf);
-    const csv = [];
-    let ix = 0;
-    let choiceIdx;
-    let firstMain = true;
-
-    // Create field names
-    Object.values(appConfClone).forEach(tile => {
-      if (
-        ['input-tile', 'derived-input-tile', 'output-tile'].includes(tile.type)
-      ) {
-        // Find any radio tiles, title them and add possible checks.
-        Object.entries(tile.subComponents).forEach(
-          ([subCompIdx, subCompVal]) => {
-            if (subCompVal.type === 'radio-tile') {
-              csv[ix] = ['radio choice', subCompVal.title, subCompIdx].join(
-                ','
-              );
-              ix += 1;
-              choiceIdx = 1;
-              Object.entries(subCompVal.options).forEach(
-                // eslint-disable-next-line no-unused-vars
-                ([radioChoice, value]) => {
-                  csv[ix] = [choiceIdx, radioChoice].join(',');
-                  ix += 1;
-                  choiceIdx += 1;
-                }
-              );
-            }
-          }
-        );
-        // Now do the main fields
-        // If its the first non subcomp
-        if (firstMain === true) {
-          csv[ix] = ['Main Fields:'].join(',');
-          ix += 1;
-          firstMain = false;
-        }
-        Object.keys(tile.fields).forEach(keyOuter => {
-          // eslint-disable-next-line no-unused-vars
-          Object.entries(tile.fields[keyOuter]).forEach(([keyInner, value]) => {
-            csv[ix] = [keyOuter, keyInner].join(',');
-            ix += 1;
-          });
-        });
-      }
+    let input = []
+    Object.values(this.workbook.Sheets).forEach((sheet) => {
+      input.push(xlsxUtils.sheet_to_json(sheet, {header: 1}))
     });
 
-    function parseBool(inputValue) {
-      if (
-        [1, '1', 'TRUE', 'True', 'true', 'T', 't', 'y', 'yes'].includes(
-          inputValue
-        )
-      ) {
-        return true;
-      }
-      if (
-        [0, '0', 'FALSE', 'False', 'false', 'F', 'f', 'n', 'no', ''].includes(
-          inputValue
-        )
-      ) {
-        return false;
-      }
-      // eslint-disable-next-line no-alert
-      window.alert(`${inputValue} is not a valid boolean option in input csv`);
-      return undefined;
+    const upBook = structureUtils.restructureComponents(input)
+
+    console.log(upBook)
+
+    let cloneConf;
+    let inputLength;
+    for (let ix; ix<inputLength; ix++) {
+      cloneConf = structureUtils.mergeWithOriginal(this.appConf, upBook, ix);
+      this.launchCloneCalc(cloneConf)
+
     }
 
-    let fieldTypeSwitch;
-    let subCompIdx;
-    // Loop over the values from the third row onwards
-    arr.slice(2).forEach(input => {
-      input.forEach((value, index) => {
-        if (arr[0][index] === 'Radio Choice:') {
-          fieldTypeSwitch = 'radio';
-          subCompIdx = arr[2][index];
-        } else if (arr[0][index] === 'Main Fields:') {
-          fieldTypeSwitch = 'main';
-        } else if (fieldTypeSwitch === 'radio') {
-          Object.values(appConfClone).find(
-            element => element.type === 'input-tile'
-          ).subComponents[subCompIdx].options[arr[1][index]].check_status =
-            parseBool(value);
-        } else if (fieldTypeSwitch === 'main') {
-          Object.values(appConfClone).find(
-            element => element.type === 'input-tile'
-          ).fields[arr[0][index]][arr[1][index]].value = Number(value);
-        }
-      });
-      this.launchCloneCalc(appConfClone);
-
-      ix = 0;
-      firstMain = true;
-      Object.values(appConfClone).forEach(tile => {
-        if (
-          ['input-tile', 'derived-input-tile', 'output-tile'].includes(
-            tile.type
-          )
-        ) {
-          // Find any radio tiles, title them and add possible checks.
-          // eslint-disable-next-line no-unused-vars
-          Object.entries(tile.subComponents).forEach(([idx, subCompVal]) => {
-            if (subCompVal.type === 'radio-tile') {
-              ix += 1;
-              Object.entries(subCompVal.options).forEach(
-                // eslint-disable-next-line no-unused-vars
-                ([radioChoice, value]) => {
-                  csv[ix] = [csv[ix], value.check_status].join(',');
-                  ix += 1;
-                }
-              );
-            }
-          });
-          if (firstMain === true) {
-            ix += 1;
-            firstMain = false;
-          }
-          /* now do the main fields */
-          Object.keys(tile.fields).forEach(keyOuter => {
-            /* eslint-disable no-unused-vars */
-            Object.entries(tile.fields[keyOuter]).forEach(
-              ([keyInner, value]) => {
-                csv[ix] = [csv[ix], value.value].join(',');
-                ix += 1;
-              }
-            );
-            /* eslint-enable no-unused-vars */
-          });
-        }
-      });
-    });
-    // Save the output
-    const csvstr = csv.join('\n');
-    const blob = new Blob([csvstr], { type: 'text,csv;charset=utf-8;' });
-    saveAs(blob, `${this.appName}-output.csv`);
+    // // minipulate the csv string
+    // const delimiter = ',';
+    // // use split to create an array of each csv value row
+    // const rows = this.fileData.split('\n');
+    // // Map the rows
+    // // split values from each row into an array
+    // let arr = rows.map(row =>
+    //   row.split(delimiter).map(item => item.replace(/(\r\n|\n|\r)/gm, ''))
+    // );
+    // arr = zip(...arr);
+    // // run the calculation
+    // // First we make a copy of appWebComponents
+    // const appConfClone = cloneDeep(this.appConf);
+    // const csv = [];
+    // let ix = 0;
+    // let choiceIdx;
+    // let firstMain = true;
+    //
+    // // Create field names
+    // Object.values(appConfClone).forEach(tile => {
+    //   if (
+    //     ['input-tile', 'derived-input-tile', 'output-tile'].includes(tile.type)
+    //   ) {
+    //     // Find any radio tiles, title them and add possible checks.
+    //     Object.entries(tile.subComponents).forEach(
+    //       ([subCompIdx, subCompVal]) => {
+    //         if (subCompVal.type === 'radio-tile') {
+    //           csv[ix] = ['radio choice', subCompVal.title, subCompIdx].join(
+    //             ','
+    //           );
+    //           ix += 1;
+    //           choiceIdx = 1;
+    //           Object.entries(subCompVal.options).forEach(
+    //             // eslint-disable-next-line no-unused-vars
+    //             ([radioChoice, value]) => {
+    //               csv[ix] = [choiceIdx, radioChoice].join(',');
+    //               ix += 1;
+    //               choiceIdx += 1;
+    //             }
+    //           );
+    //         }
+    //       }
+    //     );
+    //     // Now do the main fields
+    //     // If its the first non subcomp
+    //     if (firstMain === true) {
+    //       csv[ix] = ['Main Fields:'].join(',');
+    //       ix += 1;
+    //       firstMain = false;
+    //     }
+    //     Object.keys(tile.fields).forEach(keyOuter => {
+    //       // eslint-disable-next-line no-unused-vars
+    //       Object.entries(tile.fields[keyOuter]).forEach(([keyInner, value]) => {
+    //         csv[ix] = [keyOuter, keyInner].join(',');
+    //         ix += 1;
+    //       });
+    //     });
+    //   }
+    // });
+    //
+    // function parseBool(inputValue) {
+    //   if (
+    //     [1, '1', 'TRUE', 'True', 'true', 'T', 't', 'y', 'yes'].includes(
+    //       inputValue
+    //     )
+    //   ) {
+    //     return true;
+    //   }
+    //   if (
+    //     [0, '0', 'FALSE', 'False', 'false', 'F', 'f', 'n', 'no', ''].includes(
+    //       inputValue
+    //     )
+    //   ) {
+    //     return false;
+    //   }
+    //   // eslint-disable-next-line no-alert
+    //   window.alert(`${inputValue} is not a valid boolean option in input csv`);
+    //   return undefined;
+    // }
+    //
+    // let fieldTypeSwitch;
+    // let subCompIdx;
+    // // Loop over the values from the third row onwards
+    // arr.slice(2).forEach(input => {
+    //   input.forEach((value, index) => {
+    //     if (arr[0][index] === 'Radio Choice:') {
+    //       fieldTypeSwitch = 'radio';
+    //       subCompIdx = arr[2][index];
+    //     } else if (arr[0][index] === 'Main Fields:') {
+    //       fieldTypeSwitch = 'main';
+    //     } else if (fieldTypeSwitch === 'radio') {
+    //       Object.values(appConfClone).find(
+    //         element => element.type === 'input-tile'
+    //       ).subComponents[subCompIdx].options[arr[1][index]].check_status =
+    //         parseBool(value);
+    //     } else if (fieldTypeSwitch === 'main') {
+    //       Object.values(appConfClone).find(
+    //         element => element.type === 'input-tile'
+    //       ).fields[arr[0][index]][arr[1][index]].value = Number(value);
+    //     }
+    //   });
+    //   this.launchCloneCalc(appConfClone);
+    //
+    //   ix = 0;
+    //   firstMain = true;
+    //   Object.values(appConfClone).forEach(tile => {
+    //     if (
+    //       ['input-tile', 'derived-input-tile', 'output-tile'].includes(
+    //         tile.type
+    //       )
+    //     ) {
+    //       // Find any radio tiles, title them and add possible checks.
+    //       // eslint-disable-next-line no-unused-vars
+    //       Object.entries(tile.subComponents).forEach(([idx, subCompVal]) => {
+    //         if (subCompVal.type === 'radio-tile') {
+    //           ix += 1;
+    //           Object.entries(subCompVal.options).forEach(
+    //             // eslint-disable-next-line no-unused-vars
+    //             ([radioChoice, value]) => {
+    //               csv[ix] = [csv[ix], value.check_status].join(',');
+    //               ix += 1;
+    //             }
+    //           );
+    //         }
+    //       });
+    //       if (firstMain === true) {
+    //         ix += 1;
+    //         firstMain = false;
+    //       }
+    //       /* now do the main fields */
+    //       Object.keys(tile.fields).forEach(keyOuter => {
+    //         /* eslint-disable no-unused-vars */
+    //         Object.entries(tile.fields[keyOuter]).forEach(
+    //           ([keyInner, value]) => {
+    //             csv[ix] = [csv[ix], value.value].join(',');
+    //             ix += 1;
+    //           }
+    //         );
+    //         /* eslint-enable no-unused-vars */
+    //       });
+    //     }
+    //   });
+    // });
+    // // Save the output
+    // const csvstr = csv.join('\n');
+    // const blob = new Blob([csvstr], { type: 'text,csv;charset=utf-8;' });
+    // saveAs(blob, `${this.appName}-output.csv`);
     // reset the form
     document.getElementById('dropbox').value = '';
     this.fileData = null;

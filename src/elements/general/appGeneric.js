@@ -23,19 +23,6 @@ export class AppGeneric extends StyledElement {
     };
   }
 
-  // firstUpdated() {
-  //   this.inputValidation = this.renderRoot.querySelector("input");
-  // }
-
-  // connectedCallback() {
-  //   super.connectedCallback();
-  //   this.inputValidation.addEventListener("input", () => {
-  //     this.inputValidation.setCustomValidity("");
-  //     this.inputValidation.checkValidity();
-  //     console.log(this.inputValidation.checkValidity());
-  //   })
-  // }
-
   render() {
     return [
       super.render(),
