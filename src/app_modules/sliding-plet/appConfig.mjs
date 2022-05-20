@@ -158,7 +158,7 @@ export const appConf = {
             ub: '',
           },
         },
-        'Model Coefficents': {
+        'Model Coefficients': {
           delta_e_i: {
             label: '&delta;<sub>e,i</sub>',
             unit: null,
@@ -329,80 +329,149 @@ export const appConf = {
       subComponents: {},
     },
     3: {
-      type: 'batch-tile',
-      title: 'Batch Calculation',
-    },
-    4: {
-      type: 'output-tile',
-      title: 'Output',
+      type: 'graph-tile',
       fields: {
-        '': {
-          cycles: {
-            label: 'Cycle',
-            unit: null,
-            value: null,
-            visible: '',
-            lb: '',
-            ub: '',
+        cycles: null,
+        w_con: null,
+        w_shear: null,
+        w_tot: null,
+        hult: null,
+        su: null,
+        tau: null,
+        z_dh: null,
+        sig_v_plot: null,
+        stress_path_x: null,
+        sig_op_line_x: null,
+        stress_path_y: null,
+        sig_op_line_y: null,
+        sig_csl_plot: null,
+        z: null,
+        su_ini: null,
+        su_final: null,
+        z_dh_hist: [],
+        su_hist: [],
+        e_csl_plot_hist: [],
+      },
+      plots: {
+        plotCycleSettle: {
+          dataFun(a, b, c, d) {
+            return [
+              {
+                name: 'Consolidation',
+                x: a,
+                y: b,
+              },
+              {
+                name: 'Shear',
+                x: a,
+                y: c,
+              },
+              {
+                name: 'Total',
+                x: a,
+                y: d,
+              },
+            ];
           },
-          sliding_event: {
-            label: 'Sliding Event',
-            unit: null,
-            value: null,
-            visible: '',
-            lb: '',
-            ub: '',
+          layout: {
+            type: 'scatter',
+            title: 'Settlement evolution',
+            showlegend: 'false',
+            xaxis: {
+              title: 'Cycle number, N (-)',
+            },
+            yaxis: {
+              title: 'Settlement, w (m)',
+            },
           },
-          time_months: {
-            label: 'Time',
-            unit: 'months',
-            value: null,
-            visible: '',
-            lb: '',
-            ub: '',
-          },
-          time_years: {
-            label: 'Time',
-            unit: 'years',
-            value: null,
-            visible: '',
-            lb: '',
-            ub: '',
-          },
-          hult: {
-            label: 'Hult',
-            unit: 'kN',
-            value: null,
-            visible: '',
-            lb: '',
-            ub: '',
-          },
-          cons_settlement: {
-            label: 'Cons. settlement wc',
-            unit: 'm',
-            value: null,
-            visible: '',
-            lb: '',
-            ub: '',
-          },
-          shear_settlement: {
-            label: 'Shear settlement ws',
-            unit: 'm',
-            value: null,
-            visible: '',
-            lb: '',
-            ub: '',
-          },
-          total_settlement: {
-            label: 'Total settlement wt',
-            unit: 'm',
-            value: null,
-            visible: '',
-            lb: '',
-            ub: '',
-          },
+          args: ['cycles', 'w_con', 'w_shear', 'w_tot'],
+          addLines: false,
+          data: [],
         },
+      },
+      updateConf: {
+        noNewData: false,
+        clearData: false,
       },
     },
   },
 };
+
+/*
+3: {
+  type: 'batch-tile',
+    title: 'Batch Calculation',
+},
+4: {
+  type: 'output-tile',
+    title: 'Output',
+    fields: {
+    '': {
+      cycles: {
+        label: 'Cycle',
+          unit: null,
+          value: null,
+          visible: '',
+          lb: '',
+          ub: '',
+      },
+      sliding_event: {
+        label: 'Sliding Event',
+          unit: null,
+          value: null,
+          visible: '',
+          lb: '',
+          ub: '',
+      },
+      time_months: {
+        label: 'Time',
+          unit: 'months',
+          value: null,
+          visible: '',
+          lb: '',
+          ub: '',
+      },
+      time_years: {
+        label: 'Time',
+          unit: 'years',
+          value: null,
+          visible: '',
+          lb: '',
+          ub: '',
+      },
+      hult: {
+        label: 'Hult',
+          unit: 'kN',
+          value: null,
+          visible: '',
+          lb: '',
+          ub: '',
+      },
+      cons_settlement: {
+        label: 'Cons. settlement wc',
+          unit: 'm',
+          value: null,
+          visible: '',
+          lb: '',
+          ub: '',
+      },
+      shear_settlement: {
+        label: 'Shear settlement ws',
+          unit: 'm',
+          value: null,
+          visible: '',
+          lb: '',
+          ub: '',
+      },
+      total_settlement: {
+        label: 'Total settlement wt',
+          unit: 'm',
+          value: null,
+          visible: '',
+          lb: '',
+          ub: '',
+      },
+    },
+  },
+},
+ */
