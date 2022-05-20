@@ -143,7 +143,7 @@ const l = {
             ub: '',
           },
         },
-        'Model Coefficents': {
+        'Model Coefficients': {
           delta_e_i: {
             label: '&delta;<sub>e,i</sub>',
             unit: null,
