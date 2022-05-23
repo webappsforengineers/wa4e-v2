@@ -76,7 +76,8 @@ export class structureUtils {
       if (sliceIndex === -1) {
         sliceIndex = slicePoints.length;
       }
-      groupSplits.push(fieldsArray.slice(0, sliceIndex));
+      // sliceIndex + 1, because we always find the sliceIndex from element 1
+      groupSplits.push(fieldsArray.slice(0, sliceIndex + 1));
       for (let i = 0; i <= sliceIndex; i += 1) {
         slicePoints.shift();
         fieldsArray.shift();
