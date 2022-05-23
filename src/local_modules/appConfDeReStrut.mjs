@@ -1,4 +1,4 @@
-import { cloneDeep, mergeWith, isArray} from 'lodash-es';
+import { cloneDeep, mergeWith, isArray } from 'lodash-es';
 
 export class structureUtils {
 // Functions to destructure and restructure a single field in the appConf Objects
@@ -83,8 +83,6 @@ export class structureUtils {
       }
     }
 
-    //groupSplits.forEach(this.restructureGroup, fieldsObj);
-
     groupSplits.forEach( groupArray => {
       fieldsObj[groupArray[0][0]] = this.restructureGroup(groupArray);
     });
@@ -132,14 +130,34 @@ export class structureUtils {
 
 // Merge the restructured components into the original object
   static mergeWithOriginal(originalObj, restructuredObj, index) {
-    function customizerFunction(objVal, srcVal) {
-      if (isArray(srcVal)) {
+    function customizerFunction(_objVal, srcVal) {
+      if(isArray(srcVal)) {
         return srcVal[index];
       }
-      return srcVal;
+      return undefined;
     }
     const newObj = cloneDeep(originalObj);
-    mergeWith(newObj.appWebComponents, restructuredObj, customizerFunction);
+    mergeWith(newObj, restructuredObj, customizerFunction);
+    return newObj;
+  }
+
+  // Merge restructured components and array values
+  static mergeWithOriginalArray(originalObj, restructuredObj, inputLength) {
+    function customizerFunction(objVal, srcVal) {
+      if(isArray(objVal)) {
+        // if the array is full, then return the array
+        if(objVal.length === inputLength) {
+          return objVal;
+        }
+        // otherwise push the new value
+        objVal.push(srcVal);
+        return objVal;
+      }
+
+      return undefined;
+    }
+    const newObj = cloneDeep(originalObj);
+    mergeWith(newObj, restructuredObj, customizerFunction);
     return newObj;
   }
 
