@@ -340,9 +340,9 @@ export const appConf = {
         tau: null,
         z_dh: null,
         sig_v_plot: null,
-        stress_path_x: null,
+        stress_path_x: [],
         sig_op_line_x: null,
-        stress_path_y: null,
+        stress_path_y: [],
         sig_op_line_y: null,
         sig_csl_plot: null,
         z: null,
@@ -350,7 +350,10 @@ export const appConf = {
         su_final: null,
         z_dh_hist: [],
         su_hist: [],
+        tau_hist: [],
         e_csl_plot_hist: [],
+        e_NCL_plot: null,
+        e_csl_init_plot: null,
       },
       plots: {
         plotCycleSettle: {
@@ -360,31 +363,322 @@ export const appConf = {
                 name: 'Consolidation',
                 x: a,
                 y: b,
+                mode: 'lines',
+                line: {
+                  color: 'rgb(0,0,256)',
+                },
               },
               {
                 name: 'Shear',
                 x: a,
                 y: c,
+                mode: 'lines',
+                line: {
+                  color: 'rgb(256,0,0)',
+                },
               },
               {
                 name: 'Total',
                 x: a,
                 y: d,
+                mode: 'lines',
+                line: {
+                  color: 'rgb(0,0,0)',
+                },
               },
             ];
           },
           layout: {
             type: 'scatter',
             title: 'Settlement evolution',
-            showlegend: 'false',
+            showlegend: true,
+            legend: {
+              xanchor: 'left',
+              yanchor: 'bottom',
+              x: 0.1,
+              y: 0.1,
+            },
             xaxis: {
               title: 'Cycle number, N (-)',
+              rangemode: 'auto',
+              side: 'bottom',
+              showline: true,
+              showgrid: false,
+              zeroline: false,
+              ticks: 'inside',
+              mirror: 'ticks',
             },
             yaxis: {
               title: 'Settlement, w (m)',
+              range: [0.5, 0],
+              side: 'left',
+              showline: true,
+              showgrid: false,
+              zeroline: false,
+              ticks: 'inside',
+              mirror: 'ticks',
             },
           },
           args: ['cycles', 'w_con', 'w_shear', 'w_tot'],
+          addLines: false,
+          data: [],
+        },
+        plotSldeEvo: {
+          dataFun(a, b) {
+            return [
+              {
+                name: 'Consolidation',
+                x: a,
+                y: b,
+                mode: 'lines',
+                line: {
+                  color: 'rgb(256,0,0)',
+                },
+              },
+            ];
+          },
+          layout: {
+            type: 'scatter',
+            title: 'Sliding capacity evolution',
+            showlegend: false,
+            xaxis: {
+              title: 'Cycle number, N (-)',
+              rangemode: 'auto',
+              side: 'bottom',
+              showline: true,
+              showgrid: false,
+              zeroline: false,
+              ticks: 'inside',
+              mirror: 'ticks',
+            },
+            yaxis: {
+              title: 'Sliding resistance, H_{ult} (kN)',
+              range: [0, 750],
+              side: 'left',
+              showline: true,
+              showgrid: false,
+              zeroline: false,
+              ticks: 'inside',
+              mirror: 'ticks',
+            },
+          },
+          args: ['cycles', 'hult'],
+          addLines: false,
+          data: [],
+        },
+        strengthShearProfile: {
+          dataFun(a, b, c, d, e, f, g, h) {
+            const traceArray = [
+              {
+                name: 'Initial',
+                x: d,
+                y: a,
+                mode: 'lines',
+                line: {
+                  color: 'rgb(0,0,256)',
+                },
+              },
+              {
+                name: 'Current',
+                x: f,
+                y: b,
+                mode: 'lines',
+                line: {
+                  color: 'rgb(256,0,0)',
+                },
+              },
+              {
+                name: 'Tau Current',
+                x: g,
+                y: c,
+                showlegend: false,
+                mode: 'lines',
+                line: {
+                  color: 'rgb(256,0,256)',
+                },
+              },
+            ];
+
+            const histArray = c.flatMap((element, index) => [
+              {
+                name: 'Su History',
+                x: e[index],
+                y: element,
+                showlegend: false,
+                mode: 'lines',
+                line: {
+                  color: 'rgb(128,128,128)',
+                },
+              },
+              {
+                name: 'Tau History',
+                x: h[index],
+                y: element,
+                showlegend: false,
+                mode: 'lines',
+                line: {
+                  color: 'rgb(100, 70,100)',
+                },
+              },
+            ]);
+
+            return histArray.concat(traceArray);
+          },
+          layout: {
+            type: 'scatter',
+            title: 'Strength and shear stress profiles',
+            showlegend: true,
+            legend: {
+              xanchor: 'left',
+              yanchor: 'bottom',
+              x: 0.1,
+              y: 0.1,
+            },
+            xaxis: {
+              title: 'Undrained strength, s_{u} (kPa)',
+              rangemode: 'auto',
+              side: 'bottom',
+              showline: true,
+              showgrid: false,
+              zeroline: false,
+              ticks: 'inside',
+              mirror: 'ticks',
+            },
+            yaxis: {
+              title: 'Depth, z (m)',
+              range: [5, 0],
+              side: 'left',
+              showline: true,
+              showgrid: false,
+              zeroline: false,
+              ticks: 'inside',
+              mirror: 'ticks',
+            },
+          },
+          args: [
+            'z',
+            'z_dh',
+            'z_dh_hist',
+            'su_ini',
+            'su_hist',
+            'su_final',
+            'tau',
+            'tau_hist',
+          ],
+          addLines: false,
+          data: [],
+        },
+        stressPath: {
+          dataFun(a, b, c, d, e, f, g, h, i) {
+            const traceArray = [
+              {
+                name: 'NCL',
+                x: a,
+                y: b,
+                mode: 'lines',
+                line: {
+                  color: 'rgb(0,0,256)',
+                },
+              },
+              {
+                name: 'CSL_{0}',
+                x: a,
+                y: c,
+                mode: 'lines',
+                line: {
+                  color: 'rgb(0,250,0)',
+                },
+              },
+              {
+                name: 'CSL_{N}',
+                x: a,
+                y: d,
+                mode: 'lines',
+                line: {
+                  color: 'rgb(256,0,0)',
+                },
+              },
+              {
+                name: 'Stress Path',
+                x: e.flat(),
+                y: f.flat(),
+                showlegend: true,
+                mode: 'lines',
+                line: {
+                  color: 'rgb(0,0,0)',
+                },
+              },
+              {
+                name: 'limit',
+                x: h,
+                y: i,
+                showlegend: false,
+                mode: 'lines',
+                line: {
+                  color: 'rgb(0,0,0)',
+                  dash: 'dashdot',
+                },
+              },
+            ];
+
+            const histArray = g.flatMap(element => [
+              {
+                name: 'e_csl_hist',
+                x: a,
+                y: element,
+                showlegend: false,
+                mode: 'lines',
+                line: {
+                  color: 'rgb(128,128,128)',
+                },
+              },
+            ]);
+
+            return histArray.concat(traceArray);
+          },
+          layout: {
+            type: 'scatter',
+            title: 'Stress:voids ratio path beneath foundation',
+            showlegend: true,
+            legend: {
+              xanchor: 'left',
+              yanchor: 'bottom',
+              x: 0.1,
+              y: 0.1,
+            },
+            xaxis: {
+              title: 'Vertical effective stress, sigma_{v^{`}} (kPa)',
+              range: [0, 1],
+              side: 'bottom',
+              showline: true,
+              showgrid: false,
+              zeroline: false,
+              ticks: 'inside',
+              mirror: 'ticks',
+              type: 'log',
+            },
+            yaxis: {
+              title: 'Voids ratio, e (-)',
+              range: [1.1, 1.35],
+              side: 'left',
+              showline: true,
+              showgrid: false,
+              zeroline: false,
+              ticks: 'inside',
+              mirror: 'ticks',
+            },
+          },
+          args: [
+            'sig_v_plot',
+            'e_NCL_plot',
+            'e_csl_init_plot',
+            'e_csl_plot',
+            'stress_path_x',
+            'stress_path_y',
+            'e_csl_plot_hist',
+            'sig_op_line_x',
+            'sig_op_line_y',
+          ],
           addLines: false,
           data: [],
         },

@@ -387,7 +387,7 @@ export const appConf = {
             },
             yaxis: {
               title: 'z (m)',
-              autorange: 'reversed',
+              range: 'reversed',
             },
             mode: 'lines',
             line: {
