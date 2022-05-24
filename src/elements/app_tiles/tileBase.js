@@ -59,8 +59,7 @@ export class TileBase extends StyledElement {
     const beforeTitle = [];
     const afterTitle = [];
     const afterContent = [];
-    /* eslint-disable no-restricted-syntax */
-    for (const [index, subComp] of Object.entries(subCompArr)) {
+    Object.entries(subCompArr).forEach(([index, subComp]) => {
       if (subComp.index === superIdx) {
         if (subComp.position === 'beforeTitle') {
           beforeTitle.push(index);
@@ -70,42 +69,40 @@ export class TileBase extends StyledElement {
           afterContent.push(index);
         }
       }
-    }
-    /* eslint-enable no-restricted-syntax */
+    });
     return [beforeTitle, afterTitle, afterContent];
   }
   /* eslint-enable class-methods-use-this */
 
-  /* eslint-disable no-nested-ternary */
   makeSubComponent(index) {
-    // Currently this only supports radio and test tiles but other subcomponent
-    // tile classes can be added using the same structure as found in appGeneric
     const component = this.subComponents[index];
-    const subcomponentHTML = html`
-      ${component.type === 'radio-tile'
-        ? html` <div style="display: ${component.display};">
-            <radio-tile
-              .appConf=${component}
-              @clear="${() => {
-                this.clearOutput();
-              }}"
-            ></radio-tile>
-          </div>`
-        : component.type === 'table-tile'
-        ? html` <div>
-            <table-tile .appConf=${component}></table-tile>
-          </div>`
-        : component.type === 'input-table'
-        ? html` <div>
-            <input-table .appConf=${component}></input-table>
-          </div>`
-        : component.type === 'test-tile'
-        ? html` <div>
-            <test-tile .appConf=${component}></test-tile>
-          </div>`
-        : html`<p>Component ${component.type} Not Recognised</p>`}
-    `;
-    return subcomponentHTML;
+    let subcomponentHTML;
+    if (component.type === 'radio-tile') {
+      subcomponentHTML = html` <div style="display: ${component.display};">
+        <radio-tile
+          .appConf=${component}
+          @clear="${() => {
+            this.clearOutput();
+          }}"
+        ></radio-tile>
+      </div>`;
+    } else if (component.type === 'table-tile') {
+      subcomponentHTML = html` <div>
+        <table-tile .appConf=${component}></table-tile>
+      </div>`;
+    } else if (component.type === 'input-table') {
+      subcomponentHTML = html` <div>
+        <input-table .appConf=${component}></input-table>
+      </div>`;
+    } else if (component.type === 'test-tile') {
+      subcomponentHTML = html` <div>
+        <test-tile .appConf=${component}></test-tile>
+      </div>`;
+    } else {
+      subcomponentHTML = html`<p>
+        Component ${component.type} Not Recognised
+      </p>`;
+    }
+    return html`${subcomponentHTML}`;
   }
-  /* eslint-enable no-nested-ternary */
 }
