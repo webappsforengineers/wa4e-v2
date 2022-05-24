@@ -4,7 +4,7 @@ import { TileBase } from './tileBase.js';
 class tableTile extends TileBase {
   render() {
     this.tableContent = this.appConf.content;
-    this.htmlTableContent = this.arrangeFields();
+    this.htmlTableContent = this.arrangeTable();
     return [
       super.render(),
       html`
@@ -17,7 +17,7 @@ class tableTile extends TileBase {
     ];
   }
 
-  arrangeFields() {
+  arrangeTable() {
     return html`${Object.values(this.tableContent).map(rowValues => {
       const htmlRow = html`
         <tr>
