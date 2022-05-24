@@ -138,23 +138,15 @@ class batchTile extends TileBase {
 
     const output = structureUtils.destructureComponents(this.appConf);
     const workbook = xlsxUtils.book_new();
-    output.forEach((sheetIdx) => {
+
+    for (const sheetIdx in output) {
       xlsxUtils.book_append_sheet(
         workbook,
         xlsxUtils.aoa_to_sheet(output[sheetIdx]),
         output[sheetIdx][0][1],
         true
       );
-    })
-
-    // for (const sheetIdx in output) {
-    //   xlsxUtils.book_append_sheet(
-    //     workbook,
-    //     xlsxUtils.aoa_to_sheet(output[sheetIdx]),
-    //     output[sheetIdx][0][1],
-    //     true
-    //   );
-    // }
+    }
 
     // Stuff to save a sheet
     const wbout = XLSX.write(workbook, {bookType:'xlsx',  type: 'binary'});
