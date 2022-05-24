@@ -23,19 +23,6 @@ export class AppGeneric extends StyledElement {
     };
   }
 
-  // firstUpdated() {
-  //   this.inputValidation = this.renderRoot.querySelector("input");
-  // }
-
-  // connectedCallback() {
-  //   super.connectedCallback();
-  //   this.inputValidation.addEventListener("input", () => {
-  //     this.inputValidation.setCustomValidity("");
-  //     this.inputValidation.checkValidity();
-  //     console.log(this.inputValidation.checkValidity());
-  //   })
-  // }
-
   render() {
     return [
       super.render(),
@@ -179,17 +166,6 @@ export class AppGeneric extends StyledElement {
                       this.reloadMasonry();
                     }}"
                   ></coeff-tile>
-                </div>
-              </div>`
-            : component.type === 'optimisation-tile'
-            ? html`<div class="col">
-                <div class="card  ">
-                  <optimisation-tile
-                    .appConf=${this.appWebComponents[index]}
-                    @loaded="${() => {
-                      this.reloadMasonry();
-                    }}"
-                  ></optimisation-tile>
                 </div>
               </div>`
             : component.type === 'image-tile'
