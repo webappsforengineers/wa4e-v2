@@ -104,131 +104,149 @@ export class AppGeneric extends StyledElement {
     this.childUpdate();
   }
 
-  /* eslint-disable no-nested-ternary */
   makeAppTiles() {
-    return html`
-      ${Object.values(this.appWebComponents).map(
-        (component, index) =>
-          html` ${component.type === 'input-tile'
-            ? html`<div class="col">
-                <div class="card ">
-                  <form-tile
-                    .appConf=${this.appWebComponents[index]}
-                    .callback=${true}
-                    @updated="${() => {
-                      this.updateComponents();
-                    }}"
-                    @reset="${() => {
-                      this.resetComponents();
-                    }}"
-                    @loaded="${() => {
-                      this.reloadMasonry();
-                    }}"
-                    @modifyForm="${e => {
-                      this.modifyForm(e.detail);
-                    }}"
-                    @clear="${() => {
-                      this.childUpdate();
-                    }}"
-                  ></form-tile>
-                </div>
-              </div>`
-            : component.type === 'derived-input-tile'
-            ? html`<div class="col">
-                <div class="card  ">
-                  <form-tile
-                    .appConf=${this.appWebComponents[index]}
-                    .callback=${false}
-                    @loaded="${() => {
-                      this.reloadMasonry();
-                    }}"
-                  ></form-tile>
-                </div>
-              </div>`
-            : component.type === 'output-tile'
-            ? html`<div class="col">
-                <div class="card  ">
-                  <form-tile
-                    .appConf=${this.appWebComponents[index]}
-                    .callback=${false}
-                    @loaded="${() => {
-                      this.reloadMasonry();
-                    }}"
-                  ></form-tile>
-                </div>
-              </div>`
-            : component.type === 'coeff-tile'
-            ? html`<div class="col">
-                <div class="card  ">
-                  <coeff-tile
-                    .appConf=${this.appWebComponents[index]}
-                    @loaded="${() => {
-                      this.reloadMasonry();
-                    }}"
-                  ></coeff-tile>
-                </div>
-              </div>`
-            : component.type === 'image-tile'
-            ? html`<div class="col">
-                <div class="card  ">
-                  <image-tile
-                    .appConf=${this.appWebComponents[index]}
-                    @loaded="${() => {
-                      this.reloadMasonry();
-                    }}"
-                  ></image-tile>
-                </div>
-              </div>`
-            : component.type === 'optimization-tile'
-            ? html`<div class="col">
-                <div class="card  ">
-                  <optimization-tile
-                    .appConf=${this.appWebComponents[index]}
-                    @loaded="${() => {
-                      this.reloadMasonry();
-                    }}"
-                    @optimize="${e => {
-                      this.optimize(e.detail);
-                    }}"
-                    @clear="${() => {
-                      this.childUpdate();
-                    }}"
-                    @modifyForm="${e => {
-                      this.modifyForm(e.detail);
-                    }}"
-                  ></optimization-tile>
-                </div>
-              </div>`
-            : component.type === 'text-tile'
-            ? html`<div class="col">
-                <div class="card  ">
-                  <text-tile
-                    .appConf=${this.appWebComponents[index]}
-                  ></text-tile>
-                </div>
-              </div>`
-            : component.type === 'batch-tile'
-            ? html`<div class="col">
-                <div class="card  ">
-                  <batch-tile
-                    @cloneCalc="${e => {
-                      this.runCloneCalc(e.detail);
-                    }}"
-                    .appConf=${this.appWebComponents}
-                    .appName=${this.appName}
-                  ></batch-tile>
-                </div>
-              </div>`
-            : component.type === 'graph-tile'
-            ? html`<graph-tile
+    const htmlArray = Object.entries(this.appWebComponents).flatMap(
+      ([index, component]) => {
+        let componentHtml;
+        if (component.type === 'input-tile') {
+          componentHtml = html`<div class="col">
+            <div class="card ">
+              <form-tile
+                .appConf=${this.appWebComponents[index]}
+                .callback=${true}
+                @updated="${() => {
+                  this.updateComponents();
+                }}"
+                @reset="${() => {
+                  this.resetComponents();
+                }}"
+                @loaded="${() => {
+                  this.reloadMasonry();
+                }}"
+                @modifyForm="${e => {
+                  this.modifyForm(e.detail);
+                }}"
+                @clear="${() => {
+                  this.childUpdate();
+                }}"
+              ></form-tile>
+            </div>
+          </div>`;
+        } else if (component.type === 'derived-input-tile') {
+          componentHtml = html`<div class="col">
+            <div class="card  ">
+              <form-tile
+                .appConf=${this.appWebComponents[index]}
+                .callback=${false}
+                @loaded="${() => {
+                  this.reloadMasonry();
+                }}"
+              ></form-tile>
+            </div>
+          </div>`;
+        } else if (component.type === 'output-tile') {
+          componentHtml = html`<div class="col">
+            <div class="card  ">
+              <form-tile
+                .appConf=${this.appWebComponents[index]}
+                .callback=${false}
+                @loaded="${() => {
+                  this.reloadMasonry();
+                }}"
+              ></form-tile>
+            </div>
+          </div>`;
+        } else if (component.type === 'coeff-tile') {
+          componentHtml = html`<div class="col">
+            <div class="card  ">
+              <coeff-tile
                 .appConf=${this.appWebComponents[index]}
                 @loaded="${() => {
                   this.reloadMasonry();
                 }}"
-              ></graph-tile>`
-            : html`<p>Component ${component.type} Not Recognised</p>`}`
-      )}
-    `;
+              ></coeff-tile>
+            </div>
+          </div>`;
+        } else if (component.type === 'image-tile') {
+          componentHtml = html`<div class="col">
+            <div class="card  ">
+              <image-tile
+                .appConf=${this.appWebComponents[index]}
+                @loaded="${() => {
+                  this.reloadMasonry();
+                }}"
+              ></image-tile>
+            </div>
+          </div>`;
+        } else if (component.type === 'optimization-tile') {
+          componentHtml = html`<div class="col">
+            <div class="card  ">
+              <optimization-tile
+                .appConf=${this.appWebComponents[index]}
+                @loaded="${() => {
+                  this.reloadMasonry();
+                }}"
+                @optimize="${e => {
+                  this.optimize(e.detail);
+                }}"
+                @clear="${() => {
+                  this.childUpdate();
+                }}"
+                @modifyForm="${e => {
+                  this.modifyForm(e.detail);
+                }}"
+              ></optimization-tile>
+            </div>
+          </div>`;
+        } else if (component.type === 'text-tile') {
+          componentHtml = html`<div class="col">
+            <div class="card  ">
+              <text-tile .appConf=${this.appWebComponents[index]}></text-tile>
+            </div>
+          </div>`;
+        } else if (component.type === 'batch-tile') {
+          componentHtml = html`<div class="col">
+            <div class="card  ">
+              <batch-tile
+                @cloneCalc="${e => {
+                  this.runCloneCalc(e.detail);
+                }}"
+                .appConf=${this.appWebComponents}
+                .appName=${this.appName}
+              ></batch-tile>
+            </div>
+          </div>`;
+        } else if (component.type === 'graph-tile') {
+          // The graphs need to be independent to be able to utilise masonry
+          // we therefore need to make as many graph-tiles as there are graphs
+          // splitting the config to create x graphs increases complexity
+          // instead we iterate over the plots here and then provide the
+          // component with the key for the plot we want it to render
+          componentHtml = Object.keys(component.plots).map(
+            plotKey =>
+              html` <div class="col">
+                <div
+                  class="card"
+                  style="display: ${component.plots[plotKey].display};"
+                >
+                  <graph-tile
+                    .appConf=${this.appWebComponents[index]}
+                    .plotKey=${plotKey}
+                    @loaded="${() => {
+                      this.reloadMasonry();
+                    }}"
+                  ></graph-tile>
+                </div>
+              </div>`
+          );
+        } else {
+          componentHtml = html`<p>
+            Component ${component.type} Not Recognised
+          </p>`;
+        }
+        return componentHtml;
+      }
+    );
+    return html`${htmlArray.map(value => value)}`;
   }
-  /* eslint-enable no-nested-ternary */
 }
