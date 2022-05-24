@@ -136,6 +136,31 @@ class batchTile extends TileBase {
     // let ix = 0;
     // let choiceIdx;
 
+    let incompleteRadios = 0;
+
+    Object.values(this.subComponents).forEach((subComp) => {
+      if(subComp.type === "radio-tile") {
+        // iterate over each possible choice, and check to see if one has
+        // been selected
+        let checkedRadios = 0;
+        Object.values(subComp.options).forEach((option) => {
+          if(option.check_status) checkedRadios += 1;
+        });
+        if(checkedRadios === 0) {
+          // having an alert is nice, so disable it in es-lint
+          // eslint-disable-next-line no-alert
+          alert(`You must select at least one value for the ${subComp.title} input option.`);
+          incompleteRadios +=1 ;
+        }
+      }
+    });
+
+    // If any radios are unchecked, then we shouldn't generate a csv as these
+    // fields will have no values so return instead
+    if(incompleteRadios) {
+      return;
+    }
+
     const output = structureUtils.destructureComponents(this.appConf);
     const workbook = xlsxUtils.book_new();
 
