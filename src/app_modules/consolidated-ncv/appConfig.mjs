@@ -55,7 +55,7 @@ export const appConf = {
           kv_perm: {
             label: 'k',
             unit: 'm/s',
-            value: 1.3e-8,
+            value: Number(1.3e-8),
             visible: '',
             lb: '',
             ub: '',

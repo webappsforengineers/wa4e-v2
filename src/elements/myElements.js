@@ -6,5 +6,5 @@ import './app_tiles/imageTile.js';
 import './app_tiles/graphTile.js';
 import './app_tiles/optimizationTile.js';
 import './app_tiles/textTile.js';
-import './app_tiles/batchTile.js';
+import './app_tiles/batchTile.mjs';
 import './app_tiles/inputField.js';

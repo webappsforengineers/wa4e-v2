@@ -3,7 +3,7 @@ import { rollupAdapter } from '@web/dev-server-rollup';
 import commonjs from '@rollup/plugin-commonjs';
 
 export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
-  files: 'test/**/*.test.js',
+  files: 'test/**/*.test.mjs',
   nodeResolve: true,
 
   /** Compile JS for older browsers. Requires @web/dev-server-esbuild plugin */

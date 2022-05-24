@@ -48,13 +48,15 @@
     "core-js": "^3.15.2",
     "file-saver-es": "^2.0.5",
     "joi": "^17.4.0",
+    "jsonexport": "^3.2.0",
     "lit": "2.0.0-rc.2",
     "load-json-file": "^2.0.0",
     "lodash-es": "^4.17.21",
     "masonry-layout": "^4.2.2",
     "mathjs": "^9.4.4",
     "plotly.js-dist-min": "^2.2.1",
-    "rfs": "^9.0.6"
+    "rfs": "^9.0.6",
+    "xlsx": "^0.18.5"
   },
   "eslintConfig": {
     "extends": [
