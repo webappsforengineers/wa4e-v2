@@ -28,7 +28,7 @@ class menuTile extends StyledElement {
         <div
           class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
           style="background-color: ${this.appConf
-            .appColour}; aspect-ratio: 0.61;"
+            .appColour}; aspect-ratio: 0.8;"
         >
           <img
             src=${this.appImg}

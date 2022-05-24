@@ -118,7 +118,7 @@ export class Wa4eV2 extends StyledElement {
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <div
                 class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
-                style="background-color: #f492e3; aspect-ratio: 0.61;"
+                style="background-color: #f492e3; aspect-ratio: 0.8;"
               >
                 <img
                   class="card-img-top img-fluid"
