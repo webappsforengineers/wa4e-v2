@@ -1,11 +1,11 @@
 import { html } from 'lit';
 import { saveAs } from 'file-saver-es';
-import * as XLSX from 'xlsx/xlsx.mjs'
+import { utils, writeFile, read, write } from 'xlsx';
 import { cloneDeep } from 'lodash-es';
 import { TileBase } from './tileBase.js';
 import { structureUtils } from '../../local_modules/appConfDeReStrut.mjs';
 
-const xlsxUtils = XLSX.utils;
+const xlsxUtils = utils;
 
 class batchTile extends TileBase {
   render() {
@@ -115,7 +115,7 @@ class batchTile extends TileBase {
         /* code if successful */
         // write the value of the file to fileData
         this.fileData = value;
-        this.workbook = XLSX.read(this.fileData)
+        this.workbook = read(this.fileData);
       },
       error => {
         /* code if some error */
@@ -139,27 +139,27 @@ class batchTile extends TileBase {
     const output = structureUtils.destructureComponents(this.appConf);
     const workbook = xlsxUtils.book_new();
 
-    for (const sheetIdx in output) {
+    output.forEach((element, sheetIdx) => {
       xlsxUtils.book_append_sheet(
         workbook,
         xlsxUtils.aoa_to_sheet(output[sheetIdx]),
         output[sheetIdx][0][1],
         true
       );
-    }
+    });
 
     // Stuff to save a sheet
-    const wbout = XLSX.write(workbook, {bookType:'xlsx',  type: 'binary'});
+    const wbout = write(workbook, { bookType: 'xlsx', type: 'binary' });
 
     function s2ab(s) {
       const buf = new ArrayBuffer(s.length); // convert s to arrayBuffer
-      const view = new Uint8Array(buf);  // create uint8array as viewer
+      const view = new Uint8Array(buf); // create uint8array as viewer
       // eslint-disable-next-line no-bitwise
-      for (let i=0; i<s.length; i += 1) view[i] = s.charCodeAt(i) & 0xFF; // convert to octet
+      for (let i = 0; i < s.length; i += 1) view[i] = s.charCodeAt(i) & 0xff; // convert to octet
       return buf;
     }
 
-    const blob = new Blob([s2ab(wbout)],{type:"application/octet-stream"});
+    const blob = new Blob([s2ab(wbout)], { type: 'application/octet-stream' });
     // Find any radio tiles, title them and add possible checks.
     // Object.entries(this.subComponents).forEach(([subCompIdx, subComp]) => {
     //   if (subComp.type === 'radio-tile') {
@@ -190,33 +190,46 @@ class batchTile extends TileBase {
 
   runCalc() {
     const input = [];
-    Object.values(this.workbook.Sheets).forEach((sheet) => {
-      input.push(xlsxUtils.sheet_to_json(sheet, {header: 1}));
+    Object.values(this.workbook.Sheets).forEach(sheet => {
+      input.push(xlsxUtils.sheet_to_json(sheet, { header: 1 }));
     });
 
     const upBook = structureUtils.restructureComponents(input);
-    const inputLength = Object.values(upBook).find(el => el.type === "input-tile").valuesLength;
+    const inputLength = Object.values(upBook).find(
+      el => el.type === 'input-tile'
+    ).valuesLength;
     let outConf = cloneDeep(upBook);
 
     for (let ix = 0; ix < inputLength; ix += 1) {
       // for batch calculations, each input variable is an array of values, so
       // merge appConf and upBook on array index ix only and then calculate
       // for value at ix
-      const cloneConf = structureUtils.mergeWithOriginal(this.appConf, upBook, ix);
-      this.launchCloneCalc(cloneConf)
+      const cloneConf = structureUtils.mergeWithOriginal(
+        this.appConf,
+        upBook,
+        ix
+      );
+      this.launchCloneCalc(cloneConf);
 
       // Now merge cloneConf into outConf
-      outConf = structureUtils.mergeWithOriginalArray(outConf, cloneConf, inputLength);
+      outConf = structureUtils.mergeWithOriginalArray(
+        outConf,
+        cloneConf,
+        inputLength
+      );
     }
 
     // Overwrite the sheets in the workbook, and save to new file with-output
     // appended at the end
     const outBook = structureUtils.destructureComponents(outConf);
     Object.values(this.workbook.SheetNames).forEach((name, index) => {
-      const sheet =  xlsxUtils.aoa_to_sheet(outBook[index]);
+      const sheet = xlsxUtils.aoa_to_sheet(outBook[index]);
       this.workbook.Sheets[name] = sheet;
     });
-    XLSX.writeFile(this.workbook, `${this.appName}-output.xlsx`, {bookType:'xlsx',  type: 'binary'});
+    writeFile(this.workbook, `${this.appName}-output.xlsx`, {
+      bookType: 'xlsx',
+      type: 'binary',
+    });
 
     // // minipulate the csv string
     // const delimiter = ',';
