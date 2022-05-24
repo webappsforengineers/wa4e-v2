@@ -3,7 +3,7 @@
   "module": "./src/wa4e-v2.js",
   "devDependencies": {
     "@eslint/eslintrc": "^0.4.2",
-    "@open-wc/building-rollup": "^1.10.0",
+    "@open-wc/building-rollup": "^2.0.1",
     "@open-wc/dev-server-hmr": "^0.1.2-next.0",
     "@open-wc/eslint-config": "^7.0.0",
     "@open-wc/testing": "^3.0.1",
