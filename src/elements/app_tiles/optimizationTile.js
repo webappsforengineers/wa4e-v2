@@ -52,16 +52,19 @@ class optimizationTile extends TileBase {
 
   arrangeFields() {
     return html`${Object.keys(this.formFields).map((keyOuter, index) => {
-      /* const subComponent = this.subComponents.find(
-        element => element.index === index
-      ); */
-      const [beforeTitle, afterTitle, afterContent] = this.getSubComponents(
-        this.subComponents,
-        index
-      );
-
+      let beforeTitle;
+      let afterTitle;
+      let afterContent;
+      if (typeof this.subComponents === 'undefined') {
+        [beforeTitle, afterTitle, afterContent] = [[], [], []];
+      } else {
+        [beforeTitle, afterTitle, afterContent] = this.getSubComponents(
+          this.subComponents,
+          index
+        );
+      }
       /* eslint-disable no-nested-ternary */
-      const htmlReturn = html`
+      return html`
         <div>
           ${html`${beforeTitle.map(subIndex =>
             this.makeSubComponent(subIndex)
@@ -80,7 +83,6 @@ class optimizationTile extends TileBase {
           )}`}
         </div>
       `;
-      return htmlReturn;
     })}`;
   }
 }

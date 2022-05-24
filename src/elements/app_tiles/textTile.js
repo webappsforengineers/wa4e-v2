@@ -36,7 +36,7 @@ class textTile extends TileBase {
         );
       }
       /* eslint-disable no-nested-ternary */
-      const htmlReturn = html`
+      return html`
         <div>
           ${html`${beforeTitle.map(subIndex =>
             this.makeSubComponent(subIndex)
@@ -56,7 +56,6 @@ class textTile extends TileBase {
           )}`}
         </div>
       `;
-      return htmlReturn;
     })}`;
   }
 }
