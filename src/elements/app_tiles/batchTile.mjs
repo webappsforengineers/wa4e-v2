@@ -163,7 +163,7 @@ class batchTile extends TileBase {
     }
 
     const fieldOutput = structureUtils.destructureComponents(this.appConf);
-    const radioOutput = structureUtils.destructureSelectedRadios(selectedRadios);
+    const radioOutput = structureUtils.destructureSelectedRadios(selectedRadios, fieldOutput.length);
     const workbook = xlsxUtils.book_new();
 
     fieldOutput.forEach((element) => {
@@ -175,14 +175,12 @@ class batchTile extends TileBase {
       );
     });
 
-    radioOutput.forEach((element) => {
-      xlsxUtils.book_append_sheet(
-        workbook,
-        xlsxUtils.aoa_to_sheet(element),
-        element[0][1],
-        true
-      );
-    });
+    xlsxUtils.book_append_sheet(
+      workbook,
+      xlsxUtils.aoa_to_sheet(radioOutput),
+      "input-selection",
+      true
+    );
 
     // Stuff to save a sheet
     const wbout = XLSX.write(workbook, {bookType:'xlsx',  type: 'binary'});
@@ -205,15 +203,19 @@ class batchTile extends TileBase {
       input.push(xlsxUtils.sheet_to_json(sheet, {header: 1}));
     });
 
-    const upBook = structureUtils.restructureComponents(input);
-    const inputLength = Object.values(upBook).find(el => el.type === "input-tile").valuesLength;
-    let outConf = cloneDeep(upBook);
+    const fieldInput = input.filter(el => el[0][1] !== "input-selection");
+    const radioInput = input.filter(el => el[0][1] === "input-selection");
+
+    const upBookFields = structureUtils.restructureComponents(fieldInput);
+    const upBookWithSub = structureUtils.restructureSubComponents(this.appConf, upBookFields, radioInput[0]);
+    const inputLength = Object.values(upBookWithSub).find(el => el.type === "input-tile").valuesLength;
+    let outConf = cloneDeep(upBookWithSub);
 
     for (let ix = 0; ix < inputLength; ix += 1) {
       // for batch calculations, each input variable is an array of values, so
       // merge appConf and upBook on array index ix only and then calculate
       // for value at ix
-      const cloneConf = structureUtils.mergeWithOriginal(this.appConf, upBook, ix);
+      const cloneConf = structureUtils.mergeWithOriginal(this.appConf, upBookWithSub, ix);
       this.launchCloneCalc(cloneConf)
 
       // Now merge cloneConf into outConf
@@ -222,11 +224,16 @@ class batchTile extends TileBase {
 
     // Overwrite the sheets in the workbook, and save to new file with-output
     // appended at the end
+    // TODO: need to add the input-selection sheet thingy here
     const outBook = structureUtils.destructureComponents(outConf);
-    Object.values(this.workbook.SheetNames).forEach((name, index) => {
-      const sheet =  xlsxUtils.aoa_to_sheet(outBook[index]);
-      this.workbook.Sheets[name] = sheet;
+
+    this.workbook.SheetNames.forEach((name, index) => {
+      if (index < outBook.length) {
+        const sheet =  xlsxUtils.aoa_to_sheet(outBook[index]);
+        this.workbook.Sheets[name] = sheet;
+      }
     });
+
     XLSX.writeFile(this.workbook, `${this.appName}-output.xlsx`, {bookType:'xlsx',  type: 'binary'});
 
     // // minipulate the csv string

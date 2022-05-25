@@ -109,17 +109,31 @@ export class structureUtils {
     return componentArray;
   }
 
-  static destructureSelectedRadios(selectedRadios) {
-    const radioArr = []
-    selectedRadios.forEach((radio, radioIdx) => {
-      const radioTitle = radio.title.toLowerCase().replaceAll(" ", "-");
-      const subRadioArr = [
-        [(radioIdx + 1).toString(), radioTitle, "DO NOT MODIFY SHEET OR CONTENTS"],
-        [radio.title, radio.value],
-      ]
-      radioArr.push(subRadioArr);
+  static destructureSelectedRadios(selectedRadios, indexOffset) {
+    const radioArr = [
+      [(indexOffset).toString(), "input-selection", "DO NOT MODIFY SHEET OR CONTENTS"]
+    ];
+
+    selectedRadios.forEach((radio) => {
+      radioArr.push(["radio-tile", radio.title, radio.value]);
     });
+
     return radioArr;
+  }
+
+  static restructureSubComponents(appConf, inObj, subCompArray) {
+    const outObj = cloneDeep(inObj);
+
+    Object.entries(outObj).forEach(([compKey, compObj]) => {
+      if(compObj.type === 'input-tile') {
+        outObj[compKey].subComponents = appConf[compKey].subComponents;
+        subCompArray.slice(1).forEach((subComp, subCompIndex) => {
+          outObj[compKey].subComponents[subCompIndex].options[subComp[2]].check_status = true;
+        });
+      }
+    });
+
+    return outObj;
   }
 
   static restructureComponents(componentsArray) {
@@ -139,6 +153,7 @@ export class structureUtils {
         fields: this.restructureFields(fieldsArr.slice(2)),
       };
     });
+
     return restructuredCompObj;
   }
 
