@@ -127,51 +127,62 @@ class batchTile extends TileBase {
     );
   }
 
-  /**
-   * Create an input csv with each input tile input field as a column and each row as an input to run
-   * @returns {Object} An object that can be downloaded as a csv
-   */
-  generateCSV() {
-    // const csv = [];
-    // let ix = 0;
-    // let choiceIdx;
-
-    let incompleteRadios = 0;
+  getSelectedRadios() {
+    const missingRadios = [];
+    const selectedRadios = [];
 
     Object.values(this.subComponents).forEach((subComp) => {
       if(subComp.type === "radio-tile") {
-        // iterate over each possible choice, and check to see if one has
-        // been selected
-        let checkedRadios = 0;
+        let thisRadioSelected = false;
         Object.values(subComp.options).forEach((option) => {
-          if(option.check_status) checkedRadios += 1;
+          if(option.check_status) {
+            selectedRadios.push({title: subComp.title, value: option.label});
+            thisRadioSelected = true;
+          }
         });
-        if(checkedRadios === 0) {
-          // having an alert is nice, so disable it in es-lint
-          // eslint-disable-next-line no-alert
-          alert(`You must select at least one value for the ${subComp.title} input option.`);
-          incompleteRadios +=1 ;
+        if(!thisRadioSelected) {
+          missingRadios.push(subComp.title);
         }
       }
     });
 
-    // If any radios are unchecked, then we shouldn't generate a csv as these
-    // fields will have no values so return instead
-    if(incompleteRadios) {
+    return {missingRadios, selectedRadios};
+  }
+
+  /**
+   * Create an input csv with each input tile input field as a column and each row as an input to run
+   *
+   */
+  generateCSV() {
+    const { missingRadios, selectedRadios } = this.getSelectedRadios();
+
+    if(missingRadios.length > 0) {
+      // eslint-disable-next-line no-alert
+      window.alert(`Please select a value for the following fields: ${missingRadios.join(", ")}.`);
       return;
     }
 
-    const output = structureUtils.destructureComponents(this.appConf);
+    const fieldOutput = structureUtils.destructureComponents(this.appConf);
+    const radioOutput = structureUtils.destructureSelectedRadios(selectedRadios);
     const workbook = xlsxUtils.book_new();
 
-    for (const sheetIdx in output) {
+    fieldOutput.forEach((element) => {
       xlsxUtils.book_append_sheet(
         workbook,
-        xlsxUtils.aoa_to_sheet(output[sheetIdx]),
-        output[sheetIdx][0][1],
+        xlsxUtils.aoa_to_sheet(element),
+        element[0][1],
         true
       );
-    }
+    });
+
+    radioOutput.forEach((element) => {
+      xlsxUtils.book_append_sheet(
+        workbook,
+        xlsxUtils.aoa_to_sheet(element),
+        element[0][1],
+        true
+      );
+    });
 
     // Stuff to save a sheet
     const wbout = XLSX.write(workbook, {bookType:'xlsx',  type: 'binary'});
@@ -184,32 +195,7 @@ class batchTile extends TileBase {
       return buf;
     }
 
-    const blob = new Blob([s2ab(wbout)],{type:"application/octet-stream"});
-    // Find any radio tiles, title them and add possible checks.
-    // Object.entries(this.subComponents).forEach(([subCompIdx, subComp]) => {
-    //   if (subComp.type === 'radio-tile') {
-    //     csv[ix] = ['Radio Choice:', subComp.title, subCompIdx].join(',');
-    //     ix += 1;
-    //     choiceIdx = 1;
-    //     Object.entries(subComp.options).forEach(([radioChoice, value]) => {
-    //       csv[ix] = [choiceIdx, radioChoice, value.check_status].join(',');
-    //       ix += 1;
-    //       choiceIdx += 1;
-    //     });
-    //   }
-    // });
-    // csv[ix] = ['Main Fields:'].join(',');
-    // ix += 1;
-    // // Now do the main fields
-    // Object.keys(this.formFields).forEach(keyOuter => {
-    //   Object.entries(this.formFields[keyOuter]).forEach(([keyInner, value]) => {
-    //     csv[ix] = [keyOuter, keyInner, value.value].join(',');
-    //     ix += 1;
-    //   });
-    // });
-    // const csvstr = csv.join('\n');
-    // const blob = new Blob([csvstr], { type: 'text,csv;charset=utf-8;' });
-
+    const blob = new Blob([s2ab(wbout)], {type:"application/octet-stream"});
     saveAs(blob, `${this.appName}-template.xlsx`);
   }
 

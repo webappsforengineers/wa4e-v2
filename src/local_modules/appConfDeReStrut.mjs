@@ -109,6 +109,19 @@ export class structureUtils {
     return componentArray;
   }
 
+  static destructureSelectedRadios(selectedRadios) {
+    const radioArr = []
+    selectedRadios.forEach((radio, radioIdx) => {
+      const radioTitle = radio.title.toLowerCase().replaceAll(" ", "-");
+      const subRadioArr = [
+        [(radioIdx + 1).toString(), radioTitle, "DO NOT MODIFY SHEET OR CONTENTS"],
+        [radio.title, radio.value],
+      ]
+      radioArr.push(subRadioArr);
+    });
+    return radioArr;
+  }
+
   static restructureComponents(componentsArray) {
     function getLength(thing) {
       if (typeof thing === 'number') {
