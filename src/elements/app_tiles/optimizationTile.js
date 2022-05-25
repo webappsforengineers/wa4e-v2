@@ -46,7 +46,9 @@ class optimizationTile extends TileBase {
 
   clearOutput() {
     for (const thing of Object.values(this.formFields[''])) {
-      thing.value = null;
+      if (thing.label === 'Solution') {
+        thing.value = null;
+      }
     }
   }
 
@@ -76,7 +78,7 @@ class optimizationTile extends TileBase {
             this.makeSubComponent(subIndex)
           )}`}
         </div>
-        <div>${this.makeNestedFields(keyOuter)}</div>
+        <div>${this.makeNestedFields(keyOuter, true)}</div>
         <div>
           ${html`${afterContent.map(subIndex =>
             this.makeSubComponent(subIndex)

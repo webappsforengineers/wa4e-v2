@@ -376,6 +376,7 @@ export const appConf = {
             visible: '',
             lb: '',
             ub: '',
+            callback: false,
           },
         },
       },

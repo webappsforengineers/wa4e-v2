@@ -42,16 +42,21 @@ export class TileBase extends StyledElement {
   // Generic field making functions used by multiple apps
 
   makeNestedFields(keyOuter, callback) {
-    return html`${Object.keys(this.appConf.fields[`${keyOuter}`]).map(
-      key =>
-        html`
-          <input-field
-            .key=${key}
-            .appConf=${this.appConf.fields[keyOuter][key]}
-            .callback=${callback}
-          ></input-field>
-        `
-    )}`;
+    return html`${Object.keys(this.appConf.fields[`${keyOuter}`]).map(key => {
+      let thisCallback;
+      if (Object.hasOwn(this.appConf.fields[`${keyOuter}`][key], 'callback')) {
+        thisCallback = this.appConf.fields[`${keyOuter}`][key].callback;
+      } else {
+        thisCallback = callback;
+      }
+      return html`
+        <input-field
+          .key=${key}
+          .appConf=${this.appConf.fields[keyOuter][key]}
+          .callback=${thisCallback}
+        ></input-field>
+      `;
+    })}`;
   }
 
   /* eslint-disable class-methods-use-this */
