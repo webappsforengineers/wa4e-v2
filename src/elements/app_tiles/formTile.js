@@ -82,12 +82,12 @@ class formTile extends TileBase {
             >
               RESET
             </button>
-            <button
+            <!-- <button
               class="btn btn-outline-info col"
-              @click=${() => this.showHelp()}
+              @click=\${() => this.showHelp()} note remove the blackslash and delete this comment to reenable
             >
               HELP
-            </button>
+            </button> -->
           </div>
         `
       : html``;
