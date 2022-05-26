@@ -134,9 +134,13 @@ class batchTile extends TileBase {
     Object.values(this.subComponents).forEach(subComp => {
       if (subComp.type === 'radio-tile') {
         let thisRadioSelected = false;
-        Object.values(subComp.options).forEach(option => {
+        Object.entries(subComp.options).forEach(([optionKey, option]) => {
           if (option.check_status) {
-            selectedRadios.push({ title: subComp.title, value: option.label });
+            selectedRadios.push({
+              key: optionKey,
+              title: subComp.title,
+              value: option.label,
+            });
             thisRadioSelected = true;
           }
         });
@@ -182,12 +186,14 @@ class batchTile extends TileBase {
       );
     });
 
-    xlsxUtils.book_append_sheet(
-      workbook,
-      xlsxUtils.aoa_to_sheet(radioOutput),
-      'input-selection',
-      true
-    );
+    if (selectedRadios.length > 0) {
+      xlsxUtils.book_append_sheet(
+        workbook,
+        xlsxUtils.aoa_to_sheet(radioOutput),
+        'input-selection',
+        true
+      );
+    }
 
     // Stuff to save a sheet
     const wbout = write(workbook, { bookType: 'xlsx', type: 'binary' });
@@ -201,7 +207,16 @@ class batchTile extends TileBase {
     }
 
     const blob = new Blob([s2ab(wbout)], { type: 'application/octet-stream' });
-    saveAs(blob, `${this.appName}-template.xlsx`);
+    if (selectedRadios.length > 0) {
+      saveAs(
+        blob,
+        `${this.appName}-${selectedRadios
+          .map(radio => radio.value)
+          .join('-')}-template.xlsx`
+      );
+    } else {
+      saveAs(blob, `${this.appName}-template.xlsx`);
+    }
   }
 
   runCalc() {

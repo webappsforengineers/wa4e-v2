@@ -367,7 +367,7 @@ export const appConf = {
           sum_opt: {
             label: 's<sub>um</sub>(opt)',
             unit: 'kPa',
-            value: 'N/A',
+            value: null,
             visible: '',
             lb: '',
             ub: '',
@@ -375,7 +375,7 @@ export const appConf = {
           function_opt: {
             label: 'function<sub>opt</sub>',
             unit: null,
-            value: 'N/A',
+            value: null,
             visible: '',
             lb: '',
             ub: '',

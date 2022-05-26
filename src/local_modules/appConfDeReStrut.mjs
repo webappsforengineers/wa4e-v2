@@ -124,8 +124,13 @@ export class structureUtils {
       ],
     ];
 
-    selectedRadios.forEach(radio => {
-      radioArr.push(['radio-tile', radio.title, radio.value]);
+    selectedRadios.forEach(radioObj => {
+      radioArr.push([
+        'radio-tile',
+        radioObj.key,
+        radioObj.title,
+        radioObj.value,
+      ]);
     });
 
     return radioArr;
@@ -137,9 +142,20 @@ export class structureUtils {
     Object.entries(outObj).forEach(([compKey, compObj]) => {
       if (compObj.type === 'input-tile') {
         outObj[compKey].subComponents = appConf[compKey].subComponents;
+
+        Object.entries(outObj[compKey].subComponents).forEach(
+          ([subCompKey, subComp]) => {
+            Object.keys(subComp.options).forEach(optionKey => {
+              outObj[compKey].subComponents[subCompKey].options[
+                optionKey
+              ].check_status = false;
+            });
+          }
+        );
+
         subCompArray.slice(1).forEach((subComp, subCompIndex) => {
           outObj[compKey].subComponents[subCompIndex].options[
-            subComp[2]
+            subComp[1]
           ].check_status = true;
         });
       }
