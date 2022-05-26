@@ -1,7 +1,7 @@
 import { cloneDeep, mergeWith, isArray } from 'lodash-es';
 
 export class structureUtils {
-// Functions to destructure and restructure a single field in the appConf Objects
+  // Functions to destructure and restructure a single field in the appConf Objects
   static destructureField(fieldKey, fieldObj) {
     function getValue(valueElement) {
       if (typeof valueElement === 'number') {
@@ -30,7 +30,7 @@ export class structureUtils {
     };
   }
 
-// Functions to destructure and restructure the field groups in the appConf Objects
+  // Functions to destructure and restructure the field groups in the appConf Objects
   static destructureGroup(groupKey, groupObj) {
     const groupArray = [];
     groupArray.push([groupKey]);
@@ -48,11 +48,13 @@ export class structureUtils {
     return groupObj;
   }
 
-// Functions to destructure and restructure the fields in the appConf Objects
+  // Functions to destructure and restructure the fields in the appConf Objects
   static destructureFields(fieldsObj) {
     let fieldsArray = [];
     Object.entries(fieldsObj).forEach(([groupKey, groupObj]) => {
-      fieldsArray = fieldsArray.concat(this.destructureGroup(groupKey, groupObj));
+      fieldsArray = fieldsArray.concat(
+        this.destructureGroup(groupKey, groupObj)
+      );
     });
     return fieldsArray;
   }
@@ -84,29 +86,66 @@ export class structureUtils {
       }
     }
 
-    groupSplits.forEach( groupArray => {
+    groupSplits.forEach(groupArray => {
       fieldsObj[groupArray[0][0]] = this.restructureGroup(groupArray);
     });
 
     return fieldsObj;
   }
 
-// Functions to destructure and restructure the Components in the webcomponent Object
+  // Functions to destructure and restructure the Components in the webcomponent Object
   static destructureComponents(componentsObj) {
     const componentArray = [];
     let headerArr;
     Object.entries(componentsObj).forEach(([compKey, compObj]) => {
       if (
-        ['input-tile', 'derived-input-tile', 'output-tile'].includes(compObj.type)
+        ['input-tile', 'derived-input-tile', 'output-tile'].includes(
+          compObj.type
+        )
       ) {
         headerArr = [
           [compKey, compObj.type, compObj.title],
           ['key', 'Name', 'Unit', 'ValueMin', 'ValueMax', 'Value(s)...'],
         ];
-        componentArray.push(headerArr.concat(this.destructureFields(compObj.fields)));
+        componentArray.push(
+          headerArr.concat(this.destructureFields(compObj.fields))
+        );
       }
     });
     return componentArray;
+  }
+
+  static destructureSelectedRadios(selectedRadios, indexOffset) {
+    const radioArr = [
+      [
+        indexOffset.toString(),
+        'input-selection',
+        'DO NOT MODIFY SHEET OR CONTENTS',
+      ],
+    ];
+
+    selectedRadios.forEach(radio => {
+      radioArr.push(['radio-tile', radio.title, radio.value]);
+    });
+
+    return radioArr;
+  }
+
+  static restructureSubComponents(appConf, inObj, subCompArray) {
+    const outObj = cloneDeep(inObj);
+
+    Object.entries(outObj).forEach(([compKey, compObj]) => {
+      if (compObj.type === 'input-tile') {
+        outObj[compKey].subComponents = appConf[compKey].subComponents;
+        subCompArray.slice(1).forEach((subComp, subCompIndex) => {
+          outObj[compKey].subComponents[subCompIndex].options[
+            subComp[2]
+          ].check_status = true;
+        });
+      }
+    });
+
+    return outObj;
   }
 
   static restructureComponents(componentsArray) {
@@ -126,13 +165,14 @@ export class structureUtils {
         fields: this.restructureFields(fieldsArr.slice(2)),
       };
     });
+
     return restructuredCompObj;
   }
 
-// Merge the restructured components into the original object
+  // Merge the restructured components into the original object
   static mergeWithOriginal(originalObj, restructuredObj, index) {
     function customizerFunction(_objVal, srcVal) {
-      if(isArray(srcVal)) {
+      if (isArray(srcVal)) {
         return srcVal[index];
       }
       return undefined;
@@ -145,9 +185,9 @@ export class structureUtils {
   // Merge restructured components and array values
   static mergeWithOriginalArray(originalObj, restructuredObj, inputLength) {
     function customizerFunction(objVal, srcVal) {
-      if(isArray(objVal)) {
+      if (isArray(objVal)) {
         // if the array is full, then return the array
-        if(objVal.length === inputLength) {
+        if (objVal.length === inputLength) {
           return objVal;
         }
         // otherwise push the new value
@@ -161,5 +201,4 @@ export class structureUtils {
     mergeWith(newObj, restructuredObj, customizerFunction);
     return newObj;
   }
-
 }
