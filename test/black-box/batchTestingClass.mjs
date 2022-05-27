@@ -8,8 +8,8 @@ individual function acts properly.
  */
 import { isEqual } from 'lodash-es';
 import { read } from 'xlsx';
-import { batchTest } from '../../src/elements/app_tiles/batchTile.mjs';
 import fs from 'fs';
+import { batchTest } from '../../src/elements/app_tiles/batchTile.mjs';
 
 export class testMath extends batchTest {
   static get properties() {
@@ -37,33 +37,37 @@ export class testMath extends batchTest {
     this.subComponents = appConfArray.find(
       element => element.type === 'input-tile'
     ).subComponents;
-    this.fileData = fs.readFile(this.filePathInput)
+    this.fileData = fs.readFile(this.filePathInput);
     this.workbook = null;
-    this.fileTestData = fs.readFile(this.filePathOutput)
+    this.fileTestData = fs.readFile(this.filePathOutput);
     this.workbookTestData = null;
   }
 
-  runTest(){
+  runTest() {
     const fileTestInputPromise = this.fileData.arrayBuffer();
     fileTestInputPromise.then(
-      value=>{
+      value => {
         this.fileData = value;
         this.workbook = read(this.fileData);
-        },
-      error=>{throw `file not loaded ${error}`});
+      },
+      error => {
+        throw Error(`file not loaded ${error}`);
+      }
+    );
     const resultObj = this.runCalc(true);
 
     const fileTestDataPromise = this.fileTestData.arrayBuffer();
     fileTestDataPromise.then(
-      value=>{
+      value => {
         this.fileTestData = value;
         this.workbookTestData = read(this.fileTestData);
       },
-      error=>{throw `file not loaded ${error}`});
-    const goldObj = this.xlsxBookToObj(this.workbookTestData)
+      error => {
+        throw Error(`file not loaded ${error}`);
+      }
+    );
+    const goldObj = this.xlsxBookToObj(this.workbookTestData);
 
-    this.result = isEqual(resultObj, goldObj) //This may need to be switched to isEqualWith to add a degree of tolerance
+    this.result = isEqual(resultObj, goldObj); // This may need to be switched to isEqualWith to add a degree of tolerance
   }
 }
-
-
