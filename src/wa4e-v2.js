@@ -1,6 +1,6 @@
 import { html } from 'lit';
-import { StyledElement } from './styles/wa4eStyleElement.js';
-import './elements/myElements.js';
+import { StyledElement } from './styles/wa4eStyleElement.mjs';
+import './elements/myElements.mjs';
 // get the configuration files for each app
 import {
   caissonConf,

@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import { Plotly } from '../../local_modules/wa4e-math.js';
-import { TileBase } from './tileBase.js';
+import { TileBase } from './tileBase.mjs';
 
 class graphTile extends TileBase {
   // extend the properties class

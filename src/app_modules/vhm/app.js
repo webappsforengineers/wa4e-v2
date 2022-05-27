@@ -1,7 +1,7 @@
 import { vhmConf as appConf } from '../moduleConf.mjs';
 import { calculateVHM as appCalc } from '../../local_modules/wa4e-math.js';
-import { AppGeneric } from '../../elements/general/appGeneric.js';
-import '../../elements/myElements.js';
+import { AppGeneric } from '../../elements/general/appGeneric.mjs';
+import '../../elements/myElements.mjs';
 
 export class App extends AppGeneric {
   constructor() {

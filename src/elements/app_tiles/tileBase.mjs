@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { StyledElement } from '../../styles/wa4eStyleElement.js';
+import { StyledElement } from '../../styles/wa4eStyleElement.mjs';
 
 // This defines the base class to build the app-tiles
 export class TileBase extends StyledElement {
@@ -40,7 +40,6 @@ export class TileBase extends StyledElement {
   }
 
   // Generic field making functions used by multiple apps
-
   makeNestedFields(keyOuter, callback) {
     return html`${Object.keys(this.appConf.fields[`${keyOuter}`]).map(key => {
       let thisCallback;

@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { TileBase } from './tileBase.js';
+import { TileBase } from './tileBase.mjs';
 
 class formTile extends TileBase {
   // extend the properties class
@@ -109,9 +109,9 @@ class formTile extends TileBase {
     this.dispatchEvent(myEvent);
   }
 
-  showHelp() {
-    // eslint-disable-next-line no-alert
-    window.alert(this.appConf.helpText);
-  }
+  // showHelp() {
+  //   // eslint-disable-next-line no-alert
+  //   window.alert(this.appConf.helpText);
+  // }
 }
 customElements.define('form-tile', formTile);

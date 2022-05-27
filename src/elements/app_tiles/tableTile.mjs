@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { TileBase } from './tileBase.js';
+import { TileBase } from './tileBase.mjs';
 
 class tableTile extends TileBase {
   render() {

@@ -32,21 +32,6 @@ export default merge(baseConfig, {
     'app_modules/vhm/index.html': './src/app_modules/vhm/index.html',
     'app_modules/zti/index.html': './src/app_modules/zti/index.html',
   },
-  /*
-  input: [
-    'index.html',
-    'app_modules/caisson/index.html',
-    'app_modules/consolidated-ncv/index.html',
-    'app_modules/drag-anchor/index.html',
-    'app_modules/mcc-su/index.html',
-    'app_modules/ncv/index.html',
-    'app_modules/pinpiles/index.html',
-    'app_modules/pipe/index.html',
-    'app_modules/sliding-plet/index.html',
-    'app_modules/vh2m2t/index.html',
-    'app_modules/vhm/index.html',
-    'app_modules/zti/index.html',
-  ], */
   output: {
     format: 'es',
     dir: 'dist',

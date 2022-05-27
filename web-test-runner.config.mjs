@@ -1,18 +1,30 @@
 // import { playwrightLauncher } from '@web/test-runner-playwright';
-import { rollupAdapter } from '@web/dev-server-rollup';
-import commonjs from '@rollup/plugin-commonjs';
+
+const filteredLogs = ['Running in dev mode', 'lit-html is in dev mode'];
 
 export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
+  /** Test files to run */
   files: 'test/**/*.test.mjs',
-  nodeResolve: true,
+
+  /** Resolve bare module imports */
+  nodeResolve: {
+    exportConditions: ['browser', 'development'],
+    exclude: [],
+    preferBuiltins: true,
+  },
+
+  /** Filter out lit dev mode logs */
+  filterBrowserLogs(log) {
+    for (const arg of log.args) {
+      if (typeof arg === 'string' && filteredLogs.some(l => arg.includes(l))) {
+        return false;
+      }
+    }
+    return true;
+  },
 
   /** Compile JS for older browsers. Requires @web/dev-server-esbuild plugin */
   esbuildTarget: 'auto',
-
-  /** Confgure bare import resolve plugin */
-  // nodeResolve: {
-  //   exportConditions: ['browser', 'development']
-  // },
 
   /** Amount of browsers to run concurrently */
   // concurrentBrowsers: 2,

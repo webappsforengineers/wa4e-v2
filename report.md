@@ -244,28 +244,28 @@ wa4e
 │   ├── elements
 │   │   ├── app_tiles
 │   │   │   ├── batchTile.mjs
-│   │   │   ├── graphTile.js
-│   │   │   ├── imageTile.js
-│   │   │   ├── formTile.js
-│   │   │   ├── inputTableTile.js
-│   │   │   ├── optimizationTile.js
-│   │   │   ├── radioTile.js
-│   │   │   ├── tableTile.js
-│   │   │   ├── testSubTile.js
-│   │   │   ├── textTile.js
-│   │   │   └── tileBase.js
+│   │   │   ├── graphTile.mjs
+│   │   │   ├── imageTile.mjs
+│   │   │   ├── formTile.mjs
+│   │   │   ├── inputTableTile.mjs
+│   │   │   ├── optimizationTile.mjs
+│   │   │   ├── radioTile.mjs
+│   │   │   ├── tableTile.mjs
+│   │   │   ├── testSubTile.mjs
+│   │   │   ├── textTile.mjs
+│   │   │   └── tileBase.mjs
 │   │   ├── general
-│   │   │   ├── appGeneric.js
-│   │   │   ├── pageFooters.js
-│   │   │   └── pageHeaders.js
+│   │   │   ├── appGeneric.mjs
+│   │   │   ├── pageFooters.mjs
+│   │   │   └── pageHeaders.mjs
 │   │   ├── homepage
-│   │   │   └── menu_tile.js
-│   │   ├── myElements.js
-│   │   └── mySubComponents.js
+│   │   │   └── menu_tile.mjs
+│   │   ├── myElements.mjs
+│   │   └── mySubComponents.mjs
 │   ├── local_modules
 │   │   └── wa4e-math.mjs
 │   ├── styles
-│   │   └── wa4eStyleElement.js
+│   │   └── wa4eStyleElement.mjs
 │   └── wa4e-v2.js
 ├── web-dev-server.config.mjs
 └── web-test-runner.config.mjs

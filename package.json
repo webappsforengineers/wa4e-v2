@@ -20,6 +20,7 @@
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-html": "^6.1.2",
     "husky": "^4.3.8",
+    "jest": "^28.1.0",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
@@ -29,8 +30,8 @@
   "scripts": {
     "lint": "eslint --ext .js,.mjs,.html . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
     "format": "eslint --ext .js,.mjs,.html . --fix --ignore-path .gitignore && prettier \"**/*.js\" --write --ignore-path .gitignore",
-    "test": "web-test-runner --coverage",
-    "test:watch": "web-test-runner --watch",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:webtest": "web-test-runner.config.mjs --coverage",
     "build": "rimraf dist && rollup -c rollup.config.js",
     "start:build": "npm run build && es-dev-server --root-dir dist --app-index src/index.html --open --compatibility none",
     "start": "web-dev-server"
@@ -54,8 +55,10 @@
     "lodash-es": "^4.17.21",
     "masonry-layout": "^4.2.2",
     "mathjs": "^9.4.4",
+    "node": "^17.7.2",
     "plotly.js-dist-min": "^2.2.1",
     "rfs": "^9.0.6",
+    "stream": "^0.0.2",
     "xlsx": "^0.18.5"
   },
   "eslintConfig": {

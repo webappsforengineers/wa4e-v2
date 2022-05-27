@@ -1,9 +1,9 @@
 import { html } from 'lit';
 import { merge } from 'lodash-es';
-import { StyledElement } from '../../styles/wa4eStyleElement.js';
+import { StyledElement } from '../../styles/wa4eStyleElement.mjs';
 import { Masonry } from '../../local_modules/wa4e-math.js';
-import '../mySubComponents.js';
-import '../myElements.js';
+import '../mySubComponents.mjs';
+import '../myElements.mjs';
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));

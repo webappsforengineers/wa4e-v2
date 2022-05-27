@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { StyledElement } from '../../styles/wa4eStyleElement.js';
+import { StyledElement } from '../../styles/wa4eStyleElement.mjs';
 
 class headerTemplate extends StyledElement {
   constructor() {

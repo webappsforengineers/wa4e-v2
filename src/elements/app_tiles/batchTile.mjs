@@ -2,7 +2,7 @@ import { html } from 'lit';
 import { saveAs } from 'file-saver-es';
 import { utils, writeFile, read, write } from 'xlsx';
 import { cloneDeep } from 'lodash-es';
-import { TileBase } from './tileBase.js';
+import { TileBase } from './tileBase.mjs';
 import { structureUtils } from '../../local_modules/appConfDeReStrut.mjs';
 
 const xlsxUtils = utils;
@@ -219,9 +219,9 @@ class batchTile extends TileBase {
     }
   }
 
-  runCalc() {
+  xlsxBookToObj(workbook) {
     const input = [];
-    Object.values(this.workbook.Sheets).forEach(sheet => {
+    Object.values(workbook.Sheets).forEach(sheet => {
       input.push(xlsxUtils.sheet_to_json(sheet, { header: 1 }));
     });
 
@@ -229,15 +229,35 @@ class batchTile extends TileBase {
     const radioInput = input.filter(el => el[0][1] === 'input-selection');
 
     const upBookFields = structureUtils.restructureComponents(fieldInput);
-    const upBookWithSub = structureUtils.restructureSubComponents(
+    return structureUtils.restructureSubComponents(
       this.appConf,
       upBookFields,
       radioInput[0]
     );
+  }
+
+
+  runCalc(test=false) {
+    let upBookWithSub = this.xlsxBookToObj(this.workbook)
+    // const input = [];
+    // Object.values(this.workbook.Sheets).forEach(sheet => {
+    //   input.push(xlsxUtils.sheet_to_json(sheet, { header: 1 }));
+    // });
+    //
+    // const fieldInput = input.filter(el => el[0][1] !== 'input-selection');
+    // const radioInput = input.filter(el => el[0][1] === 'input-selection');
+    //
+    // const upBookFields = structureUtils.restructureComponents(fieldInput);
+    // const upBookWithSub = structureUtils.restructureSubComponents(
+    //   this.appConf,
+    //   upBookFields,
+    //   radioInput[0]
+    // );
     const inputLength = Object.values(upBookWithSub).find(
       el => el.type === 'input-tile'
     ).valuesLength;
     let outConf = cloneDeep(upBookWithSub);
+
     for (let ix = 0; ix < inputLength; ix += 1) {
       // for batch calculations, each input variable is an array of values, so
       // merge appConf and upBook on array index ix only and then calculate
@@ -248,7 +268,13 @@ class batchTile extends TileBase {
         upBookWithSub,
         ix
       );
-      this.launchCloneCalc(cloneConf);
+
+      if (!test) {
+        this.launchCloneCalc(cloneConf);
+      }
+      else {
+        this.appCalc(cloneConf)
+      }
 
       // Now merge cloneConf into outConf
       outConf = structureUtils.mergeWithOriginalArray(
@@ -262,20 +288,27 @@ class batchTile extends TileBase {
     // appended at the end
     // TODO: need to add the input-selection sheet thingy here
     const outBook = structureUtils.destructureComponents(outConf);
-    this.workbook.SheetNames.forEach((name, index) => {
-      if (index < outBook.length) {
-        const sheet = xlsxUtils.aoa_to_sheet(outBook[index]);
-        this.workbook.Sheets[name] = sheet;
-      }
-    });
 
-    writeFile(this.workbook, `${this.appName}-output.xlsx`, {
-      bookType: 'xlsx',
-      type: 'binary',
-    });
+    if (!test) {
+      this.workbook.SheetNames.forEach((name, index) => {
+        if (index < outBook.length) {
+          const sheet = xlsxUtils.aoa_to_sheet(outBook[index]);
+          this.workbook.Sheets[name] = sheet;
+        }
+      });
+
+      writeFile(this.workbook, `${this.appName}-output.xlsx`, {
+        bookType: 'xlsx',
+        type: 'binary',
+      });
+    }
 
     document.getElementById('dropbox').value = '';
     this.fileData = null;
+
+    if (test) {
+      return outBook;
+    }
   }
 
   launchCloneCalc(appConfClone) {
@@ -289,3 +322,7 @@ class batchTile extends TileBase {
 }
 
 customElements.define('batch-tile', batchTile);
+
+// This enables the testing framework to import and use the functions defined here
+export {batchTile as batchTest};
+//export class batchTest extends batchTile{}

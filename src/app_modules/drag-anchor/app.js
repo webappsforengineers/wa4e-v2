@@ -1,6 +1,6 @@
 import { dragAnchorConf as appConf } from '../moduleConf.mjs';
 import { calculateDragAnchor as appCalc } from '../../local_modules/wa4e-math.js';
-import { AppGeneric } from '../../elements/general/appGeneric.js';
+import { AppGeneric } from '../../elements/general/appGeneric.mjs';
 
 export class App extends AppGeneric {
   constructor() {
