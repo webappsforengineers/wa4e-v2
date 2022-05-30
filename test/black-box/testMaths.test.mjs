@@ -1,4 +1,4 @@
-import { expect } from 'jest';
+import { jest, expect } from '@jest/globals';
 
 import { caissonConf } from '../../src/app_modules/moduleConf.mjs';
 
@@ -6,7 +6,7 @@ import { calculateCaisson } from '../../src/local_modules/wa4e-math.js';
 
 import { testMath } from './batchTestingClass.mjs';
 
-import.meta.jest.useFakeTimers();
+jest.useFakeTimers();
 // import { html, fixture, unsafeStatic, defineCE, expect } from '@open-wc/testing';
 console.log('hello');
 

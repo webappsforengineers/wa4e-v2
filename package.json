@@ -42,6 +42,7 @@
   "author": "we4e-v2",
   "license": "",
   "dependencies": {
+    "@jest/globals": "^28.1.0",
     "@sideway/address": "^4.1.2",
     "@stdlib/array-linspace": "^0.0.6",
     "@stdlib/array-logspace": "^0.0.6",
