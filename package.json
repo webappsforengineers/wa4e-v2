@@ -2,7 +2,7 @@
   "main": "./src/wa4e-v2.js",
   "module": "./src/wa4e-v2.js",
   "engines": {
-    "node": "^17.7.2"
+    "node": "^18.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^0.4.2",
