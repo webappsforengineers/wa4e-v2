@@ -27,23 +27,6 @@ class radioTile extends TileBase {
               name="${this.appConf.title}"
               id="${key}"
               .value="${key}"
-              @click=${e => {
-                this.appConf.options[key] = e.target.checked;
-                this.checkValue = key;
-                // TODO: This seems overly complicated?
-                Object.keys(this.checkOptions).forEach(notSelected => {
-                  if (notSelected !== key) {
-                    this.appConf.options[notSelected].check_status =
-                      !e.target.checked;
-                  }
-                });
-                if (this.appConf.clearOnClick) {
-                  this.clearOutput();
-                }
-                if (this.appConf.modifyOnClick) {
-                  this.modifyForm(this.checkValue);
-                }
-              }}
               checked
             />`
           : html`<input
