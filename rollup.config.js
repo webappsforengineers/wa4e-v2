@@ -17,6 +17,7 @@ export default merge(baseConfig, {
   preserveEntrySignatures: 'strict',
   input: {
     'index.html': './src/index.html',
+    'admin/createTest.html': './src/admin/createTest.html',
     'app_modules/caisson/index.html': './src/app_modules/caisson/index.html',
     'app_modules/consolidated-ncv/index.html':
       './src/app_modules/consolidated-ncv/index.html',
