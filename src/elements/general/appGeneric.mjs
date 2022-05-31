@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { merge } from 'lodash-es';
+import { merge, cloneDeep } from 'lodash-es';
 import { StyledElement } from '../../styles/wa4eStyleElement.mjs';
 import { Masonry } from '../../local_modules/wa4e-math.js';
 import '../mySubComponents.mjs';
@@ -69,12 +69,13 @@ export class AppGeneric extends StyledElement {
     this.appCalc(appWebCompClone.appConfClone);
   }
 
-  // eslint-disable-next-line class-methods-use-this
   resetComponents() {
-    // TODO: Fix this
+    this.appWebComponents = cloneDeep(this.resetApp);
+    this.appTiles = this.makeAppTiles();
+    this.childUpdate();
   }
 
-  // This is called to launch a reload event in any subtiles
+  // This is called to launch a reload event in any sub-tiles
   childUpdate() {
     const myEvent = new CustomEvent('update-children', {
       bubbles: true,
@@ -86,7 +87,7 @@ export class AppGeneric extends StyledElement {
   modifyForm(appConfChange) {
     merge(this.appWebComponents, appConfChange.changeFields);
 
-    // If we are checking a radio then no new data is added so we disable replotting
+    // If we are checking a radio then no new data is added so we disable re-plotting
     const graphTileIndex = Object.values(this.appWebComponents).findIndex(
       element => element.type === 'graph-tile'
     );

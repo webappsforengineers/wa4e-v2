@@ -1,3 +1,4 @@
+import { cloneDeep } from 'lodash-es';
 import { spletConf as appConf } from '../moduleConf.mjs';
 import { calculateSlidingPLET as appCalc } from '../../local_modules/wa4e-math.js';
 
@@ -9,7 +10,7 @@ export class App extends AppGeneric {
     this.appName = appConf.appName;
     this.title = appConf.appPageTitle;
     this.appWebComponents = appConf.appWebComponents;
-    this.resetApp = appConf.appWebComponents;
+    this.resetApp = cloneDeep(appConf.appWebComponents);
     this.output = {};
     this.appTiles = this.makeAppTiles();
     this.appCalc = appCalc;

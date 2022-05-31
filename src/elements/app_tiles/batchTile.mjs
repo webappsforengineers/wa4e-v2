@@ -236,9 +236,9 @@ class batchTile extends TileBase {
     );
   }
 
-
-  runCalc(test=false) {
-    let upBookWithSub = this.xlsxBookToObj(this.workbook)
+  // eslint-disable-next-line consistent-return
+  runCalc(test = false) {
+    const upBookWithSub = this.xlsxBookToObj(this.workbook);
     // const input = [];
     // Object.values(this.workbook.Sheets).forEach(sheet => {
     //   input.push(xlsxUtils.sheet_to_json(sheet, { header: 1 }));
@@ -271,9 +271,8 @@ class batchTile extends TileBase {
 
       if (!test) {
         this.launchCloneCalc(cloneConf);
-      }
-      else {
-        this.appCalc(cloneConf)
+      } else {
+        this.appCalc(cloneConf);
       }
 
       // Now merge cloneConf into outConf
@@ -324,5 +323,4 @@ class batchTile extends TileBase {
 customElements.define('batch-tile', batchTile);
 
 // This enables the testing framework to import and use the functions defined here
-export {batchTile as batchTest};
-//export class batchTest extends batchTile{}
+export { batchTile as batchTest };
