@@ -211,7 +211,6 @@ export class structureUtils {
         objVal.push(srcVal);
         return objVal;
       }
-
       return undefined;
     }
     const newObj = cloneDeep(originalObj);

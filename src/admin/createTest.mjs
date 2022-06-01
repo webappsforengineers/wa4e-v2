@@ -237,7 +237,7 @@ class TestGenerator extends StyledElement {
     element.setAttribute(
       'href',
       `data:text/plain;charset=utf-8, ${encodeURIComponent(
-        JSON.stringify(this.testObject)
+        `export const testConf =${JSON.stringify(this.testObject)}`
       )}`
     );
     element.setAttribute('download', `${this.testName}.mjs`);

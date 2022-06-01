@@ -6,8 +6,9 @@ This testing does not test that any component on the website is acting (im)prope
 This testing conforms to a 'black-box' model and therefore does not confirm that the mathematics is correct or any
 individual function acts properly.
  */
-import { isEqual } from 'lodash-es';
+import { isEqualWith, isArray, isObject } from 'lodash-es';
 import { BatchTest } from '../../src/elements/app_tiles/batchTile.mjs';
+import { structureUtils } from '../../src/local_modules/appConfDeReStrut.mjs';
 
 export class TestMath extends BatchTest {
   static get properties() {
@@ -43,7 +44,29 @@ export class TestMath extends BatchTest {
 
   runTest() {
     const resultObj = this.calcLoop(this.testObject.input, true);
-    this.result = isEqual(resultObj, this.testObject.output); // This may need to be switched to isEqualWith to add a degree of tolerance
+    const hydratedOut = structureUtils.mergeWithOriginal(
+      this.appConf,
+      this.testObject.output,
+      this.inputLength
+    );
+    function customizerFunction(objVal, srcVal) {
+      let result = true;
+      if (isArray(objVal)) {
+        const sigFig = 4;
+        objVal.forEach((arrElement, arrIndex) => {
+          result =
+            result &&
+            arrElement.toPrecision(sigFig) ===
+              srcVal[arrIndex].toPrecision(sigFig);
+        });
+        return result;
+      }
+      if (isObject(objVal)) {
+        return true;
+      }
+      return undefined;
+    }
+    this.result = isEqualWith(resultObj, hydratedOut, customizerFunction); // This may need to be switched to isEqualWith to add a degree of tolerance
   }
 }
 

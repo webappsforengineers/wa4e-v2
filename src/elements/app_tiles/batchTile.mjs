@@ -8,6 +8,11 @@ import { structureUtils } from '../../local_modules/appConfDeReStrut.mjs';
 const xlsxUtils = utils;
 
 class batchTile extends TileBase {
+  constructor() {
+    super();
+    this.inputLength = null;
+  }
+
   render() {
     // We need this as batch-tile has the unique property of needing all the app components
     const appConfArray = Object.values(this.appConf);
@@ -248,12 +253,12 @@ class batchTile extends TileBase {
   }
 
   calcLoop(upBookWithSub, test = false) {
-    const inputLength = Object.values(upBookWithSub).find(
+    this.inputLength = Object.values(upBookWithSub).find(
       el => el.type === 'input-tile'
     ).valuesLength;
     let outConf = cloneDeep(upBookWithSub);
 
-    for (let ix = 0; ix < inputLength; ix += 1) {
+    for (let ix = 0; ix < this.inputLength; ix += 1) {
       // for batch calculations, each input variable is an array of values, so
       // merge appConf and upBook on array index ix only and then calculate
       // for value at ix
@@ -274,7 +279,7 @@ class batchTile extends TileBase {
       outConf = structureUtils.mergeWithOriginalArray(
         outConf,
         cloneConf,
-        inputLength
+        this.inputLength
       );
     }
     return outConf;
