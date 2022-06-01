@@ -7,23 +7,25 @@ This testing conforms to a 'black-box' model and therefore does not confirm that
 individual function acts properly.
  */
 import { isEqual } from 'lodash-es';
-import { read } from 'xlsx';
-import fs from 'fs';
-import { batchTest } from '../../src/elements/app_tiles/batchTile.mjs';
+import { BatchTest } from '../../src/elements/app_tiles/batchTile.mjs';
 
-export class testMath extends batchTest {
+export class TestMath extends BatchTest {
   static get properties() {
     const newProperties = {
       appCalc: { type: Function },
-      filePathInput: { type: String },
-      filePathOutput: { type: String },
+      testObject: { type: Object },
     };
     return Object.assign(newProperties, super.properties);
   }
 
-  constructor() {
+  constructor(testObj, appConf, appCalc) {
     super();
+    this.testObject = testObj;
+    this.appConf = appConf.appWebComponents;
+    this.appName = appConf.appName;
+    this.appCalc = appCalc;
     this.result = null;
+    this.setup();
   }
 
   setup() {
@@ -37,37 +39,12 @@ export class testMath extends batchTest {
     this.subComponents = appConfArray.find(
       element => element.type === 'input-tile'
     ).subComponents;
-    this.fileData = fs.readFile(this.filePathInput);
-    this.workbook = null;
-    this.fileTestData = fs.readFile(this.filePathOutput);
-    this.workbookTestData = null;
   }
 
   runTest() {
-    const fileTestInputPromise = this.fileData.arrayBuffer();
-    fileTestInputPromise.then(
-      value => {
-        this.fileData = value;
-        this.workbook = read(this.fileData);
-      },
-      error => {
-        throw Error(`file not loaded ${error}`);
-      }
-    );
-    const resultObj = this.runCalc(true);
-
-    const fileTestDataPromise = this.fileTestData.arrayBuffer();
-    fileTestDataPromise.then(
-      value => {
-        this.fileTestData = value;
-        this.workbookTestData = read(this.fileTestData);
-      },
-      error => {
-        throw Error(`file not loaded ${error}`);
-      }
-    );
-    const goldObj = this.xlsxBookToObj(this.workbookTestData);
-
-    this.result = isEqual(resultObj, goldObj); // This may need to be switched to isEqualWith to add a degree of tolerance
+    const resultObj = this.calcLoop(this.testObject.input, true);
+    this.result = isEqual(resultObj, this.testObject.output); // This may need to be switched to isEqualWith to add a degree of tolerance
   }
 }
+
+customElements.define('math-test', TestMath);

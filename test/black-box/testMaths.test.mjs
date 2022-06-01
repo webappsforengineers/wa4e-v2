@@ -4,7 +4,7 @@ import { caissonConf } from '../../src/app_modules/moduleConf.mjs';
 
 import { calculateCaisson } from '../../src/local_modules/wa4e-math.js';
 
-import { testMath } from './batchTestingClass.mjs';
+import { TestMath } from './batchTestingClass.mjs';
 
 jest.useFakeTimers();
 // import { html, fixture, unsafeStatic, defineCE, expect } from '@open-wc/testing';
@@ -15,14 +15,12 @@ console.log(caissonConf);
 console.log(calculateCaisson(caissonConf.appWebComponents));
 
 test('Caisson Maths', async () => {
-  class thisTest extends testMath {
+  class thisTest extends TestMath {
     constructor() {
       super();
       this.appConf = caissonConf.appWebComponents;
       this.appName = caissonConf.appName;
       this.appCalc = calculateCaisson;
-      this.filePathInput = './data/caisson/caisson-template.csv';
-      this.filePathOutput = './data/caisson/caisson-template-gold.csv';
       this.setup();
       this.runTest();
     }

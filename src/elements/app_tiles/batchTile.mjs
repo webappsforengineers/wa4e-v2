@@ -219,43 +219,35 @@ class batchTile extends TileBase {
     }
   }
 
-  xlsxBookToObj(workbook) {
-    const input = [];
-    Object.values(workbook.Sheets).forEach(sheet => {
-      input.push(xlsxUtils.sheet_to_json(sheet, { header: 1 }));
+  runCalc() {
+    const upBookWithSub = structureUtils.xlsxBookToObj(
+      this.workbook,
+      this.appConf
+    );
+
+    const outConf = this.calcLoop(upBookWithSub);
+
+    // Overwrite the sheets in the workbook, and save to new file with-output
+    // appended at the end
+    const outBook = structureUtils.destructureComponents(outConf);
+
+    this.workbook.SheetNames.forEach((name, index) => {
+      if (index < outBook.length) {
+        const sheet = xlsxUtils.aoa_to_sheet(outBook[index]);
+        this.workbook.Sheets[name] = sheet;
+      }
     });
 
-    const fieldInput = input.filter(el => el[0][1] !== 'input-selection');
-    const radioInput = input.filter(el => el[0][1] === 'input-selection');
+    writeFile(this.workbook, `${this.appName}-output.xlsx`, {
+      bookType: 'xlsx',
+      type: 'binary',
+    });
 
-    const upBookFields = structureUtils.restructureComponents(fieldInput);
-    if (radioInput.length > 0) {
-      return structureUtils.restructureSubComponents(
-        this.appConf.appWebComponents,
-        upBookFields,
-        radioInput[0]
-      );
-    }
-    return upBookFields;
+    document.getElementById('dropbox').value = '';
+    this.fileData = null;
   }
 
-  /* eslint-disable consistent-return */
-  runCalc(test = false) {
-    const upBookWithSub = this.xlsxBookToObj(this.workbook);
-    // const input = [];
-    // Object.values(this.workbook.Sheets).forEach(sheet => {
-    //   input.push(xlsxUtils.sheet_to_json(sheet, { header: 1 }));
-    // });
-    //
-    // const fieldInput = input.filter(el => el[0][1] !== 'input-selection');
-    // const radioInput = input.filter(el => el[0][1] === 'input-selection');
-    //
-    // const upBookFields = structureUtils.restructureComponents(fieldInput);
-    // const upBookWithSub = structureUtils.restructureSubComponents(
-    //   this.appConf,
-    //   upBookFields,
-    //   radioInput[0]
-    // );
+  calcLoop(upBookWithSub, test = false) {
     const inputLength = Object.values(upBookWithSub).find(
       el => el.type === 'input-tile'
     ).valuesLength;
@@ -285,34 +277,8 @@ class batchTile extends TileBase {
         inputLength
       );
     }
-
-    // Overwrite the sheets in the workbook, and save to new file with-output
-    // appended at the end
-    // TODO: need to add the input-selection sheet thingy here
-    const outBook = structureUtils.destructureComponents(outConf);
-
-    if (!test) {
-      this.workbook.SheetNames.forEach((name, index) => {
-        if (index < outBook.length) {
-          const sheet = xlsxUtils.aoa_to_sheet(outBook[index]);
-          this.workbook.Sheets[name] = sheet;
-        }
-      });
-
-      writeFile(this.workbook, `${this.appName}-output.xlsx`, {
-        bookType: 'xlsx',
-        type: 'binary',
-      });
-    }
-
-    document.getElementById('dropbox').value = '';
-    this.fileData = null;
-
-    if (test) {
-      return outBook;
-    }
+    return outConf;
   }
-  /* eslint-enable consistent-return */
 
   launchCloneCalc(appConfClone) {
     const myEvent = new CustomEvent('cloneCalc', {
@@ -327,5 +293,5 @@ class batchTile extends TileBase {
 customElements.define('batch-tile', batchTile);
 
 // This enables the testing framework to import and use the functions defined here
-export { batchTile as batchTest };
+export { batchTile as BatchTest };
 // export class batchTest extends batchTile{}

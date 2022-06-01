@@ -1,7 +1,8 @@
 import { html } from 'lit';
-import { utils, read } from 'xlsx';
+import { read } from 'xlsx';
 import { StyledElement } from '../styles/wa4eStyleElement.mjs';
 import { structureUtils } from '../local_modules/appConfDeReStrut.mjs';
+import { TestMath } from '../../test/black-box/batchTestingClass.mjs';
 import {
   caissonConf,
   consolidatedncvConf,
@@ -16,12 +17,26 @@ import {
   ztiConf,
 } from '../app_modules/moduleConf.mjs';
 
+import {
+  calculateCaisson,
+  calculateConsolidatedNcV,
+  calculateDragAnchor,
+  calculateMCC,
+  calculateNcV,
+  calculatePinpiles,
+  calculatePipe,
+  calculateSlidingPLET,
+  calculateVH2M2T,
+  calculateVHM,
+  calculateZTI,
+} from '../local_modules/wa4e-math.js';
+
 const appConfs = {
   'Please select': null,
   Caisson: caissonConf,
   ConsolidatedNCV: consolidatedncvConf,
   DragAnchor: dragAnchorConf,
-  'MCC-Su': mccsuConf,
+  MCCSu: mccsuConf,
   NCV: ncvConf,
   Pinpiles: pinpilesConf,
   Pipe: pipeConf,
@@ -30,7 +45,27 @@ const appConfs = {
   VHM: vhmConf,
   ZTI: ztiConf,
 };
-const xlsxUtils = utils;
+const appCalcs = {
+  'Please select': null,
+  Caisson: calculateCaisson,
+  ConsolidatedNCV: calculateConsolidatedNcV,
+  DragAnchor: calculateDragAnchor,
+  MCCSu: calculateMCC,
+  NCV: calculateNcV,
+  Pinpiles: calculatePinpiles,
+  Pipe: calculatePipe,
+  SlidingPlet: calculateSlidingPLET,
+  VH2M2T: calculateVH2M2T,
+  VHM: calculateVHM,
+  ZTI: calculateZTI,
+};
+
+// Generates html option code.
+function createAppOptions() {
+  return html` ${Object.keys(appConfs).map(
+    key => html`<option value=${key}>${key}</option>`
+  )}`;
+}
 
 class TestGenerator extends StyledElement {
   constructor() {
@@ -38,7 +73,8 @@ class TestGenerator extends StyledElement {
     this.inputFileData = null;
     this.outputFileData = null;
     this.testName = null;
-    this.appOptions = this.createAppOptions();
+    this.appOptions = createAppOptions();
+    this.testObjest = null;
   }
 
   render() {
@@ -89,6 +125,25 @@ class TestGenerator extends StyledElement {
           >
             Submit files
           </button>
+          <button
+            id="test-button"
+            class="btn btn-primary"
+            disabled
+            @click=${() => this.runTest()}
+          >
+            Run Test
+          </button>
+          <button
+            id="download-button"
+            class="btn btn-primary"
+            disabled
+            @click=${() => this.downloadTest()}
+          >
+            Download Test Data
+          </button>
+        </div>
+        <div class="row">
+          <textarea id="display-area" rows="10" cols="50" disabled></textarea>
         </div>
       `,
     ];
@@ -139,6 +194,7 @@ class TestGenerator extends StyledElement {
     this.testName = testNameElement.value;
     const testAppKey = document.getElementById('app-selector').value;
     this.appConf = appConfs[testAppKey];
+    this.appCalc = appCalcs[testAppKey];
 
     if (this.testName === '' || this.testName === null) {
       // eslint-disable-next-line no-alert
@@ -152,44 +208,42 @@ class TestGenerator extends StyledElement {
   }
 
   makeJSObj() {
-    const testObject = {
-      input: this.xlsxBookToObj(this.inputFileData),
-      output: this.xlsxBookToObj(this.outputFileData),
+    this.testObject = {
+      input: structureUtils.xlsxBookToObj(this.inputFileData, this.appConf),
+      output: structureUtils.xlsxBookToObj(this.outputFileData, this.appConf),
     };
-    return testObject;
+    const displayArea = document.getElementById('display-area');
+    displayArea.value = JSON.stringify(this.testObject);
+    const button = document.getElementById('test-button');
+    button.disabled = false;
   }
 
-  xlsxBookToObj(workbook) {
-    const input = [];
-    Object.values(workbook.Sheets).forEach(sheet => {
-      input.push(xlsxUtils.sheet_to_json(sheet, { header: 1 }));
-    });
-
-    const fieldInput = input.filter(el => el[0][1] !== 'input-selection');
-    const radioInput = input.filter(el => el[0][1] === 'input-selection');
-
-    const upBookFields = structureUtils.restructureComponents(fieldInput);
-    if (radioInput.length > 0) {
-      return structureUtils.restructureSubComponents(
-        this.appConf.appWebComponents,
-        upBookFields,
-        radioInput[0]
+  runTest() {
+    const tempObj = new TestMath(this.testObject, this.appConf, this.appCalc);
+    tempObj.runTest();
+    if (tempObj.result) {
+      const button = document.getElementById('download-button');
+      button.disabled = false;
+    } else {
+      /* eslint-disable-next-line no-alert */
+      window.alert(
+        'Test Failed please check input/output files and check again'
       );
     }
-    return upBookFields;
   }
 
-  // runTest() {
-  //
-  // };
-
-  /* eslint-disable class-methods-use-this */
-  createAppOptions() {
-    return html` ${Object.keys(appConfs).map(
-      key => html`<option value=${key}>${key}</option>`
-    )}`;
+  downloadTest() {
+    const element = document.createElement('a');
+    element.setAttribute(
+      'href',
+      `data:text/plain;charset=utf-8, ${encodeURIComponent(
+        JSON.stringify(this.testObject)
+      )}`
+    );
+    element.setAttribute('download', `${this.testName}.mjs`);
+    document.body.appendChild(element);
+    element.click();
   }
-  /* eslint-enable class-methods-use-this */
 }
 
 customElements.define('test-generator', TestGenerator);

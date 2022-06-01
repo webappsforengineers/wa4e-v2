@@ -1,4 +1,5 @@
 import { cloneDeep, mergeWith, isArray } from 'lodash-es';
+import { utils as xlsxUtils } from 'xlsx';
 
 export class structureUtils {
   // Functions to destructure and restructure a single field in the appConf Objects
@@ -216,5 +217,25 @@ export class structureUtils {
     const newObj = cloneDeep(originalObj);
     mergeWith(newObj, restructuredObj, customizerFunction);
     return newObj;
+  }
+
+  static xlsxBookToObj(workbook, appConf) {
+    const input = [];
+    Object.values(workbook.Sheets).forEach(sheet => {
+      input.push(xlsxUtils.sheet_to_json(sheet, { header: 1 }));
+    });
+
+    const fieldInput = input.filter(el => el[0][1] !== 'input-selection');
+    const radioInput = input.filter(el => el[0][1] === 'input-selection');
+
+    const upBookFields = structureUtils.restructureComponents(fieldInput);
+    if (radioInput.length > 0) {
+      return structureUtils.restructureSubComponents(
+        appConf.appWebComponents,
+        upBookFields,
+        radioInput[0]
+      );
+    }
+    return upBookFields;
   }
 }
