@@ -299,4 +299,3 @@ customElements.define('batch-tile', batchTile);
 
 // This enables the testing framework to import and use the functions defined here
 export { batchTile as BatchTest };
-// export class batchTest extends batchTile{}

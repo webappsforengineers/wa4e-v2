@@ -8,3 +8,4 @@ import './app_tiles/optimizationTile.mjs';
 import './app_tiles/textTile.mjs';
 import './app_tiles/batchTile.mjs';
 import './app_tiles/inputField.mjs';
+import './app_tiles/submitButton.mjs';

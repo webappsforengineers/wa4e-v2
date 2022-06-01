@@ -11,8 +11,8 @@ export class InputField extends StyledElement {
       appConf: { type: Object },
       callback: { type: Boolean },
       key: { type: String },
-      lowerBound: {},
-      upperBound: {},
+      lowerBound: { type: Number },
+      upperBound: { type: Number },
     };
   }
 
@@ -31,7 +31,7 @@ export class InputField extends StyledElement {
 
   constructor() {
     super();
-    this.lowerBound = -Infinity;
+    this.lowerBound = -1e256;
     this.upperBound = +Infinity;
   }
 

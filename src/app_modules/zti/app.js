@@ -1,3 +1,4 @@
+import { cloneDeep } from 'lodash-es';
 import { ztiConf as appConf } from '../moduleConf.mjs';
 import {
   calculateZTI as appCalc,
@@ -12,7 +13,7 @@ export class App extends AppGeneric {
     this.appName = appConf.appName;
     this.title = appConf.appPageTitle;
     this.appWebComponents = appConf.appWebComponents;
-    this.resetApp = appConf.appWebComponents;
+    this.resetApp = cloneDeep(appConf.appWebComponents);
     this.output = {};
     this.appTiles = this.makeAppTiles();
     this.appCalc = appCalc;
