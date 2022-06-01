@@ -70,18 +70,27 @@ class formTile extends TileBase {
       ? html`
           <div class="d-grid gap-2 d-md-flex justify-content-md-around p-2">
             <!-- buttons -->
-            <button
+
+            <!-- <button old submit button
               class="btn btn-primary col-sm-12 col-md-6"
-              @click=${() => this.appUpdate()}
+              @click=\${() => this.appUpdate()}
             >
               SUBMIT
-            </button>
+            </button> -->
+
+            <submit-button
+              class="col-sm-12 col-md-6"
+              .appCalc=${this.appUpdate}
+            >
+            </submit-button>
+
             <button
               class="btn btn-outline-secondary col"
               @click=${() => this.tileReload()}
             >
               RESET
             </button>
+
             <!-- <button
               class="btn btn-outline-info col"
               @click=\${() => this.showHelp()} note remove the blackslash and delete this comment to reenable
