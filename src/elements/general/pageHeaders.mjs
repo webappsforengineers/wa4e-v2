@@ -26,7 +26,7 @@ class headerTemplate extends StyledElement {
             <a href="${this.homePage}"
               ><img
                 class="img-fluid mx-auto d-block"
-                src="/img/home.png"
+                src="wa4e-v2/img/home.png"
                 alt="Home"
             /></a>
           </div>
