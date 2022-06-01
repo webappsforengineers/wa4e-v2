@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { saveAs } from 'file-saver-es';
 import { utils, writeFile, read, write } from 'xlsx';
 import { cloneDeep } from 'lodash-es';
@@ -30,7 +31,7 @@ class batchTile extends TileBase {
     return [
       super.render(),
       html`
-        <h2>${html([this.localAppConf.title])}</h2>
+        <h2>${unsafeHTML(this.localAppConf.title)}</h2>
         <h4>1. Get the template</h4>
         <button
           class="btn btn-outline-secondary"

@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { TileBase } from './tileBase.mjs';
 
 class radioTile extends TileBase {
@@ -8,7 +9,7 @@ class radioTile extends TileBase {
     return [
       super.render(),
       html`
-        <h2>${html([this.appConf.title])}</h2>
+        <h2>${unsafeHTML(this.appConf.title)}</h2>
         ${this.checks}
       `,
     ];
@@ -54,7 +55,7 @@ class radioTile extends TileBase {
               }}
             />`}
         <label class="form-check-label" for="${key}">
-          ${html([this.checkOptions[key].label])}
+          ${unsafeHTML(this.checkOptions[key].label)}
         </label>
       </div>`
     )}`;

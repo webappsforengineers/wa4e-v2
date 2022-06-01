@@ -1,15 +1,9 @@
 {
   "main": "./src/wa4e-v2.js",
   "module": "./src/wa4e-v2.js",
-  "engines": {
-    "node": "^18.2.0"
-  },
-  "resolutions": {
-    "source-map": "^0.8.0-beta.0"
-  },
   "devDependencies": {
     "@eslint/eslintrc": "^0.4.2",
-    "@open-wc/building-rollup": "^2.0.1",
+    "@open-wc/building-rollup": "=1.10.0",
     "@open-wc/dev-server-hmr": "^0.1.2-next.0",
     "@open-wc/eslint-config": "^7.0.0",
     "@open-wc/testing": "^3.0.1",

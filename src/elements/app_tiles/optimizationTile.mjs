@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { TileBase } from './tileBase.mjs';
 
 class optimizationTile extends TileBase {
@@ -10,7 +11,7 @@ class optimizationTile extends TileBase {
     return [
       super.render(),
       html`
-        <h2>${html([this.appConf.title])}</h2>
+        <h2>${unsafeHTML(this.appConf.title)}</h2>
         <p>${this.outputFields}</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-around p-2">
           <!-- buttons -->
@@ -72,7 +73,7 @@ class optimizationTile extends TileBase {
             this.makeSubComponent(subIndex)
           )}`}
         </div>
-        <h3>${html([keyOuter])}</h3>
+        <h3>${unsafeHTML(keyOuter)}</h3>
         <div>
           ${html`${afterTitle.map(subIndex =>
             this.makeSubComponent(subIndex)

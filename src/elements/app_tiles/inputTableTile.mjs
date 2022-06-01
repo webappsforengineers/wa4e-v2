@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { TileBase } from './tileBase.mjs';
 
 class inputTableTile extends TileBase {
@@ -42,7 +43,7 @@ class inputTableTile extends TileBase {
     if (typeof rowValues.header === 'undefined') {
       rowInner = html` ${rowValues.label !== null
         ? html`<label class="input-group-text col-3"
-            >${html([rowValues.label])}</label
+            >${unsafeHTML(rowValues.label)}</label
           >`
         : html``}
       ${rowValues.values.map(
@@ -54,11 +55,11 @@ class inputTableTile extends TileBase {
                   .value="${this.parseNum(value[0])}"
                 />
                 <label class="input-group-text col-1"
-                  >${html([value[1]])}</label
+                  >${unsafeHTML(value[1])}</label
                 >`
             : value.length === 4
             ? html` <label class="input-group-text col-1"
-                  >${html([value[2]])}</label
+                  >${unsafeHTML(value[2])}</label
                 >
                 <input
                   class="form-control bg-light col-1"
@@ -66,7 +67,7 @@ class inputTableTile extends TileBase {
                   .value="${this.parseNum(value[0])}"
                 />
                 <label class="input-group-text col-1"
-                  >${html([value[1]])}</label
+                  >${unsafeHTML(value[1])}</label
                 >`
             : html`<p>input group of unsupported length ${value.length}</p>`}`
       )}`;

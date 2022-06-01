@@ -1,4 +1,6 @@
 import { html } from 'lit';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+
 import { StyledElement } from '../../styles/wa4eStyleElement.mjs';
 
 class menuTile extends StyledElement {
@@ -37,7 +39,7 @@ class menuTile extends StyledElement {
             alt="${this.appConf.appName} icon"
           />
           <div class="card-body">
-            <h6 class="card-title">${html([this.appConf.appTitle])}</h6>
+            <h6 class="card-title">${unsafeHTML(this.appConf.appTitle)}</h6>
             <p class="card-text">${this.appConf.appDescription}</p>
             <a href=${this.appPage} class="stretched-link"></a>
           </div>

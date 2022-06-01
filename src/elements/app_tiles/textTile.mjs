@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { TileBase } from './tileBase.mjs';
 
 class textTile extends TileBase {
@@ -12,7 +13,7 @@ class textTile extends TileBase {
         <!-- This 'div' defines the tile as a grid item and the style options
       defines the corners of the tile on the grid. -->
         <div>
-          <h2>${html([this.appConf.title])}</h2>
+          <h2>${unsafeHTML(this.appConf.title)}</h2>
           <!-- Here are the forms attributes -->
           <p>${this.tileContent}</p>
         </div>
@@ -43,7 +44,7 @@ class textTile extends TileBase {
           )}`}
         </div>
         <p class="${this.text[keyOuter].format}">
-          ${html([this.text[keyOuter].text])}
+          ${unsafeHTML(this.text[keyOuter].text)}
         </p>
         <div>
           ${html`${afterTitle.map(subIndex =>

@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { StyledElement } from '../../styles/wa4eStyleElement.mjs';
 
 export class InputField extends StyledElement {
@@ -44,14 +45,14 @@ export class InputField extends StyledElement {
         class="input-group-text text-wrap text-break font-size-sm"
         for="${this.key}"
         style="width: 30%; text-align: left;"
-        >${html([this.appConf.label])}</label
+        >${unsafeHTML(this.appConf.label)}</label
       >
       ${this.getInputTag()}
       <label
         class="input-group-text text-wrap text-break"
         for="${this.key}"
         style="min-width: 20%; text-align: left;"
-        >${html([this.appConf.unit])}</label
+        >${unsafeHTML(this.appConf.unit)}</label
       >
     </div> `;
   }

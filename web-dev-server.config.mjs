@@ -1,10 +1,7 @@
 // import { hmrPlugin, presets } from '@open-wc/dev-server-hmr';
 // import { LitElement } from 'lit';
-import { rollupAdapter, fromRollup } from '@web/dev-server-rollup';
-import commonjs from '@rollup/plugin-commonjs';
-import rollupReplace from '@rollup/plugin-replace';
-
-const replace = fromRollup(rollupReplace);
+// import { fromRollup } from '@web/dev-server-rollup';
+// import rollupReplace from '@rollup/plugin-replace';
 
 /** Use Hot Module replacement by adding --hmr to the start command */
 const hmr = process.argv.includes('--hmr');
@@ -27,8 +24,8 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
   },
 
   plugins: [
-    /** rollup plugins **/
-    //replace({ include: ['src/**/*.js'], __environment__: '"development"', preventAssignment: true }),
+    /** rollup plugins * */
+    // replace({ include: ['src/**/*.js'], __environment__: '"development"', preventAssignment: true }),
     // rollupAdapter(commonjs())
     /** Use Hot Module Replacement by uncommenting. Requires @open-wc/dev-server-hmr plugin */
     // hmr && hmrPlugin({ exclude: ['**/*/node_modules/**/*'], presets: [presets.litElement] }),

@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { StyledElement } from '../../styles/wa4eStyleElement.mjs';
 
 class headerTemplate extends StyledElement {
@@ -31,7 +32,7 @@ class headerTemplate extends StyledElement {
           </div>
           <div class="col-6">
             <p class="h3 text-center text-wrap text-white">
-              ${html([this.pageTitle])}
+              ${unsafeHTML(this.pageTitle)}
             </p>
           </div>
           <div class="col">
