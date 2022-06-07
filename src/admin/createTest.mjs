@@ -219,7 +219,9 @@ class TestGenerator extends StyledElement {
   }
 
   runTest() {
-    const tempObj = new TestMath(this.testObject, this.appConf, this.appCalc);
+    const tempObj = new TestMath();
+    tempObj.renderReplaceArgs(this.testObject, this.appConf, this.appCalc);
+    tempObj.setup();
     tempObj.runTest();
     if (tempObj.result) {
       const button = document.getElementById('download-button');

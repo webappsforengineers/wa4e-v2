@@ -19,14 +19,22 @@ export class TestMath extends BatchTest {
     return Object.assign(newProperties, super.properties);
   }
 
-  constructor(testObj, appConf, appCalc) {
+  constructor() {
     super();
+    this.result = null;
+  }
+
+  render() {
+    const returnThis = super.render();
+    this.runTest();
+    return returnThis;
+  }
+
+  renderReplaceArgs(testObj, appConf, appCalc) {
     this.testObject = testObj;
     this.appConf = appConf.appWebComponents;
     this.appName = appConf.appName;
     this.appCalc = appCalc;
-    this.result = null;
-    this.setup();
   }
 
   setup() {

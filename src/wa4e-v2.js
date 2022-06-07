@@ -53,9 +53,9 @@ export class Wa4eV2 extends StyledElement {
           </div>
           <div class="row">
             <div class="col-12">
-              <h1 align="center">
+              <h3 align="center">
                 Freeware web-based calculation tools for geotechnical engineers
-              </h1>
+              </h3>
             </div>
             <div class="col-12">
               <p align="justify">

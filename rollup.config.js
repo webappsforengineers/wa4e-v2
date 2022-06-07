@@ -4,8 +4,9 @@ import merge from 'deepmerge';
 // use createBasicConfig to do regular JS to JS bundling
 import { createBasicConfig } from '@open-wc/building-rollup';
 
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+// import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
 import html from '@web/rollup-plugin-html';
 import copy from 'rollup-plugin-copy';
 
@@ -49,7 +50,7 @@ export default merge(baseConfig, {
     copy({
       targets: [{ src: './src/img/*', dest: './dist/img/' }],
     }),
+    nodeResolve(),
     commonjs(),
-    resolve(),
   ],
 });

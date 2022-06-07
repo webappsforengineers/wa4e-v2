@@ -14,17 +14,11 @@ import { caissonConf } from '../../src/app_modules/moduleConf.mjs';
 describe('Caisson Test', () => {
   it('math', async () => {
     // Caisson Test
-    const caissonTest = defineCE(
-      class extends TestMath {
-        constructor() {
-          super();
-          this.runTest();
-        }
-      }
-    );
+
+    const caissonTest = defineCE(class extends TestMath {});
     const caissonTag = unsafeStatic(caissonTest);
     const el = await fixture(
-      html`<${caissonTag} .testObject=${testConf} .appConf=${caissonConf} appCalc=${calculateCaisson}></${caissonTag}>`
+      html`<${caissonTag} .testObject=${testConf} .appConf=${caissonConf} .appCalc=${calculateCaisson}></${caissonTag}>`
     );
     expect(el.result).to.equal(true);
   });
