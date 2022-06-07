@@ -45,9 +45,8 @@ export class Wa4eV2 extends StyledElement {
             <div class="col-12">
               <h4 style="color: red" align="justify">
                 WebAppsForEngineers V2 is in beta, the app has been
-                reimplemented to modernise the app framework. The new batch
-                tiles are due to be tested. For general use we suggest using the
-                original site found
+                reimplemented to modernise the app framework. For general use we
+                suggest using the original site found
                 <a href="https://webappsforengineers.com/index.html">here</a>.
               </h4>
             </div>
