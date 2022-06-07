@@ -18,7 +18,7 @@ describe('Caisson Test', () => {
     const caissonTest = defineCE(class extends TestMath {});
     const caissonTag = unsafeStatic(caissonTest);
     const el = await fixture(
-      html`<${caissonTag} .testObject=${testConf} .appConf=${caissonConf} .appCalc=${calculateCaisson}></${caissonTag}>`
+      html`<${caissonTag} .testObject=${testConf} .appConf=${caissonConf.appWebComponents} .appCalc=${calculateCaisson}></${caissonTag}>`
     );
     expect(el.result).to.equal(true);
   });

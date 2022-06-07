@@ -6,7 +6,7 @@ The GitHub Project Board for this work can be found [here]( https://github.com/w
 ### Project Goals:
 Following the work from phase one which was broadly about modernization and standardisation phase two had the following
 goals:
-1. Review the codebase to find the most effective development pathway to increasing 
+1. Review the codebase to find the most effective development pathway to increasing the TRL.
 2. Add input validation to the website to prevent users from submitting erroneous values.
 3. Add a batch testing framework to ensure consistent results during subsequent updates.
 4. Develop a process of automation to run the testing.
@@ -67,7 +67,7 @@ internally but in phase 3 with the implementation of a backend will allow users 
 automated tests.
 
 ### General improvements
-Along with addressing style concerns this block of work sees many of the dependencies and build path versions increased 
-this is essential maintenance of the site. We also add a git actions to publish the site via GitHub and which will 
-eventually define the integration testing using the batch testing framework and unit tests that are to be developed in 
-the future.
+As essential maintenance we address style concerns and make general UI improvements, as well as incrementing the 
+versions of the site and build path dependencies. We also add a Git Actions script which automates the publication of 
+the site via GitHub. This automation will eventually include the integration testing using the batch testing framework 
+described above and the unit tests that are to be developed in the future.
