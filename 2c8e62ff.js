@@ -1,18 +1,17 @@
-import { S as e, p as t } from './f2f554f7.js';
-import { a as i } from './788f6945.js';
-import { a as o } from './d5a7df46.js';
+import { S as e, $ as t } from './bdb6f31b.js';
+import './8a146ad7.js';
+import { a as i } from './27875585.js';
+import { a as o } from './04d01c1d.js';
 import { a as s } from './25798956.js';
 import { a as l } from './deccfd8f.js';
 import { a } from './d1437ee2.js';
 import { a as n } from './a2e1c17f.js';
-import { a as c } from './f83a76b9.js';
-import { a as r } from './1b6f6b88.js';
-import { a as m } from './80cf3527.js';
-import { a as d } from './48f7c2c3.js';
-import { a as p } from './c39b9db8.js';
-let f,
-  u = e => e;
-class g extends e {
+import { a as r } from './ff59e775.js';
+import { a as c } from './4fffd734.js';
+import { a as m } from './65f25f2f.js';
+import { a as d } from './f1b15415.js';
+import { a as p } from './65db936e.js';
+class f extends e {
   static get properties() {
     return { title: { type: String } };
   }
@@ -22,11 +21,9 @@ class g extends e {
   render() {
     return [
       super.render(),
-      t(
-        f ||
-          (f = u`
+      t`
         <div class="row">
-          <header-element page-title="${0}"></header-element>
+          <header-element page-title="${this.title}"></header-element>
         </div>
         <div
           class="container align-items-center justify-content-center"
@@ -36,18 +33,17 @@ class g extends e {
             <div class="col-12">
               <h4 style="color: red" align="justify">
                 WebAppsForEngineers V2 is in beta, the app has been
-                reimplemented to modernise the app framework. The new batch
-                tiles are due to be tested. For general use we suggest using the
-                original site found
+                reimplemented to modernise the app framework. For general use we
+                suggest using the original site found
                 <a href="https://webappsforengineers.com/index.html">here</a>.
               </h4>
             </div>
           </div>
           <div class="row">
             <div class="col-12">
-              <h1 align="center">
+              <h3 align="center">
                 Freeware web-based calculation tools for geotechnical engineers
-              </h1>
+              </h3>
             </div>
             <div class="col-12">
               <p align="justify">
@@ -74,42 +70,42 @@ class g extends e {
 
           <div class="row" data-masonry='{"percentPosition": true }'>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${0}"></menu-tile>
+              <menu-tile .appConf="${a}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${0}"></menu-tile>
+              <menu-tile .appConf="${d}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${0}"></menu-tile>
+              <menu-tile .appConf="${o}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${0}"></menu-tile>
+              <menu-tile .appConf="${n}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${0}"></menu-tile>
+              <menu-tile .appConf="${p}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${0}"></menu-tile>
+              <menu-tile .appConf="${m}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${0}"></menu-tile>
+              <menu-tile .appConf="${c}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${0}"></menu-tile>
+              <menu-tile .appConf="${l}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${0}"></menu-tile>
+              <menu-tile .appConf="${i}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${0}"></menu-tile>
+              <menu-tile .appConf="${s}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${0}"></menu-tile>
+              <menu-tile .appConf="${r}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <div
                 class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
-                style="background-color: #f492e3; aspect-ratio: 0.61;"
+                style="background-color: #f492e3; aspect-ratio: 0.8;"
               >
                 <img
                   class="card-img-top img-fluid"
@@ -133,22 +129,9 @@ class g extends e {
             <footer-element></footer-element>
           </div>
         </div>
-      `),
-        this.title,
-        a,
-        d,
-        o,
-        n,
-        p,
-        m,
-        r,
-        l,
-        i,
-        s,
-        c
-      ),
+      `,
     ];
   }
 }
-customElements.define('wa4e-v2', g);
-export { g as Wa4eV2 };
+customElements.define('wa4e-v2', f);
+export { f as Wa4eV2 };
