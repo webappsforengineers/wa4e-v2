@@ -230,7 +230,7 @@ export class structureUtils {
     const upBookFields = structureUtils.restructureComponents(fieldInput);
     if (radioInput.length > 0) {
       return structureUtils.restructureSubComponents(
-        appConf.appWebComponents,
+        appConf,
         upBookFields,
         radioInput[0]
       );
