@@ -23,6 +23,11 @@ export class AppGeneric extends StyledElement {
     };
   }
 
+  async getUpdateComplete() {
+    await super.getUpdateComplete();
+    await this.reloadMasonry();
+  }
+
   render() {
     return [
       super.render(),
@@ -63,6 +68,7 @@ export class AppGeneric extends StyledElement {
   updateComponents() {
     this.output = this.appCalc(this.appWebComponents);
     this.childUpdate();
+    this.getUpdateComplete().then();
   }
 
   runCloneCalc(appWebCompClone) {
@@ -73,6 +79,7 @@ export class AppGeneric extends StyledElement {
     this.appWebComponents = cloneDeep(this.resetApp);
     this.appTiles = this.makeAppTiles();
     this.childUpdate();
+    this.getUpdateComplete().then();
   }
 
   // This is called to launch a reload event in any sub-tiles
@@ -98,11 +105,13 @@ export class AppGeneric extends StyledElement {
 
     // rerender all the app tiles to get new values
     this.childUpdate();
+    this.getUpdateComplete().then();
   }
 
   optimize() {
     this.output = this.appOptimize(this.appWebComponents);
     this.childUpdate();
+    this.getUpdateComplete().then();
   }
 
   makeAppTiles() {
