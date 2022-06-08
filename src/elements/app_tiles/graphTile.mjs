@@ -70,10 +70,11 @@ class graphTile extends TileBase {
         )
       );
     }
-    Plotly.react(
+    Plotly.newPlot(
       document.getElementById(this.plotKey),
       this.appConf.plots[this.plotKey].data,
-      this.appConf.plots[this.plotKey].layout
+      this.appConf.plots[this.plotKey].layout,
+      { showLink: true, linkText: 'Play with this data' }
     );
   }
 }

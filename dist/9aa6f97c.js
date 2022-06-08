@@ -56,7 +56,7 @@ customElements.define(
         super.render(),
         e`
         <hr class="width-constrained" id="footer-hr" />
-        <div class="container">
+        <div class="container-fluid">
           <footer class="footer footer-text">
             <span>
               ${this.footerText}
@@ -279,10 +279,11 @@ customElements.define(
                   t => this.appConf.fields[t[1]]
                 )
               ))),
-        n.react(
+        n.newPlot(
           document.getElementById(this.plotKey),
           this.appConf.plots[this.plotKey].data,
-          this.appConf.plots[this.plotKey].layout
+          this.appConf.plots[this.plotKey].layout,
+          { showLink: !0, linkText: 'Play with this data' }
         );
     }
   }

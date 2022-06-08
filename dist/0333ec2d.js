@@ -1,10 +1,10 @@
 import { S as e, $ as t } from './af8340a6.js';
-import './fbb5502c.js';
+import './9aa6f97c.js';
 import { a as i } from './d9792d65.js';
 import { a as o } from './501d08e2.js';
 import { a as s } from './25798956.js';
-import { a as l } from './deccfd8f.js';
-import { a } from './cda930ed.js';
+import { a } from './deccfd8f.js';
+import { a as l } from './cda930ed.js';
 import { a as n } from './a2e1c17f.js';
 import { a as c } from './ff59e775.js';
 import { a as r } from './d686395d.js';
@@ -70,7 +70,7 @@ class f extends e {
 
           <div class="row" data-masonry='{"percentPosition": true }'>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${a}"></menu-tile>
+              <menu-tile .appConf="${l}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${d}"></menu-tile>
@@ -91,7 +91,7 @@ class f extends e {
               <menu-tile .appConf="${r}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${l}"></menu-tile>
+              <menu-tile .appConf="${a}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${i}"></menu-tile>
