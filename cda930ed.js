@@ -1,6 +1,6 @@
 const l = {
   appName: 'ncv',
-  appTitle: 'Shallow Foundation NcV',
+  appTitle: 'N<sub>cV</sub> for Shallow Foundation',
   appPageTitle: 'N<sub>cV</sub> for Shallow Foundation',
   appDescription:
     'Undrained vertical bearing capacity of strip and circular skirted foundations',

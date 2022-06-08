@@ -1,7 +1,7 @@
 const l = {
   appName: 'zti',
   appTitle: 'Mudmat UTI & ZTI VH<sub>2</sub>M<sub>2</sub>T',
-  appPageTitle: '6 DoF Undrained Mudmat UTI & ZTI',
+  appPageTitle: 'Mudmat UTI & ZTI VH<sub>2</sub>M<sub>2</sub>T',
   appColour: '#ed5151',
   appDescription:
     'Undrained 6 DoF capacity of rectangular mudmat with unlimited and zero tension interface',
@@ -614,12 +614,12 @@ const l = {
       },
       plots: {
         momentLoad: {
-          dataFun: (l, e, u, a, i, b, t, s) => [
+          dataFun: (l, e, u, a, b, i, s, t) => [
             { x: l, y: e, name: `UTI: &lambda;<sub>s</sub> = ${u}` },
-            { x: a, y: i, name: `UTI: &lambda;<sub>s</sub> = ${b}` },
+            { x: a, y: b, name: `UTI: &lambda;<sub>s</sub> = ${i}` },
             {
-              x: t,
-              y: s,
+              x: s,
+              y: t,
               name: 'Design',
               type: 'scatter',
               marker: { symbol: 'diamond', size: 12, color: '#01579b' },
