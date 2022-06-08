@@ -3,7 +3,7 @@ import { changeObj } from './onChange.mjs';
 export const appConf = {
   appName: 'zti',
   appTitle: 'Mudmat UTI & ZTI VH<sub>2</sub>M<sub>2</sub>T',
-  appPageTitle: '6 DoF Undrained Mudmat UTI & ZTI',
+  appPageTitle: 'Mudmat UTI & ZTI VH<sub>2</sub>M<sub>2</sub>T',
   appColour: '#ed5151',
   appDescription:
     'Undrained 6 DoF capacity of rectangular mudmat with unlimited and zero tension interface',

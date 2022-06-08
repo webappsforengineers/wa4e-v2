@@ -6,7 +6,7 @@ class headerTemplate extends StyledElement {
   constructor() {
     super();
     this.homePage = '/wa4e-v2/index';
-    this.homeImg = '/src/img/home.png';
+    this.homeImg = '/wa4e-v2/img/home.png';
   }
 
   static get properties() {

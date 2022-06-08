@@ -3,7 +3,7 @@ import { changeObj } from './onChange.mjs';
 export const appConf = {
   appName: 'vhm',
   appTitle: 'Shallow Foundation VHM',
-  appPageTitle: 'Undrained VHM Capacity',
+  appPageTitle: 'Shallow Foundation VHM',
   appDescription:
     'Undrained combined load capacity of circular skirted foundations',
   appColour: '#75dff4',

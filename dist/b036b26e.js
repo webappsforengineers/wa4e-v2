@@ -1,16 +1,16 @@
 import { S as e, $ as t } from './af8340a6.js';
-import './31d945dd.js';
-import { a as i } from './27875585.js';
+import './fbb5502c.js';
+import { a as i } from './d9792d65.js';
 import { a as o } from './501d08e2.js';
 import { a as s } from './25798956.js';
 import { a as l } from './deccfd8f.js';
-import { a } from './d1437ee2.js';
+import { a } from './cda930ed.js';
 import { a as n } from './a2e1c17f.js';
-import { a as r } from './ff59e775.js';
-import { a as c } from './d686395d.js';
-import { a as m } from './de1f37d7.js';
-import { a as d } from './f1b15415.js';
-import { a as p } from './ae23bcf5.js';
+import { a as c } from './ff59e775.js';
+import { a as r } from './d686395d.js';
+import { a as m } from './8ec75670.js';
+import { a as d } from './2ac8d4a5.js';
+import { a as p } from './caecdf6c.js';
 class f extends e {
   static get properties() {
     return { title: { type: String } };
@@ -88,7 +88,7 @@ class f extends e {
               <menu-tile .appConf="${m}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${c}"></menu-tile>
+              <menu-tile .appConf="${r}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${l}"></menu-tile>
@@ -100,7 +100,7 @@ class f extends e {
               <menu-tile .appConf="${s}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${r}"></menu-tile>
+              <menu-tile .appConf="${c}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <div

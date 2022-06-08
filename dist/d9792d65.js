@@ -1,8 +1,8 @@
 const e = {
   appName: 'caisson',
   appTitle: 'Suction Caisson',
-  appPageTitle: 'Suction Caisson Installation and Uplift Capacity',
   appDescription: 'Installation and uplift capacity',
+  appPageTitle: 'Suction Caisson Installation and Uplift Capacity',
   appColour: '#f4e786',
   appWebComponents: {
     0: {
