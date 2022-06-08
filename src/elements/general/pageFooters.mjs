@@ -23,7 +23,7 @@ class footerTemplate extends StyledElement {
       super.render(),
       html`
         <hr class="width-constrained" id="footer-hr" />
-        <div class="container">
+        <div class="container-fluid">
           <footer class="footer footer-text">
             <span>
               ${this.footerText}
