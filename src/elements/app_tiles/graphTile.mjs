@@ -74,7 +74,11 @@ class graphTile extends TileBase {
       document.getElementById(this.plotKey),
       this.appConf.plots[this.plotKey].data,
       this.appConf.plots[this.plotKey].layout,
-      { showLink: true, linkText: 'Play with this data' }
+      {
+        showLink: true,
+        plotlyServerURL: 'https://chart-studio.plotly.com',
+        linkText: 'Play with this data',
+      }
     );
   }
 }
