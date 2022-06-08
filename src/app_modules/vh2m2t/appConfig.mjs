@@ -1,7 +1,7 @@
 /* eslint-disable no-sparse-arrays */
 export const appConf = {
   appName: 'vh2m2t',
-  appTitle: 'Mudmat UU & CU VH2M2T',
+  appTitle: 'Mudmat UU & CU VH<sub>2</sub>M<sub>2</sub>T',
   appPageTitle:
     'Mudmat undrained and consolidated undrained multidirectional capacity',
   appDescription:

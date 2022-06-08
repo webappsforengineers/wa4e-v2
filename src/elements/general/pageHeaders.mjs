@@ -6,6 +6,7 @@ class headerTemplate extends StyledElement {
   constructor() {
     super();
     this.homePage = '/wa4e-v2/index';
+    this.homeImg = '/src/img/home.png';
   }
 
   static get properties() {
@@ -14,6 +15,7 @@ class headerTemplate extends StyledElement {
       // configure the tile the `.` tells the webcomponents not to serialise or
       // stringify the object
       pageTitle: { type: String },
+      homeImg: { type: String },
     };
   }
 
@@ -26,7 +28,7 @@ class headerTemplate extends StyledElement {
             <a href="${this.homePage}"
               ><img
                 class="img-fluid mx-auto d-block"
-                src="wa4e-v2/img/home.png"
+                src=${this.homeImg}
                 alt="Home"
             /></a>
           </div>

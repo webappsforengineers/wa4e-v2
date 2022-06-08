@@ -1,10 +1,11 @@
 /* eslint-disable no-sparse-arrays */
 export const appConf = {
   appName: 'sliding-plet',
-  appTitle: 'Sliding PLET',
-  appPageTitle: 'Sliding PLET',
+  appTitle: 'Sliding Mudmat',
+  appPageTitle: 'Sliding Mudmat',
   appColour: '#FF27DF',
-  appDescription: 'Script to calculate sliding PLET settlement',
+  appDescription:
+    'Evolution of sliding resistance and settlement from episodes of sliding and consolidation',
   appWebComponents: {
     0: {
       type: 'text-tile',
