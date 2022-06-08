@@ -7,8 +7,8 @@ import {
   S as o,
   D as l,
   A as p,
-} from './0742f914.js';
-import './3f9f20b4.js';
+} from './af8340a6.js';
+import './fd185415.js';
 var n = e(function (e, s, a) {
   t(e, s, a);
 });
@@ -224,6 +224,9 @@ class c extends o {
       masonryLayout: { type: Object },
     };
   }
+  async getUpdateComplete() {
+    await super.getUpdateComplete(), await this.reloadMasonry();
+  }
   render() {
     return [
       super.render(),
@@ -258,7 +261,9 @@ class c extends o {
     await this.getMasonryLayout(), this.masonryLayout.reloadItems();
   }
   updateComponents() {
-    (this.output = this.appCalc(this.appWebComponents)), this.childUpdate();
+    (this.output = this.appCalc(this.appWebComponents)),
+      this.childUpdate(),
+      this.getUpdateComplete().then();
   }
   runCloneCalc(e) {
     this.appCalc(e.appConfClone);
@@ -266,7 +271,8 @@ class c extends o {
   resetComponents() {
     (this.appWebComponents = p(this.resetApp)),
       (this.appTiles = this.makeAppTiles()),
-      this.childUpdate();
+      this.childUpdate(),
+      this.getUpdateComplete().then();
   }
   childUpdate() {
     const e = new CustomEvent('update-children', { bubbles: !0, composed: !0 });
@@ -280,10 +286,13 @@ class c extends o {
     -1 !== t &&
       ((this.appWebComponents[t].updateConf.noNewData = !0),
       (this.appWebComponents[t].updateConf.clearData = !0)),
-      this.childUpdate();
+      this.childUpdate(),
+      this.getUpdateComplete().then();
   }
   optimize() {
-    (this.output = this.appOptimize(this.appWebComponents)), this.childUpdate();
+    (this.output = this.appOptimize(this.appWebComponents)),
+      this.childUpdate(),
+      this.getUpdateComplete().then();
   }
   makeAppTiles() {
     const e = Object.entries(this.appWebComponents).flatMap(([e, t]) => {

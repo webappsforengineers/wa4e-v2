@@ -1,4 +1,4 @@
-import { S as t, $ as e, o as s, T as i, p as n } from './0742f914.js';
+import { S as t, $ as e, o as s, T as i, p as n } from './af8340a6.js';
 customElements.define(
   'menu-tile',
   class extends t {

@@ -1,8 +1,8 @@
-import { a as p } from './deccfd8f.js';
-import { A as s, q as e } from './0742f914.js';
-import { A as t } from './8e0b46b3.js';
-import './3f9f20b4.js';
-class a extends t {
+import { a as p } from './27875585.js';
+import { A as s, l as t } from './af8340a6.js';
+import { A as e } from './c6315005.js';
+import './fd185415.js';
+class a extends e {
   constructor() {
     super(),
       (this.appName = p.appName),
@@ -11,7 +11,7 @@ class a extends t {
       (this.resetApp = s(p.appWebComponents)),
       (this.output = {}),
       (this.appTiles = this.makeAppTiles()),
-      (this.appCalc = e);
+      (this.appCalc = t);
   }
 }
 customElements.define(`${p.appName}-app`, a);
