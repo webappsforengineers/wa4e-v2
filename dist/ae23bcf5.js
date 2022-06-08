@@ -1,6 +1,6 @@
 const l = {
   appName: 'zti',
-  appTitle: 'Mudmat UTI & ZTI VH2M2T',
+  appTitle: 'Mudmat UTI & ZTI VH<sub>2</sub>M<sub>2</sub>T',
   appPageTitle: '6 DoF Undrained Mudmat UTI & ZTI',
   appColour: '#ed5151',
   appDescription:

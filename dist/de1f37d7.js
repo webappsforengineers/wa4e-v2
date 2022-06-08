@@ -1,6 +1,6 @@
 const l = {
   appName: 'vh2m2t',
-  appTitle: 'Mudmat UU & CU VH2M2T',
+  appTitle: 'Mudmat UU & CU VH<sub>2</sub>M<sub>2</sub>T',
   appPageTitle:
     'Mudmat undrained and consolidated undrained multidirectional capacity',
   appDescription:
@@ -736,14 +736,14 @@ const l = {
       },
       plots: {
         plotSuKpc: {
-          dataFun: (l, u, e, b, i, a) => [
+          dataFun: (l, u, e, b, i, s) => [
             { x: l, y: u },
             { x: e, y: b },
             {
               x: i,
-              y: a,
+              y: s,
               name: `Load Point: ${Number(i).toFixed(1)} kN, ${Number(
-                a
+                s
               ).toFixed(1)} kNm`,
               type: 'scatter',
               marker: { symbol: 'diamond', size: 12, color: '#01579b' },

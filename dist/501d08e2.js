@@ -1,7 +1,7 @@
 const l = {
   appName: 'consolidated-ncv',
-  appTitle: 'Consolidated NcV',
-  appPageTitle: 'Shallow Foundation Consolidated NcV',
+  appTitle: 'Shallow foundation Consolidated NcV',
+  appPageTitle: 'Shallow foundation Consolidated NcV',
   appDescription: 'Consolidated undrained vertical bearing capacity',
   appColour: '#9a76c1',
   appWebComponents: {

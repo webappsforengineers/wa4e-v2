@@ -73,10 +73,12 @@ customElements.define(
   'header-element',
   class extends t {
     constructor() {
-      super(), (this.homePage = '/wa4e-v2/index');
+      super(),
+        (this.homePage = '/wa4e-v2/index'),
+        (this.homeImg = '/src/img/home.png');
     }
     static get properties() {
-      return { pageTitle: { type: String } };
+      return { pageTitle: { type: String }, homeImg: { type: String } };
     }
     render() {
       return [
@@ -87,7 +89,7 @@ customElements.define(
             <a href="${this.homePage}"
               ><img
                 class="img-fluid mx-auto d-block"
-                src="wa4e-v2/img/home.png"
+                src=${this.homeImg}
                 alt="Home"
             /></a>
           </div>
