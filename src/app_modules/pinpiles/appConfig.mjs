@@ -26,6 +26,132 @@ export const appConf = {
       type: 'input-tile',
       title: 'Input',
       fields: {
+        'Mudmat Geometry': {
+          B: {
+            label: 'B',
+            unit: 'm',
+            value: 7.5,
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+          BoverL: {
+            label: 'B/L',
+            unit: null,
+            value: 0.5,
+            visible: '',
+            lb: '0.33',
+            ub: '1',
+          },
+          doverB: {
+            label: 'd<sub>skirt</sub>/B (0-0.3)',
+            unit: null,
+            value: 0.081,
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+        },
+        'Skirt-soil Interaction': {
+          alpha_skirt: {
+            label: '&alpha;<sub>skirt</sub>',
+            unit: null,
+            value: 1,
+            visible: '',
+            lb: '0',
+            ub: '1',
+          },
+        },
+        'Pile Group Geometry': {
+          D_pile: {
+            label: 'D<sub>pile</sub>',
+            unit: 'm',
+            value: 0.9,
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+          W_pile: {
+            label: 'W<sub>pile</sub>',
+            unit: 'kN',
+            value: 40,
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+          B_piles: {
+            label: 'B<sub>piles</sub>',
+            unit: 'm',
+            value: 6,
+            visible: '',
+            lb: '0',
+            ub() {
+              return (
+                appConf.appWebComponents[1].fields['Mudmat Geometry'].B.value -
+                appConf.appWebComponents[1].fields['Pile Group Geometry'].D_pile
+                  .value
+              );
+            },
+          },
+          L_piles: {
+            label: 'L<sub>piles</sub>',
+            unit: null,
+            value: 13,
+            visible: '',
+            lb: '0',
+            ub() {
+              return (
+                2 *
+                  appConf.appWebComponents[1].fields['Mudmat Geometry'].B
+                    .value -
+                appConf.appWebComponents[1].fields['Pile Group Geometry'].D_pile
+                  .value
+              );
+            },
+          },
+          L_embed: {
+            label: 'L<sub>embed</sub>',
+            unit: 'm',
+            value: 9,
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+          d_shadow_over_d: {
+            label: 'd<sub>shadow</sub>/d<sub>skirt</sub>',
+            unit: null,
+            value: 1,
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+        },
+        'Pile-soil Interaction': {
+          alpha_piles: {
+            label: '&alpha;<sub>piles</sub>',
+            unit: null,
+            value: 1,
+            visible: '',
+            lb: '0',
+            ub: '1',
+          },
+          Nc_piles: {
+            label: 'N<sub>c,piles</sub>',
+            unit: null,
+            value: 9,
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+          f_end_t: {
+            label: 'f<sub>end,t</sub>',
+            unit: null,
+            value: 0,
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+        },
         'Characteristic Soil Shear Strength': {
           s_um: {
             label: 's<sub>um</sub>',
@@ -178,137 +304,11 @@ export const appConf = {
             ub: '',
           },
         },
-        'Mudmat Geometry': {
-          B: {
-            label: 'B',
-            unit: 'm',
-            value: 7.5,
-            visible: '',
-            lb: '',
-            ub: '',
-          },
-          BoverL: {
-            label: 'B/L',
-            unit: null,
-            value: 0.5,
-            visible: '',
-            lb: '0.33',
-            ub: '1',
-          },
-          doverB: {
-            label: 'd<sub>skirt</sub>/B (0-0.3)',
-            unit: null,
-            value: 0.081,
-            visible: '',
-            lb: '',
-            ub: '',
-          },
-        },
-        'Skirt-soil Interaction': {
-          alpha_skirt: {
-            label: '&alpha;<sub>skirt</sub>',
-            unit: null,
-            value: 1,
-            visible: '',
-            lb: '0',
-            ub: '1',
-          },
-        },
-        'Pile Group Geometry': {
-          D_pile: {
-            label: 'D<sub>pile</sub>',
-            unit: 'm',
-            value: 0.9,
-            visible: '',
-            lb: '',
-            ub: '',
-          },
-          W_pile: {
-            label: 'W<sub>pile</sub>',
-            unit: 'kN',
-            value: 40,
-            visible: '',
-            lb: '',
-            ub: '',
-          },
-          B_piles: {
-            label: 'B<sub>piles</sub>',
-            unit: 'm',
-            value: 6,
-            visible: '',
-            lb: '0',
-            ub() {
-              return (
-                appConf.appWebComponents[1].fields['Mudmat Geometry'].B.value -
-                appConf.appWebComponents[1].fields['Pile Group Geometry'].D_pile
-                  .value
-              );
-            },
-          },
-          L_piles: {
-            label: 'L<sub>piles</sub>',
-            unit: null,
-            value: 13,
-            visible: '',
-            lb: '0',
-            ub() {
-              return (
-                2 *
-                  appConf.appWebComponents[1].fields['Mudmat Geometry'].B
-                    .value -
-                appConf.appWebComponents[1].fields['Pile Group Geometry'].D_pile
-                  .value
-              );
-            },
-          },
-          L_embed: {
-            label: 'L<sub>embed</sub>',
-            unit: 'm',
-            value: 9,
-            visible: '',
-            lb: '',
-            ub: '',
-          },
-          d_shadow_over_d: {
-            label: 'd<sub>shadow</sub>/d<sub>skirt</sub>',
-            unit: null,
-            value: 1,
-            visible: '',
-            lb: '',
-            ub: '',
-          },
-        },
-        'Pile-soil Interaction': {
-          alpha_piles: {
-            label: '&alpha;<sub>piles</sub>',
-            unit: null,
-            value: 1,
-            visible: '',
-            lb: '0',
-            ub: '1',
-          },
-          Nc_piles: {
-            label: 'N<sub>c,piles</sub>',
-            unit: null,
-            value: 9,
-            visible: '',
-            lb: '',
-            ub: '',
-          },
-          f_end_t: {
-            label: 'f<sub>end,t</sub>',
-            unit: null,
-            value: 0,
-            visible: '',
-            lb: '',
-            ub: '',
-          },
-        },
       },
       subComponents: {
         0: {
           type: 'radio-tile',
-          index: 4,
+          index: 0,
           position: 'beforeTitle',
           display: '',
           title: 'Foundation',
