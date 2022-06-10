@@ -419,6 +419,9 @@ export const appConf = {
               ticks: 'inside',
               mirror: 'ticks',
             },
+            font: {
+              size: 18,
+            },
           },
           args: ['cycles', 'w_con', 'w_shear', 'w_tot'],
           addLines: false,
@@ -461,6 +464,9 @@ export const appConf = {
               zeroline: false,
               ticks: 'inside',
               mirror: 'ticks',
+            },
+            font: {
+              size: 18,
             },
           },
           args: ['cycles', 'hult'],
@@ -554,6 +560,9 @@ export const appConf = {
               zeroline: false,
               ticks: 'inside',
               mirror: 'ticks',
+            },
+            font: {
+              size: 18,
             },
           },
           args: [
@@ -667,6 +676,9 @@ export const appConf = {
               zeroline: false,
               ticks: 'inside',
               mirror: 'ticks',
+            },
+            font: {
+              size: 18,
             },
           },
           args: [

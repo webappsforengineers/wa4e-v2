@@ -23,9 +23,14 @@ export class AppGeneric extends StyledElement {
     };
   }
 
-  async getUpdateComplete() {
-    await super.getUpdateComplete();
-    await this.reloadMasonry();
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener('resize', () => this.handleResize());
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener('resize', () => this.handleResize());
+    super.disconnectedCallback();
   }
 
   render() {
@@ -61,6 +66,7 @@ export class AppGeneric extends StyledElement {
   }
 
   async reloadMasonry() {
+    await this.updateComplete;
     await this.getMasonryLayout();
     this.masonryLayout.reloadItems();
   }
@@ -68,7 +74,7 @@ export class AppGeneric extends StyledElement {
   updateComponents() {
     this.output = this.appCalc(this.appWebComponents);
     this.childUpdate();
-    this.getUpdateComplete().then();
+    this.reloadMasonry().then();
   }
 
   runCloneCalc(appWebCompClone) {
@@ -79,7 +85,7 @@ export class AppGeneric extends StyledElement {
     this.appWebComponents = cloneDeep(this.resetApp);
     this.appTiles = this.makeAppTiles();
     this.childUpdate();
-    this.getUpdateComplete().then();
+    this.reloadMasonry().then();
   }
 
   // This is called to launch a reload event in any sub-tiles
@@ -89,6 +95,12 @@ export class AppGeneric extends StyledElement {
       composed: true,
     });
     this.dispatchEvent(myEvent);
+  }
+
+  handleResize() {
+    this.childUpdate();
+    this.updateComplete.then();
+    this.reloadMasonry().then();
   }
 
   modifyForm(appConfChange) {
@@ -101,17 +113,22 @@ export class AppGeneric extends StyledElement {
     if (graphTileIndex !== -1) {
       this.appWebComponents[graphTileIndex].updateConf.noNewData = true;
       this.appWebComponents[graphTileIndex].updateConf.clearData = true;
+      // if we find a graph then we need to check its display value
+      Object.keys(this.appWebComponents[graphTileIndex].plots).forEach(key => {
+        document.getElementById(`${key}-card`).style.display =
+          this.appWebComponents[graphTileIndex].plots[key].display;
+      });
     }
-
     // rerender all the app tiles to get new values
     this.childUpdate();
-    this.getUpdateComplete().then();
+    this.updateComplete.then();
+    this.reloadMasonry().then();
   }
 
   optimize() {
     this.output = this.appOptimize(this.appWebComponents);
     this.childUpdate();
-    this.getUpdateComplete().then();
+    this.reloadMasonry().then();
   }
 
   makeAppTiles() {
@@ -236,6 +253,7 @@ export class AppGeneric extends StyledElement {
             plotKey =>
               html` <div class="col">
                 <div
+                  id="${plotKey}-card"
                   class="card"
                   style="display: ${component.plots[plotKey].display};"
                 >

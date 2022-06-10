@@ -2,8 +2,8 @@ import { changeObj } from './onChange.mjs';
 
 export const appConf = {
   appName: 'ncv',
-  appTitle: 'N<sub>cV</sub> for Shallow Foundation',
-  appPageTitle: 'N<sub>cV</sub> for Shallow Foundation',
+  appTitle: 'Shallow Foundation N<sub>cV</sub>',
+  appPageTitle: 'Shallow Foundation N<sub>cV</sub>',
   appDescription:
     'Undrained vertical bearing capacity of strip and circular skirted foundations',
   appColour: '#a6d686',
@@ -47,8 +47,8 @@ export const appConf = {
             label: '&alpha;<sub>base</sub>(0-1)',
             unit: null,
             value: 1,
-            visible: '',
-            lb: '0',
+            visible: 'none',
+            lb: '1',
             ub: '1',
           },
           alpha_side: {
@@ -83,7 +83,7 @@ export const appConf = {
         0: {
           type: 'radio-tile',
           index: 0,
-          position: 'afterTitle',
+          position: 'beforeTitle',
           display: '',
           title: 'Foundation Shape',
           options: {
@@ -216,6 +216,9 @@ export const appConf = {
               color: '#01579b',
               size: 19,
             },
+            font: {
+              size: 18,
+            },
           },
           args: ['dD', 'NcV_dD'],
           addLines: true,
@@ -247,6 +250,9 @@ export const appConf = {
               family: 'Roboto, sans-serif',
               color: '#01579b',
               size: 19,
+            },
+            font: {
+              size: 18,
             },
           },
           args: ['alphaSide', 'NcV_alphaSide'],

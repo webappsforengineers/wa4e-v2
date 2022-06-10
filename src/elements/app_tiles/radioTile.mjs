@@ -9,7 +9,7 @@ class radioTile extends TileBase {
     return [
       super.render(),
       html`
-        <h2>${unsafeHTML(this.appConf.title)}</h2>
+        <h3>${unsafeHTML(this.appConf.title)}</h3>
         ${this.checks}
       `,
     ];

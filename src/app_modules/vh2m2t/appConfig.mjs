@@ -794,6 +794,9 @@ export const appConf = {
             line: {
               shape: 'spline',
             },
+            font: {
+              size: 18,
+            },
             show: true,
           },
           args: [

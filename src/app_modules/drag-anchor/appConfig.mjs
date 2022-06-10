@@ -296,6 +296,9 @@ export const appConf = {
             line: {
               shape: 'spline',
             },
+            font: {
+              size: 18,
+            },
           },
           args: ['sum', 'zfs'],
           addLines: true,
@@ -324,6 +327,9 @@ export const appConf = {
             mode: 'lines',
             line: {
               shape: 'spline',
+            },
+            font: {
+              size: 18,
             },
           },
           args: ['k', 'zfk'],

@@ -161,7 +161,7 @@ export const appConf = {
             ub: '',
           },
           fsigma: {
-            label: 'f<sub>$sigma;</sub>',
+            label: 'f<sub>&sigma;</sub>',
             unit: null,
             value: 0.8,
             visible: '',

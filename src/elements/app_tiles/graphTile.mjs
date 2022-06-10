@@ -29,7 +29,7 @@ class graphTile extends TileBase {
 
   async renderGraph() {
     await this.updateComplete;
-    Plotly.newPlot(
+    Plotly.react(
       document.getElementById(this.plotKey),
       null,
       this.appConf.plots[this.plotKey].layout
@@ -70,7 +70,7 @@ class graphTile extends TileBase {
         )
       );
     }
-    Plotly.newPlot(
+    Plotly.react(
       document.getElementById(this.plotKey),
       this.appConf.plots[this.plotKey].data,
       this.appConf.plots[this.plotKey].layout,

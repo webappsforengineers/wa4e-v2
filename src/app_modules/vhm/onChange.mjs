@@ -7,7 +7,7 @@ export const changeObj = {
     4: {
       plots: {
         hhmm: {
-          display: 'flex',
+          display: 'block',
         },
         HfMf: {
           display: 'none',
@@ -22,7 +22,7 @@ export const changeObj = {
           display: 'none',
         },
         HfMf: {
-          display: 'flex',
+          display: 'block',
         },
       },
     },

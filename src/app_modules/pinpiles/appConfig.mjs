@@ -590,6 +590,9 @@ export const appConf = {
               x: 0,
               y: 2.1,
             },
+            font: {
+              size: 18,
+            },
           },
           args: ['zt_H', 'zt_M', 'T_H', 'T_M', 'H_m', 'M_m', 'mudMatTlabel'],
           addLines: false,
@@ -642,6 +645,9 @@ export const appConf = {
               yanchor: 'top',
               x: 0,
               y: 2.1,
+            },
+            font: {
+              size: 18,
             },
           },
           args: [

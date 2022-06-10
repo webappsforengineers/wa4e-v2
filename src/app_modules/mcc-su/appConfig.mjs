@@ -288,6 +288,9 @@ export const appConf = {
               autorange: 'reversed',
             },
             showlegend: true,
+            font: {
+              size: 18,
+            },
           },
           args: ['z', 'sigma_prime_v', 'u_hyd', 'sigma_v', 'sigma_prime_h'],
           addLines: false,
@@ -327,6 +330,9 @@ export const appConf = {
               autorange: 'reversed',
             },
             showlegend: true,
+            font: {
+              size: 18,
+            },
           },
           args: ['z', 'PS_s_u', 'TX_s_u'],
           addLines: false,

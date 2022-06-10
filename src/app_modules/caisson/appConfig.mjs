@@ -323,6 +323,9 @@ export const appConf = {
             line: {
               shape: 'spline',
             },
+            font: {
+              size: 18,
+            },
           },
           args: ['suz', 'z'],
           addLines: false,
@@ -363,6 +366,9 @@ export const appConf = {
             legend: {
               traceorder: 'normal',
             },
+            font: {
+              size: 18,
+            },
           },
           args: ['req_suction', 'q_total', 'z'],
           addLines: false,
@@ -392,6 +398,9 @@ export const appConf = {
             mode: 'lines',
             line: {
               shape: 'spline',
+            },
+            font: {
+              size: 18,
             },
           },
           args: ['fos', 'z'],

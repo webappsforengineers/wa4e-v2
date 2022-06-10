@@ -601,6 +601,9 @@ export const appConf = {
               size: 19,
             },
             showlegend: true,
+            font: {
+              size: 18,
+            },
           },
           addLines: false,
           data: [],

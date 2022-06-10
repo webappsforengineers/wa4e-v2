@@ -445,6 +445,9 @@ export const appConf = {
               color: '#01579b',
               size: 19,
             },
+            font: {
+              size: 18,
+            },
           },
           args: ['hh', 'mm', 'hh_star', 'mm_star', 'f1'],
           addLines: false,
@@ -498,6 +501,9 @@ export const appConf = {
               family: 'Roboto, sans-serif',
               color: '#01579b',
               size: 19,
+            },
+            font: {
+              size: 18,
             },
           },
           args: ['Hultvec', 'Multvec', 'Hf', 'Mf', 'f1'],
