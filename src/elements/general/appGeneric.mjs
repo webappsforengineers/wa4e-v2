@@ -1,5 +1,6 @@
 import { html } from 'lit';
-import { merge, cloneDeep } from 'lodash-es';
+// import { merge, cloneDeep } from 'lodash-es';
+import { merge } from 'lodash-es';
 import { StyledElement } from '../../styles/wa4eStyleElement.mjs';
 import { Masonry } from '../../local_modules/wa4e-math.js';
 import '../mySubComponents.mjs';
@@ -81,12 +82,17 @@ export class AppGeneric extends StyledElement {
     this.appCalc(appWebCompClone.appConfClone);
   }
 
+  /* eslint-disable class-methods-use-this */
   resetComponents() {
-    this.appWebComponents = cloneDeep(this.resetApp);
-    this.appTiles = this.makeAppTiles();
-    this.childUpdate();
-    this.reloadMasonry().then();
+    // This is a hack
+    window.location.reload();
+    // this is good and correct but needs working on to make the styling stable
+    // this.appWebComponents = cloneDeep(this.resetApp);
+    // this.appTiles = this.makeAppTiles();
+    // this.childUpdate();
+    // this.reloadMasonry().then();
   }
+  /* eslint-enable class-methods-use-this */
 
   // This is called to launch a reload event in any sub-tiles
   childUpdate() {

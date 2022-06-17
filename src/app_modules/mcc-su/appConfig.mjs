@@ -249,7 +249,7 @@ export const appConf = {
               {
                 x: a,
                 y: b,
-                name: '&sigma;&#39;<sub>v</sub>',
+                name: 'σ&#39;<sub>v</sub>',
                 type: 'scatter',
               },
               {
@@ -261,30 +261,41 @@ export const appConf = {
               {
                 x: a,
                 y: d,
-                name: '&sigma;<sub>v</sub>',
+                name: 'σ<sub>v</sub>',
                 type: 'scatter',
               },
               {
                 x: a,
                 y: e,
-                name: '&sigma;&#39;<sub>h</sub>',
+                name: 'σ&#39;<sub>h</sub>',
                 type: 'scatter',
               },
             ];
           },
           layout: {
-            title: '<b>In Situ Stresses</b>',
+            title: {
+              text: '<b>In Situ Stresses</b>',
+              y: 0.95,
+            },
             titlefont: {
               family: 'Roboto, sans-serif',
               color: '#01579b',
               size: 19,
             },
             xaxis: {
-              title: 'stress (kPa)',
+              title: {
+                text: 'stress (kPa)',
+                automargin: true,
+                standoff: 0,
+              },
               side: 'top',
             },
             yaxis: {
-              title: 'z (m)',
+              title: {
+                text: 'z (m)',
+                automargin: true,
+                standoff: 0,
+              },
               autorange: 'reversed',
             },
             showlegend: true,
@@ -315,18 +326,29 @@ export const appConf = {
             ];
           },
           layout: {
-            title: '<b>In Situ Undrained Strength</b>',
+            title: {
+              text: '<b>In Situ Undrained Strength</b>',
+              y: 0.95,
+            },
             titlefont: {
               family: 'Roboto, sans-serif',
               color: '#01579b',
               size: 19,
             },
             xaxis: {
-              title: 'S<sub>u</sub> (kPa)',
+              title: {
+                text: 'S<sub>u</sub> (kPa)',
+                automargin: true,
+                standoff: 0,
+              },
               side: 'top',
             },
             yaxis: {
-              title: 'z (m)',
+              title: {
+                text: 'z (m)',
+                automargin: true,
+                standoff: 0,
+              },
               autorange: 'reversed',
             },
             showlegend: true,

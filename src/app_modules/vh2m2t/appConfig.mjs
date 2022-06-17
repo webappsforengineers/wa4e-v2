@@ -87,7 +87,7 @@ export const appConf = {
           T_lag: {
             label: 'T<sub>lag</sub>',
             unit: 'months',
-            value: 6,
+            value: 0,
             visible: '',
             lb: '',
             ub: '',

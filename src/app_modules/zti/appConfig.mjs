@@ -557,12 +557,12 @@ export const appConf = {
               {
                 x: a,
                 y: b,
-                name: `UTI: &lambda;<sub>s</sub> = ${c}`,
+                name: `UTI: λ<sub>s</sub> = ${c}`,
               },
               {
                 x: d,
                 y: e,
-                name: `UTI: &lambda;<sub>s</sub> = ${f}`,
+                name: `UTI: λ<sub>s</sub> = ${f}`,
               },
               {
                 x: g,
@@ -603,6 +603,15 @@ export const appConf = {
             showlegend: true,
             font: {
               size: 18,
+            },
+            legend: {
+              x: 0,
+              xanchor: 'left',
+              y: 1,
+              font: {
+                size: 14,
+              },
+              bgcolor: '#00000000',
             },
           },
           addLines: false,

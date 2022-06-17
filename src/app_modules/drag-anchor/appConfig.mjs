@@ -271,13 +271,15 @@ export const appConf = {
         sum: null,
         zfk: null,
         k: null,
+        legendKsu: null,
+        legendSum: null,
       },
       plots: {
         plotSum: {
-          dataFun(a, b) {
+          dataFun(a, b, c) {
             return [
               {
-                name: 'Sum',
+                name: `Sum = ${c}`,
                 x: a,
                 y: b,
               },
@@ -300,16 +302,16 @@ export const appConf = {
               size: 18,
             },
           },
-          args: ['sum', 'zfs'],
+          args: ['sum', 'zfs', 'legendSum'],
           addLines: true,
           data: [],
           show: true,
         },
         plotKsu: {
-          dataFun(a, b) {
+          dataFun(a, b, c) {
             return [
               {
-                name: 'Ksu',
+                name: `k<sub>su</sub> = ${c}`,
                 x: a,
                 y: b,
               },
@@ -332,7 +334,7 @@ export const appConf = {
               size: 18,
             },
           },
-          args: ['k', 'zfk'],
+          args: ['k', 'zfk', 'legendKsu'],
           addLines: true,
           data: [],
           show: true,
