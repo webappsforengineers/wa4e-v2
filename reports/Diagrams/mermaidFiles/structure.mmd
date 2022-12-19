@@ -1,0 +1,206 @@
+classDiagram
+    A <|-- B : Extends
+    C --> B: Imports
+    B --* D: Implements
+    F .. B: Contains
+    F .. D: Contains
+
+    A : BaseElement
+    B : CustomElement
+    C : Module or Library
+    D : HTML
+    F : Folder
+
+    LitElement <|-- StyledElement
+
+    class TileBase
+        TileBase <|-- pageHeaders
+        TileBase <|-- pageFooters
+        TileBase <|-- menuTile
+        TileBase <|-- formTile
+        TileBase <|-- imageTile
+        TileBase <|-- graphTile
+        TileBase <|-- optimisationTile
+        TileBase <|-- textTile
+        TileBase <|-- batchTile
+        TileBase <|-- inputField
+        TileBase <-- html
+
+    class StyledElement
+        StyledElement <|-- TileBase
+        StyledElement <|-- submitButton
+        StyledElement <|-- AppGeneric
+        StyledElement <|-- TestGenerator
+
+
+    class AppGeneric
+        AppGeneric <-- html
+        AppGeneric <-- Masonry
+        AppGeneric <-- merge
+        AppGeneric <-- myElements
+        AppGeneric <-- mySubComponents
+
+
+    class mySubComponents
+        mySubComponents <-- radioTile
+        mySubComponents <-- testSubTile
+        mySubComponents <-- tableTile
+        mySubComponents <-- inputTableTile
+
+    class myElements
+        myElements <-- menuTile
+        myElements <-- pageFooters
+        myElements <-- pageHeaders
+        myElements <-- formTile
+        myElements <-- imageTile
+        myElements <-- graphTile
+        myElements <-- optimisationTile
+        myElements <-- textTile
+        myElements <-- batchTile
+        myElements <-- inputField
+        myElements <-- submitButton
+
+
+    class bootstrap
+        bootstrap --> index_Caisson
+        bootstrap --> index_Consolidated_ncv
+        bootstrap --> index_DragAnchor
+        bootstrap --> index_mcc_su
+        bootstrap --> index_ncv
+        bootstrap --> index_Pinpiles
+        bootstrap --> index_Pipe
+        bootstrap --> index_SlidingPlet
+        bootstrap --> index_vh2m2t
+        bootstrap --> index_vhm
+        bootstrap --> index_zti
+
+    class masonry
+        masonry --> index_Caisson
+        masonry --> index_Consolidated_ncv
+        masonry --> index_DragAnchor
+        masonry --> index_mcc_su
+        masonry --> index_ncv
+        masonry --> index_Pinpiles
+        masonry --> index_Pipe
+        masonry --> index_SlidingPlet
+        masonry --> index_vh2m2t
+        masonry --> index_vhm
+        masonry --> index_zti
+
+    class CaissonFolder
+        class appConf_Caisson
+        class Caisson_App
+        CaissonFolder .. appConf_Caisson
+        CaissonFolder .. Caisson_App
+        CaissonFolder .. index_Caisson
+        appConf_Caisson --> moduleConf : appConf as caissonConf
+        index_Caisson *-- Caisson_App
+
+    class Consolidated_ncvFolder
+        class appConf_Consolidated_ncv
+        class Consolidated_ncv_App
+        Consolidated_ncvFolder .. appConf_Consolidated_ncv
+        Consolidated_ncvFolder .. Consolidated_ncv_App
+        Consolidated_ncvFolder .. index_Consolidated_ncv
+        appConf_Consolidated_ncv --> moduleConf : appConf as consolodated_ncv_Conf
+        index_Consolidated_ncv *-- Consolidated_ncv_App
+
+    class DragAnchorFolder
+        class appConf_DragAnchor
+        class DragAnchor_App
+        DragAnchorFolder .. appConf_DragAnchor
+        DragAnchorFolder .. DragAnchor_App
+        DragAnchorFolder .. index_DragAnchor
+        appConf_DragAnchor --> moduleConf : appConf as DragAnchorConf
+        index_DragAnchor *-- DragAnchor_App
+
+    class mcc_suFolder
+        class appConf_mcc_su
+        class mcc_su_App
+        mcc_suFolder .. appConf_mcc_su
+        mcc_suFolder .. mcc_su_App
+        mcc_suFolder .. index_mcc_su
+        appConf_mcc_su --> moduleConf : appConf as mcc_suConf
+        index_mcc_su *-- mcc_su_App
+
+    class ncvFolder
+        class appConf_ncv
+        class ncv_App
+        ncvFolder .. appConf_ncv
+        ncvFolder .. ncv_App
+        ncvFolder .. index_ncv
+        appConf_ncv --> moduleConf : appConf as ncvConf
+        index_ncv *-- ncv_App
+
+    class PinpilesFolder
+        class appConf_Pinpiles
+        class Pinpiles_App
+        PinpilesFolder .. appConf_Pinpiles
+        PinpilesFolder .. Pinpiles_App
+        PinpilesFolder .. index_Pinpiles
+        appConf_Pinpiles --> moduleConf : appConf as PinpilesConf
+        index_Pinpiles *-- Pinpiles_App
+
+    class PipeFolder
+        class appConf_Pipe
+        class Pipe_App
+        PipeFolder .. appConf_Pipe
+        PipeFolder .. Pipe_App
+        PipeFolder .. index_Pipe
+        appConf_Pipe --> moduleConf : appConf as PipeConf
+        index_Pipe *-- Pipe_App
+
+    class SlidingPletFolder
+        class appConf_SlidingPlet
+        class SlidingPlet_App
+        SlidingPletFolder .. appConf_SlidingPlet
+        SlidingPletFolder .. SlidingPlet_App
+        SlidingPletFolder .. index_SlidingPlet
+        appConf_SlidingPlet --> moduleConf : appConf as SlidingPletConf
+        index_SlidingPlet *-- SlidingPlet_App
+
+    class vh2m2tFolder
+        class appConf_vh2m2t
+        class vh2m2t_App
+        vh2m2tFolder .. appConf_vh2m2t
+        vh2m2tFolder .. vh2m2t_App
+        vh2m2tFolder .. index_vh2m2t
+        appConf_vh2m2t --> moduleConf : appConf as vh2m2tConf
+        index_vh2m2t *-- vh2m2t_App
+
+    class vhmFolder
+        class appConf_vhm
+        class vhm_App
+        vhmFolder .. appConf_vhm
+        vhmFolder .. vhm_App
+        vhmFolder .. index_vhm
+        appConf_vhm --> moduleConf : appConf as vhmConf
+        index_vhm *-- vhm_App
+
+    class ztiFolder
+        class appConf_zti
+        class zti_App
+        ztiFolder .. appConf_zti
+        ztiFolder .. zti_App
+        ztiFolder .. index_zti
+        appConf_zti --> moduleConf : appConf as ztiConf
+        index_zti *-- zti_App
+
+
+
+
+    class AppGeneric
+        AppGeneric <|-- Caisson_App
+        AppGeneric <|-- Consolidated_ncv_App
+        AppGeneric <|-- DragAnchor_App
+        AppGeneric <|-- mcc_su_App
+        AppGeneric <|-- ncv_App
+        AppGeneric <|-- Pinpiles_App
+        AppGeneric <|-- Pipe_App
+        AppGeneric <|-- SlidingPlet_App
+        AppGeneric <|-- vh2m2t_App
+        AppGeneric <|-- vhm_App
+        AppGeneric <|-- zti_App
+
+
+    class moduleConf
