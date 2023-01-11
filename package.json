@@ -43,6 +43,7 @@
   "author": "we4e-v2",
   "license": "",
   "dependencies": {
+    "@mermaid-js/mermaid-cli": "^9.3.0",
     "@sideway/address": "^5.0.0",
     "@stdlib/array-linspace": "^0.0.7",
     "@stdlib/array-logspace": "^0.0.7",

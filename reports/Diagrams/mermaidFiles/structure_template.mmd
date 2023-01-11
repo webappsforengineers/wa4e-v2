@@ -1,0 +1,83 @@
+classDiagram
+    A <|-- B : Extends
+    C --> B: Imports
+    B --* D: Implements
+    F .. B: Contains
+    F .. D: Contains
+
+    A : BaseElement
+    B : CustomElement
+    C : Module or Library
+    D : HTML
+    F : Folder
+
+    LitElement <|-- StyledElement
+
+    class TileBase
+        TileBase <|-- pageHeaders
+        TileBase <|-- pageFooters
+        TileBase <|-- menuTile
+        TileBase <|-- formTile
+        TileBase <|-- imageTile
+        TileBase <|-- graphTile
+        TileBase <|-- optimisationTile
+        TileBase <|-- textTile
+        TileBase <|-- batchTile
+        TileBase <|-- inputField
+        TileBase <-- html
+
+    class StyledElement
+        StyledElement <|-- TileBase
+        StyledElement <|-- submitButton
+        StyledElement <|-- AppGeneric
+        StyledElement <|-- TestGenerator
+
+
+    class AppGeneric
+        AppGeneric <-- html
+        AppGeneric <-- Masonry
+        AppGeneric <-- merge
+        AppGeneric <-- myElements
+        AppGeneric <-- mySubComponents
+
+
+    class mySubComponents
+        mySubComponents <-- radioTile
+        mySubComponents <-- testSubTile
+        mySubComponents <-- tableTile
+        mySubComponents <-- inputTableTile
+
+    class myElements
+        myElements <-- menuTile
+        myElements <-- pageFooters
+        myElements <-- pageHeaders
+        myElements <-- formTile
+        myElements <-- imageTile
+        myElements <-- graphTile
+        myElements <-- optimisationTile
+        myElements <-- textTile
+        myElements <-- batchTile
+        myElements <-- inputField
+        myElements <-- submitButton
+
+
+    class bootstrap
+        bootstrap --> index_Template
+
+    class masonry
+        masonry --> index_Template
+
+    class AppFolder
+        class appConf_Template
+        class Template_App
+        AppFolder .. appConf_Template
+        AppFolder .. Template_App
+        AppFolder .. index_Template
+        appConf_Template --> moduleConf : appConf as templateConf
+        index_Template *-- Template_App
+
+    class AppGeneric
+        AppGeneric <|-- Template_App
+
+
+    class moduleConf

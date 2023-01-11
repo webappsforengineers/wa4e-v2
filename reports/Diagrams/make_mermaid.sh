@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-# Documentation here https://github.com/mermaid-js/mermaid-cli#alternative-installations
+# Documentation here https://github.com/mermaid-js/mermaid-cli
 
-docker run --rm -u `id -u`:`id -g` -v C:\Users\pipgr\WebstormProjects\wa4e-v2\reports\Diagrams\mermaidFiles\:/data minlag/mermaid-cli -i C:\Users\pipgr\WebstormProjects\wa4e-v2\reports\Diagrams\mermaidFiles\structure.mmd
-
+npx -p @mermaid-js/mermaid-cli mmdc -i reports/Diagrams/mermaidFiles/structure_full.mmd -o reports/Diagrams/structure_full.svg
