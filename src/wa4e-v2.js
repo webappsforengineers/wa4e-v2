@@ -135,6 +135,30 @@ export class Wa4eV2 extends StyledElement {
                 </div>
               </div>
             </div>
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+              <div
+                class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
+                style="background-color: #9f7eed; aspect-ratio: 0.8;"
+              >
+                <img
+                  class="card-img-top img-fluid"
+                  style="width: 90%; height: 150px; object-fit: scale-down;"
+                  src="img/storymaps.png"
+                  alt="Story maps icon"
+                />
+                <div class="card-body justify-content-center">
+                  <h5 class="card-title">Story Maps ArcGIS Tool</h5>
+                  <p class="card-text">
+                    Constraints and availability maps for future OW in UK waters
+                    - Links to external site
+                  </p>
+                  <a
+                    href="https://storymaps.arcgis.com/collections/3c485282571142f28de577b957a0b348"
+                    class="stretched-link"
+                  ></a>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="row gy-1">
