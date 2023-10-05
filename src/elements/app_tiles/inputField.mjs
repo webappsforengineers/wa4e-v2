@@ -38,7 +38,7 @@ export class InputField extends StyledElement {
 
   render() {
     return html`<div
-      class="input-group was-validated"
+      class="input-group was-validated mb-1 mt-1"
       style="display: ${this.appConf.visible};"
     >
       <label

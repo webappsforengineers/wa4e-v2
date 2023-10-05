@@ -23,7 +23,10 @@ class headerTemplate extends StyledElement {
     return [
       super.render(),
       html`
-        <nav class="navbar navbar-expand-lg" style="background-color: #03a9f4">
+        <nav
+          class="navbar navbar-expand-lg mb-3"
+          style="background-color: #03a9f4"
+        >
           <div class="col-2">
             <a href="${this.homePage}"
               ><img

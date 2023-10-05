@@ -711,7 +711,7 @@ export const appConf = {
             3: {
               label: null,
               values: [
-                [1.007, null, 'g1<sub>M<sub>x</sub></sub>', ''],
+                [1.007, null, 'g1<sub>M <sub>x </sub></sub>', ''],
                 [0.784, null, 'g2<sub>M<sub>x</sub></sub>', ''],
               ],
             },

@@ -42,7 +42,7 @@ class inputTableTile extends TileBase {
     let rowInner;
     if (typeof rowValues.header === 'undefined') {
       rowInner = html` ${rowValues.label !== null
-        ? html`<label class="input-group-text col-3"
+        ? html`<label class="input-group-text col-3 mb-1"
             >${unsafeHTML(rowValues.label)}</label
           >`
         : html``}
@@ -50,30 +50,31 @@ class inputTableTile extends TileBase {
         value =>
           html` ${value.length === 3
             ? html` <input
-                  class="form-control bg-light col-2"
+                  class="form-control bg-light col-2 mb-1"
                   disabled
                   .value="${this.parseNum(value[0])}"
                 />
-                <label class="input-group-text col-1"
+                <label class="input-group-text col-1 mb-1"
                   >${unsafeHTML(value[1])}</label
                 >`
             : value.length === 4
-            ? html` <label class="input-group-text col-1"
+            ? html` <label class="input-group-text col-2 mb-1"
                   >${unsafeHTML(value[2])}</label
                 >
                 <input
-                  class="form-control bg-light col-1"
+                  class="form-control bg-light col-1 mb-1"
                   disabled
                   .value="${this.parseNum(value[0])}"
                 />
-                <label class="input-group-text col-1"
+                <label class="input-group-text col-1 mb-1"
                   >${unsafeHTML(value[1])}</label
                 >`
             : html`<p>input group of unsupported length ${value.length}</p>`}`
       )}`;
     } else {
       rowInner = html`${rowValues.header.map(
-        value => html`<label class="input-group-text col-3">${value}</label>`
+        value =>
+          html`<label class="input-group-text col-3 mb-1">${value}</label>`
       )}`;
     }
     return rowInner;

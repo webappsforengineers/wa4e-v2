@@ -91,7 +91,7 @@ export class TileBase extends StyledElement {
         ></radio-tile>
       </div>`;
     } else if (component.type === 'table-tile') {
-      subcomponentHTML = html` <div>
+      subcomponentHTML = html` <div class="mb-1 mt-1">
         <table-tile .appConf=${component}></table-tile>
       </div>`;
     } else if (component.type === 'input-table') {

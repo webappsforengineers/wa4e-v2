@@ -9,7 +9,7 @@ class tableTile extends TileBase {
       super.render(),
       html`
         <div class="table-responsive">
-          <table class="table">
+          <table class="table mb-1 mt-1">
             ${this.htmlTableContent}
           </table>
         </div>

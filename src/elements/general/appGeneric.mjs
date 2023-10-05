@@ -143,7 +143,7 @@ export class AppGeneric extends StyledElement {
         let componentHtml;
         if (component.type === 'input-tile') {
           componentHtml = html`<div class="col">
-            <div class="card ">
+            <div class="card p-3">
               <form-tile
                 .appConf=${this.appWebComponents[index]}
                 .callback=${true}
@@ -167,7 +167,7 @@ export class AppGeneric extends StyledElement {
           </div>`;
         } else if (component.type === 'derived-input-tile') {
           componentHtml = html`<div class="col">
-            <div class="card  ">
+            <div class="card p-3">
               <form-tile
                 .appConf=${this.appWebComponents[index]}
                 .callback=${false}
@@ -179,7 +179,7 @@ export class AppGeneric extends StyledElement {
           </div>`;
         } else if (component.type === 'output-tile') {
           componentHtml = html`<div class="col">
-            <div class="card  ">
+            <div class="card p-3">
               <form-tile
                 .appConf=${this.appWebComponents[index]}
                 .callback=${false}
@@ -191,7 +191,7 @@ export class AppGeneric extends StyledElement {
           </div>`;
         } else if (component.type === 'coeff-tile') {
           componentHtml = html`<div class="col">
-            <div class="card  ">
+            <div class="card p-3">
               <coeff-tile
                 .appConf=${this.appWebComponents[index]}
                 @loaded="${() => {
@@ -202,7 +202,7 @@ export class AppGeneric extends StyledElement {
           </div>`;
         } else if (component.type === 'image-tile') {
           componentHtml = html`<div class="col">
-            <div class="card  ">
+            <div class="card p-3">
               <image-tile
                 .appConf=${this.appWebComponents[index]}
                 @loaded="${() => {
@@ -213,7 +213,7 @@ export class AppGeneric extends StyledElement {
           </div>`;
         } else if (component.type === 'optimization-tile') {
           componentHtml = html`<div class="col">
-            <div class="card  ">
+            <div class="card p-3">
               <optimization-tile
                 .appConf=${this.appWebComponents[index]}
                 @loaded="${() => {
@@ -233,13 +233,13 @@ export class AppGeneric extends StyledElement {
           </div>`;
         } else if (component.type === 'text-tile') {
           componentHtml = html`<div class="col">
-            <div class="card  ">
+            <div class="card p-3">
               <text-tile .appConf=${this.appWebComponents[index]}></text-tile>
             </div>
           </div>`;
         } else if (component.type === 'batch-tile') {
           componentHtml = html`<div class="col">
-            <div class="card  ">
+            <div class="card p-3">
               <batch-tile
                 @cloneCalc="${e => {
                   this.runCloneCalc(e.detail);
@@ -260,7 +260,7 @@ export class AppGeneric extends StyledElement {
               html` <div class="col">
                 <div
                   id="${plotKey}-card"
-                  class="card"
+                  class="card p-3"
                   style="display: ${component.plots[plotKey].display};"
                 >
                   <graph-tile
