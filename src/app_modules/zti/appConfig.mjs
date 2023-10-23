@@ -311,7 +311,7 @@ export const appConf = {
           },
           M_y: {
             label: 'M<sub>y</sub>',
-            unit: 'kNM',
+            unit: 'kNm',
             value: null,
             visible: '',
             lb: '',
@@ -319,7 +319,7 @@ export const appConf = {
           },
           M_x: {
             label: 'M<sub>x</sub>',
-            unit: 'kNM',
+            unit: 'kNm',
             value: null,
             visible: '',
             lb: '',
@@ -327,7 +327,7 @@ export const appConf = {
           },
           M: {
             label: 'M',
-            unit: 'kNM',
+            unit: 'kNm',
             value: null,
             visible: '',
             lb: '',
@@ -343,7 +343,7 @@ export const appConf = {
           },
           T: {
             label: 'T',
-            unit: 'kNM',
+            unit: 'kNm',
             value: null,
             visible: '',
             lb: '',
@@ -360,7 +360,7 @@ export const appConf = {
         '': {
           spareMomentCapacity: {
             label: 'SMC',
-            unit: 'kNM',
+            unit: 'kNm',
             value: 0,
             visible: '',
             lb: '',
