@@ -98,9 +98,9 @@ export class TileBase extends StyledElement {
       subcomponentHTML = html` <div>
         <input-table .appConf=${component}></input-table>
       </div>`;
-    } else if (component.type === 'test-tile') {
+    } else if (component.type === 'soil-properties-help') {
       subcomponentHTML = html` <div>
-        <test-tile .appConf=${component}></test-tile>
+        <soil-properties-help .appConf=${component}></soil-properties-help>
       </div>`;
     } else {
       subcomponentHTML = html`<p>

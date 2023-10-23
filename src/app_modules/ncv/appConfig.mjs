@@ -102,6 +102,11 @@ export const appConf = {
           clearOnClick: false,
           modifyOnClick: true,
         },
+        1: {
+          type: 'soil-properties-help',
+          index: 1,
+          position: 'afterContent',
+        },
       },
       helpText: 'Helpful text!',
     },
