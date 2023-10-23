@@ -47,3 +47,4 @@ Make sure you have node.js and npm installed on your machine
 - Navigate to localhost:8000/src/index.html in the browser and you should see the WebAppsForEngineers homepage.   
 - To run the tests use `npm run test` 
 - To lint the code use `npm run lint` 
+- To build the code that is served by github pages run `npm run build`
