@@ -197,6 +197,11 @@ export const appConf = {
             },
           },
         },
+        2: {
+          type: 'soil-properties-help',
+          index: 1,
+          position: 'afterTitle',
+        },
       },
     },
     2: {

@@ -202,7 +202,13 @@ export const appConf = {
           },
         },
       },
-      subComponents: {},
+      subComponents: {
+        0: {
+          type: 'soil-properties-help',
+          index: 1,
+          position: 'afterTitle',
+        },
+      },
     },
     2: {
       type: 'derived-input-tile',

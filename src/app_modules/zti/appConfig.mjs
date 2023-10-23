@@ -215,6 +215,11 @@ export const appConf = {
           onChange: changeObj,
           modifyOnClick: true,
         },
+        1: {
+          type: 'soil-properties-help',
+          index: 1,
+          position: 'afterTitle',
+        },
       },
     },
     2: {
