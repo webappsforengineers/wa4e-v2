@@ -141,7 +141,7 @@ export const appConf = {
           },
           Su0: {
             label: 's<sub>u0</sub> = k <sub>su</sub>d',
-            unit: null,
+            unit: 'kPa',
             value: null,
             visible: '',
             lb: '',
