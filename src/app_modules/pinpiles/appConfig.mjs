@@ -412,7 +412,7 @@ export const appConf = {
           },
           theta_piles_degrees: {
             label: '&theta;<sub>piles</sub>',
-            unit: 'rads',
+            unit: 'degs',
             value: null,
             visible: '',
             lb: '',
