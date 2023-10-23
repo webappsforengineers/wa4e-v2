@@ -2,8 +2,8 @@ import { changeObj } from './onChange.mjs';
 
 export const appConf = {
   appName: 'consolidated-ncv',
-  appTitle: 'Shallow foundation Consolidated NcV',
-  appPageTitle: 'Shallow foundation Consolidated NcV',
+  appTitle: 'Shallow Foundation Consolidated NcV',
+  appPageTitle: 'Shallow Foundation Consolidated NcV',
   appDescription: 'Consolidated undrained vertical bearing capacity',
   appColour: '#9a76c1',
   appWebComponents: {
