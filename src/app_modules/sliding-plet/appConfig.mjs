@@ -648,7 +648,7 @@ export const appConf = {
           },
           layout: {
             type: 'scatter',
-            title: 'Stress:voids ratio path beneath foundation',
+            title: 'Stress: voids ratio path<br>beneath foundation',
             showlegend: true,
             legend: {
               xanchor: 'left',

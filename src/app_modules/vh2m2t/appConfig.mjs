@@ -795,7 +795,7 @@ export const appConf = {
               color: '#01579b',
               size: 19,
             },
-            showlegend: false,
+            showlegend: true,
             mode: 'lines',
             line: {
               shape: 'spline',
@@ -803,6 +803,15 @@ export const appConf = {
             font: {
               size: 18,
             },
+            // legend: {
+            //   x: 0,
+            //   xanchor: 'left',
+            //   y: 1,
+            //   font: {
+            //     size: 14,
+            //   },
+            //   bgcolor: '#00000000',
+            // },
             show: true,
           },
           args: [

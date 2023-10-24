@@ -440,7 +440,7 @@ export const appConf = {
           },
           layout: {
             title:
-              '<b>Failure envelope & factored load in terms of normalised (h/h*, m/m*)</b>',
+              '<b>Failure envelope & factored load <br>in terms of normalised (h/h*, m/m*)</b>',
             xaxis: {
               title: 'h/h*',
             },
@@ -497,7 +497,7 @@ export const appConf = {
           },
           layout: {
             title:
-              '<b>Failure envelope & factored load in terms of factored (H<sub>f</sub>, M<sub>f</sub>)</b>',
+              '<b>Failure envelope & factored load<br>in terms of factored (H<sub>f</sub>, M<sub>f</sub>)</b>',
             xaxis: {
               title: 'H<sub>f</sub> (kN)',
             },
