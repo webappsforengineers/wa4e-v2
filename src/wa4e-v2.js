@@ -47,7 +47,12 @@ export class Wa4eV2 extends StyledElement {
                 WebAppsForEngineers V2 is in beta, the app has been
                 reimplemented to modernise the app framework. For general use we
                 suggest using the original site found
-                <a href="https://webappsforengineers.com/index.html">here</a>.
+                <a
+                  href="https://webappsforengineers.com/index.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >here</a
+                >.
               </h4>
             </div>
           </div>
@@ -131,6 +136,8 @@ export class Wa4eV2 extends StyledElement {
                   <a
                     href="https://www.geocalcs.com/"
                     class="stretched-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   ></a>
                 </div>
               </div>
@@ -155,6 +162,8 @@ export class Wa4eV2 extends StyledElement {
                   <a
                     href="https://storymaps.arcgis.com/collections/3c485282571142f28de577b957a0b348"
                     class="stretched-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   ></a>
                 </div>
               </div>

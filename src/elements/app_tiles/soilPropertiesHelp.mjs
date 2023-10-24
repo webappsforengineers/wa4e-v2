@@ -11,7 +11,12 @@ class soilPropertiesHelp extends TileBase {
       html`
         <p>
           Note: Values for soil properties can be calculated using the
-          <a href="../mcc-su/index.html">MCC-su app </a>
+          <a
+            href="../mcc-su/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            >MCC-su app
+          </a>
         </p>
       `,
     ];

@@ -17,7 +17,7 @@ export const appConf = {
           format: 'h5',
         },
         blurb: {
-          text: 'This app enables calculation of vertical bearing capacity factors for strip and circular shallow foundations across a practical range of foundation embedment ratio (0 < d/B, d/D < 1), foundation–soil interface roughness (0 < &alpha; < 1) and soil shear strength heterogeneity (0 < &kappa; < 200). The bearing capacity factors are based on finite element and finite-element limit analysis results, published in <a href="http://dx.doi.org/10.1680/geolett.11.00026">“Undrained vertical bearing capacity factors for shallow foundations” by Gourvenec, S. & Mana, D.K.S (2011), Géotechnique Letters</a>',
+          text: 'This app enables calculation of vertical bearing capacity factors for strip and circular shallow foundations across a practical range of foundation embedment ratio (0 < d/B, d/D < 1), foundation–soil interface roughness (0 < &alpha; < 1) and soil shear strength heterogeneity (0 < &kappa; < 200). The bearing capacity factors are based on finite element and finite-element limit analysis results, published in <a href="http://dx.doi.org/10.1680/geolett.11.00026" target="_blank" rel="noopener noreferrer">“Undrained vertical bearing capacity factors for shallow foundations” by Gourvenec, S. & Mana, D.K.S (2011), Géotechnique Letters</a>',
           format: '',
         },
       },
