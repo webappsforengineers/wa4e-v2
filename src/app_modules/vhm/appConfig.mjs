@@ -196,6 +196,8 @@ export const appConf = {
               visible: '',
             },
           },
+          onChange: changeObj,
+          modifyOnClick: true,
         },
         2: {
           type: 'soil-properties-help',
@@ -370,7 +372,7 @@ export const appConf = {
         },
         Optimized: {
           sum_opt: {
-            label: 's<sub>um</sub>(opt)',
+            label: 'N/A', // should change according to the optimise function
             unit: 'kPa',
             value: null,
             visible: '',

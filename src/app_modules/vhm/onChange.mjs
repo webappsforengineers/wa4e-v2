@@ -27,4 +27,70 @@ export const changeObj = {
       },
     },
   },
+  0: {
+    3: {
+      fields: {
+        Optimized: {
+          sum_opt: {
+            label: 'N/A',
+          },
+        },
+      },
+    },
+  },
+  1: {
+    3: {
+      fields: {
+        Optimized: {
+          sum_opt: {
+            label: 'D',
+          },
+        },
+      },
+    },
+  },
+  2: {
+    3: {
+      fields: {
+        Optimized: {
+          sum_opt: {
+            label: 'd',
+          },
+        },
+      },
+    },
+  },
+  3: {
+    3: {
+      fields: {
+        Optimized: {
+          sum_opt: {
+            label: 's<sub>um</sub>(opt)',
+          },
+        },
+      },
+    },
+  },
+  4: {
+    3: {
+      fields: {
+        Optimized: {
+          sum_opt: {
+            label: 'k<sub>su,f</sub>(opt)',
+          },
+        },
+      },
+    },
+  },
+  5: {
+    3: {
+      fields: {
+        Optimized: {
+          sum_opt: {
+            label: '&lambda;<sub>m</sub>(opt)',
+          },
+        },
+      },
+    },
+  },
 };
