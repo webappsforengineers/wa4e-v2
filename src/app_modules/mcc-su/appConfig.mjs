@@ -247,26 +247,26 @@ export const appConf = {
           dataFun(a, b, c, d, e) {
             return [
               {
-                x: a,
-                y: b,
+                x: b,
+                y: a,
                 name: 'σ&#39;<sub>v</sub>',
                 type: 'scatter',
               },
               {
-                x: a,
-                y: c,
+                x: c,
+                y: a,
                 name: 'u<sub>hyd</sub>',
                 type: 'scatter',
               },
               {
-                x: a,
-                y: d,
+                x: d,
+                y: a,
                 name: 'σ<sub>v</sub>',
                 type: 'scatter',
               },
               {
-                x: a,
-                y: e,
+                x: e,
+                y: a,
                 name: 'σ&#39;<sub>h</sub>',
                 type: 'scatter',
               },
@@ -312,14 +312,14 @@ export const appConf = {
           dataFun(a, b, c) {
             return [
               {
-                x: a,
-                y: b,
+                x: b,
+                y: a,
                 name: 'PS',
                 type: 'scatter',
               },
               {
-                x: a,
-                y: c,
+                x: c,
+                y: a,
                 name: 'TX',
                 type: 'scatter',
               },
