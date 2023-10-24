@@ -803,15 +803,15 @@ export const appConf = {
             font: {
               size: 18,
             },
-            // legend: {
-            //   x: 0,
-            //   xanchor: 'left',
-            //   y: 1,
-            //   font: {
-            //     size: 14,
-            //   },
-            //   bgcolor: '#00000000',
-            // },
+            legend: {
+              x: 0,
+              xanchor: 'left',
+              y: 1,
+              font: {
+                size: 14,
+              },
+              bgcolor: '#00000000',
+            },
             show: true,
           },
           args: [
