@@ -5,12 +5,18 @@ class registrationForm extends StyledElement {
   // define the JS object and/or html attributes to be passed to the app
   static get properties() {
     return {
+      username: {},
+      email: {},
+      password: {},
       userInfo: {},
     };
   }
 
   constructor() {
     super();
+    this.username = '';
+    this.email = '';
+    this.password = '';
     this.userInfo = {
       username: 'exampleName',
       email: 'exampleEmail',
@@ -19,12 +25,14 @@ class registrationForm extends StyledElement {
   }
 
   render() {
+    // window.console.log(this.userInfo);
     return html`
       <h2>Register for a User Account</h2>
       <p>
         <b>Note:</b> The user login system is in development and will not
         currently work in the version deployed through github pages.
       </p>
+      <!-- <form> -->
       <div class="mb-3">
         <label for="exampleInputUsername" class="form-label">Username</label>
         <input
@@ -54,28 +62,37 @@ class registrationForm extends StyledElement {
           @input=${this.changePassword}
         />
       </div>
-      <button class="btn btn-primary" @click=${this.submitRegistration}>
-        Submit
+      <button
+        class="btn btn-primary"
+        @click=${this.submitRegistration}
+        type="submit"
+      >
+        Register
       </button>
+      <!-- </form> -->
     `;
   }
 
   changeName(event) {
     const input = event.target;
-    this.userInfo.username = input.value;
+    this.username = input.value;
   }
 
   changeEmail(event) {
     const input = event.target;
-    this.userInfo.email = input.value;
+    this.email = input.value;
   }
 
   changePassword(event) {
     const input = event.target;
-    this.userInfo.password = input.value;
+    this.password = input.value;
   }
 
   submitRegistration() {
+    this.userInfo.username = this.username;
+    this.userInfo.email = this.email;
+    this.userInfo.password = this.password;
+
     window.console.log('lit element', this.userInfo);
 
     fetch('http://localhost:8080/api/register/', {
@@ -90,6 +107,7 @@ class registrationForm extends StyledElement {
       .then(response => response.json())
       .then(json => {
         window.console.log('api response:', json);
+        this.username = '';
       });
   }
 }

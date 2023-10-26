@@ -14,6 +14,7 @@ class loginForm extends StyledElement {
     this.loginUserInfo = {
       username: 'exampleName',
       password: 'examplePassword',
+      authToken: '',
     };
   }
 
@@ -44,8 +45,11 @@ class loginForm extends StyledElement {
           @input=${this.changePassword}
         />
       </div>
-      <button class="btn btn-primary" @click=${this.submitRegistration}>
-        Submit
+      <button class="btn btn-primary" @click=${this.submitLogin}>Login</button>
+      <br />
+      <br />
+      <button class="btn btn-primary" @click=${this.submitLogout}>
+        Logout
       </button>
       <!-- </form> -->
     `;
@@ -61,7 +65,7 @@ class loginForm extends StyledElement {
     this.loginUserInfo.password = input.value;
   }
 
-  submitRegistration() {
+  submitLogin() {
     window.console.log('lit element', this.loginUserInfo);
 
     fetch('http://localhost:8080/api/login/', {
@@ -76,6 +80,30 @@ class loginForm extends StyledElement {
       .then(response => response.json())
       .then(json => {
         window.console.log('api response:', json);
+        this.loginUserInfo.authToken = json.token;
+        window.console.log('logged in user info', this.loginUserInfo);
+      });
+  }
+
+  submitLogout() {
+    const authHeader = this.loginUserInfo.authToken;
+    window.console.log(authHeader);
+
+    fetch('http://localhost:8080/api/logout/', {
+      method: 'POST',
+      // mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Token ${this.loginUserInfo.authToken}`,
+      },
+      //   body: JSON.stringify({
+      //     username: this.loginUserInfo.username,
+      //     password: this.loginUserInfo.password,
+      //   }),
+    })
+      .then(response => response.json())
+      .then(json => {
+        window.console.log(json);
       });
   }
 }

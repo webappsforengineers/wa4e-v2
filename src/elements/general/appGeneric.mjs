@@ -285,7 +285,15 @@ export class AppGeneric extends StyledElement {
               <login-form></login-form>
             </div>
           </div>`;
-        } else {
+        }
+        // else if (component.type === 'logout-button') {
+        //   componentHtml = html`<div class="col">
+        //     <div class="card p-3">
+        //       <logout-button></logout-button>
+        //     </div>
+        //   </div>`;
+        // }
+        else {
           componentHtml = html`<p>
             Component ${component.type} Not Recognised
           </p>`;
