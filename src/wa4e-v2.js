@@ -14,6 +14,7 @@ import {
   vh2m2tConf,
   vhmConf,
   ztiConf,
+  registerConf,
 } from './app_modules/moduleConf.mjs';
 
 /* eslint-disable lit-a11y/anchor-has-content */
@@ -86,6 +87,9 @@ export class Wa4eV2 extends StyledElement {
           </div>
 
           <div class="row" data-masonry='{"percentPosition": true }'>
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+              <menu-tile .appConf="${registerConf}"></menu-tile>
+            </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${ncvConf}"></menu-tile>
             </div>

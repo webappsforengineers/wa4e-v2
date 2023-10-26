@@ -146,12 +146,12 @@ export const appConf = {
           title: 'Plot Type',
           options: {
             hhmm_opt: {
-              check_status: false,
+              check_status: true,
               label: 'h/h*,m/m*',
               visible: '',
             },
             HfMf_opt: {
-              check_status: true,
+              check_status: false,
               label: 'H<sub>f</sub>,M<sub>f</sub>',
               visible: '',
             },
@@ -459,7 +459,7 @@ export const appConf = {
           args: ['hh', 'mm', 'hh_star', 'mm_star', 'f1'],
           addLines: false,
           data: [],
-          display: 'none',
+          display: 'block',
         },
         HfMf: {
           dataFun(a, b, c, d, e) {
@@ -516,7 +516,7 @@ export const appConf = {
           args: ['Hultvec', 'Multvec', 'Hf', 'Mf', 'f1'],
           addLines: false,
           data: [],
-          display: 'block',
+          display: 'none',
         },
       },
       updateConf: {

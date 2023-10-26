@@ -48,3 +48,14 @@ Make sure you have node.js and npm installed on your machine
 - To run the tests use `npm run test` 
 - To lint the code use `npm run lint` 
 - To build the website that is served by github pages run `npm run build`, then add, commit and push all the new files in the dist folder (be sure to also delete all old dist files).
+
+### To add a new app (like caisson, consolidated-ncv etc.)
+
+- Add a folder in src/app_modules containing app.js, appConfig.mjs, and index.html.  These should follow the same format as the existing apps.
+- Add the path of the app to moduleConf.mjs
+
+### To add a new lit element (like batchTile, formTile etc.)
+
+- Create the .mjs file with the lit element inside it.  Extend from the StyledElement element so that the element will take on the bootstrap styling.
+- Add the path of the new lit element to myElements.mjs
+- Add the element to AppGeneric.mjs
