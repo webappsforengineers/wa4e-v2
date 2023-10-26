@@ -6,16 +6,20 @@ class loginForm extends StyledElement {
   static get properties() {
     return {
       loginUserInfo: {},
+      userList: {},
+      currentUser: { type: String },
     };
   }
 
   constructor() {
     super();
+    this.currentUser = '';
     this.loginUserInfo = {
       username: 'exampleName',
       password: 'examplePassword',
       authToken: '',
     };
+    this.userList = [];
   }
 
   render() {
@@ -51,7 +55,27 @@ class loginForm extends StyledElement {
       <button class="btn btn-primary" @click=${this.submitLogout}>
         Logout
       </button>
-      <!-- </form> -->
+      <br />
+      <br />
+      <button class="btn btn-primary" @click=${this.listUsers}>
+        List Users
+      </button>
+      <p>User List:</p>
+      <ul>
+        ${this.userList.map(
+          user => html` <li>${user.username}, ${user.email}</li>`
+        )}
+      </ul>
+
+      <br />
+      <br />
+      <button class="btn btn-primary" @click=${this.viewCurrentUser}>
+        View Current User
+      </button>
+      <p>Current User: ${this.currentUser}</p>
+      <p>
+        <!-- </form> -->
+      </p>
     `;
   }
 
@@ -91,19 +115,50 @@ class loginForm extends StyledElement {
 
     fetch('http://localhost:8080/api/logout/', {
       method: 'POST',
-      // mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Token ${this.loginUserInfo.authToken}`,
       },
-      //   body: JSON.stringify({
-      //     username: this.loginUserInfo.username,
-      //     password: this.loginUserInfo.password,
-      //   }),
     })
       .then(response => response.json())
       .then(json => {
         window.console.log(json);
+      });
+  }
+
+  listUsers() {
+    const authHeader = this.loginUserInfo.authToken;
+    window.console.log(authHeader);
+
+    fetch('http://localhost:8080/api/list-users/', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Token ${this.loginUserInfo.authToken}`,
+      },
+    })
+      .then(response => response.json())
+      .then(json => {
+        window.console.log(json);
+        this.userList = json;
+      });
+  }
+
+  viewCurrentUser() {
+    const authHeader = this.loginUserInfo.authToken;
+    window.console.log(authHeader);
+
+    fetch('http://localhost:8080/api/current-user/', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Token ${this.loginUserInfo.authToken}`,
+      },
+    })
+      .then(response => response.json())
+      .then(json => {
+        window.console.log(json.username);
+        this.currentUser = json.username;
       });
   }
 }
