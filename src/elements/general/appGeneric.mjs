@@ -279,6 +279,12 @@ export class AppGeneric extends StyledElement {
               <registration-form></registration-form>
             </div>
           </div>`;
+        } else if (component.type === 'login-form') {
+          componentHtml = html`<div class="col">
+            <div class="card p-3">
+              <login-form></login-form>
+            </div>
+          </div>`;
         } else {
           componentHtml = html`<p>
             Component ${component.type} Not Recognised
