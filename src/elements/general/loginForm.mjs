@@ -8,6 +8,9 @@ class loginForm extends StyledElement {
       loginUserInfo: {},
       userList: {},
       currentUser: { type: String },
+      selectedDeleteUser: {},
+      selectedUser: {},
+      outputSelectedUser: {},
     };
   }
 
@@ -20,6 +23,9 @@ class loginForm extends StyledElement {
       authToken: '',
     };
     this.userList = [];
+    this.selectedDeleteUser = '';
+    this.selectedUser = '';
+    this.outputSelectedUser = '';
   }
 
   render() {
@@ -73,9 +79,43 @@ class loginForm extends StyledElement {
         View Current User
       </button>
       <p>Current User: ${this.currentUser}</p>
-      <p>
-        <!-- </form> -->
-      </p>
+
+      <div class="mb-3">
+        <label for="selectedUserInput" class="form-label"
+          >Email of the user to be selected</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="selectedUserInput"
+          @input=${this.changeSelectedUser}
+        />
+      </div>
+      <button class="btn btn-primary" @click=${this.selectUser}>
+        Select User
+      </button>
+      <p>Selected User:</p>
+      <ul>
+        <li>id: ${this.outputSelectedUser.id}</li>
+        <li>username: ${this.outputSelectedUser.username}</li>
+        <li>email: ${this.outputSelectedUser.email}</li>
+      </ul>
+      <div class="mb-3">
+        <label for="deleteUserInput" class="form-label"
+          >Email of the user to be deleted</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="deleteUserInput"
+          @input=${this.changeSelectedDeleteUser}
+        />
+      </div>
+      <button class="btn btn-primary" @click=${this.deleteUser}>
+        Delete User
+      </button>
+
+      <!-- </form> -->
     `;
   }
 
@@ -87,6 +127,16 @@ class loginForm extends StyledElement {
   changePassword(event) {
     const input = event.target;
     this.loginUserInfo.password = input.value;
+  }
+
+  changeSelectedDeleteUser(event) {
+    const input = event.target;
+    this.selectedDeleteUser = input.value;
+  }
+
+  changeSelectedUser(event) {
+    const input = event.target;
+    this.selectedUser = input.value;
   }
 
   submitLogin() {
@@ -127,15 +177,15 @@ class loginForm extends StyledElement {
   }
 
   listUsers() {
-    const authHeader = this.loginUserInfo.authToken;
-    window.console.log(authHeader);
+    // const authHeader = this.loginUserInfo.authToken;
+    // window.console.log(authHeader);
 
     fetch('http://localhost:8080/api/list-users/', {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Token ${this.loginUserInfo.authToken}`,
-      },
+      // headers: {
+      //   'Content-Type': 'application/json',
+      //   Authorization: `Token ${this.loginUserInfo.authToken}`,
+      // },
     })
       .then(response => response.json())
       .then(json => {
@@ -161,6 +211,43 @@ class loginForm extends StyledElement {
         this.currentUser = json.username;
       });
   }
-}
 
+  selectUser() {
+    // select the user from their email
+    fetch(`http://localhost:8080/api/select-user/${this.selectedUser}/`, {
+      method: 'GET',
+      // headers: {
+      //   'Content-Type': 'application/json',
+      //   Authorization: `Token ${this.loginUserInfo.authToken}`,
+      // },
+    })
+      .then(response => response.json())
+      .then(json => {
+        window.console.log(json[0].id);
+        // eslint-disable-next-line prefer-destructuring
+        this.outputSelectedUser = json[0];
+        this.selectedUserId = json[0].id;
+        window.console.log(this.selectedUserId);
+      });
+  }
+
+  deleteUser() {
+    // const authHeader = this.loginUserInfo.authToken;
+    // window.console.log(authHeader);
+
+    fetch(`http://localhost:8080/api/select-user/${this.selectedDeleteUser}/`, {
+      method: 'GET',
+      // headers: {
+      //   'Content-Type': 'application/json',
+      //   Authorization: `Token ${this.loginUserInfo.authToken}`,
+      // },
+    })
+      .then(response => response.json())
+      .then(json => {
+        fetch(`http://localhost:8080/api/delete-user/${json[0].id}/`, {
+          method: 'DELETE',
+        });
+      });
+  }
+}
 customElements.define('login-form', loginForm);
