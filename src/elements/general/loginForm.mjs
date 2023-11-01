@@ -153,21 +153,20 @@ class loginForm extends StyledElement {
     })
       .then(response => response.json())
       .then(json => {
-        window.console.log('api response:', json);
-        this.loginUserInfo.authToken = json.token;
-        window.console.log('logged in user info', this.loginUserInfo);
+        localStorage.setItem('authToken', json.token);
+        // window.console.log('api response:', json);
+        // this.loginUserInfo.authToken = json.token;
+        // window.console.log('logged in user info', this.loginUserInfo);
       });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   submitLogout() {
-    const authHeader = this.loginUserInfo.authToken;
-    window.console.log(authHeader);
-
     fetch('http://localhost:8080/api/logout/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Token ${this.loginUserInfo.authToken}`,
+        Authorization: `Token ${localStorage.getItem('authToken')}`,
       },
     })
       .then(response => response.json())
@@ -182,10 +181,10 @@ class loginForm extends StyledElement {
 
     fetch('http://localhost:8080/api/list-users/', {
       method: 'GET',
-      // headers: {
-      //   'Content-Type': 'application/json',
-      //   Authorization: `Token ${this.loginUserInfo.authToken}`,
-      // },
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Token ${localStorage.getItem('authToken')}`,
+      },
     })
       .then(response => response.json())
       .then(json => {
@@ -195,14 +194,15 @@ class loginForm extends StyledElement {
   }
 
   viewCurrentUser() {
-    const authHeader = this.loginUserInfo.authToken;
-    window.console.log(authHeader);
+    // const authHeader = this.loginUserInfo.authToken;
+    // window.console.log(authHeader);
 
     fetch('http://localhost:8080/api/current-user/', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Token ${this.loginUserInfo.authToken}`,
+        Authorization: `Token ${localStorage.getItem('authToken')}`,
+        // Authorization: `Token ${this.loginUserInfo.authToken}`,
       },
     })
       .then(response => response.json())
@@ -216,14 +216,13 @@ class loginForm extends StyledElement {
     // select the user from their email
     fetch(`http://localhost:8080/api/select-user/${this.selectedUser}/`, {
       method: 'GET',
-      // headers: {
-      //   'Content-Type': 'application/json',
-      //   Authorization: `Token ${this.loginUserInfo.authToken}`,
-      // },
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Token ${localStorage.getItem('authToken')}`,
+      },
     })
       .then(response => response.json())
       .then(json => {
-        window.console.log(json[0].id);
         // eslint-disable-next-line prefer-destructuring
         this.outputSelectedUser = json[0];
         this.selectedUserId = json[0].id;
@@ -232,15 +231,12 @@ class loginForm extends StyledElement {
   }
 
   deleteUser() {
-    // const authHeader = this.loginUserInfo.authToken;
-    // window.console.log(authHeader);
-
     fetch(`http://localhost:8080/api/select-user/${this.selectedDeleteUser}/`, {
       method: 'GET',
-      // headers: {
-      //   'Content-Type': 'application/json',
-      //   Authorization: `Token ${this.loginUserInfo.authToken}`,
-      // },
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Token ${localStorage.getItem('authToken')}`,
+      },
     })
       .then(response => response.json())
       .then(json => {
