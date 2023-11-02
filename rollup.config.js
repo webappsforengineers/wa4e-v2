@@ -33,6 +33,7 @@ export default merge(baseConfig, {
     'app_modules/vh2m2t/index.html': './src/app_modules/vh2m2t/index.html',
     'app_modules/vhm/index.html': './src/app_modules/vhm/index.html',
     'app_modules/zti/index.html': './src/app_modules/zti/index.html',
+    'app_modules/register/index.html': './src/app_modules/register/index.html',
   },
   output: {
     format: 'es',

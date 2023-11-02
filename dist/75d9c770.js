@@ -11,18 +11,8 @@ import { a as c } from './f4408a59.js';
 import { a as m } from './90064f8e.js';
 import { a as d } from './b1ad2f04.js';
 import { a as p } from './433a0db4.js';
-const f = {
-  appName: 'register',
-  appTitle: 'Register or Login',
-  appDescription: 'Register for a user account or login to your account',
-  appPageTitle: 'Register or Login',
-  appColour: '#42f5b3',
-  appWebComponents: {
-    0: { type: 'registration-form' },
-    1: { type: 'login-form' },
-  },
-};
-class g extends e {
+import { a as f } from './01ee9db3.js';
+class u extends e {
   static get properties() {
     return { title: { type: String } };
   }
@@ -182,5 +172,5 @@ class g extends e {
     ];
   }
 }
-customElements.define('wa4e-v2', g);
-export { g as Wa4eV2 };
+customElements.define('wa4e-v2', u);
+export { u as Wa4eV2 };
