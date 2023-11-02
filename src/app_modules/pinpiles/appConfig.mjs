@@ -1,3 +1,4 @@
+import { html } from 'lit';
 import { changeObj } from './onChange.mjs';
 
 export const appConf = {
@@ -445,8 +446,17 @@ export const appConf = {
           title: '',
           content: {
             0: {
-              header: ['Design Loads', '', 'Mudmat Share', 'Pile Group Share'],
+              header: [
+                html`Design<br />Loads`,
+                '',
+                html`Mudmat<br />Share`,
+                html`Pile Group<br />Share`,
+              ],
             },
+            // 0: {
+            //   label:'Design Loads',
+            //   values:['', 'Mudmat Share', 'Pile Group Share'],
+            // },
             1: {
               label: 'V',
               values: [
@@ -482,47 +492,47 @@ export const appConf = {
             5: {
               label: '&theta;',
               values: [
-                [null, '<small class="p-0">rads</small>', ''],
-                [null, '<small class="p-0">degs</small>', ''],
+                [null, '<font size="2" class="p-0">rads</font>', ''],
+                [null, '<font size="2" class="p-0">degs</font>', ''],
               ],
             },
             6: {
               label: 'M<sub>x</sub>',
               values: [
-                [null, '<small class="p-0">kNm</small>', ''],
-                [null, '<small class="p-0">kNm</small>', ''],
-                [null, '<small class="p-0">kNm</small>', ''],
+                [null, '<font size="2" class="p-0">kNm</font>', ''],
+                [null, '<font size="2" class="p-0">kNm</font>', ''],
+                [null, '<font size="2" class="p-0">kNm</font>', ''],
               ],
             },
             7: {
               label: 'M<sub>y</sub>',
               values: [
-                [null, '<small class="p-0">kNm</small>', ''],
-                [null, '<small class="p-0">kNm</small>', ''],
-                [null, '<small class="p-0">kNm</small>', ''],
+                [null, '<font size="2" class="p-0">kNm</font>', ''],
+                [null, '<font size="2" class="p-0">kNm</font>', ''],
+                [null, '<font size="2" class="p-0">kNm</font>', ''],
               ],
             },
             8: {
               label: 'M',
               values: [
-                [null, '<small class="p-0">kNm</small>', ''],
-                [null, '<small class="p-0">kNm</small>', ''],
-                [null, '<small class="p-0">kNm</small>', ''],
+                [null, '<font size="2" class="p-0">kNm</font>', ''],
+                [null, '<font size="2" class="p-0">kNm</font>', ''],
+                [null, '<font size="2" class="p-0">kNm</font>', ''],
               ],
             },
             9: {
               label: '&theta;<sub>M</sub>',
               values: [
-                [null, '<small class="p-0">rads</small>', ''],
-                [null, '<small class="p-0">degs</small>', ''],
+                [null, '<font size="2" class="p-0">rads</font>', ''],
+                [null, '<font size="2" class="p-0">degs</font>', ''],
               ],
             },
             10: {
               label: 'T',
               values: [
-                [null, '<small class="p-0">kNm</small>', ''],
-                [null, '<small class="p-0">kNm</small>', ''],
-                [null, '<small class="p-0">kNm</small>', ''],
+                [null, '<font size="2" class="p-0">kNm</font>', ''],
+                [null, '<font size="2" class="p-0">kNm</font>', ''],
+                [null, '<font size="2" class="p-0">kNm</font>', ''],
               ],
             },
           },
