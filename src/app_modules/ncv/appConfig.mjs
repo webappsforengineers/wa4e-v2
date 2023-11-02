@@ -133,7 +133,8 @@ export const appConf = {
           },
           kappa_su: {
             label:
-              '&varkappa;<sub>su</sub> = k(D or B)/s<sub>um</sub> (0&#45;200)',
+              '<small>&kappa;<sub>su</sub>=k(D or B)/s<sub>um</sub> (0&#45;200)</small>',
+            // label: '&kappa;<sub>su</sub> = k(D or B)/s<sub>um</sub> (0&#45;200)',
             unit: null,
             value: 'Select Foundation Shape',
             lb: '0',

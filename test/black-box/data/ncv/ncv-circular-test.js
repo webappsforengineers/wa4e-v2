@@ -98,7 +98,7 @@ export const testConf = {
                       value: null,
                       unit: null,
                       label:
-                        '&varkappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)',
+                        '&kappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)',
                       visible: '',
                       lb: '',
                       ub: '',
@@ -172,7 +172,7 @@ export const testConf = {
                       value: null,
                       unit: null,
                       label:
-                        '&varkappa;<sub>su</sub> = kB/s<sub>um</sub> (0&#45;200)',
+                        '&kappa;<sub>su</sub> = kB/s<sub>um</sub> (0&#45;200)',
                       visible: '',
                       lb: '0',
                       ub: '200',
@@ -244,7 +244,7 @@ export const testConf = {
             ub: '',
           },
           kappa_su: {
-            label: '&varkappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)',
+            label: '&kappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)',
             value: [],
             visible: '',
             lb: '',
@@ -392,7 +392,7 @@ export const testConf = {
                       value: null,
                       unit: null,
                       label:
-                        '&varkappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)',
+                        '&kappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)',
                       visible: '',
                       lb: '',
                       ub: '',
@@ -466,7 +466,7 @@ export const testConf = {
                       value: null,
                       unit: null,
                       label:
-                        '&varkappa;<sub>su</sub> = kB/s<sub>um</sub> (0&#45;200)',
+                        '&kappa;<sub>su</sub> = kB/s<sub>um</sub> (0&#45;200)',
                       visible: '',
                       lb: '0',
                       ub: '200',
@@ -538,7 +538,7 @@ export const testConf = {
             ub: '',
           },
           kappa_su: {
-            label: '&varkappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)',
+            label: '&kappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)',
             value: [20, 20, 20],
             visible: '',
             lb: '',

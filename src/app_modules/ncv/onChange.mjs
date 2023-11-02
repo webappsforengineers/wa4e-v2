@@ -32,7 +32,8 @@ export const changeObj = {
           kappa_su: {
             value: null,
             unit: null,
-            label: '&varkappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)',
+            label:
+              '<small>&kappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;200)</small>',
             visible: '',
             lb: '',
             ub: '',
@@ -108,7 +109,8 @@ export const changeObj = {
           kappa_su: {
             value: null,
             unit: null,
-            label: '&varkappa;<sub>su</sub> = kB/s<sub>um</sub> (0&#45;200)',
+            label:
+              '<small>&kappa;<sub>su</sub> = kB/s<sub>um</sub> (0&#45;200)</small>',
             visible: '',
             lb: '0',
             ub: '200',

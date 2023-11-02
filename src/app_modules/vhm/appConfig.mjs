@@ -228,7 +228,8 @@ export const appConf = {
             ub: '',
           },
           k: {
-            label: '&varkappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;100)',
+            label:
+              '<small>&kappa;<sub>su</sub> = kD/s<sub>um</sub> (0&#45;100)</small>',
             unit: null,
             value: null,
             visible: '',
