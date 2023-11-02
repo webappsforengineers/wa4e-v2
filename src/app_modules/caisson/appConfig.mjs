@@ -30,7 +30,7 @@ export const appConf = {
             unit: 'm',
             value: 24,
             visible: '',
-            lb: '',
+            lb: '0',
             ub: '',
           },
           Do: {
@@ -49,7 +49,7 @@ export const appConf = {
           },
           W: {
             label: 'W&#39;',
-            unit: 'kn',
+            unit: 'kN',
             value: 1500,
             visible: '',
             lb: '',
@@ -358,7 +358,7 @@ export const appConf = {
             xaxis: {
               title: 'kN',
               side: 'top',
-              ticksuffix: ' kN',
+              ticksuffix: '',
             },
             yaxis: {
               title: 'z (m)',
@@ -399,7 +399,7 @@ export const appConf = {
             },
             yaxis: {
               title: 'z (m)',
-              range: 'reversed',
+              autorange: 'reversed',
             },
             mode: 'lines',
             line: {

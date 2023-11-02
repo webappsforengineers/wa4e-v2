@@ -86,7 +86,7 @@ export class Wa4eV2 extends StyledElement {
             </div>
           </div>
 
-          <login-form></login-form>
+          <!-- <login-form></login-form> -->
 
           <div class="row" data-masonry='{"percentPosition": true }'>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
