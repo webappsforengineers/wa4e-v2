@@ -450,79 +450,79 @@ export const appConf = {
             1: {
               label: 'V',
               values: [
-                [null, 'kN', ''],
-                [null, 'kN', ''],
-                [null, 'kN', ''],
+                [null, '<small class="p-0">kN</small>', ''],
+                [null, '<small class="p-0">kN</small>', ''],
+                [null, '<small class="p-0">kN</small>', ''],
               ],
             },
             2: {
               label: 'H<sub>x</sub>',
               values: [
-                [null, 'kN', ''],
-                [null, 'kN', ''],
-                [null, 'kN', ''],
+                [null, '<small class="p-0">kN</small>', ''],
+                [null, '<small class="p-0">kN</small>', ''],
+                [null, '<small class="p-0">kN</small>', ''],
               ],
             },
             3: {
               label: 'H<sub>y</sub>',
               values: [
-                [null, 'kN', ''],
-                [null, 'kN', ''],
-                [null, 'kN', ''],
+                [null, '<small class="p-0">kN</small>', ''],
+                [null, '<small class="p-0">kN</small>', ''],
+                [null, '<small class="p-0">kN</small>', ''],
               ],
             },
             4: {
               label: 'H',
               values: [
-                [null, 'kN', ''],
-                [null, 'kN', ''],
-                [null, 'kN', ''],
+                [null, '<small class="p-0">kN</small>', ''],
+                [null, '<small class="p-0">kN</small>', ''],
+                [null, '<small class="p-0">kN</small>', ''],
               ],
             },
             5: {
               label: '&theta;',
               values: [
-                [null, 'rads', ''],
-                [null, 'degs', ''],
+                [null, '<small class="p-0">rads</small>', ''],
+                [null, '<small class="p-0">degs</small>', ''],
               ],
             },
             6: {
               label: 'M<sub>x</sub>',
               values: [
-                [null, 'kNm', ''],
-                [null, 'kNm', ''],
-                [null, 'kNm', ''],
+                [null, '<small class="p-0">kNm</small>', ''],
+                [null, '<small class="p-0">kNm</small>', ''],
+                [null, '<small class="p-0">kNm</small>', ''],
               ],
             },
             7: {
               label: 'M<sub>y</sub>',
               values: [
-                [null, 'kNm', ''],
-                [null, 'kNm', ''],
-                [null, 'kNm', ''],
+                [null, '<small class="p-0">kNm</small>', ''],
+                [null, '<small class="p-0">kNm</small>', ''],
+                [null, '<small class="p-0">kNm</small>', ''],
               ],
             },
             8: {
               label: 'M',
               values: [
-                [null, 'kNm', ''],
-                [null, 'kNm', ''],
-                [null, 'kNm', ''],
+                [null, '<small class="p-0">kNm</small>', ''],
+                [null, '<small class="p-0">kNm</small>', ''],
+                [null, '<small class="p-0">kNm</small>', ''],
               ],
             },
             9: {
               label: '&theta;<sub>M</sub>',
               values: [
-                [null, 'rads', ''],
-                [null, 'degs', ''],
+                [null, '<small class="p-0">rads</small>', ''],
+                [null, '<small class="p-0">degs</small>', ''],
               ],
             },
             10: {
               label: 'T',
               values: [
-                [null, 'kNm', ''],
-                [null, 'kNm', ''],
-                [null, 'kNm', ''],
+                [null, '<small class="p-0">kNm</small>', ''],
+                [null, '<small class="p-0">kNm</small>', ''],
+                [null, '<small class="p-0">kNm</small>', ''],
               ],
             },
           },
