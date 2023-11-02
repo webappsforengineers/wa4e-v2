@@ -33,19 +33,59 @@ class batchTile extends TileBase {
       html`
         <h2>${unsafeHTML(this.localAppConf.title)}</h2>
         <h4>1. Get the template</h4>
+        <ul>
+          <li>
+            Click the button below to download the template for batch
+            calculation in xlsx format.
+          </li>
+        </ul>
         <button
           class="btn btn-outline-secondary"
           @click=${() => this.generateCSV()}
         >
           Download Template
         </button>
+        <br />
+        <br />
         <h4>2. Fill the template.</h4>
-        <p>
-          Each column is a single calculation that will be run. Columns must be
-          complete. Do not edit the generated fields. Any data that extends
-          below the generated fields will not be used.
-        </p>
+        <ul>
+          <li>
+            In the 'input-tile' sheet, the 'Values(s)...' column contains the
+            input values for one calculation.
+          </li>
+          <li>
+            Add additional columns to the right of 'Value(s)...' with different
+            values to perform additional calculations. Each column is a single
+            calculation that will be run.
+          </li>
+          <li>
+            When you have finished entering additional columns, save the file.
+          </li>
+          <li>
+            Note: Columns must be complete. Do not edit the generated fields.
+            Any data that extends below the generated fields will not be used.
+          </li>
+        </ul>
         <h4>3. Upload the file</h4>
+        <ul>
+          <li>
+            Click the 'Choose file' button below, your file explorer should
+            appear and from here you should select the edited template .xlsx
+            file created in step 2.
+          </li>
+          <li>After selecting the correct file, click 'Submit file'.</li>
+          <li>
+            The calculations will be performed and the output will automatically
+            be downloaded as a .xlsx file.
+          </li>
+          <li>
+            You can find the output in the output-tile sheet of this file.
+          </li>
+          <li>
+            The columns of output values are in the same order as the columns of
+            input values
+          </li>
+        </ul>
         <div class="input-group">
           <input class="form-control" type="file" id="dropbox" accept=".xlsx" />
           <button
