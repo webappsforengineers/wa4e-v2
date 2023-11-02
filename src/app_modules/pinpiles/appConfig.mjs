@@ -585,15 +585,21 @@ export const appConf = {
             },
             xaxis: {
               title: 'Resultant horizontal load, H<sub>mudmat</sub> (kN)',
+              titlefont: {
+                size: 16,
+              },
             },
             yaxis: {
               title: 'Resultant moment (kNm)',
+              titlefont: {
+                size: 16,
+              },
             },
             showlegend: true,
             legend: {
-              yanchor: 'top',
-              x: 0,
-              y: 2.1,
+              // yanchor: 'top',
+              x: 1,
+              y: 0.5,
             },
             font: {
               size: 18,
@@ -641,15 +647,21 @@ export const appConf = {
             },
             xaxis: {
               title: 'Resultant horizontal load, H<sub>piles</sub> (kN)',
+              titlefont: {
+                size: 16,
+              },
             },
             yaxis: {
               title: 'Resultant moment (kNm)',
+              titlefont: {
+                size: 16,
+              },
             },
             showlegend: true,
             legend: {
-              yanchor: 'top',
-              x: 0,
-              y: 2.1,
+              // yanchor: 'top',
+              x: 1,
+              y: 0.5,
             },
             font: {
               size: 18,
