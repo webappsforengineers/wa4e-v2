@@ -53,6 +53,7 @@ Make sure you have node.js and npm installed on your machine
 
 - Add a folder in src/app_modules containing app.js, appConfig.mjs, and index.html.  These should follow the same format as the existing apps.
 - Add the path of the app to moduleConf.mjs
+- Add the app to rollup.config.js in the same pattern as the other apps.  This will mean it is added to the dist folder when the app is built with `npm run build`.
 
 ### To add a new lit element (like batchTile, formTile etc.)
 
