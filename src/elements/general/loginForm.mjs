@@ -69,7 +69,10 @@ class loginForm extends StyledElement {
       <p>User List:</p>
       <ul>
         ${this.userList.map(
-          user => html` <li>${user.username}, ${user.email}</li>`
+          user => html` <li>
+            ${user.first_name}, ${user.last_name}, ${user.country},
+            ${user.organisation}, ${user.email}
+          </li>`
         )}
       </ul>
 
