@@ -34,6 +34,7 @@ export default merge(baseConfig, {
     'app_modules/vhm/index.html': './src/app_modules/vhm/index.html',
     'app_modules/zti/index.html': './src/app_modules/zti/index.html',
     'app_modules/register/index.html': './src/app_modules/register/index.html',
+    'app_modules/admin/index.html': './src/app_modules/admin/index.html',
   },
   output: {
     format: 'es',

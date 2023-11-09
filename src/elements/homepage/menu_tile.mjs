@@ -22,8 +22,8 @@ class menuTile extends StyledElement {
   /* eslint-disable lit-a11y/anchor-has-content */
   render() {
     // create static data paths
-    this.appPage = `./app_modules/${this.appConf.appName}/index.html`;
-    this.appImg = `./img/${this.appConf.appName}.png`;
+    this.appPage = `../app_modules/${this.appConf.appName}/index.html`;
+    this.appImg = `../img/${this.appConf.appName}.png`;
     return [
       super.render(),
       html`

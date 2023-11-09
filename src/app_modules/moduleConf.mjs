@@ -10,3 +10,4 @@ export { appConf as vh2m2tConf } from './vh2m2t/appConfig.mjs';
 export { appConf as vhmConf } from './vhm/appConfig.mjs';
 export { appConf as ztiConf } from './zti/appConfig.mjs';
 export { appConf as registerConf } from './register/appConfig.mjs';
+export { appConf as adminConf } from './admin/appConfig.mjs';

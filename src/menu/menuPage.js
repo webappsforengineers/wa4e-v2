@@ -1,6 +1,6 @@
 import { html } from 'lit';
-import { StyledElement } from './styles/wa4eStyleElement.mjs';
-import './elements/myElements.mjs';
+import { StyledElement } from '../styles/wa4eStyleElement.mjs';
+import '../elements/myElements.mjs';
 // get the configuration files for each app
 import {
   caissonConf,
@@ -14,12 +14,12 @@ import {
   vh2m2tConf,
   vhmConf,
   ztiConf,
-  registerConf,
-} from './app_modules/moduleConf.mjs';
+  adminConf,
+} from '../app_modules/moduleConf.mjs';
 
 /* eslint-disable lit-a11y/anchor-has-content */
 
-export class Wa4eV2 extends StyledElement {
+export class menuPage extends StyledElement {
   static get properties() {
     return {
       title: { type: String },
@@ -90,7 +90,7 @@ export class Wa4eV2 extends StyledElement {
 
           <div class="row" data-masonry='{"percentPosition": true }'>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${registerConf}"></menu-tile>
+              <menu-tile .appConf="${adminConf}"></menu-tile>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${ncvConf}"></menu-tile>
@@ -185,4 +185,4 @@ export class Wa4eV2 extends StyledElement {
   }
 }
 
-customElements.define('wa4e-v2', Wa4eV2);
+customElements.define('menu-page', menuPage);
