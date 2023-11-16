@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { html } from 'lit';
 import { StyledElement } from '../../styles/wa4eStyleElement.mjs';
 
@@ -56,15 +57,9 @@ class loginForm extends StyledElement {
           @input=${this.changePassword}
         />
       </div>
-      <!-- <a href='menu/index.html'> -->
       <button class="btn btn-primary" @click=${this.submitLogin}>Login</button>
-      <!-- </a> -->
-
       <br />
       <br />
-      <button class="btn btn-primary" @click=${this.submitLogout}>
-        Logout
-      </button>
     `;
   }
 
@@ -92,27 +87,15 @@ class loginForm extends StyledElement {
     })
       .then(response => response.json())
       .then(json => {
-        localStorage.setItem('authToken', json.token);
-        window.console.log('api response:', json);
-        window.location.href = 'menu/index.html';
+        if (json.error) {
+          alert('Incorrect username or password');
+        } else {
+          localStorage.setItem('authToken', json.token);
+          window.console.log('api response:', json);
+          window.location.href = 'menu/index.html';
+        }
         // this.loginUserInfo.authToken = json.token;
         // window.console.log('logged in user info', this.loginUserInfo);
-      });
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  submitLogout() {
-    fetch('http://localhost:8080/api/logout/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Token ${localStorage.getItem('authToken')}`,
-      },
-    })
-      .then(response => response.json())
-      .then(json => {
-        window.console.log(json);
-        window.location.href = '../index.html';
       });
   }
 }

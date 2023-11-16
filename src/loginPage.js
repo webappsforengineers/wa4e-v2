@@ -71,6 +71,8 @@ export class loginPage extends StyledElement {
           </div>
 
           <login-form></login-form>
+          <p>OR</p>
+          <p>If you are a new user please register for an account</p>
           <a href="app_modules/register/index.html" class="btn btn-primary">
             Register
           </a>
