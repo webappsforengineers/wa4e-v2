@@ -71,7 +71,9 @@ export class loginPage extends StyledElement {
           </div>
 
           <login-form></login-form>
-          <registration-form></registration-form>
+          <a href="app_modules/register/index.html" class="btn btn-primary">
+            Register
+          </a>
 
           <div class="row gy-1">
             <footer-element></footer-element>

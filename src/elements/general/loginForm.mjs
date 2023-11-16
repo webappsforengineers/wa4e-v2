@@ -29,13 +29,14 @@ class loginForm extends StyledElement {
   }
 
   render() {
+    window.console.log(localStorage.getItem('authToken'));
     return html`
       <h2>Login</h2>
       <p>
         <b>Note:</b> The user login system is in development and will not
         currently work in the version deployed through github pages.
       </p>
-      <!-- <form> -->
+      <!-- <form action='menu/index.html'> -->
       <div class="mb-3">
         <label for="loginUsername" class="form-label">Username</label>
         <input
@@ -55,17 +56,15 @@ class loginForm extends StyledElement {
           @input=${this.changePassword}
         />
       </div>
-      <a href="menu/index.html">
-        <button class="btn btn-primary" @click=${this.submitLogin}>
-          Login
-        </button>
-      </a>
+      <!-- <a href='menu/index.html'> -->
+      <button class="btn btn-primary" @click=${this.submitLogin}>Login</button>
+      <!-- </a> -->
+
       <br />
       <br />
       <button class="btn btn-primary" @click=${this.submitLogout}>
         Logout
       </button>
-      <!-- </form> -->
     `;
   }
 
@@ -94,7 +93,8 @@ class loginForm extends StyledElement {
       .then(response => response.json())
       .then(json => {
         localStorage.setItem('authToken', json.token);
-        // window.console.log('api response:', json);
+        window.console.log('api response:', json);
+        window.location.href = 'menu/index.html';
         // this.loginUserInfo.authToken = json.token;
         // window.console.log('logged in user info', this.loginUserInfo);
       });
@@ -112,6 +112,7 @@ class loginForm extends StyledElement {
       .then(response => response.json())
       .then(json => {
         window.console.log(json);
+        window.location.href = '../index.html';
       });
   }
 }

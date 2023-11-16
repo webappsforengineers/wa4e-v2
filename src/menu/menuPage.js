@@ -32,6 +32,7 @@ export class menuPage extends StyledElement {
   }
 
   render() {
+    window.console.log(localStorage.getItem('authToken'));
     return [
       super.render(),
       html`
@@ -88,6 +89,12 @@ export class menuPage extends StyledElement {
 
           <!-- <login-form></login-form> -->
 
+          <!-- <form action='../index.html'> -->
+          <button class="btn btn-primary" @click=${this.submitLogout}>
+            Logout
+          </button>
+          <!-- </form> -->
+
           <div class="row" data-masonry='{"percentPosition": true }'>
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
               <menu-tile .appConf="${adminConf}"></menu-tile>
@@ -133,7 +140,7 @@ export class menuPage extends StyledElement {
                 <img
                   class="card-img-top img-fluid"
                   style="width: 90%; height: 150px; object-fit: scale-down;"
-                  src="img/geocalc.png"
+                  src="../img/geocalc.png"
                   alt="Geocalcs icon"
                 />
                 <div class="card-body justify-content-center">
@@ -156,7 +163,7 @@ export class menuPage extends StyledElement {
                 <img
                   class="card-img-top img-fluid"
                   style="width: 90%; height: 150px; object-fit: scale-down;"
-                  src="img/storymaps.png"
+                  src="../img/storymaps.png"
                   alt="Story maps icon"
                 />
                 <div class="card-body justify-content-center">
@@ -182,6 +189,22 @@ export class menuPage extends StyledElement {
         </div>
       `,
     ];
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  submitLogout() {
+    fetch('http://localhost:8080/api/logout/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Token ${localStorage.getItem('authToken')}`,
+      },
+    })
+      .then(response => response.json())
+      .then(json => {
+        window.console.log(json);
+        window.location.href = '../index.html';
+      });
   }
 }
 

@@ -206,6 +206,7 @@ class registrationForm extends StyledElement {
       .then(json => {
         window.console.log('api response:', json);
         this.username = '';
+        window.location.href = '../../index.html';
       });
   }
 }

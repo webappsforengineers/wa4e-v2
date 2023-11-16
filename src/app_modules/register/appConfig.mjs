@@ -9,8 +9,5 @@ export const appConf = {
     0: {
       type: 'registration-form',
     },
-    1: {
-      type: 'login-form',
-    },
   },
 };
