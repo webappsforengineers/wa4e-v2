@@ -1,7 +1,8 @@
 import { html } from 'lit';
-import { StyledElement } from '../../styles/wa4eStyleElement.mjs';
+import { StyledElement } from '../styles/wa4eStyleElement.mjs';
+import '../elements/myElements.mjs';
 
-class admin extends StyledElement {
+class adminPage extends StyledElement {
   // define the JS object and/or html attributes to be passed to the app
   static get properties() {
     return {
@@ -29,64 +30,74 @@ class admin extends StyledElement {
   }
 
   render() {
-    return html`
-      <button class="btn btn-primary" @click=${this.listUsers}>
-        List Users
-      </button>
-      <p>User List:</p>
-      <ul>
-        ${this.userList.map(
-          user => html` <li>
-            ${user.first_name}, ${user.last_name}, ${user.country},
-            ${user.organisation}, ${user.email}
-          </li>`
-        )}
-      </ul>
+    return [
+      super.render(),
+      html`
+        <div class="row">
+          <header-element page-title="Admin"></header-element>
+        </div>
+        <div class="m-3">
+          <h3>Admin Options</h3>
+          <button class="btn btn-primary" @click=${this.listUsers}>
+            List Users
+          </button>
+          <p>User List:</p>
+          <ul>
+            ${this.userList.map(
+              user => html` <li>
+                ${user.first_name}, ${user.last_name}, ${user.country},
+                ${user.organisation}, ${user.email}
+              </li>`
+            )}
+          </ul>
 
-      <br />
-      <br />
-      <button class="btn btn-primary" @click=${this.viewCurrentUser}>
-        View Current User
-      </button>
-      <p>Current User: ${this.currentUser}</p>
+          <br />
+          <br />
+          <button class="btn btn-primary" @click=${this.viewCurrentUser}>
+            View Current User
+          </button>
+          <p>Current User: ${this.currentUser}</p>
 
-      <div class="mb-3">
-        <label for="selectedUserInput" class="form-label"
-          >Email of the user to be selected</label
-        >
-        <input
-          type="text"
-          class="form-control"
-          id="selectedUserInput"
-          @input=${this.changeSelectedUser}
-        />
-      </div>
-      <button class="btn btn-primary" @click=${this.selectUser}>
-        Select User
-      </button>
-      <p>Selected User:</p>
-      <ul>
-        <li>id: ${this.outputSelectedUser.id}</li>
-        <li>username: ${this.outputSelectedUser.username}</li>
-        <li>email: ${this.outputSelectedUser.email}</li>
-      </ul>
-      <div class="mb-3">
-        <label for="deleteUserInput" class="form-label"
-          >Email of the user to be deleted</label
-        >
-        <input
-          type="text"
-          class="form-control"
-          id="deleteUserInput"
-          @input=${this.changeSelectedDeleteUser}
-        />
-      </div>
-      <button class="btn btn-primary" @click=${this.deleteUser}>
-        Delete User
-      </button>
-
-      <!-- </form> -->
-    `;
+          <div class="mb-3">
+            <label for="selectedUserInput" class="form-label"
+              >Email of the user to be selected</label
+            >
+            <input
+              type="text"
+              class="form-control w-50"
+              id="selectedUserInput"
+              @input=${this.changeSelectedUser}
+            />
+          </div>
+          <button class="btn btn-primary" @click=${this.selectUser}>
+            Select User
+          </button>
+          <p>Selected User:</p>
+          <ul>
+            <li>id: ${this.outputSelectedUser.id}</li>
+            <li>username: ${this.outputSelectedUser.username}</li>
+            <li>email: ${this.outputSelectedUser.email}</li>
+          </ul>
+          <div class="mb-3">
+            <label for="deleteUserInput" class="form-label"
+              >Email of the user to be deleted</label
+            >
+            <input
+              type="text"
+              class="form-control w-50"
+              id="deleteUserInput"
+              @input=${this.changeSelectedDeleteUser}
+            />
+          </div>
+          <button class="btn btn-primary" @click=${this.deleteUser}>
+            Delete User
+          </button>
+        </div>
+        <div class="row gy-1">
+          <footer-element></footer-element>
+        </div>
+      `,
+    ];
   }
 
   changeName(event) {
@@ -212,8 +223,12 @@ class admin extends StyledElement {
       .then(json => {
         fetch(`http://localhost:8080/api/delete-user/${json[0].id}/`, {
           method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Token ${localStorage.getItem('authToken')}`,
+          },
         });
       });
   }
 }
-customElements.define('admin-page', admin);
+customElements.define('admin-page', adminPage);

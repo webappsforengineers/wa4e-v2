@@ -91,6 +91,7 @@ class loginForm extends StyledElement {
           alert('Incorrect username or password');
         } else {
           localStorage.setItem('authToken', json.token);
+          localStorage.setItem('user_type', json.user_type);
           window.console.log('api response:', json);
           window.location.href = 'menu/index.html';
         }

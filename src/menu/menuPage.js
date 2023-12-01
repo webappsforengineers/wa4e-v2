@@ -14,7 +14,6 @@ import {
   vh2m2tConf,
   vhmConf,
   ztiConf,
-  adminConf,
 } from '../app_modules/moduleConf.mjs';
 
 /* eslint-disable lit-a11y/anchor-has-content */
@@ -32,7 +31,134 @@ export class menuPage extends StyledElement {
   }
 
   render() {
-    window.console.log(localStorage.getItem('authToken'));
+    let adminTile;
+    if (localStorage.getItem('user_type') === 'admin user') {
+      adminTile = html`
+        <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+          <div
+            class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
+            style="background-color: #9f7eed; aspect-ratio: 0.8;"
+          >
+            <img
+              class="card-img-top img-fluid"
+              style="width: 90%; height: 150px; object-fit: scale-down;"
+              src="../img/admin.png"
+              alt="Admin icon"
+            />
+            <div class="card-body justify-content-center">
+              <h5 class="card-title">Admin</h5>
+              <p class="card-text">View, select, and delete users</p>
+              <a href="../adminPage/index.html" class="stretched-link"></a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    let mainContent;
+    if (
+      localStorage.getItem('user_type') === 'admin user' ||
+      localStorage.getItem('user_type') === 'regular user'
+    ) {
+      mainContent = html`
+        <button class="btn btn-primary" @click=${this.submitLogout}>
+          Logout
+        </button>
+        <div class="row" data-masonry='{"percentPosition": true }'>
+          ${adminTile}
+          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <menu-tile .appConf="${ncvConf}"></menu-tile>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <menu-tile .appConf="${vhmConf}"></menu-tile>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <menu-tile .appConf="${consolidatedncvConf}"></menu-tile>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <menu-tile .appConf="${pinpilesConf}"></menu-tile>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <menu-tile .appConf="${ztiConf}"></menu-tile>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <menu-tile .appConf="${vh2m2tConf}"></menu-tile>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <menu-tile .appConf="${spletConf}"></menu-tile>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <menu-tile .appConf="${mccsuConf}"></menu-tile>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <menu-tile .appConf="${caissonConf}"></menu-tile>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <menu-tile .appConf="${dragAnchorConf}"></menu-tile>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <menu-tile .appConf="${pipeConf}"></menu-tile>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <div
+              class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
+              style="background-color: #f492e3; aspect-ratio: 0.8;"
+            >
+              <img
+                class="card-img-top img-fluid"
+                style="width: 90%; height: 150px; object-fit: scale-down;"
+                src="../img/geocalc.png"
+                alt="Geocalcs icon"
+              />
+              <div class="card-body justify-content-center">
+                <h5 class="card-title">Pile Analysis, Datamap & more</h5>
+                <p class="card-text">Links to external site</p>
+                <a
+                  href="https://www.geocalcs.com/"
+                  class="stretched-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <div
+              class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
+              style="background-color: #9f7eed; aspect-ratio: 0.8;"
+            >
+              <img
+                class="card-img-top img-fluid"
+                style="width: 90%; height: 150px; object-fit: scale-down;"
+                src="../img/storymaps.png"
+                alt="Story maps icon"
+              />
+              <div class="card-body justify-content-center">
+                <h5 class="card-title">GIS for Offshore Wind</h5>
+                <p class="card-text">
+                  Constraints and availability maps for future OW in UK waters -
+                  Links to external site
+                </p>
+                <a
+                  href="https://storymaps.arcgis.com/collections/3c485282571142f28de577b957a0b348"
+                  class="stretched-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    } else {
+      mainContent = html`
+        <p>To use WebAppsForEngineers please login</p>
+        <a href="../index.html">
+          <button class="btn btn-primary">Go to Login Page</button>
+        </a>
+      `;
+    }
+
     return [
       super.render(),
       html`
@@ -66,7 +192,7 @@ export class menuPage extends StyledElement {
             </div>
             <div class="col-12">
               <p align="justify">
-                Webappsforengineers are freely available online geotechnical
+                WebAppsForEngineers are freely available online geotechnical
                 engineering calculation tools based on published research and
                 developed for research dissemination and teaching. The apps
                 enable users to engage with published methods and frameworks
@@ -87,101 +213,7 @@ export class menuPage extends StyledElement {
             </div>
           </div>
 
-          <!-- <login-form></login-form> -->
-
-          <!-- <form action='../index.html'> -->
-          <button class="btn btn-primary" @click=${this.submitLogout}>
-            Logout
-          </button>
-          <!-- </form> -->
-
-          <div class="row" data-masonry='{"percentPosition": true }'>
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${adminConf}"></menu-tile>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${ncvConf}"></menu-tile>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${vhmConf}"></menu-tile>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${consolidatedncvConf}"></menu-tile>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${pinpilesConf}"></menu-tile>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${ztiConf}"></menu-tile>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${vh2m2tConf}"></menu-tile>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${spletConf}"></menu-tile>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${mccsuConf}"></menu-tile>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${caissonConf}"></menu-tile>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${dragAnchorConf}"></menu-tile>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <menu-tile .appConf="${pipeConf}"></menu-tile>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <div
-                class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
-                style="background-color: #f492e3; aspect-ratio: 0.8;"
-              >
-                <img
-                  class="card-img-top img-fluid"
-                  style="width: 90%; height: 150px; object-fit: scale-down;"
-                  src="../img/geocalc.png"
-                  alt="Geocalcs icon"
-                />
-                <div class="card-body justify-content-center">
-                  <h5 class="card-title">Pile Analysis, Datamap & more</h5>
-                  <p class="card-text">Links to external site</p>
-                  <a
-                    href="https://www.geocalcs.com/"
-                    class="stretched-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  ></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-              <div
-                class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
-                style="background-color: #9f7eed; aspect-ratio: 0.8;"
-              >
-                <img
-                  class="card-img-top img-fluid"
-                  style="width: 90%; height: 150px; object-fit: scale-down;"
-                  src="../img/storymaps.png"
-                  alt="Story maps icon"
-                />
-                <div class="card-body justify-content-center">
-                  <h5 class="card-title">Story Maps ArcGIS Tool</h5>
-                  <p class="card-text">
-                    Constraints and availability maps for future OW in UK waters
-                    - Links to external site
-                  </p>
-                  <a
-                    href="https://storymaps.arcgis.com/collections/3c485282571142f28de577b957a0b348"
-                    class="stretched-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  ></a>
-                </div>
-              </div>
-            </div>
-          </div>
+          ${mainContent}
 
           <div class="row gy-1">
             <footer-element></footer-element>
@@ -203,6 +235,8 @@ export class menuPage extends StyledElement {
       .then(response => response.json())
       .then(json => {
         window.console.log(json);
+        localStorage.setItem('authToken', null);
+        localStorage.setItem('user_type', null);
         window.location.href = '../index.html';
       });
   }

@@ -3,8 +3,6 @@ import './general/pageFooters.mjs';
 import './general/pageHeaders.mjs';
 import './general/registrationForm.mjs';
 import './general/loginForm.mjs';
-// import './general/logoutButton.mjs';
-import './general/admin.mjs';
 import './app_tiles/formTile.mjs';
 import './app_tiles/imageTile.mjs';
 import './app_tiles/graphTile.mjs';

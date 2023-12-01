@@ -567,7 +567,7 @@ export const appConf = {
               {
                 x: d,
                 y: e,
-                name: `UTI: λ<sub>s</sub> = ${f}`,
+                name: `ZTI: λ<sub>s</sub> = ${f}`,
               },
               {
                 x: g,
