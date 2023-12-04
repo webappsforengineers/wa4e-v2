@@ -42,7 +42,7 @@ class loginForm extends StyledElement {
         <label for="loginUsername" class="form-label">Username</label>
         <input
           type="text"
-          class="form-control"
+          class="form-control w-50"
           id="loginUsername"
           aria-describedby="emailHelp"
           @input=${this.changeName}
@@ -52,7 +52,7 @@ class loginForm extends StyledElement {
         <label for="loginPassword" class="form-label">Password</label>
         <input
           type="password"
-          class="form-control"
+          class="form-control w-50"
           id="loginPassword"
           @input=${this.changePassword}
         />
