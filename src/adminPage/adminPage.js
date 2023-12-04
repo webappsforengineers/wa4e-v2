@@ -39,28 +39,39 @@ class adminPage extends StyledElement {
         <div class="m-3">
           <h3>Admin Options</h3>
           <button class="btn btn-primary" @click=${this.listUsers}>
-            List Users
+            View Full List of Users
           </button>
-          <p>User List:</p>
-          <ul>
-            ${this.userList.map(
-              user => html` <li>
-                ${user.first_name}, ${user.last_name}, ${user.country},
-                ${user.organisation}, ${user.email}
-              </li>`
-            )}
-          </ul>
+          <table class="table">
+            <thead>
+              <th scope="col">Username</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Organisation</th>
+              <th scope="col">Country</th>
+            </thead>
+            <tbody>
+              ${this.userList.map(
+                user => html`
+                  <tr>
+                    <td>${user.username}</td>
+                    <td>${user.first_name}</td>
+                    <td>${user.last_name}</td>
+                    <td>${user.email}</td>
+                    <td>${user.organisation}</td>
+                    <td>${user.country}</td>
+                  </tr>
+                `
+              )}
+            </tbody>
+          </table>
 
           <br />
           <br />
-          <button class="btn btn-primary" @click=${this.viewCurrentUser}>
-            View Current User
-          </button>
-          <p>Current User: ${this.currentUser}</p>
 
           <div class="mb-3">
             <label for="selectedUserInput" class="form-label"
-              >Email of the user to be selected</label
+              >Email of the user to be selected:</label
             >
             <input
               type="text"
@@ -70,17 +81,33 @@ class adminPage extends StyledElement {
             />
           </div>
           <button class="btn btn-primary" @click=${this.selectUser}>
-            Select User
+            View Selected User
           </button>
-          <p>Selected User:</p>
-          <ul>
-            <li>id: ${this.outputSelectedUser.id}</li>
-            <li>username: ${this.outputSelectedUser.username}</li>
-            <li>email: ${this.outputSelectedUser.email}</li>
-          </ul>
+          <table class="table">
+            <thead>
+              <th scope="col">Username</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Organisation</th>
+              <th scope="col">Country</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>${this.outputSelectedUser.username}</td>
+                <td>${this.outputSelectedUser.first_name}</td>
+                <td>${this.outputSelectedUser.last_name}</td>
+                <td>${this.outputSelectedUser.email}</td>
+                <td>${this.outputSelectedUser.organisation}</td>
+                <td>${this.outputSelectedUser.country}</td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          <br />
           <div class="mb-3">
             <label for="deleteUserInput" class="form-label"
-              >Email of the user to be deleted</label
+              >Email of the user to be deleted:</label
             >
             <input
               type="text"

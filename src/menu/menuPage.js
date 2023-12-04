@@ -22,15 +22,18 @@ export class menuPage extends StyledElement {
   static get properties() {
     return {
       title: { type: String },
+      currentUser: {},
     };
   }
 
   constructor() {
     super();
     this.title = '';
+    this.currentUser = '';
   }
 
   render() {
+    window.onload = this.viewCurrentUser();
     let adminTile;
     if (localStorage.getItem('user_type') === 'admin user') {
       adminTile = html`
@@ -61,7 +64,7 @@ export class menuPage extends StyledElement {
       localStorage.getItem('user_type') === 'regular user'
     ) {
       mainContent = html`
-        <button class="btn btn-primary" @click=${this.submitLogout}>
+        <button class="btn btn-primary float-end" @click=${this.submitLogout}>
           Logout
         </button>
         <br />
@@ -159,7 +162,7 @@ export class menuPage extends StyledElement {
                 class="card-img-top img-fluid"
                 style="width: 90%; height: 150px; object-fit: scale-down;"
                 src="../img/abc.jpeg"
-                alt="Story maps icon"
+                alt="ABC icon"
               />
               <div class="card-body justify-content-center">
                 <h5 class="card-title">ABC - Analysis of Bearing Capacity</h5>
@@ -196,6 +199,7 @@ export class menuPage extends StyledElement {
         >
           <div class="row">
             <div class="col-12">
+              <h3>Hello ${this.currentUser}, welcome to WebAppsForEngineers</h3>
               <h4 style="color: red" align="justify">
                 WebAppsForEngineers V2 is in beta, the app has been
                 reimplemented to modernise the app framework. For general use we
@@ -263,6 +267,25 @@ export class menuPage extends StyledElement {
         localStorage.setItem('authToken', null);
         localStorage.setItem('user_type', null);
         window.location.href = '../index.html';
+      });
+  }
+
+  viewCurrentUser() {
+    // const authHeader = this.loginUserInfo.authToken;
+    // window.console.log(authHeader);
+
+    fetch('http://localhost:8080/api/current-user/', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Token ${localStorage.getItem('authToken')}`,
+        // Authorization: `Token ${this.loginUserInfo.authToken}`,
+      },
+    })
+      .then(response => response.json())
+      .then(json => {
+        window.console.log(json);
+        this.currentUser = json.username;
       });
   }
 }
