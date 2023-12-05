@@ -4,7 +4,8 @@ export const appConf = {
   appTitle: 'Drag Anchor',
   appPageTitle: 'Drag Anchor',
   appDescription: 'Installation depth and holding capacity',
-  appColour: '#ffae75',
+  appColour: '#e1e8ec',
+  textColour: 'text-dark',
   appWebComponents: {
     0: {
       type: 'text-tile',

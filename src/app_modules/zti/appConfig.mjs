@@ -4,7 +4,8 @@ export const appConf = {
   appName: 'zti',
   appTitle: 'Mudmat UTI & ZTI VH<sub>2</sub>M<sub>2</sub>T',
   appPageTitle: 'Mudmat UTI & ZTI VH<sub>2</sub>M<sub>2</sub>T',
-  appColour: '#ed5151',
+  appColour: '#e1e8ec',
+  textColour: 'text-dark',
   appDescription:
     'Undrained 6 DoF capacity of rectangular mudmat with unlimited and zero tension interface',
   appWebComponents: {

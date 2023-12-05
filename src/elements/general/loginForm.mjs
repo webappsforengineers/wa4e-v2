@@ -32,14 +32,16 @@ class loginForm extends StyledElement {
   render() {
     window.console.log(localStorage.getItem('authToken'));
     return html`
-      <h2>Login</h2>
-      <p>
+      <h2 class="text-light">Login</h2>
+      <p class="text-light">
         <b>Note:</b> The user login system is in development and will not
         currently work in the version deployed through github pages.
       </p>
       <!-- <form action='menu/index.html'> -->
       <div class="mb-3">
-        <label for="loginUsername" class="form-label">Username</label>
+        <label for="loginUsername" class="form-label text-light"
+          >Username</label
+        >
         <input
           type="text"
           class="form-control w-50"
@@ -49,7 +51,9 @@ class loginForm extends StyledElement {
         />
       </div>
       <div class="mb-3">
-        <label for="loginPassword" class="form-label">Password</label>
+        <label for="loginPassword" class="form-label text-light"
+          >Password</label
+        >
         <input
           type="password"
           class="form-control w-50"
@@ -57,7 +61,13 @@ class loginForm extends StyledElement {
           @input=${this.changePassword}
         />
       </div>
-      <button class="btn btn-primary" @click=${this.submitLogin}>Login</button>
+      <button
+        class="btn"
+        style="background-color: #c1d100; color: #00557f"
+        @click=${this.submitLogin}
+      >
+        Login
+      </button>
       <br />
       <br />
     `;

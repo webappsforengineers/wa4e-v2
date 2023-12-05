@@ -33,95 +33,112 @@ class adminPage extends StyledElement {
     return [
       super.render(),
       html`
-        <div class="row">
-          <header-element page-title="Admin"></header-element>
-        </div>
-        <div class="m-3">
-          <h3>Admin Options</h3>
-          <button class="btn btn-primary" @click=${this.listUsers}>
-            View Full List of Users
-          </button>
-          <table class="table">
-            <thead>
-              <th scope="col">Username</th>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Organisation</th>
-              <th scope="col">Country</th>
-            </thead>
-            <tbody>
-              ${this.userList.map(
-                user => html`
-                  <tr>
-                    <td>${user.username}</td>
-                    <td>${user.first_name}</td>
-                    <td>${user.last_name}</td>
-                    <td>${user.email}</td>
-                    <td>${user.organisation}</td>
-                    <td>${user.country}</td>
-                  </tr>
-                `
-              )}
-            </tbody>
-          </table>
-
-          <br />
-          <br />
-
-          <div class="mb-3">
-            <label for="selectedUserInput" class="form-label"
-              >Email of the user to be selected:</label
-            >
-            <input
-              type="text"
-              class="form-control w-50"
-              id="selectedUserInput"
-              @input=${this.changeSelectedUser}
-            />
+        <div
+          class="text-light"
+          style="background-color: #00557f; height: auto; min-height: 100vh"
+        >
+          <div class="row">
+            <header-element page-title="Admin"></header-element>
           </div>
-          <button class="btn btn-primary" @click=${this.selectUser}>
-            View Selected User
-          </button>
-          <table class="table">
-            <thead>
-              <th scope="col">Username</th>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Organisation</th>
-              <th scope="col">Country</th>
-            </thead>
-            <tbody>
-              <tr>
-                <td>${this.outputSelectedUser.username}</td>
-                <td>${this.outputSelectedUser.first_name}</td>
-                <td>${this.outputSelectedUser.last_name}</td>
-                <td>${this.outputSelectedUser.email}</td>
-                <td>${this.outputSelectedUser.organisation}</td>
-                <td>${this.outputSelectedUser.country}</td>
-              </tr>
-            </tbody>
-          </table>
-          <br />
-          <br />
-          <div class="mb-3">
-            <label for="deleteUserInput" class="form-label"
-              >Email of the user to be deleted:</label
+          <div class="m-3">
+            <h3>Admin Options</h3>
+            <button
+              class="btn"
+              style="background-color: #c1d100; color: #00557f"
+              @click=${this.listUsers}
             >
-            <input
-              type="text"
-              class="form-control w-50"
-              id="deleteUserInput"
-              @input=${this.changeSelectedDeleteUser}
-            />
+              View Full List of Users
+            </button>
+            <table class="table text-light">
+              <thead>
+                <th scope="col">Username</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Organisation</th>
+                <th scope="col">Country</th>
+              </thead>
+              <tbody>
+                ${this.userList.map(
+                  user => html`
+                    <tr>
+                      <td>${user.username}</td>
+                      <td>${user.first_name}</td>
+                      <td>${user.last_name}</td>
+                      <td>${user.email}</td>
+                      <td>${user.organisation}</td>
+                      <td>${user.country}</td>
+                    </tr>
+                  `
+                )}
+              </tbody>
+            </table>
+
+            <br />
+            <br />
+
+            <div class="mb-3">
+              <label for="selectedUserInput" class="form-label"
+                >Email of the user to be selected:</label
+              >
+              <input
+                type="text"
+                class="form-control w-50"
+                id="selectedUserInput"
+                @input=${this.changeSelectedUser}
+              />
+            </div>
+            <button
+              class="btn"
+              style="background-color: #c1d100; color: #00557f"
+              @click=${this.selectUser}
+            >
+              View Selected User
+            </button>
+            <table class="table text-light">
+              <thead>
+                <th scope="col">Username</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Organisation</th>
+                <th scope="col">Country</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>${this.outputSelectedUser.username}</td>
+                  <td>${this.outputSelectedUser.first_name}</td>
+                  <td>${this.outputSelectedUser.last_name}</td>
+                  <td>${this.outputSelectedUser.email}</td>
+                  <td>${this.outputSelectedUser.organisation}</td>
+                  <td>${this.outputSelectedUser.country}</td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+            <br />
+            <div class="mb-3">
+              <label for="deleteUserInput" class="form-label"
+                >Email of the user to be deleted:</label
+              >
+              <input
+                type="text"
+                class="form-control w-50"
+                id="deleteUserInput"
+                @input=${this.changeSelectedDeleteUser}
+              />
+            </div>
+            <button
+              class="btn"
+              style="background-color: #c1d100; color: #00557f"
+              @click=${this.deleteUser}
+            >
+              Delete User
+            </button>
           </div>
-          <button class="btn btn-primary" @click=${this.deleteUser}>
-            Delete User
-          </button>
-        </div>
-        <div class="row gy-1">
-          <footer-element></footer-element>
+          <div class="row gy-1">
+            <footer-light-element></footer-light-element>
+          </div>
         </div>
       `,
     ];

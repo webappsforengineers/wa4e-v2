@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import { StyledElement } from '../../styles/wa4eStyleElement.mjs';
 
-class footerTemplate extends StyledElement {
+class footerTemplateLight extends StyledElement {
   constructor() {
     super();
     this.contactEmail = `susan.gourvenec@southampton.ac.uk`;
@@ -28,7 +28,7 @@ class footerTemplate extends StyledElement {
           id="footer-hr"
         />
         <div class="container-fluid p-3">
-          <footer class="footer footer-text">
+          <footer class="footer footer-text text-light">
             <span>
               ${this.footerText}
               <a href=${this.contactEmailLink}>${this.contactEmail}</a>
@@ -40,4 +40,4 @@ class footerTemplate extends StyledElement {
   }
 }
 
-customElements.define('footer-element', footerTemplate);
+customElements.define('footer-light-element', footerTemplateLight);

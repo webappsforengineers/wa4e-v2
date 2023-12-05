@@ -6,7 +6,8 @@ export const appConf = {
   appPageTitle: 'Shallow Foundation VHM',
   appDescription:
     'Undrained combined load capacity of circular skirted foundations',
-  appColour: '#75dff4',
+  appColour: '#e1e8ec',
+  textColour: 'text-dark',
   appWebComponents: {
     0: {
       type: 'text-tile',

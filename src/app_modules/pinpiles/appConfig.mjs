@@ -7,7 +7,8 @@ export const appConf = {
   appPageTitle: 'Mudmat & Hybrid Mudmat VH<sub>2</sub>M<sub>2</sub>T',
   appDescription:
     'Undrained 6 DoF capacity of rectangular skirted mudmat and pinpiled mudmats',
-  appColour: '#698ef1',
+  appColour: '#e1e8ec',
+  textColour: 'text-dark',
   appWebComponents: {
     0: {
       type: 'text-tile',

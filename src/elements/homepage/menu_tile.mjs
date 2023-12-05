@@ -39,8 +39,12 @@ class menuTile extends StyledElement {
             alt="${this.appConf.appName} icon"
           />
           <div class="card-body">
-            <h6 class="card-title">${unsafeHTML(this.appConf.appTitle)}</h6>
-            <p class="card-text">${this.appConf.appDescription}</p>
+            <h6 class="card-title ${this.appConf.textColour}">
+              ${unsafeHTML(this.appConf.appTitle)}
+            </h6>
+            <p class="card-text ${this.appConf.textColour}">
+              ${this.appConf.appDescription}
+            </p>
             <a href=${this.appPage} class="stretched-link"></a>
           </div>
         </div>

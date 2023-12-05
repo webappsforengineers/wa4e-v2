@@ -40,7 +40,7 @@ export class menuPage extends StyledElement {
         <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
           <div
             class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
-            style="background-color: #9f7eed; aspect-ratio: 0.8;"
+            style="background-color: #e1e8ec; aspect-ratio: 0.8;"
           >
             <img
               class="card-img-top img-fluid"
@@ -64,7 +64,11 @@ export class menuPage extends StyledElement {
       localStorage.getItem('user_type') === 'regular user'
     ) {
       mainContent = html`
-        <button class="btn btn-primary float-end" @click=${this.submitLogout}>
+        <button
+          class="btn float-end"
+          style="background-color: #c1d100; color: #00557f"
+          @click=${this.submitLogout}
+        >
           Logout
         </button>
         <br />
@@ -107,7 +111,7 @@ export class menuPage extends StyledElement {
           <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
             <div
               class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
-              style="background-color: #f492e3; aspect-ratio: 0.8;"
+              style="background-color: #e1e8ec; aspect-ratio: 0.8;"
             >
               <img
                 class="card-img-top img-fluid"
@@ -128,9 +132,10 @@ export class menuPage extends StyledElement {
             </div>
           </div>
           <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <!-- <div class="col-sm-6 col-lg-4 col-xl-3 mb-4"> -->
             <div
               class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
-              style="background-color: #9f7eed; aspect-ratio: 0.8;"
+              style="background-color: #e1e8ec; aspect-ratio: 0.8;"
             >
               <img
                 class="card-img-top img-fluid"
@@ -156,7 +161,7 @@ export class menuPage extends StyledElement {
           <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
             <div
               class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
-              style="background-color: #9f7eed; aspect-ratio: 0.8;"
+              style="background-color: #e1e8ec; aspect-ratio: 0.8;"
             >
               <img
                 class="card-img-top img-fluid"
@@ -180,9 +185,11 @@ export class menuPage extends StyledElement {
       `;
     } else {
       mainContent = html`
-        <p>To use WebAppsForEngineers please login</p>
+        <p class="text-light">To use WebAppsForEngineers please login</p>
         <a href="../index.html">
-          <button class="btn btn-primary">Go to Login Page</button>
+          <button class="btn" style="background-color: #c1d100; color: #00557f">
+            Go to Login Page
+          </button>
         </a>
       `;
     }
@@ -190,17 +197,35 @@ export class menuPage extends StyledElement {
     return [
       super.render(),
       html`
-        <div class="row">
-          <header-element page-title="${this.title}"></header-element>
-        </div>
-        <div
-          class="container align-items-center justify-content-center"
-          style="align-items: center; justify-content: center"
-        >
+        <div style="background-color: #00557f; height: auto; min-height: 100vh">
+          <!-- <img class="bg obj-fit-cover" src="../img/sea2.png" alt="sea"> -->
           <div class="row">
-            <div class="col-12">
-              <h3>Hello ${this.currentUser}, welcome to WebAppsForEngineers</h3>
-              <h4 style="color: red" align="justify">
+            <header-element page-title="${this.title}"></header-element>
+          </div>
+          <div
+            class="container align-items-center justify-content-center"
+            style="align-items: center; justify-content: center"
+          >
+            <div class="row text-light">
+              <h3>
+                Hello ${this.currentUser}, welcome to WebAppsForEngineers!
+              </h3>
+              <!-- <div class="col-12">
+              <img 
+                src="../img/wind_turbine.png" 
+                class="img-fluid"
+                alt="wind turbine"
+              >
+              </div> -->
+              <!-- <div class="col-md-6">
+              <img 
+                src="../img/ship.png" 
+                class="img-fluid"
+                alt="ship"
+              >
+              </div> -->
+
+              <!-- <h4 style="color: red" align="justify">
                 WebAppsForEngineers V2 is in beta, the app has been
                 reimplemented to modernise the app framework. For general use we
                 suggest using the original site found
@@ -210,42 +235,43 @@ export class menuPage extends StyledElement {
                   rel="noopener noreferrer"
                   >here</a
                 >.
-              </h4>
+              </h4> -->
             </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <h3 align="center">
-                Freeware web-based calculation tools for geotechnical engineers
-              </h3>
+            <div class="row text-light">
+              <div class="col-12">
+                <h3 align="center">
+                  Freeware web-based calculation tools for geotechnical
+                  engineers
+                </h3>
+              </div>
+              <div class="col-12">
+                <p align="justify">
+                  WebAppsForEngineers are freely available online geotechnical
+                  engineering calculation tools based on published research and
+                  developed for research dissemination and teaching. The apps
+                  enable users to engage with published methods and frameworks
+                  immediately, allowing initial sizing calculations to be
+                  performed and exploration of the sensitivity of design inputs
+                  (e.g. geotechnical properties and loads) on design outputs
+                  (e.g. foundation or anchor geometry and resistance). In some
+                  cases geometry of the structure is an input, although a key
+                  value of many of the automated calculation tools presented in
+                  these apps is the ability to change the design question from
+                  ‘is the factor of safety for this foundation sufficient?’ to
+                  ‘what is the minimum geometry of the foundation to ensure the
+                  required factor of safety?’. The latter is arguably the more
+                  useful design question and the optimization routines in those
+                  tools applying a failure envelope methodology, enable
+                  automated iteration to determine the optimized geometry.
+                </p>
+              </div>
             </div>
-            <div class="col-12">
-              <p align="justify">
-                WebAppsForEngineers are freely available online geotechnical
-                engineering calculation tools based on published research and
-                developed for research dissemination and teaching. The apps
-                enable users to engage with published methods and frameworks
-                immediately, allowing initial sizing calculations to be
-                performed and exploration of the sensitivity of design inputs
-                (e.g. geotechnical properties and loads) on design outputs (e.g.
-                foundation or anchor geometry and resistance). In some cases
-                geometry of the structure is an input, although a key value of
-                many of the automated calculation tools presented in these apps
-                is the ability to change the design question from ‘is the factor
-                of safety for this foundation sufficient?’ to ‘what is the
-                minimum geometry of the foundation to ensure the required factor
-                of safety?’. The latter is arguably the more useful design
-                question and the optimization routines in those tools applying a
-                failure envelope methodology, enable automated iteration to
-                determine the optimized geometry.
-              </p>
-            </div>
-          </div>
 
-          ${mainContent}
+            ${mainContent}
 
-          <div class="row gy-1">
-            <footer-element></footer-element>
+            <div class="row gy-1">
+              <footer-light-element></footer-light-element>
+            </div>
           </div>
         </div>
       `,

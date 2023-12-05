@@ -4,7 +4,8 @@ export const appConf = {
   appTitle: 'MCC - s<sub>u</sub>',
   appPageTitle: 'MCC - s<sub>u</sub>',
   appDescription: 'Conversion of MCC parameters to su profile',
-  appColour: '#f1c04c',
+  appColour: '#e1e8ec',
+  textColour: 'text-dark',
   appWebComponents: {
     0: {
       type: 'text-tile',

@@ -3,7 +3,8 @@ export const appConf = {
   appName: 'sliding-plet',
   appTitle: 'Sliding Mudmat',
   appPageTitle: 'Sliding Mudmat',
-  appColour: '#FF27DF',
+  appColour: '#e1e8ec',
+  textColour: 'text-dark',
   appDescription:
     'Evolution of sliding resistance and settlement from episodes of sliding and consolidation',
   appWebComponents: {

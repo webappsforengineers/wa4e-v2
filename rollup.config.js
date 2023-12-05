@@ -20,6 +20,7 @@ export default merge(baseConfig, {
     'index.html': './src/index.html',
     'menu/index.html': './src/menu/index.html',
     'adminPage/index.html': './src/adminPage/index.html',
+    'register/index.html': './src/register/index.html',
     'admin/createTest.html': './src/admin/createTest.html',
     'app_modules/caisson/index.html': './src/app_modules/caisson/index.html',
     'app_modules/consolidated-ncv/index.html':
@@ -35,7 +36,6 @@ export default merge(baseConfig, {
     'app_modules/vh2m2t/index.html': './src/app_modules/vh2m2t/index.html',
     'app_modules/vhm/index.html': './src/app_modules/vhm/index.html',
     'app_modules/zti/index.html': './src/app_modules/zti/index.html',
-    'app_modules/register/index.html': './src/app_modules/register/index.html',
   },
   output: {
     format: 'es',

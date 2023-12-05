@@ -4,7 +4,8 @@ export const appConf = {
   appTitle: 'Suction Caisson',
   appDescription: 'Installation and uplift capacity',
   appPageTitle: 'Suction Caisson Installation and Uplift Capacity',
-  appColour: '#f4e786',
+  appColour: '#e1e8ec',
+  textColour: 'text-dark',
   appWebComponents: {
     0: {
       type: 'text-tile',

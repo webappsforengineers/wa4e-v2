@@ -5,7 +5,8 @@ export const appConf = {
   appTitle: 'Pipeline On-Bottom Stability',
   appPageTitle: 'Offshore Pipeline On-bottom Stability Analysis',
   appDescription: 'Required pipe weight (DNV-based)',
-  appColour: '#6fb072',
+  appColour: '#e1e8ec',
+  textColour: 'text-dark',
   appWebComponents: {
     0: {
       type: 'text-tile',

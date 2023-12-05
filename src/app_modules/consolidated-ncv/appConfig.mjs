@@ -5,7 +5,8 @@ export const appConf = {
   appTitle: 'Shallow Foundation Consolidated NcV',
   appPageTitle: 'Shallow Foundation Consolidated NcV',
   appDescription: 'Consolidated undrained vertical bearing capacity',
-  appColour: '#9a76c1',
+  appColour: '#e1e8ec',
+  textColour: 'text-dark',
   appWebComponents: {
     0: {
       type: 'text-tile',

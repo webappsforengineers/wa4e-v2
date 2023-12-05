@@ -25,7 +25,7 @@ class headerTemplate extends StyledElement {
       html`
         <nav
           class="navbar navbar-expand-lg mb-3"
-          style="background-color: #03a9f4"
+          style="background-color: #c1d100"
         >
           <div class="col-2">
             <a href="${this.homePage}"
@@ -36,12 +36,14 @@ class headerTemplate extends StyledElement {
             /></a>
           </div>
           <div class="col-6">
-            <p class="h3 text-center text-wrap text-white">
+            <p class="h3 text-center text-wrap text-dark">
               ${unsafeHTML(this.pageTitle)}
             </p>
           </div>
           <div class="col">
-            <p class="h6 text-center text-white">Web Apps for Engineers</p>
+            <p class="h6 text-center" style="color: #00557f">
+              Web Apps for Engineers
+            </p>
           </div>
         </nav>
       `,

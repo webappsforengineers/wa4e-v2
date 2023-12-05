@@ -1,5 +1,6 @@
 import './homepage/menu_tile.mjs';
 import './general/pageFooters.mjs';
+import './general/footerLight.mjs';
 import './general/pageHeaders.mjs';
 import './general/registrationForm.mjs';
 import './general/loginForm.mjs';

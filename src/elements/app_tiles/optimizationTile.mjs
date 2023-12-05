@@ -16,7 +16,8 @@ class optimizationTile extends TileBase {
         <div class="d-grid gap-2 d-md-flex justify-content-md-around p-2">
           <!-- buttons -->
           <button
-            class="btn btn-primary col-sm-12 col-md-6"
+            class="btn col-sm-12 col-md-6"
+            style="background-color: #c1d100; color: #00557f"
             @click=${() => this.appOptimize()}
           >
             OPTIMIZE

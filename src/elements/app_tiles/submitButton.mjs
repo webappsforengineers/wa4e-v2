@@ -33,7 +33,8 @@ export class SubmitButton extends StyledElement {
   render() {
     return html`
       <button
-        class="btn btn-primary col-sm-12 col-md-12"
+        class="btn col-sm-12 col-md-12"
+        style="background-color: #c1d100; color: #00557f"
         @click=${this._onClick}
       >
         ${this.isLoading

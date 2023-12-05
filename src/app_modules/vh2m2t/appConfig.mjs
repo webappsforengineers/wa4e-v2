@@ -5,7 +5,8 @@ export const appConf = {
   appPageTitle: 'Mudmat UU & CU VH<sub>2</sub>M<sub>2</sub>T',
   appDescription:
     'Undrained and consolidated undrained 6 DoF undrained capacity of rectangular mudmat',
-  appColour: '#c1476a',
+  appColour: '#e1e8ec',
+  textColour: 'text-dark',
   appWebComponents: {
     0: {
       type: 'text-tile',

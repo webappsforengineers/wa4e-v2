@@ -6,7 +6,12 @@ export const appConf = {
   appPageTitle: 'Shallow Foundation N<sub>cV</sub>',
   appDescription:
     'Undrained vertical bearing capacity of strip and circular skirted foundations',
-  appColour: '#a6d686',
+  appColour: '#e1e8ec',
+  textColour: 'text-dark',
+
+  // '#3cbac6',
+  // '#00557f',
+  // '#495961',
   appWebComponents: {
     0: {
       type: 'text-tile',
