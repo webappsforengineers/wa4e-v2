@@ -27,6 +27,8 @@ export default merge(baseConfig, {
       './src/app_modules/consolidated-ncv/index.html',
     'app_modules/drag-anchor/index.html':
       './src/app_modules/drag-anchor/index.html',
+    'app_modules/ggsandnet/index.html':
+      './src/app_modules/ggsandnet/index.html',
     'app_modules/mcc-su/index.html': './src/app_modules/mcc-su/index.html',
     'app_modules/ncv/index.html': './src/app_modules/ncv/index.html',
     'app_modules/pinpiles/index.html': './src/app_modules/pinpiles/index.html',

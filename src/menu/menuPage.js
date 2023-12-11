@@ -6,6 +6,7 @@ import {
   caissonConf,
   consolidatedncvConf,
   dragAnchorConf,
+  ggsandnetConf,
   mccsuConf,
   ncvConf,
   pinpilesConf,
@@ -107,6 +108,9 @@ export class menuPage extends StyledElement {
           </div>
           <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
             <menu-tile .appConf="${pipeConf}"></menu-tile>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <menu-tile .appConf="${ggsandnetConf}"></menu-tile>
           </div>
           <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
             <div

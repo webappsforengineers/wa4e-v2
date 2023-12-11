@@ -1,6 +1,7 @@
 export { appConf as caissonConf } from './caisson/appConfig.mjs';
 export { appConf as consolidatedncvConf } from './consolidated-ncv/appConfig.mjs';
 export { appConf as dragAnchorConf } from './drag-anchor/appConfig.mjs';
+export { appConf as ggsandnetConf } from './ggsandnet/appConfig.mjs';
 export { appConf as mccsuConf } from './mcc-su/appConfig.mjs';
 export { appConf as ncvConf } from './ncv/appConfig.mjs';
 export { appConf as pinpilesConf } from './pinpiles/appConfig.mjs';
