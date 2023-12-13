@@ -90,6 +90,15 @@ export class TileBase extends StyledElement {
           }}"
         ></radio-tile>
       </div>`;
+    } else if (component.type === 'checkbox-tile') {
+      subcomponentHTML = html` <div style="display: ${component.display};">
+        <checkbox-tile
+          .appConf=${component}
+          @clear="${() => {
+            this.clearOutput();
+          }}"
+        ></checkbox-tile>
+      </div>`;
     } else if (component.type === 'table-tile') {
       subcomponentHTML = html` <div class="mb-1 mt-1">
         <table-tile .appConf=${component}></table-tile>

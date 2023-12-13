@@ -13,3 +13,4 @@ import './app_tiles/batchTile.mjs';
 import './app_tiles/inputField.mjs';
 import './app_tiles/submitButton.mjs';
 import './app_tiles/soilPropertiesHelp.mjs';
+import './app_tiles/uploadTile.mjs';

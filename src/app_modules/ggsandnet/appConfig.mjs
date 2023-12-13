@@ -23,8 +23,12 @@ export const appConf = {
       },
     },
     1: {
+      type: 'upload-tile',
+      title: 'Upload Data',
+    },
+    2: {
       type: 'input-tile',
-      title: 'Input',
+      title: 'Input Soil Parameters',
       fields: {
         'Soil Parameters': {
           MES: {
@@ -91,291 +95,60 @@ export const appConf = {
           },
         },
       },
-      subComponents: {},
+      subComponents: {
+        0: {
+          type: 'checkbox-tile',
+          index: 0,
+          position: 'beforeTitle',
+          display: '',
+          title: 'Include?',
+          options: {
+            MES_included: {
+              check_status: true,
+              label: "Mean Effective Stress (P')",
+              visible: '',
+            },
+            MESA_included: {
+              check_status: true,
+              label: "Mean Effective Stress/Atmospheric (P'/Pa)",
+              visible: '',
+            },
+            OCR_included: {
+              check_status: true,
+              label: 'Overconsolidation Ratio (OCR)',
+              visible: '',
+            },
+            VR_included: {
+              check_status: true,
+              label: 'Void Ratio (e)',
+              visible: '',
+            },
+            RD_included: {
+              check_status: true,
+              label: 'Relative Density (Dr%)',
+              visible: '',
+            },
+            AGS_included: {
+              check_status: true,
+              label: 'Average Grain Size (D50)',
+              visible: '',
+            },
+            UC_included: {
+              check_status: true,
+              label: 'Uniformity Coefficient (Cu)',
+              visible: '',
+            },
+            ISS_included: {
+              check_status: true,
+              label: 'Initial Shear Stiffness (G0)',
+              visible: '',
+            },
+          },
+          // onChange: changeObj,
+          modifyOnClick: true,
+        },
+      },
       helpText: 'Helpful text!',
     },
-    // 2: {
-    //   type: 'image-tile',
-    //   img_pth: '../../img/caisson-figure.png',
-    //   img_w: '600px',
-    //   img_h: '600px',
-    // },
-    // 3: {
-    //   type: 'derived-input-tile',
-    //   title: 'Derived Input',
-    //   fields: {
-    //     '': {
-    //       LDo: {
-    //         label: 'L/D<sub>o</sub>',
-    //         unit: null,
-    //         value: null,
-    //         visible: '',
-    //         lb: '',
-    //         ub: '',
-    //       },
-    //       Di: {
-    //         label: 'D<sub>i</sub>',
-    //         unit: 'm',
-    //         value: null,
-    //         visible: '',
-    //         lb: '',
-    //         ub: '',
-    //       },
-    //       Atip: {
-    //         label: 'A<sub>tip</sub>',
-    //         unit: 'm<sup>2</sup>',
-    //         value: null,
-    //         visible: '',
-    //         lb: '',
-    //         ub: '',
-    //       },
-    //       Aplug: {
-    //         label: 'A<sub>plug</sub>',
-    //         unit: 'm<sup>2</sup>',
-    //         value: null,
-    //         visible: '',
-    //         lb: '',
-    //         ub: '',
-    //       },
-    //       Wplug: {
-    //         label: 'W&#39;<sub>plug</sub>',
-    //         unit: 'kN',
-    //         value: null,
-    //         visible: '',
-    //         lb: '',
-    //         ub: '',
-    //       },
-    //       Wcaisson: {
-    //         label: 'W&#39;<sub>caisson</sub>',
-    //         unit: 'kN',
-    //         value: null,
-    //         visible: '',
-    //         lb: '',
-    //         ub: '',
-    //       },
-    //     },
-    //   },
-    //   subComponents: {},
-    // },
-    // 4: {
-    //   type: 'output-tile',
-    //   title: 'Output',
-    //   fields: {
-    //     Installation: {
-    //       Q: {
-    //         label: 'Q',
-    //         unit: 'kN',
-    //         value: null,
-    //         visible: '',
-    //         lb: '',
-    //         ub: '',
-    //       },
-    //       MRS: {
-    //         label: 'Max Required Suction',
-    //         unit: 'kN',
-    //         value: null,
-    //         visible: '',
-    //         lb: '',
-    //         ub: '',
-    //       },
-    //       MPS: {
-    //         label: 'Max Permissible Suction',
-    //         unit: 'kN',
-    //         value: null,
-    //         visible: '',
-    //         lb: '',
-    //         ub: '',
-    //       },
-    //       MFPS: {
-    //         label: 'Min FoS Plug Stability',
-    //         unit: null,
-    //         value: null,
-    //         visible: '',
-    //         lb: '',
-    //         ub: '',
-    //       },
-    //     },
-    //     Capacity: {
-    //       Vult1: {
-    //         label: 'V<sub>ult,1</sub>',
-    //         unit: 'kN',
-    //         value: null,
-    //         visible: '',
-    //         lb: '',
-    //         ub: '',
-    //       },
-    //       VT1: {
-    //         label: 'V<sub>T,1</sub>',
-    //         unit: 'kN',
-    //         value: null,
-    //         visible: '',
-    //         lb: '',
-    //         ub: '',
-    //       },
-    //       Vult2: {
-    //         label: 'V<sub>ult,2</sub>',
-    //         unit: 'kN',
-    //         value: null,
-    //         visible: '',
-    //         lb: '',
-    //         ub: '',
-    //       },
-    //       VT2: {
-    //         label: 'V<sub>T,2</sub>',
-    //         unit: 'kN',
-    //         value: null,
-    //         visible: '',
-    //         lb: '',
-    //         ub: '',
-    //       },
-    //       Vult3: {
-    //         label: 'V<sub>ult,3</sub>',
-    //         unit: 'kN',
-    //         value: null,
-    //         visible: '',
-    //         lb: '',
-    //         ub: '',
-    //       },
-    //       VT3: {
-    //         label: 'V<sub>T,3</sub>',
-    //         unit: 'kN',
-    //         value: null,
-    //         visible: '',
-    //         lb: '',
-    //         ub: '',
-    //       },
-    //     },
-    //   },
-    //   subComponents: {},
-    // },
-    // 5: {
-    //   type: 'graph-tile',
-    //   fields: {
-    //     z: null,
-    //     suz: null,
-    //     q_total: null,
-    //     req_suction: null,
-    //     fos: null,
-    //   },
-    //   plots: {
-    //     plotSuKpc: {
-    //       dataFun(a, b) {
-    //         return [
-    //           {
-    //             x: a,
-    //             y: b,
-    //           },
-    //         ];
-    //       },
-    //       layout: {
-    //         title: '',
-    //         xaxis: {
-    //           title: 'S<sub>u</sub> (kPa)',
-    //           side: 'top',
-    //           rangemode: 'tozero',
-    //         },
-    //         yaxis: {
-    //           title: 'z (m)',
-    //           autorange: 'reversed',
-    //         },
-    //         showlegend: false,
-    //         mode: 'lines',
-    //         line: {
-    //           shape: 'spline',
-    //         },
-    //         font: {
-    //           size: 18,
-    //         },
-    //       },
-    //       args: ['suz', 'z'],
-    //       addLines: false,
-    //       data: [],
-    //     },
-    //     plotPenRes: {
-    //       dataFun(a, b, c) {
-    //         return [
-    //           {
-    //             name: 'Required Suction',
-    //             x: a,
-    //             y: c,
-    //           },
-    //           {
-    //             name: 'Penetration Resistance',
-    //             x: b,
-    //             y: c,
-    //           },
-    //         ];
-    //       },
-    //       layout: {
-    //         type: 'scatter',
-    //         title: '',
-    //         xaxis: {
-    //           title: 'kN',
-    //           side: 'top',
-    //           ticksuffix: '',
-    //         },
-    //         yaxis: {
-    //           title: 'z (m)',
-    //           autorange: 'reversed',
-    //         },
-    //         showlegend: true,
-    //         mode: 'lines',
-    //         line: {
-    //           shape: 'spline',
-    //         },
-    //         legend: {
-    //           traceorder: 'normal',
-    //         },
-    //         font: {
-    //           size: 18,
-    //         },
-    //       },
-    //       args: ['req_suction', 'q_total', 'z'],
-    //       addLines: false,
-    //       data: [],
-    //     },
-    //     plotFosStability: {
-    //       dataFun(a, b) {
-    //         return [
-    //           {
-    //             x: a,
-    //             y: b,
-    //           },
-    //         ];
-    //       },
-    //       layout: {
-    //         type: 'scatter',
-    //         title: '',
-    //         showlegend: false,
-    //         xaxis: {
-    //           title: 'FoS Plug Stability',
-    //           side: 'top',
-    //         },
-    //         yaxis: {
-    //           title: 'z (m)',
-    //           autorange: 'reversed',
-    //         },
-    //         mode: 'lines',
-    //         line: {
-    //           shape: 'spline',
-    //         },
-    //         font: {
-    //           size: 18,
-    //         },
-    //       },
-    //       args: ['fos', 'z'],
-    //       addLines: false,
-    //       data: [],
-    //     },
-    //   },
-    //   updateConf: {
-    //     noNewData: false,
-    //     clearData: false,
-    //   },
-    // },
-    // 6: {
-    //   type: 'batch-tile',
-    //   title: 'Batch Calculation',
-    // },
   },
 };

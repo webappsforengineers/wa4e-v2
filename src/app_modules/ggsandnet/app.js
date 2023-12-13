@@ -24,6 +24,7 @@ export class App extends AppGeneric {
   // eslint-disable-next-line class-methods-use-this
   testSubmit() {
     window.console.log('Do calculation');
+    // window.console.log(appConf.appWebComponents[1].fields['Soil Parameters'].MES.unit);
   }
 }
 

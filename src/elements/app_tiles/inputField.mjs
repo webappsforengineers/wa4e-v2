@@ -14,6 +14,7 @@ export class InputField extends StyledElement {
       key: { type: String },
       lowerBound: { type: Number },
       upperBound: { type: Number },
+      propSelect: { type: Boolean },
     };
   }
 

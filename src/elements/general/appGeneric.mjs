@@ -285,6 +285,18 @@ export class AppGeneric extends StyledElement {
               <login-form></login-form>
             </div>
           </div>`;
+        } else if (component.type === 'upload-tile') {
+          componentHtml = html`<div class="col">
+            <div class="card p-3">
+              <upload-tile
+                @cloneCalc="${e => {
+                  this.runCloneCalc(e.detail);
+                }}"
+                .appConf=${this.appWebComponents}
+                .appName=${this.appName}
+              ></upload-tile>
+            </div>
+          </div>`;
         } else if (component.type === 'admin-page') {
           componentHtml = html`<div class="col">
             <div class="card p-3">
