@@ -154,5 +154,87 @@ export const appConf = {
       },
       helpText: 'Helpful text!',
     },
+    4: {
+      type: 'graph-tile',
+      fields: {},
+      plots: {
+        outputCurve: {
+          dataFun() {
+            return [];
+          },
+          args: [],
+          layout: {
+            title: 'Output Curve',
+            xaxis: {
+              title: 'Strain %',
+            },
+            yaxis: {
+              title: 'G/G0',
+            },
+            titlefont: {
+              family: 'Roboto, sans-serif',
+              color: '#01579b',
+              size: 19,
+            },
+            showlegend: true,
+            font: {
+              size: 18,
+            },
+            legend: {
+              x: 0,
+              xanchor: 'left',
+              y: 1,
+              font: {
+                size: 14,
+              },
+              bgcolor: '#00000000',
+            },
+          },
+          addLines: false,
+          data: [],
+          display: 'block',
+        },
+        nnStats: {
+          dataFun() {
+            return [];
+          },
+          args: [],
+          layout: {
+            title: 'Neural Network Statistics',
+            xaxis: {
+              title: 'Target G/G0 Value',
+            },
+            yaxis: {
+              title: 'NN Output G/G0 Value',
+            },
+            titlefont: {
+              family: 'Roboto, sans-serif',
+              color: '#01579b',
+              size: 19,
+            },
+            showlegend: true,
+            font: {
+              size: 18,
+            },
+            legend: {
+              x: 0,
+              xanchor: 'left',
+              y: 1,
+              font: {
+                size: 14,
+              },
+              bgcolor: '#00000000',
+            },
+          },
+          addLines: false,
+          data: [],
+          display: 'block',
+        },
+      },
+    },
+
+    5: {
+      type: 'download-output',
+    },
   },
 };

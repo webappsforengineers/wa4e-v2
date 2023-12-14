@@ -297,6 +297,12 @@ export class AppGeneric extends StyledElement {
               <neural-network-settings></neural-network-settings>
             </div>
           </div>`;
+        } else if (component.type === 'download-output') {
+          componentHtml = html`<div class="col">
+            <div class="card p-3">
+              <download-output></download-output>
+            </div>
+          </div>`;
         } else if (component.type === 'admin-page') {
           componentHtml = html`<div class="col">
             <div class="card p-3">

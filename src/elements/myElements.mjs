@@ -15,3 +15,4 @@ import './app_tiles/submitButton.mjs';
 import './app_tiles/soilPropertiesHelp.mjs';
 import './app_tiles/uploadTile.mjs';
 import './app_tiles/neuralNetworkSettings.mjs';
+import './app_tiles/downloadOutput.mjs';
