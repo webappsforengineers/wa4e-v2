@@ -27,6 +27,10 @@ export const appConf = {
       title: 'Upload Data',
     },
     2: {
+      type: 'neural-network-settings',
+      title: 'Upload Data',
+    },
+    3: {
       type: 'input-tile',
       title: 'Input Soil Parameters',
       fields: {

@@ -48,6 +48,7 @@
     "@stdlib/array-linspace": "^0.0.7",
     "@stdlib/array-logspace": "^0.0.7",
     "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.11.2",
     "core-js": "^3.26.1",
     "file-saver-es": "^2.0.5",
     "joi": "^17.7.0",
