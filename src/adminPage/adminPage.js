@@ -55,6 +55,7 @@ class adminPage extends StyledElement {
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Work Type</th>
                 <th scope="col">Organisation</th>
                 <th scope="col">Country</th>
               </thead>
@@ -66,6 +67,7 @@ class adminPage extends StyledElement {
                       <td>${user.first_name}</td>
                       <td>${user.last_name}</td>
                       <td>${user.email}</td>
+                      <td>${user.work_type}</td>
                       <td>${user.organisation}</td>
                       <td>${user.country}</td>
                     </tr>
@@ -101,6 +103,7 @@ class adminPage extends StyledElement {
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Work Type</th>
                 <th scope="col">Organisation</th>
                 <th scope="col">Country</th>
               </thead>
@@ -110,6 +113,7 @@ class adminPage extends StyledElement {
                   <td>${this.outputSelectedUser.first_name}</td>
                   <td>${this.outputSelectedUser.last_name}</td>
                   <td>${this.outputSelectedUser.email}</td>
+                  <td>${this.outputSelectedUser.work_type}</td>
                   <td>${this.outputSelectedUser.organisation}</td>
                   <td>${this.outputSelectedUser.country}</td>
                 </tr>
