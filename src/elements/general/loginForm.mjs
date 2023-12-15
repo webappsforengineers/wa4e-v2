@@ -95,7 +95,12 @@ class loginForm extends StyledElement {
         password: this.loginUserInfo.password,
       }),
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        return Promise.reject(response);
+      })
       .then(json => {
         if (json.error) {
           alert('Incorrect username or password');
@@ -105,8 +110,10 @@ class loginForm extends StyledElement {
           window.console.log('api response:', json);
           window.location.href = 'menu/index.html';
         }
-        // this.loginUserInfo.authToken = json.token;
-        // window.console.log('logged in user info', this.loginUserInfo);
+      })
+      .catch(response => {
+        window.console.log(response);
+        alert('Sorry, something went wrong and you could not be logges in');
       });
   }
 }
