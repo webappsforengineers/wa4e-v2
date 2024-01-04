@@ -56,11 +56,20 @@ class adminPage extends StyledElement {
             <button
               class="btn"
               style="background-color: #c1d100; color: #00557f"
-              @click=${this.renderGraph}
+              @click=${this.renderCountryGraph}
             >
               View Pie Chart of Locations of WA4E Users
             </button>
-            <div id="myPlot"></div>
+            <div id="countryPieChart" class="m-3"></div>
+
+            <button
+              class="btn"
+              style="background-color: #c1d100; color: #00557f"
+              @click=${this.renderWorkTypeGraph}
+            >
+              View Pie Chart of Types of Work WA4E is Used For
+            </button>
+            <div id="workTypePieChart" class="m-3"></div>
             
             <br />
             <br />
@@ -211,7 +220,7 @@ class adminPage extends StyledElement {
       });
   }
 
-  async renderGraph() {
+  async renderCountryGraph() {
     await this.updateComplete;
 
     fetch('http://localhost:8080/api/list-users/', {
@@ -248,7 +257,49 @@ class adminPage extends StyledElement {
 
         const countryLayout = { title: 'Locations of WA4E Users' };
 
-        Plotly.newPlot('myPlot', countryData, countryLayout, {
+        Plotly.newPlot('countryPieChart', countryData, countryLayout, {
+          showLink: true,
+          plotlyServerURL: 'https://chart-studio.plotly.com',
+          linkText: 'Play with this data',
+        });
+      });
+  }
+
+  async renderWorkTypeGraph() {
+    await this.updateComplete;
+
+    fetch('http://localhost:8080/api/list-users/', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Token ${localStorage.getItem('authToken')}`,
+      },
+    })
+      .then(response => response.json())
+      .then(json => {
+        window.console.log(json);
+
+        const workType = json.map(user => user.work_type);
+
+        const map = workType.reduce(
+          (acc, e) => acc.set(e, (acc.get(e) || 0) + 1),
+          new Map()
+        );
+
+        const workTypeLabels = Array.from(map.keys());
+        const workTypeCounts = Array.from(map.values());
+
+        const workTypeData = [
+          {
+            labels: workTypeLabels,
+            values: workTypeCounts,
+            type: 'pie',
+          },
+        ];
+
+        const workTypeLayout = { title: 'Type of Work WA4E is Used For' };
+
+        Plotly.newPlot('workTypePieChart', workTypeData, workTypeLayout, {
           showLink: true,
           plotlyServerURL: 'https://chart-studio.plotly.com',
           linkText: 'Play with this data',
