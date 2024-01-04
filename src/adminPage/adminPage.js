@@ -1,9 +1,11 @@
 import { html } from 'lit';
 import { StyledElement } from '../styles/wa4eStyleElement.mjs';
 import '../elements/myElements.mjs';
+import { Plotly } from '../local_modules/wa4e-math.js';
 
 class adminPage extends StyledElement {
   // define the JS object and/or html attributes to be passed to the app
+
   static get properties() {
     return {
       loginUserInfo: {},
@@ -12,6 +14,10 @@ class adminPage extends StyledElement {
       selectedDeleteUser: {},
       selectedUser: {},
       outputSelectedUser: {},
+      // countryLabels: {},
+      // countryCounts: {},
+      // countryData: {},
+      // countryLayout: {},
     };
   }
 
@@ -27,16 +33,21 @@ class adminPage extends StyledElement {
     this.selectedDeleteUser = '';
     this.selectedUser = '';
     this.outputSelectedUser = '';
+    // this.countryLabels = [];
+    // this.countryCounts = [];
+    // this.countryData = {};
+    // this.countryLayout = {};
   }
 
   render() {
+    // this.renderGraph();
+    // this.listUsers();
     return [
       super.render(),
       html`
         <div
           class="text-light"
-          style="background-color: #00557f; height: auto; min-height: 100vh"
-        >
+          style="background-color: #00557f; height: auto; min-height: 100vh">
           <div class="row">
             <header-element page-title="Admin"></header-element>
           </div>
@@ -45,37 +56,12 @@ class adminPage extends StyledElement {
             <button
               class="btn"
               style="background-color: #c1d100; color: #00557f"
-              @click=${this.listUsers}
+              @click=${this.renderGraph}
             >
-              View Full List of Users
+              View Pie Chart of Locations of WA4E Users
             </button>
-            <table class="table text-light">
-              <thead>
-                <th scope="col">Username</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Work Type</th>
-                <th scope="col">Organisation</th>
-                <th scope="col">Country</th>
-              </thead>
-              <tbody>
-                ${this.userList.map(
-                  user => html`
-                    <tr>
-                      <td>${user.username}</td>
-                      <td>${user.first_name}</td>
-                      <td>${user.last_name}</td>
-                      <td>${user.email}</td>
-                      <td>${user.work_type}</td>
-                      <td>${user.organisation}</td>
-                      <td>${user.country}</td>
-                    </tr>
-                  `
-                )}
-              </tbody>
-            </table>
-
+            <div id="myPlot"></div>
+            
             <br />
             <br />
 
@@ -139,10 +125,49 @@ class adminPage extends StyledElement {
             >
               Delete User
             </button>
+
+            </br>
+            </br>
+            <h2>All Users</h2>
+            <button
+              class="btn"
+              style="background-color: #c1d100; color: #00557f"
+              @click=${this.listUsers}
+            >
+              View Full List of Users
+            </button>
+            <table class="table text-light">
+              <thead>
+                <th scope="col">Username</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Work Type</th>
+                <th scope="col">Organisation</th>
+                <th scope="col">Country</th>
+              </thead>
+              <tbody>
+                ${this.userList.map(
+                  user => html`
+                    <tr>
+                      <td>${user.username}</td>
+                      <td>${user.first_name}</td>
+                      <td>${user.last_name}</td>
+                      <td>${user.email}</td>
+                      <td>${user.work_type}</td>
+                      <td>${user.organisation}</td>
+                      <td>${user.country}</td>
+                    </tr>
+                  `
+                )}
+              </tbody>
+            </table>
           </div>
+
           <div class="row gy-1">
             <footer-light-element></footer-light-element>
           </div>
+        </div>
         </div>
       `,
     ];
@@ -168,42 +193,6 @@ class adminPage extends StyledElement {
     this.selectedUser = input.value;
   }
 
-  submitLogin() {
-    window.console.log('lit element', this.loginUserInfo);
-
-    fetch('http://localhost:8080/api/login/', {
-      method: 'POST',
-      // mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        username: this.loginUserInfo.username,
-        password: this.loginUserInfo.password,
-      }),
-    })
-      .then(response => response.json())
-      .then(json => {
-        localStorage.setItem('authToken', json.token);
-        // window.console.log('api response:', json);
-        // this.loginUserInfo.authToken = json.token;
-        // window.console.log('logged in user info', this.loginUserInfo);
-      });
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  submitLogout() {
-    fetch('http://localhost:8080/api/logout/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Token ${localStorage.getItem('authToken')}`,
-      },
-    })
-      .then(response => response.json())
-      .then(json => {
-        window.console.log(json);
-      });
-  }
-
   listUsers() {
     // const authHeader = this.loginUserInfo.authToken;
     // window.console.log(authHeader);
@@ -219,6 +208,51 @@ class adminPage extends StyledElement {
       .then(json => {
         window.console.log(json);
         this.userList = json;
+      });
+  }
+
+  async renderGraph() {
+    await this.updateComplete;
+
+    fetch('http://localhost:8080/api/list-users/', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Token ${localStorage.getItem('authToken')}`,
+      },
+    })
+      .then(response => response.json())
+      .then(json => {
+        window.console.log(json);
+
+        const countries = json.map(user => user.country);
+
+        const map = countries.reduce(
+          (acc, e) => acc.set(e, (acc.get(e) || 0) + 1),
+          new Map()
+        );
+
+        const countryLabels = Array.from(map.keys());
+        const countryCounts = Array.from(map.values());
+
+        // window.console.log(countryLabels);
+        // window.console.log(countryCounts);
+
+        const countryData = [
+          {
+            labels: countryLabels,
+            values: countryCounts,
+            type: 'pie',
+          },
+        ];
+
+        const countryLayout = { title: 'Locations of WA4E Users' };
+
+        Plotly.newPlot('myPlot', countryData, countryLayout, {
+          showLink: true,
+          plotlyServerURL: 'https://chart-studio.plotly.com',
+          linkText: 'Play with this data',
+        });
       });
   }
 
