@@ -52,7 +52,7 @@ class adminPage extends StyledElement {
             <header-element page-title="Admin"></header-element>
           </div>
           <div class="m-3">
-            <h3>Admin Options</h3>
+            <h1>Admin Options</h1>
             <button
               class="btn"
               style="background-color: #c1d100; color: #00557f"
@@ -75,6 +75,7 @@ class adminPage extends StyledElement {
             <br />
 
             <div class="mb-3">
+              <h3>Select User</h3>
               <label for="selectedUserInput" class="form-label"
                 >Email of the user to be selected:</label
               >
@@ -117,6 +118,7 @@ class adminPage extends StyledElement {
             <br />
             <br />
             <div class="mb-3">
+            <h3>Delete User</h3>
               <label for="deleteUserInput" class="form-label"
                 >Email of the user to be deleted:</label
               >
@@ -137,13 +139,20 @@ class adminPage extends StyledElement {
 
             </br>
             </br>
-            <h2>All Users</h2>
+            <h3>View All Users</h3>
             <button
               class="btn"
               style="background-color: #c1d100; color: #00557f"
               @click=${this.listUsers}
             >
               View Full List of Users
+            </button>
+            <button
+              class="btn m-3"
+              style="background-color: #c1d100; color: #00557f"
+              @click=${this.downloadUsers}
+            >
+              Download Full List of Users
             </button>
             <table class="table text-light">
               <thead>
@@ -203,9 +212,6 @@ class adminPage extends StyledElement {
   }
 
   listUsers() {
-    // const authHeader = this.loginUserInfo.authToken;
-    // window.console.log(authHeader);
-
     fetch('http://localhost:8080/api/list-users/', {
       method: 'GET',
       headers: {
@@ -217,6 +223,53 @@ class adminPage extends StyledElement {
       .then(json => {
         window.console.log(json);
         this.userList = json;
+      });
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  jsonToCsv(items) {
+    const header = Object.keys(items[0]);
+    const headerString = header.join(','); // handle null or undefined values here
+    const replacer = (key, value) => value ?? '';
+    const rowItems = items.map(row =>
+      header
+        .map(fieldName => JSON.stringify(row[fieldName], replacer))
+        .join(',')
+    );
+    // join header and body, and break into separate lines
+    const csv = [headerString, ...rowItems].join('\r\n');
+    return csv;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  downloadUsers() {
+    fetch('http://localhost:8080/api/list-users/', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Token ${localStorage.getItem('authToken')}`,
+      },
+    })
+      .then(response => response.json())
+      .then(json => {
+        const csv = this.jsonToCsv(json);
+
+        // Create dummy <a> element using JavaScript.
+        const hiddenA = document.createElement('a');
+
+        // add texts as a href of <a> element after encoding.
+        hiddenA.setAttribute(
+          'href',
+          `data:text/csv;charset=utf-8, ${encodeURIComponent(csv)}`
+        );
+
+        // also set the value of the download attribute
+        hiddenA.setAttribute('download', 'user_list');
+        document.body.appendChild(hiddenA);
+
+        // click the link element
+        hiddenA.click();
+        document.body.removeChild(hiddenA);
       });
   }
 
