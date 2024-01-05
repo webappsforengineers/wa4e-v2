@@ -260,7 +260,7 @@ class adminPage extends StyledElement {
         // add texts as a href of <a> element after encoding.
         hiddenA.setAttribute(
           'href',
-          `data:text/csv;charset=utf-8, ${encodeURIComponent(csv)}`
+          `data:text/csv;charset=utf-8,%EF%BB%BF, ${encodeURIComponent(csv)}`
         );
 
         // also set the value of the download attribute
