@@ -113,7 +113,7 @@ class loginForm extends StyledElement {
       })
       .catch(response => {
         window.console.log(response);
-        alert('Sorry, something went wrong and you could not be logges in');
+        alert('Sorry, something went wrong and you could not be logged in');
       });
   }
 }

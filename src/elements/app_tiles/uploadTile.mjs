@@ -12,7 +12,7 @@ class uploadTile extends TileBase {
       super.render(),
       html`
         <h3>Dataset Settings</h3>
-        <h4>Please specify cell array names.</h4>
+        <!-- <h4>Please specify cell array names.</h4>
         <div class="mb-3">
           <label>Name of properties cell array</label>
           <input class="form-control" type="text" placeholder="properties" />
@@ -20,19 +20,18 @@ class uploadTile extends TileBase {
         <div class="mb-3">
           <label>Name of curve data cell array</label>
           <input class="form-control" type="text" placeholder="curves" />
-        </div>
-        <h4>Upload data</h4>
+        </div> -->
+        <!-- <h4>Upload data</h4>
         <div class="input-group mb-3">
           <input class="form-control" type="file" id="dropbox" accept=".xlsx" />
           <button
             id="dropbox-button"
             class="btn btn-outline-secondary"
-            @click=${this.runCalc}
           >
             Upload Data
           </button>
-        </div>
-        <div class="mb-3">
+        </div> -->
+        <!-- <div class="mb-3">
           <p>Raw data in expected format:</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -58,8 +57,8 @@ class uploadTile extends TileBase {
               d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"
             />
           </svg>
-        </div>
-        <div class="mb-3">
+        </div> -->
+        <!-- <div class="mb-3">
           <button class="btn" style="background-color: #c1d100; color: #00557f">
             Use example variables
           </button>
@@ -230,8 +229,8 @@ class uploadTile extends TileBase {
 
         <button class="btn" style="background-color: #c1d100; color: #00557f">
           Filter Data
-        </button>
-
+        </button> -->
+        <!-- 
         <table class="table table-bordered mt-3">
           <thead>
             <tr>
@@ -247,14 +246,24 @@ class uploadTile extends TileBase {
               <td>...</td>
             </tr>
           </tbody>
-        </table>
+        </table> -->
 
         <div class="text-center">
           <button
             class="btn btn-lg text-center"
             style="background-color: #c1d100; color: #00557f"
+            @click=${this.preprocessData}
           >
             Preprocess Data
+          </button>
+        </div>
+        <div class="text-center">
+          <button
+            class="btn btn-lg text-center"
+            style="background-color: #c1d100; color: #00557f"
+            @click=${this.trainModel}
+          >
+            Train Model
           </button>
         </div>
       `,
@@ -262,9 +271,40 @@ class uploadTile extends TileBase {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  runCalc() {
-    window.console.log('upload data');
+  preprocessData() {
+    fetch('http://localhost:8080/api/preprocess-data/', {
+      method: 'GET',
+    })
+      .then(response => response.json())
+      .then(json => {
+        window.console.log(json);
+        localStorage.setItem('datasetLength', json.dataset_length);
+        localStorage.setItem('inputs', JSON.stringify(json.inputs));
+        localStorage.setItem('targets', JSON.stringify(json.targets));
+      });
   }
+
+  // eslint-disable-next-line class-methods-use-this
+  trainModel() {
+    fetch('http://localhost:8080/api/test-post/', {
+      method: 'POST',
+      // mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        inputs: localStorage.getItem('inputs'),
+        targets: localStorage.getItem('targets'),
+      }),
+    })
+      .then(response => response.json())
+      .then(json => {
+        window.console.log(json);
+      });
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  // runCalc() {
+  //   window.console.log('upload data');
+  // }
 }
 
 customElements.define('upload-tile', uploadTile);
