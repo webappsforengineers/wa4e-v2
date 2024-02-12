@@ -154,87 +154,100 @@ export const appConf = {
     //   },
     //   helpText: 'Helpful text!',
     // },
-    // 4: {
+    // 1: {
     //   type: 'graph-tile',
-    //   fields: {},
+    //   fields: {
+    //     targets: localStorage.getItem('targets'),
+    //     outputs: localStorage.getItem('outputs'),
+    //   },
     //   plots: {
-    //     outputCurve: {
-    //       dataFun() {
-    //         return [];
-    //       },
-    //       args: [],
-    //       layout: {
-    //         title: 'Output Curve',
-    //         xaxis: {
-    //           title: 'Strain %',
-    //         },
-    //         yaxis: {
-    //           title: 'G/G0',
-    //         },
-    //         titlefont: {
-    //           family: 'Roboto, sans-serif',
-    //           color: '#01579b',
-    //           size: 19,
-    //         },
-    //         showlegend: true,
-    //         font: {
-    //           size: 18,
-    //         },
-    //         legend: {
-    //           x: 0,
-    //           xanchor: 'left',
-    //           y: 1,
-    //           font: {
-    //             size: 14,
-    //           },
-    //           bgcolor: '#00000000',
-    //         },
-    //       },
-    //       addLines: false,
-    //       data: [],
-    //       display: 'block',
+    // outputCurve: {
+    //   dataFun() {
+    //     return [];
+    //   },
+    //   args: [],
+    //   layout: {
+    //     title: 'Output Curve',
+    //     xaxis: {
+    //       title: 'Strain %',
     //     },
-    //     nnStats: {
-    //       dataFun() {
-    //         return [];
+    //     yaxis: {
+    //       title: 'G/G0',
+    //     },
+    //     titlefont: {
+    //       family: 'Roboto, sans-serif',
+    //       color: '#01579b',
+    //       size: 19,
+    //     },
+    //     showlegend: true,
+    //     font: {
+    //       size: 18,
+    //     },
+    //     legend: {
+    //       x: 0,
+    //       xanchor: 'left',
+    //       y: 1,
+    //       font: {
+    //         size: 14,
     //       },
-    //       args: [],
-    //       layout: {
-    //         title: 'Neural Network Statistics',
-    //         xaxis: {
-    //           title: 'Target G/G0 Value',
-    //         },
-    //         yaxis: {
-    //           title: 'NN Output G/G0 Value',
-    //         },
-    //         titlefont: {
-    //           family: 'Roboto, sans-serif',
-    //           color: '#01579b',
-    //           size: 19,
-    //         },
-    //         showlegend: true,
-    //         font: {
-    //           size: 18,
-    //         },
-    //         legend: {
-    //           x: 0,
-    //           xanchor: 'left',
-    //           y: 1,
-    //           font: {
-    //             size: 14,
-    //           },
-    //           bgcolor: '#00000000',
-    //         },
-    //       },
-    //       addLines: false,
-    //       data: [],
-    //       display: 'block',
+    //       bgcolor: '#00000000',
     //     },
     //   },
+    //   addLines: false,
+    //   data: [],
+    //   display: 'block',
     // },
-
-    // 5: {
-    //   type: 'download-output',
-    // },
+    //       nnStats: {
+    //         dataFun(a,b) {
+    //           return [
+    //             {
+    //               x: a,
+    //               y: b,
+    //               type: 'scatter',
+    //             }
+    //           ];
+    //         },
+    //         args: ['targets', 'outputs'],
+    //         layout: {
+    //           title: 'Neural Network Statistics',
+    //           xaxis: {
+    //             title: 'Target G/G0 Value',
+    //           },
+    //           yaxis: {
+    //             title: 'NN Output G/G0 Value',
+    //           },
+    //           titlefont: {
+    //             family: 'Roboto, sans-serif',
+    //             color: '#01579b',
+    //             size: 19,
+    //           },
+    //           showlegend: true,
+    //           font: {
+    //             size: 18,
+    //           },
+    //           legend: {
+    //             x: 0,
+    //             xanchor: 'left',
+    //             y: 1,
+    //             font: {
+    //               size: 14,
+    //             },
+    //             bgcolor: '#00000000',
+    //           },
+    //         },
+    //         addLines: false,
+    //         data: [],
+    //         display: 'block',
+    //       },
+    //     },
+    //     updateConf: {
+    //       noNewData: false,
+    //       clearData: false,
+    //     },
+    //   },
   },
+
+  // 5: {
+  //   type: 'download-output',
+  // },
 };

@@ -1,11 +1,14 @@
 import { html } from 'lit';
 import { TileBase } from './tileBase.mjs';
+import { Plotly } from '../../local_modules/wa4e-math.js';
 
 class uploadTile extends TileBase {
   static get properties() {
     return {
       uploadedDatasetLength: {},
       performanceMSE: {},
+      outputs: {},
+      targets: {},
     };
   }
 
@@ -13,9 +16,12 @@ class uploadTile extends TileBase {
     super();
     this.uploadedDatasetLength = '';
     this.performanceMSE = '';
+    this.outputs = [];
+    this.targets = [];
   }
 
   render() {
+    window.onload = this.plotOutputsVsTargets();
     return [
       super.render(),
       html`
@@ -280,6 +286,13 @@ class uploadTile extends TileBase {
             ${this.performanceMSE}
           </p>
         </div>
+        <!-- <button
+              class="btn"
+              style="background-color: #c1d100; color: #00557f"
+            >
+              View Plot of Targets vs Outputs
+            </button> -->
+        <div id="TargetVsOutputPlot"></div>
       `,
     ];
   }
@@ -293,7 +306,7 @@ class uploadTile extends TileBase {
       .then(json => {
         window.console.log(json.dataset_length);
         this.uploadedDatasetLength = json.dataset_length;
-        localStorage.setItem('datasetLength', json.dataset_length);
+        // localStorage.setItem('datasetLength', json.dataset_length);
         localStorage.setItem('inputs', JSON.stringify(json.inputs));
         localStorage.setItem('targets', JSON.stringify(json.targets));
       });
@@ -312,15 +325,35 @@ class uploadTile extends TileBase {
     })
       .then(response => response.json())
       .then(json => {
-        window.console.log(json.performance_mse);
+        window.console.log(json);
         this.performanceMSE = json.performance_mse;
+        this.outputs = json.outputs;
+        this.targets = json.targets;
+        localStorage.setItem('outputs', JSON.stringify(this.outputs.flat()));
+        localStorage.setItem('targets', JSON.stringify(this.targets.flat()));
       });
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  // runCalc() {
-  //   window.console.log('upload data');
-  // }
+  async plotOutputsVsTargets() {
+    await this.updateComplete;
+
+    const targetOutputData = [
+      {
+        x: this.targets.flat(),
+        y: this.outputs.flat(),
+        mode: 'markers',
+        type: 'scatter',
+      },
+    ];
+
+    const targetOutputLayout = { title: 'Outputs vs Target G/G0 values' };
+
+    Plotly.newPlot('TargetVsOutputPlot', targetOutputData, targetOutputLayout, {
+      showLink: true,
+      plotlyServerURL: 'https://chart-studio.plotly.com',
+      linkText: 'Play with this data',
+    });
+  }
 }
 
 customElements.define('upload-tile', uploadTile);
