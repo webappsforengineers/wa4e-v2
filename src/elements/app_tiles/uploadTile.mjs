@@ -2,9 +2,17 @@ import { html } from 'lit';
 import { TileBase } from './tileBase.mjs';
 
 class uploadTile extends TileBase {
+  static get properties() {
+    return {
+      uploadedDatasetLength: {},
+      performanceMSE: {},
+    };
+  }
+
   constructor() {
     super();
-    this.inputLength = null;
+    this.uploadedDatasetLength = '';
+    this.performanceMSE = '';
   }
 
   render() {
@@ -256,7 +264,9 @@ class uploadTile extends TileBase {
           >
             Preprocess Data
           </button>
+          <p>Dataset length: ${this.uploadedDatasetLength}</p>
         </div>
+        <br />
         <div class="text-center">
           <button
             class="btn btn-lg text-center"
@@ -265,6 +275,10 @@ class uploadTile extends TileBase {
           >
             Train Model
           </button>
+          <p>
+            Performance (Mean Square Error from test set):
+            ${this.performanceMSE}
+          </p>
         </div>
       `,
     ];
@@ -277,7 +291,8 @@ class uploadTile extends TileBase {
     })
       .then(response => response.json())
       .then(json => {
-        window.console.log(json);
+        window.console.log(json.dataset_length);
+        this.uploadedDatasetLength = json.dataset_length;
         localStorage.setItem('datasetLength', json.dataset_length);
         localStorage.setItem('inputs', JSON.stringify(json.inputs));
         localStorage.setItem('targets', JSON.stringify(json.targets));
@@ -286,7 +301,7 @@ class uploadTile extends TileBase {
 
   // eslint-disable-next-line class-methods-use-this
   trainModel() {
-    fetch('http://localhost:8080/api/test-post/', {
+    fetch('http://localhost:8080/api/train-model/', {
       method: 'POST',
       // mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
@@ -297,7 +312,8 @@ class uploadTile extends TileBase {
     })
       .then(response => response.json())
       .then(json => {
-        window.console.log(json);
+        window.console.log(json.performance_mse);
+        this.performanceMSE = json.performance_mse;
       });
   }
 
