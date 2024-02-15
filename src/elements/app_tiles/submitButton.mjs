@@ -19,15 +19,12 @@ export class SubmitButton extends StyledElement {
   }
 
   _onClick() {
-    window.console.log(this.appCalc);
-
     this.toggleLoading();
 
     // wait some amount of time before calling appCalc so the state can
     // update before the UI freezes
     const myWait = () => {
-      const x = this.appCalc();
-      window.console.log(x);
+      this.appCalc();
       this.toggleLoading();
     };
     setTimeout(myWait, 50);

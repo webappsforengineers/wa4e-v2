@@ -73,8 +73,8 @@ export class AppGeneric extends StyledElement {
     this.masonryLayout.reloadItems();
   }
 
-  updateComponents() {
-    this.output = this.appCalc(this.appWebComponents);
+  async updateComponents() {
+    this.output = await this.appCalc(this.appWebComponents);
     this.childUpdate();
     this.reloadMasonry().then();
   }

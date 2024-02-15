@@ -7,7 +7,6 @@ class graphTile extends TileBase {
   static get properties() {
     const newProperties = {
       plotKey: { type: String },
-      appCalc: { type: Function },
     };
     return Object.assign(newProperties, super.properties);
   }
@@ -46,7 +45,6 @@ class graphTile extends TileBase {
   }
 
   async updateGraph() {
-    window.console.log(this.appCalc);
     if (this.appConf.updateConf.clearData) {
       this.appConf.plots[this.plotKey].data = [];
     }

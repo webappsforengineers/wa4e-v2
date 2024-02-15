@@ -53,6 +53,8 @@ export const appConf = {
               {
                 x: a,
                 y: b,
+                type: 'scatter',
+                mode: 'markers',
               },
             ];
           },
