@@ -1,8 +1,8 @@
 import { html } from 'lit';
-import { TileBase } from './tileBase.mjs';
-import { Plotly } from '../../local_modules/wa4e-math.js';
+import { TileBase } from '../tileBase.mjs';
+import { Plotly } from '../../../local_modules/wa4e-math.js';
 
-class uploadTile extends TileBase {
+class trainNN extends TileBase {
   static get properties() {
     return {
       uploadedDatasetLength: {},
@@ -329,13 +329,16 @@ class uploadTile extends TileBase {
         this.performanceMSE = json.performance_mse;
         this.outputs = json.outputs;
         this.targets = json.targets;
-        localStorage.setItem('outputs', JSON.stringify(this.outputs.flat()));
-        localStorage.setItem('targets', JSON.stringify(this.targets.flat()));
+        localStorage.setItem('outputs', json.outputs);
+        localStorage.setItem('targets', json.targets);
       });
   }
 
   async plotOutputsVsTargets() {
     await this.updateComplete;
+
+    // this.targets = localStorage.getItem('targets');
+    // this.outputs = localStorage.getItem('outputs');
 
     const targetOutputData = [
       {
@@ -356,4 +359,4 @@ class uploadTile extends TileBase {
   }
 }
 
-customElements.define('upload-tile', uploadTile);
+customElements.define('train-nn', trainNN);

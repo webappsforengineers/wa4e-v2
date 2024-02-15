@@ -22,18 +22,66 @@ export const appConf = {
     //     },
     //   },
     // },
-    0: {
-      type: 'upload-tile',
-      title: 'Upload Data',
-    },
+    // 0: {
+    //   type: 'train-nn',
+    //   title: 'Process Data and Train Network',
+    // },
+    // 1: {
+    //   type: 'plot-output-vs-target',
+    //   title: 'Plot Outputs vs Targets',
+    // },
     // 2: {
     //   type: 'neural-network-settings',
     //   title: 'Upload Data',
     // },
-    // 3: {
-    //   type: 'input-tile',
-    //   title: 'Input Soil Parameters',
-    //   fields: {
+    0: {
+      type: 'input-tile',
+      title: 'Input Soil Parameters',
+      fields: {},
+      subcomponents: {},
+    },
+    1: {
+      type: 'graph-tile',
+      fields: {
+        nnTargets: null,
+        nnOutputs: null,
+      },
+      plots: {
+        plotNN: {
+          dataFun(a, b) {
+            return [
+              {
+                x: a,
+                y: b,
+              },
+            ];
+          },
+          layout: {
+            title: '',
+            xaxis: {
+              title: 'Targets',
+            },
+            yaxis: {
+              title: 'Outputs',
+            },
+            showlegend: false,
+            type: 'scatter',
+            mode: 'markers',
+            font: {
+              size: 14,
+            },
+          },
+          args: ['nnTargets', 'nnOutputs'],
+          addLines: false,
+          data: [],
+          // show: true,
+        },
+      },
+      updateConf: {
+        noNewData: false,
+        clearData: false,
+      },
+    },
     //     'Soil Parameters': {
     //       MES: {
     //         label: "Mean Effective Stress (P')",
@@ -154,97 +202,97 @@ export const appConf = {
     //   },
     //   helpText: 'Helpful text!',
     // },
-    // 1: {
-    //   type: 'graph-tile',
-    //   fields: {
-    //     targets: localStorage.getItem('targets'),
-    //     outputs: localStorage.getItem('outputs'),
-    //   },
-    //   plots: {
-    // outputCurve: {
-    //   dataFun() {
-    //     return [];
-    //   },
-    //   args: [],
-    //   layout: {
-    //     title: 'Output Curve',
-    //     xaxis: {
-    //       title: 'Strain %',
+    //   1: {
+    //     type: 'graph-tile',
+    //     fields: {
+    //       // targets: [1,2,3],
+    //       // outputs: [4,7,9],
     //     },
-    //     yaxis: {
-    //       title: 'G/G0',
-    //     },
-    //     titlefont: {
-    //       family: 'Roboto, sans-serif',
-    //       color: '#01579b',
-    //       size: 19,
-    //     },
-    //     showlegend: true,
-    //     font: {
-    //       size: 18,
-    //     },
-    //     legend: {
-    //       x: 0,
-    //       xanchor: 'left',
-    //       y: 1,
-    //       font: {
-    //         size: 14,
-    //       },
-    //       bgcolor: '#00000000',
-    //     },
-    //   },
-    //   addLines: false,
-    //   data: [],
-    //   display: 'block',
-    // },
-    //       nnStats: {
-    //         dataFun(a,b) {
-    //           return [
-    //             {
-    //               x: a,
-    //               y: b,
-    //               type: 'scatter',
-    //             }
-    //           ];
-    //         },
-    //         args: ['targets', 'outputs'],
-    //         layout: {
-    //           title: 'Neural Network Statistics',
-    //           xaxis: {
-    //             title: 'Target G/G0 Value',
+    //     plots: {
+    //   // outputCurve: {
+    //   //   dataFun() {
+    //   //     return [];
+    //   //   },
+    //   //   args: [],
+    //   //   layout: {
+    //   //     title: 'Output Curve',
+    //   //     xaxis: {
+    //   //       title: 'Strain %',
+    //   //     },
+    //   //     yaxis: {
+    //   //       title: 'G/G0',
+    //   //     },
+    //   //     titlefont: {
+    //   //       family: 'Roboto, sans-serif',
+    //   //       color: '#01579b',
+    //   //       size: 19,
+    //   //     },
+    //   //     showlegend: true,
+    //   //     font: {
+    //   //       size: 18,
+    //   //     },
+    //   //     legend: {
+    //   //       x: 0,
+    //   //       xanchor: 'left',
+    //   //       y: 1,
+    //   //       font: {
+    //   //         size: 14,
+    //   //       },
+    //   //       bgcolor: '#00000000',
+    //   //     },
+    //   //   },
+    //   //   addLines: false,
+    //   //   data: [],
+    //   //   display: 'block',
+    //   // },
+    //         nnStats: {
+    //           dataFun(a,b) {
+    //             return [
+    //               {
+    //                 x: a,
+    //                 y: b,
+    //               }
+    //             ];
     //           },
-    //           yaxis: {
-    //             title: 'NN Output G/G0 Value',
-    //           },
-    //           titlefont: {
-    //             family: 'Roboto, sans-serif',
-    //             color: '#01579b',
-    //             size: 19,
-    //           },
-    //           showlegend: true,
-    //           font: {
-    //             size: 18,
-    //           },
-    //           legend: {
-    //             x: 0,
-    //             xanchor: 'left',
-    //             y: 1,
-    //             font: {
-    //               size: 14,
+    //           args: ['targets', 'outputs'],
+    //           layout: {
+    //             type: 'scatter',
+    //             title: 'Neural Network Statistics',
+    //             xaxis: {
+    //               title: 'Target G/G0 Value',
     //             },
-    //             bgcolor: '#00000000',
+    //             yaxis: {
+    //               title: 'NN Output G/G0 Value',
+    //             },
+    //             titlefont: {
+    //               family: 'Roboto, sans-serif',
+    //               color: '#01579b',
+    //               size: 19,
+    //             },
+    //             // showlegend: true,
+    //             // font: {
+    //             //   size: 18,
+    //             // },
+    //             // legend: {
+    //             //   x: 0,
+    //             //   xanchor: 'left',
+    //             //   y: 1,
+    //             //   font: {
+    //             //     size: 14,
+    //             //   },
+    //             //   bgcolor: '#00000000',
+    //             // },
     //           },
+    //           addLines: true,
+    //           data: [],
+    //           display: 'block',
     //         },
-    //         addLines: false,
-    //         data: [],
-    //         display: 'block',
+    //       },
+    //       updateConf: {
+    //         noNewData: false,
+    //         clearData: false,
     //       },
     //     },
-    //     updateConf: {
-    //       noNewData: false,
-    //       clearData: false,
-    //     },
-    //   },
   },
 
   // 5: {

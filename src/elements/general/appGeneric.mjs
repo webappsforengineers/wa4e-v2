@@ -68,6 +68,7 @@ export class AppGeneric extends StyledElement {
 
   async reloadMasonry() {
     await this.updateComplete;
+    await this.appCalc;
     await this.getMasonryLayout();
     this.masonryLayout.reloadItems();
   }
@@ -285,24 +286,30 @@ export class AppGeneric extends StyledElement {
               <login-form></login-form>
             </div>
           </div>`;
-        } else if (component.type === 'upload-tile') {
-          componentHtml = html`<div class="col">
-            <div class="card p-3">
-              <upload-tile></upload-tile>
-            </div>
-          </div>`;
-        } else if (component.type === 'neural-network-settings') {
-          componentHtml = html`<div class="col">
-            <div class="card p-3">
-              <neural-network-settings></neural-network-settings>
-            </div>
-          </div>`;
-        } else if (component.type === 'download-output') {
-          componentHtml = html`<div class="col">
-            <div class="card p-3">
-              <download-output></download-output>
-            </div>
-          </div>`;
+          // } else if (component.type === 'train-nn') {
+          //   componentHtml = html`<div class="col">
+          //     <div class="card p-3">
+          //       <train-nn></train-nn>
+          //     </div>
+          //   </div>`;
+          // } else if (component.type === 'plot-output-vs-target') {
+          //   componentHtml = html`<div class="col">
+          //     <div class="card p-3">
+          //       <plot-output-vs-target></plot-output-vs-target>
+          //     </div>
+          //   </div>`;
+          // }else if (component.type === 'neural-network-settings') {
+          //   componentHtml = html`<div class="col">
+          //     <div class="card p-3">
+          //       <neural-network-settings></neural-network-settings>
+          //     </div>
+          //   </div>`;
+          // } else if (component.type === 'download-output') {
+          //   componentHtml = html`<div class="col">
+          //     <div class="card p-3">
+          //       <download-output></download-output>
+          //     </div>
+          //   </div>`;
         } else if (component.type === 'admin-page') {
           componentHtml = html`<div class="col">
             <div class="card p-3">

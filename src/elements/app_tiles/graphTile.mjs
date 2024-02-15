@@ -7,6 +7,7 @@ class graphTile extends TileBase {
   static get properties() {
     const newProperties = {
       plotKey: { type: String },
+      appCalc: { type: Function },
     };
     return Object.assign(newProperties, super.properties);
   }
@@ -39,11 +40,13 @@ class graphTile extends TileBase {
   async configGraph() {
     await this.updateComplete;
     await this.updateGraph();
+
     this.appConf.updateConf.noNewData = false;
     this.appConf.updateConf.clearData = false;
   }
 
   async updateGraph() {
+    window.console.log(this.appCalc);
     if (this.appConf.updateConf.clearData) {
       this.appConf.plots[this.plotKey].data = [];
     }
@@ -69,6 +72,7 @@ class graphTile extends TileBase {
           varName => this.appConf.fields[varName[1]]
         )
       );
+      window.console.log(Object.entries(this.appConf.fields));
     }
     Plotly.react(
       document.getElementById(this.plotKey),

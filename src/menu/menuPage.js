@@ -38,7 +38,7 @@ export class menuPage extends StyledElement {
     let adminTile;
     if (localStorage.getItem('user_type') === 'admin user') {
       adminTile = html`
-        <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+        <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
           <div
             class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
             style="background-color: #e1e8ec; aspect-ratio: 0.8;"
@@ -76,43 +76,43 @@ export class menuPage extends StyledElement {
         <br />
         <div class="row" data-masonry='{"percentPosition": true }'>
           ${adminTile}
-          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+          <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
             <menu-tile .appConf="${ncvConf}"></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+          <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
             <menu-tile .appConf="${vhmConf}"></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+          <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
             <menu-tile .appConf="${consolidatedncvConf}"></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+          <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
             <menu-tile .appConf="${pinpilesConf}"></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+          <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
             <menu-tile .appConf="${ztiConf}"></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+          <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
             <menu-tile .appConf="${vh2m2tConf}"></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+          <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
             <menu-tile .appConf="${spletConf}"></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+          <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
             <menu-tile .appConf="${mccsuConf}"></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+          <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
             <menu-tile .appConf="${caissonConf}"></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+          <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
             <menu-tile .appConf="${dragAnchorConf}"></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+          <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
             <menu-tile .appConf="${pipeConf}"></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+          <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
             <menu-tile .appConf="${ggsandnetConf}"></menu-tile>
           </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+          <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
             <div
               class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
               style="background-color: #e1e8ec; aspect-ratio: 0.8;"
@@ -135,8 +135,8 @@ export class menuPage extends StyledElement {
               </div>
             </div>
           </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-            <!-- <div class="col-sm-6 col-lg-4 col-xl-3 mb-4"> -->
+          <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
+            <!-- <div class="col-sm-6 col-lg-4 col-xl-2 mb-4"> -->
             <div
               class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
               style="background-color: #e1e8ec; aspect-ratio: 0.8;"
@@ -162,7 +162,7 @@ export class menuPage extends StyledElement {
               </div>
             </div>
           </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+          <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
             <div
               class="card w-auto text-center text-wrap justify-content-center align-items-center p-3"
               style="background-color: #e1e8ec; aspect-ratio: 0.8;"
@@ -207,7 +207,7 @@ export class menuPage extends StyledElement {
             <header-element page-title="${this.title}"></header-element>
           </div>
           <div
-            class="container align-items-center justify-content-center"
+            class="container-fluid align-items-center justify-content-center"
             style="align-items: center; justify-content: center"
           >
             <div class="row text-light">

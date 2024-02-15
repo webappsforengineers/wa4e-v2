@@ -1,6 +1,6 @@
 import { cloneDeep } from 'lodash-es';
+import { calculateGgsandnet as appCalc } from '../../local_modules/ggSANDnetScript.js';
 import { ggsandnetConf as appConf } from '../moduleConf.mjs';
-// import { calculateCaisson as appCalc } from '../../local_modules/wa4e-math.js';
 import { AppGeneric } from '../../elements/general/appGeneric.mjs';
 
 export class App extends AppGeneric {
@@ -18,13 +18,7 @@ export class App extends AppGeneric {
     this.resetApp = cloneDeep(appConf.appWebComponents);
     this.output = {};
     this.appTiles = this.makeAppTiles();
-    this.appCalc = this.testSubmit;
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  testSubmit() {
-    window.console.log('Do calculation');
-    // window.console.log(appConf.appWebComponents[1].fields['Soil Parameters'].MES.unit);
+    this.appCalc = appCalc;
   }
 }
 
