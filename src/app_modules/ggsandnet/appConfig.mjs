@@ -8,39 +8,27 @@ export const appConf = {
   appColour: '#e1e8ec',
   textColour: 'text-dark',
   appWebComponents: {
-    // 0: {
-    //   type: 'text-tile',
-    //   title: 'About this app:',
-    //   text: {
-    //     subTitle: {
-    //       text: 'A neural network tool for prediction of shear stiffness (G) shear strain (g) relationship for sands',
-    //       format: 'h5',
-    //     },
-    //     blurb: {
-    //       text: 'Shear stiffness is critical in assessing the stress–strain response of geotechnical infrastructure, and is a complex, nonlinear parameter. Existing methods characterise stiffness degradation as a function of strain and require either bespoke laboratory element tests, or adoption of a curve fitting approach, based on an existing data set of laboratory element tests. If practitioners lack the required soil classification parameters, they are unable to use these curve fitting functions. Within this study, we examine the ability and versatility of an artificial neural network (ANN), in this case a feedforward multilayer perceptron, to predict strain-based stiffness degradation on the data set of element test results and soil classification data that underpins current curve fitting functions. It is shown that the ANN gives similar or better results to the existing curve fitting method when the same parameters are used, but also that the ANN approach enables curves to be recovered with ‘any’ subset of the considered soil classification parameters, providing practitioners with a great versatility to derive a stiffness degradation curve.',
-    //       format: '',
-    //     },
-    //   },
-    // },
-    // 0: {
-    //   type: 'train-nn',
-    //   title: 'Process Data and Train Network',
-    // },
-    // 1: {
-    //   type: 'plot-output-vs-target',
-    //   title: 'Plot Outputs vs Targets',
-    // },
-    // 2: {
-    //   type: 'neural-network-settings',
-    //   title: 'Upload Data',
-    // },
     0: {
+      type: 'text-tile',
+      title: 'About this app:',
+      text: {
+        subTitle: {
+          text: 'GgSANDnet: A neural network tool for prediction of shear stiffness (G) shear strain (g) relationship for sands',
+          format: 'h5',
+        },
+        blurb: {
+          text: 'This app uses a neural network to generate a shear stiffness degradation curve for sands (representing how soil reduces in stiffness as a function of strain) based on an arbitrary number and combination of input parameters. User select and input any number and combination of the following parameters: Mean Effective Stress (p) Mean Effective Stress/Reference Atmospheric Stress (p/pa) Overconsolidation Ratio (OCR) Void Ratio (e) Relative Density (Dr) Average Grain Size (D50) Uniformity Coefficient (Cu) Initial Elastic Shear Modulus (G0). After the dataset is loaded and filtered and the available parameters have been selected, a neural network will be trained and an output curve will be generated.',
+          format: '',
+        },
+      },
+    },
+    1: {
       type: 'input-tile',
       title: 'Input Soil Parameters',
       fields: {},
       subcomponents: {},
     },
-    1: {
+    2: {
       type: 'graph-tile',
       fields: {
         nnTargets: null,
@@ -59,12 +47,14 @@ export const appConf = {
             ];
           },
           layout: {
-            title: '',
+            title: 'Neural Network Statistics',
             xaxis: {
               title: 'Targets',
+              range: [0, 1.1],
             },
             yaxis: {
               title: 'Outputs',
+              range: [0, 1.1],
             },
             showlegend: false,
             type: 'scatter',
@@ -78,12 +68,63 @@ export const appConf = {
           data: [],
           // show: true,
         },
+        outputCurve: {
+          dataFun(a, b) {
+            return [
+              {
+                x: a,
+                y: b,
+                type: 'scatter',
+                mode: 'markers',
+              },
+            ];
+          },
+          layout: {
+            title: 'Output Curve',
+            xaxis: {
+              title: 'Strain',
+              type: 'log',
+              range: [-4, 1],
+            },
+            yaxis: {
+              title: 'G/G0',
+              range: [0, 1],
+            },
+            showlegend: false,
+            type: 'scatter',
+            mode: 'markers',
+            font: {
+              size: 14,
+            },
+          },
+          args: ['strain', 'GGo'],
+          addLines: false,
+          data: [],
+          // show: true,
+        },
       },
       updateConf: {
         noNewData: false,
         clearData: false,
       },
     },
+    3: {
+      type: 'output-tile',
+      title: 'Output',
+      fields: {
+        Performance: {
+          MSE: {
+            label: 'MSE',
+            unit: '',
+            value: null,
+            visible: '',
+            lb: '',
+            ub: '',
+          },
+        },
+      },
+    },
+
     //     'Soil Parameters': {
     //       MES: {
     //         label: "Mean Effective Stress (P')",
