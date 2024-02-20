@@ -30,6 +30,11 @@ class checkboxTile extends TileBase {
                 id="${key}"
                 .value="${key}"
                 checked
+                @click=${() => {
+                  this.appConf.options[key].check_status =
+                    !this.appConf.options[key].check_status;
+                  window.console.log(this.appConf.options[key].check_status);
+                }}
               />
             `
           : html` <input
@@ -38,22 +43,25 @@ class checkboxTile extends TileBase {
               name="${this.appConf.title}"
               id="${key}"
               .value="${key}"
-              @click=${e => {
-                this.appConf.options[key].check_status = e.target.checked;
-                this.checkValue = key;
+              @click=${() => {
+                this.appConf.options[key].check_status =
+                  !this.appConf.options[key].check_status;
+                window.console.log(this.appConf.options[key].check_status);
+                // this.checkValue = key;
+                // this.appConf.options[key].check_status = !this.appConf.options[key].check_status;
                 // TODO: This seems overly complicated?
-                Object.keys(this.checkOptions).forEach(notSelected => {
-                  if (notSelected !== key) {
-                    this.appConf.options[notSelected].check_status =
-                      !e.target.checked;
-                  }
-                });
-                if (this.appConf.clearOnClick) {
-                  this.clearOutput();
-                }
-                if (this.appConf.modifyOnClick) {
-                  this.modifyForm(this.checkValue);
-                }
+                // Object.keys(this.checkOptions).forEach(notSelected => {
+                //   if (notSelected !== key) {
+                //     this.appConf.options[notSelected].check_status =
+                //       !e.target.checked;
+                //   }
+                // });
+                // if (this.appConf.clearOnClick) {
+                //   this.clearOutput();
+                // }
+                // if (this.appConf.modifyOnClick) {
+                //   this.modifyForm(this.checkValue);
+                // }
               }}
             />`}
         <label class="form-check-label" for="${key}">
@@ -71,6 +79,7 @@ class checkboxTile extends TileBase {
       composed: true,
     });
     this.dispatchEvent(myEvent);
+    window.console.log(checkValue);
   }
 
   clearOutput() {

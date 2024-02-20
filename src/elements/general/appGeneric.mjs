@@ -274,6 +274,15 @@ export class AppGeneric extends StyledElement {
                 </div>
               </div>`
           );
+          // } else if (component.type === 'checkbox-tile') {
+          //   componentHtml = html` <div style="display: ${component.display};">
+          //     <checkbox-tile
+          //       .appConf=${component}
+          //       @clear="${() => {
+          //         this.clearOutput();
+          //       }}"
+          //     ></checkbox-tile>
+          //   </div>`;
         } else if (component.type === 'registration-form') {
           componentHtml = html`<div class="col">
             <div class="card p-3">
