@@ -34,6 +34,14 @@ class checkboxTile extends TileBase {
                   this.appConf.options[key].check_status =
                     !this.appConf.options[key].check_status;
                   window.console.log(this.appConf.options[key].check_status);
+                  this.checkValue = key;
+                  window.console.log(this.checkValue);
+                  if (this.appConf.clearOnClick) {
+                    this.clearOutput();
+                  }
+                  if (this.appConf.modifyOnClick) {
+                    this.unselectItem(this.checkValue);
+                  }
                 }}
               />
             `
@@ -47,21 +55,14 @@ class checkboxTile extends TileBase {
                 this.appConf.options[key].check_status =
                   !this.appConf.options[key].check_status;
                 window.console.log(this.appConf.options[key].check_status);
-                // this.checkValue = key;
-                // this.appConf.options[key].check_status = !this.appConf.options[key].check_status;
-                // TODO: This seems overly complicated?
-                // Object.keys(this.checkOptions).forEach(notSelected => {
-                //   if (notSelected !== key) {
-                //     this.appConf.options[notSelected].check_status =
-                //       !e.target.checked;
-                //   }
-                // });
-                // if (this.appConf.clearOnClick) {
-                //   this.clearOutput();
-                // }
-                // if (this.appConf.modifyOnClick) {
-                //   this.modifyForm(this.checkValue);
-                // }
+                this.checkValue = key;
+                window.console.log(this.checkValue);
+                if (this.appConf.clearOnClick) {
+                  this.clearOutput();
+                }
+                if (this.appConf.modifyOnClick) {
+                  this.selectItem(this.checkValue);
+                }
               }}
             />`}
         <label class="form-check-label" for="${key}">
@@ -72,9 +73,19 @@ class checkboxTile extends TileBase {
     return checkFields;
   }
 
-  modifyForm(checkValue) {
+  selectItem(checkValue) {
     const myEvent = new CustomEvent('modifyForm', {
-      detail: { changeFields: this.appConf.onChange[checkValue] },
+      detail: { changeFields: this.appConf.onSelect[checkValue] },
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(myEvent);
+    window.console.log(checkValue);
+  }
+
+  unselectItem(checkValue) {
+    const myEvent = new CustomEvent('modifyForm', {
+      detail: { changeFields: this.appConf.onUnselect[checkValue] },
       bubbles: true,
       composed: true,
     });
