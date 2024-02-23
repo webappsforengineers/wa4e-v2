@@ -18,7 +18,7 @@ export class SubmitButtonNoSpinner extends StyledElement {
     this.isLoading = !this.isLoading;
   }
 
-  _onClick() {
+  async _onClick() {
     this.toggleLoading();
 
     // wait some amount of time before calling appCalc so the state can

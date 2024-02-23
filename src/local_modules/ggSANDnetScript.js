@@ -1,6 +1,6 @@
 export async function calculateGgsandnet(appWebComponents) {
   const inputTile = Object.values(appWebComponents).find(
-    element => element.type === 'input-tile'
+    element => element.type === 'input-tile-no-spinner'
   );
 
   const inputProperties = [
