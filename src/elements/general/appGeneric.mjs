@@ -166,6 +166,30 @@ export class AppGeneric extends StyledElement {
               ></form-tile>
             </div>
           </div>`;
+        } else if (component.type === 'input-tile-no-spinner') {
+          componentHtml = html`<div class="col">
+            <div class="card p-3">
+              <form-tile-no-spinner
+                .appConf=${this.appWebComponents[index]}
+                .callback=${true}
+                @updated="${() => {
+                  this.updateComponents();
+                }}"
+                @reset="${() => {
+                  this.resetComponents();
+                }}"
+                @loaded="${() => {
+                  this.reloadMasonry();
+                }}"
+                @modifyForm="${e => {
+                  this.modifyForm(e.detail);
+                }}"
+                @clear="${() => {
+                  this.childUpdate();
+                }}"
+              ></form-tile-no-spinner>
+            </div>
+          </div>`;
         } else if (component.type === 'derived-input-tile') {
           componentHtml = html`<div class="col">
             <div class="card p-3">
@@ -274,15 +298,6 @@ export class AppGeneric extends StyledElement {
                 </div>
               </div>`
           );
-          // } else if (component.type === 'checkbox-tile') {
-          //   componentHtml = html` <div style="display: ${component.display};">
-          //     <checkbox-tile
-          //       .appConf=${component}
-          //       @clear="${() => {
-          //         this.clearOutput();
-          //       }}"
-          //     ></checkbox-tile>
-          //   </div>`;
         } else if (component.type === 'registration-form') {
           componentHtml = html`<div class="col">
             <div class="card p-3">
@@ -295,45 +310,13 @@ export class AppGeneric extends StyledElement {
               <login-form></login-form>
             </div>
           </div>`;
-          // } else if (component.type === 'train-nn') {
-          //   componentHtml = html`<div class="col">
-          //     <div class="card p-3">
-          //       <train-nn></train-nn>
-          //     </div>
-          //   </div>`;
-          // } else if (component.type === 'plot-output-vs-target') {
-          //   componentHtml = html`<div class="col">
-          //     <div class="card p-3">
-          //       <plot-output-vs-target></plot-output-vs-target>
-          //     </div>
-          //   </div>`;
-          // }else if (component.type === 'neural-network-settings') {
-          //   componentHtml = html`<div class="col">
-          //     <div class="card p-3">
-          //       <neural-network-settings></neural-network-settings>
-          //     </div>
-          //   </div>`;
-          // } else if (component.type === 'download-output') {
-          //   componentHtml = html`<div class="col">
-          //     <div class="card p-3">
-          //       <download-output></download-output>
-          //     </div>
-          //   </div>`;
         } else if (component.type === 'admin-page') {
           componentHtml = html`<div class="col">
             <div class="card p-3">
               <admin-page></admin-page>
             </div>
           </div>`;
-        }
-        // else if (component.type === 'logout-button') {
-        //   componentHtml = html`<div class="col">
-        //     <div class="card p-3">
-        //       <logout-button></logout-button>
-        //     </div>
-        //   </div>`;
-        // }
-        else {
+        } else {
           componentHtml = html`<p>
             Component ${component.type} Not Recognised
           </p>`;

@@ -35,7 +35,7 @@ class checkboxTile extends TileBase {
                     !this.appConf.options[key].check_status;
                   window.console.log(this.appConf.options[key].check_status);
                   this.checkValue = key;
-                  window.console.log(this.checkValue);
+                  // window.console.log(this.checkValue);
                   if (this.appConf.clearOnClick) {
                     this.clearOutput();
                   }
@@ -56,7 +56,6 @@ class checkboxTile extends TileBase {
                   !this.appConf.options[key].check_status;
                 window.console.log(this.appConf.options[key].check_status);
                 this.checkValue = key;
-                window.console.log(this.checkValue);
                 if (this.appConf.clearOnClick) {
                   this.clearOutput();
                 }
@@ -80,7 +79,6 @@ class checkboxTile extends TileBase {
       composed: true,
     });
     this.dispatchEvent(myEvent);
-    window.console.log(checkValue);
   }
 
   unselectItem(checkValue) {
@@ -90,7 +88,6 @@ class checkboxTile extends TileBase {
       composed: true,
     });
     this.dispatchEvent(myEvent);
-    window.console.log(checkValue);
   }
 
   clearOutput() {

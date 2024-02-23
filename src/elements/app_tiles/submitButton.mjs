@@ -18,10 +18,7 @@ export class SubmitButton extends StyledElement {
     this.isLoading = !this.isLoading;
   }
 
-  async _onClick() {
-    // this.toggleLoading()
-    // .then(await this.appCalc())
-    // .then(this.toggleLoading());
+  _onClick() {
     this.toggleLoading();
 
     // wait some amount of time before calling appCalc so the state can

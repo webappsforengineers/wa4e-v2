@@ -27,7 +27,7 @@ export const appConf = {
       },
     },
     1: {
-      type: 'input-tile',
+      type: 'input-tile-no-spinner',
       title: 'Input',
       fields: {
         'Soil Properties': {
@@ -44,6 +44,8 @@ export const appConf = {
             unit: null,
             value: 1.019,
             visible: '',
+            lb: '',
+            ub: '',
           },
           OCR: {
             label: 'Overconsolidation Ratio (OCR)',
