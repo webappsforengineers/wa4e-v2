@@ -147,7 +147,7 @@ export const appConf = {
           title: 'Plot Type',
           options: {
             hhmm_opt: {
-              check_status: true,
+              check_status: false,
               label: 'h/h*,m/m*',
               visible: '',
             },
@@ -518,7 +518,7 @@ export const appConf = {
           args: ['Hultvec', 'Multvec', 'Hf', 'Mf', 'f1'],
           addLines: false,
           data: [],
-          display: 'none',
+          display: 'block',
         },
       },
       updateConf: {
