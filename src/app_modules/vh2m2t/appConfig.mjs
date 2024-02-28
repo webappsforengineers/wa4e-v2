@@ -763,10 +763,13 @@ export const appConf = {
               {
                 x: a,
                 y: b,
+                name: 'Zero Torque',
               },
               {
                 x: c,
                 y: d,
+                // eslint-disable-next-line no-undef
+                name: `T = ${T.value} kNm`,
               },
               {
                 x: e,

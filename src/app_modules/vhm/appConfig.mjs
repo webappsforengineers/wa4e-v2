@@ -160,46 +160,6 @@ export const appConf = {
           onChange: changeObj,
           modifyOnClick: true,
         },
-        1: {
-          type: 'radio-tile',
-          index: 3,
-          position: 'afterContent',
-          title: 'Optimize',
-          options: {
-            0: {
-              check_status: true,
-              label: 'N/A',
-              visible: '',
-            },
-            1: {
-              check_status: null,
-              label: 'D',
-              visible: '',
-            },
-            2: {
-              check_status: null,
-              label: 'd',
-              visible: '',
-            },
-            3: {
-              check_status: null,
-              label: 's<sub>um,f</sub>',
-              visible: '',
-            },
-            4: {
-              check_status: null,
-              label: 'k<sub>su,f</sub>',
-              visible: '',
-            },
-            5: {
-              check_status: null,
-              label: '&lambda;<sub>m</sub>',
-              visible: '',
-            },
-          },
-          onChange: changeObj,
-          modifyOnClick: true,
-        },
         2: {
           type: 'soil-properties-help',
           index: 1,
@@ -282,6 +242,51 @@ export const appConf = {
       subComponents: {},
     },
     3: {
+      type: 'optimization-tile',
+      title: 'Optimization',
+      fields: {
+        '': {},
+      },
+      subComponents: {
+        0: {
+          type: 'radio-tile',
+          index: 0,
+          position: 'afterTitle',
+          title: '',
+          options: {
+            d_optimize: {
+              check_status: null,
+              label: 'd',
+              visible: '',
+            },
+            D_optimize: {
+              check_status: null,
+              label: 'D',
+              visible: '',
+            },
+            ksu_f_optimize: {
+              check_status: null,
+              label: 'k<sub>su,f</sub>',
+              visible: '',
+            },
+            sum_optimize: {
+              check_status: null,
+              label: 's<sub>um</sub>',
+              visible: '',
+            },
+            lambda_m_optimize: {
+              check_status: null,
+              label: '&lambda;<sub>m</sub>',
+              visible: '',
+            },
+          },
+          onChange: changeObj,
+          modifyOnClick: true,
+          clearOnClick: true,
+        },
+      },
+    },
+    4: {
       type: 'output-tile',
       title: 'Output',
       fields: {
@@ -393,7 +398,7 @@ export const appConf = {
       },
       subComponents: {},
     },
-    4: {
+    5: {
       type: 'graph-tile',
       fields: {
         hh_star: null,
@@ -526,13 +531,13 @@ export const appConf = {
         clearData: false,
       },
     },
-    5: {
+    6: {
       type: 'image-tile',
       img_pth: '../../img/vhm-figure.png',
       img_w: '650px',
       img_h: '340px',
     },
-    6: {
+    7: {
       type: 'batch-tile',
       title: 'Batch Calculation',
     },

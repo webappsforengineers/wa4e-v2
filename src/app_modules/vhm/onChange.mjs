@@ -4,7 +4,7 @@
 
 export const changeObj = {
   hhmm_opt: {
-    4: {
+    5: {
       plots: {
         hhmm: {
           display: 'block',
@@ -16,7 +16,7 @@ export const changeObj = {
     },
   },
   HfMf_opt: {
-    4: {
+    5: {
       plots: {
         hhmm: {
           display: 'none',
@@ -27,30 +27,8 @@ export const changeObj = {
       },
     },
   },
-  0: {
-    3: {
-      fields: {
-        Optimized: {
-          sum_opt: {
-            label: 'N/A',
-          },
-        },
-      },
-    },
-  },
-  1: {
-    3: {
-      fields: {
-        Optimized: {
-          sum_opt: {
-            label: 'D',
-          },
-        },
-      },
-    },
-  },
-  2: {
-    3: {
+  d_optimize: {
+    4: {
       fields: {
         Optimized: {
           sum_opt: {
@@ -60,19 +38,19 @@ export const changeObj = {
       },
     },
   },
-  3: {
-    3: {
+  D_optimize: {
+    4: {
       fields: {
         Optimized: {
           sum_opt: {
-            label: 's<sub>um</sub>(opt)',
+            label: 'D',
           },
         },
       },
     },
   },
-  4: {
-    3: {
+  ksu_f_optimize: {
+    4: {
       fields: {
         Optimized: {
           sum_opt: {
@@ -82,8 +60,19 @@ export const changeObj = {
       },
     },
   },
-  5: {
-    3: {
+  sum_optimize: {
+    4: {
+      fields: {
+        Optimized: {
+          sum_opt: {
+            label: 's<sub>um</sub>(opt)',
+          },
+        },
+      },
+    },
+  },
+  lambda_m_optimize: {
+    4: {
       fields: {
         Optimized: {
           sum_opt: {
