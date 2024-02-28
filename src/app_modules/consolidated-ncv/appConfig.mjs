@@ -316,6 +316,7 @@ export const appConf = {
       },
       subComponents: {},
     },
+
     3: {
       type: 'output-tile',
       title: 'Output',
@@ -402,7 +403,7 @@ export const appConf = {
             ub: '',
           },
           vu_cons_over_vu_cons_max: {
-            label: 'v<sub>u,cons</sub>/v<sub>u,cons_max</sub>',
+            label: 'v<sub>u,cons</sub>/\nv<sub>u,cons_max</sub>',
             unit: null,
             value: null,
             lb: '',
@@ -429,6 +430,51 @@ export const appConf = {
       subComponents: {},
     },
     4: {
+      type: 'graph-tile',
+      fields: {
+        time: null,
+        vu_cons: null,
+      },
+      plots: {
+        plotVuTime: {
+          dataFun(a, b) {
+            return [
+              {
+                x: [a],
+                y: [b],
+                mode: 'markers',
+                // marker: {
+                //   size: 7,
+                // },
+                type: 'scatter',
+                name: `t<sub>cons</sub> = ${a}`,
+              },
+            ];
+          },
+          layout: {
+            // title: 'S<sub>um</sub> = 0 kPa',
+            xaxis: {
+              title: 't<sub>cons</sub> (years)',
+            },
+            yaxis: {
+              title: 'vu<sub>cons</sub>',
+            },
+            font: {
+              size: 18,
+            },
+          },
+          args: ['time', 'vu_cons'],
+          addLines: true,
+          data: [],
+          show: true,
+        },
+      },
+      updateConf: {
+        noNewData: false,
+        clearData: false,
+      },
+    },
+    5: {
       type: 'batch-tile',
       title: 'Batch Calculation',
     },

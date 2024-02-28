@@ -61,6 +61,9 @@ class graphTile extends TileBase {
           )
         )
       );
+      window.console.log(Object.entries(this.appConf.fields));
+      window.console.log(this.appConf.plots[this.plotKey].data);
+      window.console.log(this.appConf.plots);
     } else {
       this.appConf.plots[this.plotKey].data = this.appConf.plots[
         this.plotKey
