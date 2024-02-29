@@ -1,0 +1,11 @@
+services:
+  frontend:
+    image: phillybroadbent/wa4e-v2:1.0
+    ports:
+      - '8000:8000'
+  
+  backend:
+    image: phillybroadbent/wa4e-django:1.0
+    ports:
+      - '8080:8080'
+    
