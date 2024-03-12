@@ -286,38 +286,6 @@ export const appConf = {
           dataFun(a, b, c) {
             return [
               {
-                name: `Sum = ${c}`,
-                x: a,
-                y: b,
-              },
-            ];
-          },
-          layout: {
-            type: 'scatter',
-            title: 'S<sub>um</sub> = 0 kPa',
-            xaxis: {
-              title: 'S<sub>um</sub> (kPa)',
-            },
-            yaxis: {
-              title: 'z<sub>f</sub>(m)',
-            },
-            mode: 'lines',
-            line: {
-              shape: 'spline',
-            },
-            font: {
-              size: 18,
-            },
-          },
-          args: ['sum', 'zfs', 'legendSum'],
-          addLines: true,
-          data: [],
-          show: true,
-        },
-        plotKsu: {
-          dataFun(a, b, c) {
-            return [
-              {
                 name: `k<sub>su</sub> = ${c}`,
                 x: a,
                 y: b,
@@ -326,12 +294,13 @@ export const appConf = {
           },
           layout: {
             type: 'scatter',
-            title: 'k<sub>su</sub> = 0 kPa/m',
+            title: '',
             xaxis: {
-              title: 'k (kPa/m)',
+              title: 'S<sub>um</sub> (kPa)',
             },
             yaxis: {
               title: 'z<sub>f</sub>(m)',
+              autorange: 'reversed',
             },
             mode: 'lines',
             line: {
@@ -340,8 +309,61 @@ export const appConf = {
             font: {
               size: 18,
             },
+            showlegend: true,
+            legend: {
+              x: 1,
+              xanchor: 'left',
+              y: 1,
+              font: {
+                size: 14,
+              },
+              bgcolor: '#00000000',
+            },
           },
-          args: ['k', 'zfk', 'legendKsu'],
+          args: ['sum', 'zfs', 'legendKsu'],
+          addLines: true,
+          data: [],
+          show: true,
+        },
+        plotKsu: {
+          dataFun(a, b, c) {
+            return [
+              {
+                name: `Sum = ${c}`,
+                x: a,
+                y: b,
+              },
+            ];
+          },
+          layout: {
+            type: 'scatter',
+            title: '',
+            xaxis: {
+              title: 'k (kPa/m)',
+            },
+            yaxis: {
+              title: 'z<sub>f</sub>(m)',
+              autorange: 'reversed',
+            },
+            mode: 'lines',
+            line: {
+              shape: 'spline',
+            },
+            font: {
+              size: 18,
+            },
+            showlegend: true,
+            legend: {
+              x: 1,
+              xanchor: 'left',
+              y: 1,
+              font: {
+                size: 14,
+              },
+              bgcolor: '#00000000',
+            },
+          },
+          args: ['k', 'zfk', 'legendSum'],
           addLines: true,
           data: [],
           show: true,
