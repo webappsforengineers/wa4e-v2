@@ -280,6 +280,8 @@ export const appConf = {
         k: null,
         legendKsu: null,
         legendSum: null,
+        su_profile: null,
+        depth: null,
       },
       plots: {
         plotSum: {
@@ -339,7 +341,7 @@ export const appConf = {
             type: 'scatter',
             title: '',
             xaxis: {
-              title: 'k (kPa/m)',
+              title: 'k<sub>su</sub> (kPa/m)',
             },
             yaxis: {
               title: 'z<sub>f</sub>(m)',
@@ -365,6 +367,36 @@ export const appConf = {
           },
           args: ['k', 'zfk', 'legendSum'],
           addLines: true,
+          data: [],
+          show: true,
+        },
+        plotSuProfile: {
+          dataFun(a, b) {
+            return [
+              {
+                x: a,
+                y: b,
+              },
+            ];
+          },
+          layout: {
+            type: 'scatter',
+            title: '',
+            xaxis: {
+              title: 'su',
+              side: 'top',
+            },
+            yaxis: {
+              title: 'depth',
+              autorange: 'reversed',
+            },
+            mode: 'markers',
+            font: {
+              size: 18,
+            },
+          },
+          args: ['su_profile', 'depth'],
+          addLines: false,
           data: [],
           show: true,
         },
