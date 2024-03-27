@@ -761,13 +761,13 @@ export const appConf = {
           dataFun(a, b, c, d, e, f) {
             return [
               {
-                x: a,
-                y: b,
+                x: c,
+                y: d,
                 name: 'Zero Torque',
               },
               {
-                x: c,
-                y: d,
+                x: a,
+                y: b,
                 // eslint-disable-next-line no-undef
                 name: `T = ${T.value} kNm`,
               },
