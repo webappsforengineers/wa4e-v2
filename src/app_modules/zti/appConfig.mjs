@@ -47,7 +47,7 @@ export const appConf = {
           doverB: {
             label: 'd<sub>skirt</sub>/B (0-0.3)',
             unit: null,
-            value: 0,
+            value: 0.05,
             visible: '',
             lb: '0',
             ub: '0.3',
@@ -65,7 +65,7 @@ export const appConf = {
           k: {
             label: 'k<sub>su</sub>',
             unit: 'kPa/m',
-            value: 1,
+            value: 2,
             visible: '',
             lb: '',
             ub: '',
@@ -73,7 +73,7 @@ export const appConf = {
           gamma: {
             label: '&gamma;&#39;<sub>avg</sub>',
             unit: 'kN/m<sup>3</sup>',
-            value: 5,
+            value: 6,
             visible: '',
             lb: '',
             ub: '',
@@ -83,7 +83,7 @@ export const appConf = {
           V_c: {
             label: 'V<sub>p</sub>',
             unit: 'kN',
-            value: 400,
+            value: 700,
             visible: '',
             lb: '',
             ub: '',
@@ -107,7 +107,7 @@ export const appConf = {
           H_xc: {
             label: 'H<sub>xc</sub>',
             unit: 'kN',
-            value: 80,
+            value: 100,
             visible: '',
             lb: '',
             ub: '',
@@ -115,7 +115,7 @@ export const appConf = {
           e_yHx: {
             label: 'e<sub>yHx</sub>',
             unit: 'm',
-            value: 3,
+            value: 4,
             visible: '',
             lb: '',
             ub: '',
@@ -123,7 +123,7 @@ export const appConf = {
           e_zHx: {
             label: 'e<sub>zHx</sub>',
             unit: 'm',
-            value: 6,
+            value: 3,
             visible: '',
             lb: '',
             ub: '',
@@ -131,7 +131,7 @@ export const appConf = {
           H_yc: {
             label: 'H<sub>yc</sub>',
             unit: 'kN',
-            value: 100,
+            value: 120,
             visible: '',
             lb: '',
             ub: '',
@@ -139,7 +139,7 @@ export const appConf = {
           e_xHy: {
             label: 'e<sub>xHy</sub>',
             unit: 'm',
-            value: 0,
+            value: 1,
             visible: '',
             lb: '',
             ub: '',
@@ -147,7 +147,7 @@ export const appConf = {
           e_zHy: {
             label: 'e<sub>zHy</sub>',
             unit: 'm',
-            value: 4,
+            value: 3,
             visible: '',
             lb: '',
             ub: '',
@@ -155,7 +155,7 @@ export const appConf = {
           alpha_skirt: {
             label: '&alpha;<sub>skirt</sub>',
             unit: null,
-            value: 1,
+            value: 0.5,
             lb: '',
             ub: '',
           },
@@ -180,7 +180,7 @@ export const appConf = {
           lambda_s_UTI: {
             label: '&lambda;<sub>s,UTI</sub>',
             unit: null,
-            value: 1.25,
+            value: 1,
             visible: '',
             lb: '',
             ub: '',

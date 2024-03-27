@@ -434,10 +434,11 @@ export const appConf = {
       fields: {
         time: null,
         vu_cons: null,
+        relative_preload: null,
       },
       plots: {
         plotVuTime: {
-          dataFun(a, b) {
+          dataFun(a, b, c) {
             return [
               {
                 x: [a],
@@ -447,7 +448,7 @@ export const appConf = {
                 //   size: 7,
                 // },
                 type: 'scatter',
-                name: `t<sub>cons</sub> = ${a}`,
+                name: `v<sub>p</sub>/v<sub>u</sub> = ${c}`,
               },
             ];
           },
@@ -462,8 +463,9 @@ export const appConf = {
             font: {
               size: 18,
             },
+            showlegend: true,
           },
-          args: ['time', 'vu_cons'],
+          args: ['time', 'vu_cons', 'relative_preload'],
           addLines: true,
           data: [],
           show: true,

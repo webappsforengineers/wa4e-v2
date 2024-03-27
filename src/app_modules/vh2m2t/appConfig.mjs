@@ -128,7 +128,7 @@ export const appConf = {
             ub: '',
           },
           e_yHx: {
-            label: 'e<sub>zHx</sub>',
+            label: 'e<sub>yHx</sub>',
             unit: 'm',
             value: 4,
             visible: '',
@@ -136,7 +136,7 @@ export const appConf = {
             ub: '',
           },
           e_zHx: {
-            label: 'e<sub>yHx</sub>',
+            label: 'e<sub>zHx</sub>',
             unit: 'm',
             value: 3,
             visible: '',
