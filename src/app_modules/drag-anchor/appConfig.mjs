@@ -148,6 +148,23 @@ export const appConf = {
       },
       subComponents: {
         0: {
+          type: 'text-tile',
+          index: 0,
+          position: 'beforeTitle',
+          display: '',
+          title: '',
+          text: {
+            subTitle: {
+              text: '',
+              format: 'h5',
+            },
+            blurb: {
+              text: 'Change the input values and press Submit to add more lines to the plots',
+              format: '',
+            },
+          },
+        },
+        1: {
           type: 'soil-properties-help',
           index: 0,
           position: 'afterTitle',
