@@ -111,6 +111,10 @@ export class TileBase extends StyledElement {
       subcomponentHTML = html` <div>
         <soil-properties-help .appConf=${component}></soil-properties-help>
       </div>`;
+    } else if (component.type === 'text-tile') {
+      subcomponentHTML = html` <div>
+        <text-tile .appConf=${component}></text-tile>
+      </div>`;
     } else {
       subcomponentHTML = html`<p>
         Component ${component.type} Not Recognised

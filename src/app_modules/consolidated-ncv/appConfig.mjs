@@ -181,6 +181,23 @@ export const appConf = {
       },
       subComponents: {
         0: {
+          type: 'text-tile',
+          index: 0,
+          position: 'beforeTitle',
+          display: '',
+          title: '',
+          text: {
+            subTitle: {
+              text: 'Note:',
+              format: 'h5',
+            },
+            blurb: {
+              text: 'Change the values of t<sub>cons</sub> or v<sub>p</sub>/v<sub>u</sub> and click Submit to add more points to the plots.',
+              format: '',
+            },
+          },
+        },
+        1: {
           type: 'radio-tile',
           index: 0,
           position: 'beforeTitle',
@@ -456,6 +473,39 @@ export const appConf = {
             // title: 'S<sub>um</sub> = 0 kPa',
             xaxis: {
               title: 't<sub>cons</sub> (years)',
+            },
+            yaxis: {
+              title: 'vu<sub>cons</sub>',
+            },
+            font: {
+              size: 18,
+            },
+            showlegend: true,
+          },
+          args: ['time', 'vu_cons', 'relative_preload'],
+          addLines: true,
+          data: [],
+          show: true,
+        },
+        plotVuVp: {
+          dataFun(a, b, c) {
+            return [
+              {
+                x: [c],
+                y: [b],
+                mode: 'markers',
+                // marker: {
+                //   size: 7,
+                // },
+                type: 'scatter',
+                name: `t<sub>cons</sub> (years) = ${a}`,
+              },
+            ];
+          },
+          layout: {
+            // title: 'S<sub>um</sub> = 0 kPa',
+            xaxis: {
+              title: 'v<sub>p</sub>/v<sub>u</sub>',
             },
             yaxis: {
               title: 'vu<sub>cons</sub>',
